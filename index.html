@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content=
+		"width=device-width, initial-scale=1.0">
+
+ 
+	<style>
+		
+		/* Style the main body  (outside of buttons, tabs, inputs, tabcontents etc..) */
+		body {
+			font-family: Arial;
+			font-size: 15px;
+		} 
+
+		/* Style the tab (top row with buttons) */
+		.parenttab {
+		  overflow: hidden;
+		  border: none;
+		  background-color: none;	
+		  border-bottom: 3px solid #ccc;
+		}
+		
+		/* Style the buttons inside the tab (buttons to toggle windows) */
+		.parenttab button {
+		  background-color: inherit;
+		  float: right;
+		  border: none;
+		  outline: none;
+		  cursor: default;
+		  padding: 10px 30px;
+		  font-family: Arial;
+		  font-size: 12px;  
+		}
+		
+		
+		/* Style of the overall container for every page  */
+		.pagecontainer{			
+		  margin: auto;
+	          width: 1300px;		
+    		  text-align: left;
+		}
+
+	</style>
+	
+	<style id=INPUT_STYLE></style>
+	
+</head> 
+
+<body>
+
+
+	<!-- OVERALL TOP NAVIGATION MENU -->
+	<div class="parenttab">
+		<img src="https://thumbs.dreamstime.com/b/watercolor-bird-blue-jay-flying-hand-drawn-illustration-isolated-white-background-hand-painted-bluejay-watercolor-bird-blue-jay-184528842.jpg" width="50" height="50">
+		<button id="LINK_PAGE_INPUT" class="pagelink" onclick="openPage('INPUT_PAGE',this)">   
+			Create Input Files
+		</button>
+		<button id="LINK_PAGE_HOME" class="pagelink" onclick="openPage('HOME_PAGE',this)">
+			Home
+		</button>
+	</div>
+
+	
+	<!-- HOME PAGE -->
+	<div id="HOME_PAGE" class="pagecontainer"></div>	
+	<script src='website/page_home.js'></script>  
+	
+
+	<!-- PAGE FOR INPUT FILES CREATION -->
+	<div id="INPUT_PAGE" class="pagecontainer"></div>	
+	<script src='website/page_input.js'></script>  
+        <script src='website/inputpage/input_task.js'></script>  
+        <script src='website/inputpage/input_hands.js'></script>
+        <script src='website/inputpage/input_feedback.js'></script>
+        <script src='website/inputpage/input_gameobjects.js'></script>
+        <script src='website/inputpage/input_betweentrials.js'></script>
+        <script src='website/inputpage/input_phases.js'></script>
+		
+	                                        
+	<script type="text/javascript">
+	
+		function openPage(selectedPageID,selectedPageLink) {
+			
+		  	allPages = document.getElementsByClassName("pagecontainer"); // initialized allPages variable			
+		  	for (i = 0; i < allPages.length; i++) {   // "closes" all the pages
+		    		allPages[i].style.display = "none";
+		  	}
+			document.getElementById(selectedPageID).style.display = "block";  // opens selected tab
+
+		  	allPageLinks = document.getElementsByClassName("pagelink");  			
+		  	for (i = 0; i < allPageLinks.length; i++) {   // resets page links font weight
+		    		allPageLinks[i].style.fontWeight = "normal";
+		  	}			
+			selectedPageLink.style.fontWeight = "bolder";
+			
+		}
+		document.getElementById("LINK_PAGE_HOME").click();		
+		
+	</script>   
+	
+
+		
+</body>
+		
+</html>
