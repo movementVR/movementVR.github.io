@@ -24,6 +24,18 @@
 		  border-bottom: 3px solid #ccc;
 		}
 		
+		.parenttab title {
+		  background-color: inherit;
+		  float: center;
+		  border: none;
+		  outline: none;
+		  cursor: default;
+		  padding: 0px ;
+		  margin: 0px;
+		  font-family: Arial;
+		  font-size: 15px;  
+		}
+		
 		/* Style the buttons inside the tab (buttons to toggle windows) */
 		.parenttab button {
 		  background-color: inherit;
@@ -56,7 +68,7 @@
 	<!-- OVERALL TOP NAVIGATION MENU -->
 	<div class="parenttab">
 		<img src="https://thumbs.dreamstime.com/b/watercolor-bird-blue-jay-flying-hand-drawn-illustration-isolated-white-background-hand-painted-bluejay-watercolor-bird-blue-jay-184528842.jpg" width="50" height="50">
-		<center><span><b><font size = "+5"> MovementVR</font></b></span></center>
+		<title>MovementVR</title>
 		<button id="LINK_PAGE_INPUT" class="pagelink" onclick="openPage('INPUT_PAGE',this)">   
 			Create Input Files
 		</button>
