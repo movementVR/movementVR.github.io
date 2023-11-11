@@ -80,87 +80,14 @@
 
 <body>
 
-
-	<!-- OVERALL TOP NAVIGATION MENU -->
-	<div class="parenttab">
-		
-        
-   	<!--     <img src="https://thumbs.dreamstime.com/b/watercolor-bird-blue-jay-flying-hand-drawn-illustration-isolated-white-background-hand-painted-bluejay-watercolor-bird-blue-jay-184528842.jpg" width="50" height="50">
-
+ 
         <span> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </span>-->
-        <logo><img src="website/figures/logo.png"  style="width:10%"   >	</logo>
+         <img src="logo.png"  style="width:50%"   >	 
+ <br><a href="https://movementvr.github.io/movementvrweb/">
+<h1> Click to start! </h1> </a>
         
         
-        
-		<button id="LINK_PAGE_HOME" class="pagelink" onclick="openPage('HOME_PAGE',this)">
-			HOME
-		</button>
-        <button id="LINK_PAGE_APP" class="pagelink" onclick="openPage('APP_PAGE',this)">   
-			INSTALL APP
-		</button>
-        <button id="LINK_PAGE_INPUT" class="pagelink" onclick="openPage('INPUT_PAGE',this)">   
-			DESIGN PARADIGM
-		</button>
-        <button id="LINK_PAGE_EXPORT" class="pagelink" onclick="openPage('EXPORT_PAGE',this)">   
-			EXPORT DATA
-		</button> 
-	</div>
-
-	
-	<!-- HOME PAGE -->
-	<div id="HOME_PAGE" class="pagecontainer"></div>	
-	<script src='website/page_home.js'></script>  
-	
-
-	<!-- PAGE FOR INPUT FILES CREATION -->
-	<div id="INPUT_PAGE" class="pagecontainer"></div>	
-	<script src='website/page_input.js'></script>  
-        <script src='website/inputpage/input_task.js'></script>  
-        <script src='website/inputpage/input_hands.js'></script>
-        <script src='website/inputpage/input_feedback.js'></script>
-        <script src='website/inputpage/input_gameobjects.js'></script>
-        <script src='website/inputpage/input_betweentrials.js'></script>
-        <script src='website/inputpage/input_phases.js'></script>
-        <script src='website/inputpage/input_adaptation.js'></script>
-        <script src='website/inputpage/input_instructions.js'></script>
-    
-    
-    
-    
-	<!-- HOME PAGE -->
-	<div id="APP_PAGE" class="pagecontainer"></div>	
-	<script src='website/page_app.js'></script>  
-    
-    
-	<!-- HOME PAGE -->
-	<div id="EXPORT_PAGE" class="pagecontainer"></div>	
-	<script src='website/page_export.js'></script>  
-    
-    
-		
-	                                        
-	<script type="text/javascript">
-	
-		function openPage(selectedPageID,selectedPageLink) {
-			
-		  	allPages = document.getElementsByClassName("pagecontainer"); // initialized allPages variable			
-		  	for (i = 0; i < allPages.length; i++) {   // "closes" all the pages
-		    		allPages[i].style.display = "none";
-		  	}
-			document.getElementById(selectedPageID).style.display = "block";  // opens selected tab
-
-		  	allPageLinks = document.getElementsByClassName("pagelink");  			
-		  	for (i = 0; i < allPageLinks.length; i++) {   // resets page links font weight
-		    		allPageLinks[i].style.fontWeight = 600;//"normal";
-		  	}			
-			selectedPageLink.style.fontWeight = 820;//"bolder";
-			
-		}
-		document.getElementById("LINK_PAGE_HOME").click();		
-		
-	</script>   
-	
-
+         
 		
 </body>
 		
