@@ -22,30 +22,46 @@
 		  border: none;
 		  background-color: none;	
 		  border-bottom: 3px solid #ccc;
+	          width: 1300px;			
+		  margin: auto;	  
+            margin-top:0px;
 		}
-		
-		.parenttab title {
-		  background-color: inherit;
-		  float: center;
-		  border: none;
-		  outline: none;
-		  cursor: default;
-		  padding: 0px ;
-		  margin: 0px;
-		  font-family: Arial;
-		  font-size: 15px;  
+        .parenttab logo{ 
+            margin-top:0px;		
+		  margin: auto;	 	
+		  margin-left: 15%;	
+            margin-right: 2%;	
+    position: relative;
+    top: 25px; 
 		}
+        
 		
-		/* Style the buttons inside the tab (buttons to toggle windows) */
+		/* Style the buttons inside the tab (buttons to toggle windows) 
+        float: right;
+         border:1px solid lightgray;
+            border-top:none;   
+            border:none;  */
 		.parenttab button {
-		  background-color: inherit;
-		  float: right;
-		  border: none;
+		  background-color: white;
+		border:  20px 20px; 
+            border-color: cyan;
+		  /**/
+		  margin-top:  0px ;
+		  margin-bottom: 20px ;
+		  margin-left:  0px ;
+		  margin-right: 10px ;
+		  padding-top:  10px;
+		  padding-bottom: 10px;
+		  padding-left:  15px;
+		  padding-right:  15px;
 		  outline: none;
 		  cursor: default;
-		  padding: 10px 30px;
-		  font-family: Arial;
-		  font-size: 12px;  
+		  font-family: "Arial Narrow";
+		  font-size: 20px;  
+            font-weight: 900; 
+            border-radius: 10px; /* Set the border radius for rounded corners */
+     
+    color: navy; 
 		}
 		
 		
@@ -67,27 +83,28 @@
 
 	<!-- OVERALL TOP NAVIGATION MENU -->
 	<div class="parenttab">
-		<img src="https://thumbs.dreamstime.com/b/watercolor-bird-blue-jay-flying-hand-drawn-illustration-isolated-white-background-hand-painted-bluejay-watercolor-bird-blue-jay-184528842.jpg" width="50" height="50">
-		<title>MovementVR</title>
-		<button id="LINK_PAGE_INPUT" class="pagelink" onclick="openPage('INPUT_PAGE',this)">   
-			Create Input Files
-		</button>
+		
+        
+   	<!--     <img src="https://thumbs.dreamstime.com/b/watercolor-bird-blue-jay-flying-hand-drawn-illustration-isolated-white-background-hand-painted-bluejay-watercolor-bird-blue-jay-184528842.jpg" width="50" height="50">
+
+        <span> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </span>-->
+        <logo><img src="website/figures/logo.png"  style="width:10%"   >	</logo>
+        
+        
+        
 		<button id="LINK_PAGE_HOME" class="pagelink" onclick="openPage('HOME_PAGE',this)">
-			Home
+			HOME
 		</button>
+        <button id="LINK_PAGE_APP" class="pagelink" onclick="openPage('APP_PAGE',this)">   
+			INSTALL APP
+		</button>
+        <button id="LINK_PAGE_INPUT" class="pagelink" onclick="openPage('INPUT_PAGE',this)">   
+			DESIGN PARADIGM
+		</button>
+        <button id="LINK_PAGE_EXPORT" class="pagelink" onclick="openPage('EXPORT_PAGE',this)">   
+			EXPORT DATA
+		</button> 
 	</div>
-	<p> <center>
-	MovementVR: the platform to study movement in real-world conditions.
-	</center></p>
-	
-	<p> <center>
-	Website coming back soon! Stay tuned to our page until we return live on Sunday, November 12, 2023.
-	</center></p>
-	<p> <center>
-	MovementVR will present at SfN 2023, come see us at poster EE18 on Monday afternoon. 
-	</center></p> 
-	
-	
 
 	
 	<!-- HOME PAGE -->
@@ -104,6 +121,22 @@
         <script src='website/inputpage/input_gameobjects.js'></script>
         <script src='website/inputpage/input_betweentrials.js'></script>
         <script src='website/inputpage/input_phases.js'></script>
+        <script src='website/inputpage/input_adaptation.js'></script>
+        <script src='website/inputpage/input_instructions.js'></script>
+    
+    
+    
+    
+	<!-- HOME PAGE -->
+	<div id="APP_PAGE" class="pagecontainer"></div>	
+	<script src='website/page_app.js'></script>  
+    
+    
+	<!-- HOME PAGE -->
+	<div id="EXPORT_PAGE" class="pagecontainer"></div>	
+	<script src='website/page_export.js'></script>  
+    
+    
 		
 	                                        
 	<script type="text/javascript">
@@ -118,9 +151,9 @@
 
 		  	allPageLinks = document.getElementsByClassName("pagelink");  			
 		  	for (i = 0; i < allPageLinks.length; i++) {   // resets page links font weight
-		    		allPageLinks[i].style.fontWeight = "normal";
+		    		allPageLinks[i].style.fontWeight = 600;//"normal";
 		  	}			
-			selectedPageLink.style.fontWeight = "bolder";
+			selectedPageLink.style.fontWeight = 820;//"bolder";
 			
 		}
 		document.getElementById("LINK_PAGE_HOME").click();		
