@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+   
+</head>
+<body>  
+ 
+<h2>Export data </h2>
+<h3>Export the motion tracking data collected to MovementVR to .csv file: </h3>
+<h4>&rarr; Select individual .bin files or the folder containing the files to export:</h4> 
+    <h5>  &emsp;&emsp;   <button style="display:inline-block; float: left; width:120px; height:30px;margin: 20px; " onclick="document.getElementById('LOAD_FILES').click()">Load files</button>
+   	<input id="LOAD_FILES" style="margin: 0px; visibility:hidden;" type="file" onchange = 'upload(event)' multiple/>	 
+	<button style="margin: 20px; float: left; display:inline-block;width:120px; height:30px;" onclick="document.getElementById('LOAD_FOLDER').click()">Load folder</button>
+   	<input id="LOAD_FOLDER" style="margin: 0px; visibility:hidden;"  type="file" webkitdirectory directory  onchange = 'upload(event)' multiple/>
+  </h5> 	 
+    <br><br>
+  
+<h3>The csv file is organized as follows:</h3> 
+    <h6> &emsp; &emsp;&rarr;Each row is a frame.</h6>
+    <h6> &emsp; &emsp;&rarr;Each column is a variable as follows:</h6> 
+    <h7> &emsp; &emsp;&emsp;1) Trial Number</h7> 
+    <h7> &emsp; &emsp;&emsp;2) Time from game start </h7> 
+    <h7> &emsp; &emsp;&emsp;3-8) left, right hand offsets (from gain perturbation) </h7>  
+    <h7> &emsp; &emsp;&emsp;9-end) Position X,Y, Z, Rotation X,Y,Z of the following variables, in order: </h7> 
+    <h7> &emsp; &emsp;&emsp;&emsp;- plate</h7> 
+    <h7> &emsp; &emsp;&emsp;&emsp;- grape</h7> 
+    <h7> &emsp; &emsp;&emsp;&emsp;- headset</h7> 
+    <h7> &emsp; &emsp;&emsp;&emsp;- left wrist</h7>
+    <h7> &emsp; &emsp;&emsp;&emsp;- right wrist</h7>  
+    <h7> &emsp; &emsp;&emsp;&emsp;* if selected, then individual hand bones follow</h7>
+    <h7> &emsp; &emsp;&emsp;[units are seconds or meters]</h7>  
+    <h7> &emsp; &emsp;&emsp;[positive x = right, positive y = up, positive x = forward]</h7>   
+ 
+   
+   
+   </body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>   </title>
+</head>
+<body>
+<form class="tabcontent">      
+<div class="form-control">         
+<inputcolumn>
+        
+<!-- Content: --> 
+ 
+ 
+    <!--
+
+
+<name> Gain change smoothing </name>
+    <inputs>    </inputs>                                                               
+    <name></name><inputs></inputs>
+    <note>When there is a sharp change in gain from one trial to the next,</note>   
+    <note>(e.g., baseline to abrupt adaptation, or adaptation to washout),</note>        
+    <note>gain change smoothing can avoid sharp jumps in hand position.</note>       
+    <note></note>
+    <note>By default, gain change is smoothed as follows:</note>
+    <note>&nbsp;&nbsp;&nbsp;1) The gain change begins when hands are in their home position</note>
+    <note>&nbsp;&nbsp;&nbsp;&nbsp; (because is close to the origin, the perturbation effect is close to zero, reducing potential jumps in hand position) </note>
+    <note>&nbsp;&nbsp;&nbsp;2) The gain is changed smoothly over 0.1 seconds. </note>
+    <note></note>
+    <note>Expand below to define different parameters for the change in gain.</note>
+
+
+
+    <note>(Typically, begin gain change when hands are close to origin.</note>    
+    <note>This minimizes sharp jumps, because no position offset is present at origin)</note>   
+    <note>("Home position" is that defined in "Task" tab, including the "bone-level safeguard boundary".</note>
+    <note>If this is selected, gain change occurs at the same time as trial start & plate appearance.</note>
+    <note>Alternatively, define below alternative hand position condition & bone-level safeguard boundary that will trigger gain change)</note>
+
+-->
+<name>Update perturbation on each trial:</name><inputs></inputs>
+<namenote>(as defined in paradigm)</namenote><inputs></inputs>
+
+<subname>Smoothly over time [s]:</subname>
+    <inputs> 
+    <input id="GAIN_TRANSITION_T" name="trialScript,gainTransitionTime" type="number" value="0.1" />   			
+    </inputs>
+
+<subname>Beginning when:</subname> 
+    <inputs>
+    <input id="GAIN_TRANSITION_STARTPOS" name="setupScript,handGainResetBoundMatchHandStartingFlag" type="radio" value="TRUE"  checked >
+    <label for="GAIN_TRANSITION_STARTPOS">Both hands are in home position</label> 
+    </inputs><subname></subname><inputs> 
+    <input style="margin-left: 4px;" id="GAIN_TRANSITION_STARTPOSF" name="setupScript,handGainResetBoundMatchHandStartingFlag" type="radio" value="FALSE" >
+    <label for="GAIN_TRANSITION_STARTPOSF">Other - expand below to define</label>  
+    </inputs>
+
+
+
+
+    <!-- Expandable Hand Condition 1-->
+
+    <button class="expand-button"  type="button" onclick="toggleExpandableWindow(this,'handPositionConditions')">
+    Expand wrist conditions
+    </button>
+
+
+        <div class="expwindow" id="handPositionConditions"> 
+        
+  
+
+        <!-- Hand Home -->            
+        <name>Which hand(s)?</name> 
+            <inputs>
+            <input id="HOME_L_H" name="setupScript,lefthandGainResetInBoundFlag" type="hidden" value="FALSE">
+            <input id="HOME_L" name="setupScript,lefthandGainResetInBoundFlag" type="checkbox" value="TRUE" checked>	
+            <label for="HOME_L">Left</label>	
+            <input id="HOME_R_H" name="setupScript,righthandGainResetInBoundFlag" type="hidden" value="FALSE">
+            <input id="HOME_R" name="setupScript,righthandGainResetInBoundFlag" type="checkbox" value="TRUE" checked>	
+            <label for="HOME_R">Right</label>	  
+            </inputs> 
+            <name> </name>	 
+            <inputs></inputs>  
+
+       <note>Perturbation change begins when selected wrists are within trigger region defined below:</note>	
+ 
+        <name>Left: </name>		<inputs></inputs>   
+
+            <subname> Position [m] </subname>	
+                <inputs>
+                <label for="LHOME_POS_X">X:</label>
+                <input id="LHOME_POS_X" name="setupScript,lefthandGainResetInBoundPositionX" type="number" value="-0.13" />
+                <label for="LHOME_POS_Y">Y:</label>
+                <input id="LHOME_POS_Y" name="setupScript,lefthandGainResetInBoundPositionY" type="number" value="-0.1" />
+                <label for="LHOME_POS_Z">Z:</label>
+                <input id="LHOME_POS_Z" name="setupScript,lefthandGainResetInBoundPositionZ" type="number" value="0" />
+                </inputs>
+                <namenote> <i> (wrt plate start pos.)</i> </namenote>   <inputs></inputs> 
+            <br>
+            <br>
+
+            <subname>Shape:</subname> 
+                <inputs>
+                <input id="LHOME_SHAPE_SPHERE" name="setupScript,lefthandGainResetInBoundShape" type="radio" value="Sphere"  checked >
+                <label for="LHOME_SHAPE_SPHERE">Sphere</label> 
+                <label for="LHOME_R">&nbsp;&nbsp;&nbsp;  Radius [m]:</label>
+                <input id="LHOME_R" name="setupScript,lefthandGainResetInBoundSizeRadius" type="number" value="0.1" />
+                </inputs><subname></subname><inputs>
+                <input style="margin-left: 4px;"  id="LHOME_SHAPE_CUBE" name="setupScript,lefthandGainResetInBoundShape" type="radio" value="Cube" >
+                <label for="LHOME_SHAPE_CUBE">Cube</label> 
+                <label for="LHOME_SIZEX">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Size [m], X:</label>
+                <input id="LHOME_SIZEX" name="setupScript,lefthandGainResetInBoundSizeX" type="number" value="0.1" />
+                <label for="LHOME_SIZEY">Y:</label>
+                <input id="LHOME_SIZEY" name="setupScript,lefthandGainResetInBoundSizeY" type="number" value="0.1" />
+                <label for="LHOME_SIZEZ">Z:</label>
+                <input id="LHOME_SIZEZ" name="setupScript,lefthandGainResetInBoundSizeZ" type="number" value="0.1" />   
+                </inputs>
+
+
+
+
+            <name> </name>	 
+            <inputs></inputs>  
+
+        <name>Right: </name>		<inputs></inputs>  
+            
+            <subname>Position [m] </subname>  	
+                <inputs>
+                <label for="RHOME_POS_X">X:</label>
+                <input id="RHOME_POS_X" name="setupScript,righthandGainResetInBoundPositionX" type="number" value="0.13" />
+                <label for="RHOME_POS_Y">Y:</label>
+                <input id="RHOME_POS_Y" name="setupScript,righthandGainResetInBoundPositionY" type="number" value="-0.1" />
+                <label for="RHOME_POS_Z">Z:</label>
+                <input id="RHOME_POS_Z" name="setupScript,righthandGainResetInBoundPositionZ" type="number" value="0" />
+                </inputs>  
+                <namenote> <i> (wrt plate start pos.)</i> </namenote>   <inputs></inputs> 
+            <br>
+            <br>
+            
+
+            <subname> Shape </subname>	 
+                <inputs>
+                <input id="RHOME_SHAPE_SPHERE" name="setupScript,righthandGainResetInBoundShape" type="radio" value="Sphere"  checked >
+                <label for="RHOME_SHAPE_SPHERE">Sphere</label> 
+                <label for="RHOME_R">&nbsp;&nbsp;&nbsp;  Radius [m]:</label>
+                <input id="RHOME_R" name="setupScript,righthandGainResetInBoundSizeRadius" type="number" value="0.1" />
+                </inputs><subname></subname><inputs>
+                <input style="margin-left: 4px;" id="RHOME_SHAPE_CUBE" name="setupScript,righthandGainResetInBoundShape" type="radio" value="Cube" >
+                <label for="RHOME_SHAPE_CUBE">Cube</label> 
+                <label for="RHOME_SIZEX">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Size [m], X:</label>
+                <input id="RHOME_SIZEX" name="setupScript,righthandGainResetInBoundSizeX" type="number" value="0.1" />
+                <label for="RHOME_SIZEY">Y:</label>
+                <input id="RHOME_SIZEY" name="setupScript,righthandGainResetInBoundSizeY" type="number" value="0.1" />
+                <label for="RHOME_SIZEZ">Z:</label>
+                <input id="RHOME_SIZEZ" name="setupScript,righthandGainResetInBoundSizeZ" type="number" value="0.1" />   
+                </inputs>
+
+          
+             
+        </div>
+
+    <!-- END Expandable Hand Condition 1-->
+
+<br><br>
+
+    <!--  Expandable Hand Condition 3-->
+
+    <button class="expand-button"  type="button" onclick="toggleExpandableWindow(this,'expandableHandCond3')">
+    Expand bones conditions 
+    </button>
+
+
+        <div class="expwindow" id="expandableHandCond3">	
+
+
+
+        <name>Which hand(s)?</name>		
+            <inputs>	    	  	    
+            <input id="SHOME_L_H" name="setupScript,lefthandGainResetOutBoundFlag" type="hidden" value="FALSE">
+            <input id="SHOME_L" name="setupScript,lefthandGainResetOutBoundFlag" type="checkbox" value="TRUE" checked>	
+            <label for="SHOME_L">Left</label>	
+            <input id="SHOMEE_R_H" name="setupScript,righthandGainResetOutBoundFlag" type="hidden" value="FALSE">
+            <input id="SHOME_R" name="setupScript,righthandGainResetOutBoundFlag" type="checkbox" value="TRUE" checked>	
+            <label for="SHOME_R">Right</label>	  
+            </inputs>
+
+
+
+
+        <note> </note> 
+        <note>Perturbation change begins when all bones in selected hands meet the conditions below:</note>  
+        <note> </note>  
+
+        <name>All left hand bones must be: </name>	  <inputs></inputs>
+        <namenote> <i> (wrt plate start pos.)</i> </namenote>        	
+            <inputs>
+            <input id="LOFFLIMITS_POS_X" name="setupScript,lefthandGainResetOutBoundPositionX" type="number" value="0" />
+            <label for="LOFFLIMITS_POS_X">meters</label>
+            <input id="LOFFLIMITS_XLEFT" name="setupScript,lefthandGainResetOutBoundDirectionX" type="radio" value="left" >
+            <label for="LOFFLIMITS_XLEFT">left of</label> 
+            <input id="LOFFLIMITS_XRIGHT" name="setupScript,lefthandGainResetOutBoundDirectionX" type="radio" value="right">
+            <label for="LOFFLIMITS_XRIGHT">right of</label>  
+            <input id="LOFFLIMITS_XNONE" name="setupScript,lefthandGainResetOutBoundDirectionX" type="radio" value="none"  checked>
+            <label for="LOFFLIMITS_XNONE">none</label> 
+            </inputs>
+            <name> </name>	
+            <inputs>
+            <input id="LOFFLIMITS_POS_Y" name="setupScript,lefthandGainResetOutBoundPositionY" type="number" value="0.005" />
+            <label for="LOFFLIMITS_POS_Y">meters</label>
+            <input id="LOFFLIMITS_YLEFT" name="setupScript,lefthandGainResetOutBoundDirectionY" type="radio" value="above" >
+            <label for="LOFFLIMITS_YLEFT">above</label> 
+            <input id="LOFFLIMITS_YRIGHT" name="setupScript,lefthandGainResetOutBoundDirectionY" type="radio" value="below" checked>
+            <label for="LOFFLIMITS_YRIGHT">below</label>  
+            <input id="LOFFLIMITS_YNONE" name="setupScript,lefthandGainResetOutBoundDirectionY" type="radio" value="none"  >
+            <label for="LOFFLIMITS_YNONE">none</label>  
+            </inputs>
+            <name> </name>	
+            <inputs>
+            <input id="LOFFLIMITS_POS_Z" name="setupScript,lefthandGainResetOutBoundPositionZ" type="number" value="0" />
+            <label for="LOFFLIMITS_POS_Z">meters</label>
+            <input id="LOFFLIMITS_ZLEFT" name="setupScript,lefthandGainResetOutBoundDirectionZ" type="radio" value="infront" >
+            <label for="LOFFLIMITS_ZLEFT">in front of</label> 
+            <input id="LOFFLIMITS_ZRIGHT" name="setupScript,lefthandGainResetOutBoundDirectionZ" type="radio" value="behind">
+            <label for="LOFFLIMITS_ZRIGHT">behind</label>  
+            <input id="LOFFLIMITS_ZNONE" name="setupScript,lefthandGainResetOutBoundDirectionZ" type="radio" value="none"  checked>
+            <label for="LOFFLIMITS_ZNONE">none</label> 
+            </inputs>
+            <name> </name>	
+            <inputs> 
+            <input id="LOFFLIMITS_CH" name="setupScript,lefthandGainResetOutBoundMeetAllConditions" type="hidden" value="FALSE">
+            <input id="LOFFLIMITS_C" name="setupScript,lefthandGainResetOutBoundMeetAllConditions" type="checkbox" value="TRUE" >	
+            <label for="LOFFLIMITS_C">ALL conditions must be met (versus ANY)</label> 
+            </inputs>
+            <note> </note>  
+
+
+
+        <name>All right hand bones must be: </name>	  <inputs></inputs>
+        <namenote> <i> (wrt plate start pos.)</i> </namenote>        	
+            <inputs>
+            <input id="ROFFLIMITS_POS_X" name="setupScript,righthandGainResetOutBoundPositionX" type="number" value="0" />
+            <label for="ROFFLIMITS_POS_X">meters</label>
+            <input id="ROFFLIMITS_XLEFT" name="setupScript,righthandGainResetOutBoundDirectionX" type="radio" value="left" >
+            <label for="ROFFLIMITS_XLEFT">left of</label> 
+            <input id="ROFFLIMITS_XRIGHT" name="setupScript,righthandGainResetOutBoundDirectionX" type="radio" value="right">
+            <label for="ROFFLIMITS_XRIGHT">right of</label>  
+            <input id="ROFFLIMITS_XNONE" name="setupScript,righthandGainResetOutBoundDirectionX" type="radio" value="none"  checked>
+            <label for="ROFFLIMITS_XNONE">none</label> 	</inputs>
+            <name> </name>	
+            <inputs>
+            <input id="ROFFLIMITS_POS_Y" name="setupScript,righthandGainResetOutBoundPositionY" type="number" value="0.005" />
+            <label for="ROFFLIMITS_POS_Y">meters</label>
+            <input id="ROFFLIMITS_YLEFT" name="setupScript,righthandGainResetOutBoundDirectionY" type="radio" value="above" >
+            <label for="ROFFLIMITS_YLEFT">above</label> 
+            <input id="ROFFLIMITS_YRIGHT" name="setupScript,righthandGainResetOutBoundDirectionY" type="radio" value="below" checked>
+            <label for="ROFFLIMITS_YRIGHT">below</label>  
+            <input id="ROFFLIMITS_YNONE" name="setupScript,righthandGainResetOutBoundDirectionY" type="radio" value="none"  >
+            <label for="ROFFLIMITS_YNONE">none</label>  
+            </inputs>
+            <name> </name>	
+            <inputs>
+            <input id="ROFFLIMITS_POS_Z" name="setupScript,righthandGainResetOutBoundPositionZ" type="number" value="0" />
+            <label for="ROFFLIMITS_POS_Z">meters</label>
+            <input id="ROFFLIMITS_ZLEFT" name="setupScript,righthandGainResetOutBoundDirectionZ" type="radio" value="infront" >
+            <label for="ROFFLIMITS_ZLEFT">in front of</label> 
+            <input id="ROFFLIMITS_ZRIGHT" name="setupScript,righthandGainResetOutBoundDirectionZ" type="radio" value="behind">
+            <label for="ROFFLIMITS_ZRIGHT">behind</label>  
+            <input id="ROFFLIMITS_ZNONE" name="setupScript,righthandGainResetOutBoundDirectionZ" type="radio" value="none"  checked>
+            <label for="ROFFLIMITS_ZNONE">none</label>   
+            </inputs>
+            <name> </name>	
+            <inputs> 
+            <input id="ROFFLIMITS_CH" name="setupScript,righthandGainResetOutBoundMeetAllConditions" type="hidden" value="FALSE">
+            <input id="ROFFLIMITS_C" name="setupScript,righthandGainResetOutBoundMeetAllConditions" type="checkbox" value="TRUE" >	
+            <label for="ROFFLIMITS_C">ALL conditions must be met (versus ANY)</label> 
+            </inputs>
+            <name> </name>
+
+
+
+
+    </div>
+
+
+
+    
+ 
+<!-- End of Content --> 
+ 
+</inputcolumn> 
+</div>  
+<figurecolumn>
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
+</figurecolumn>
+        
+</form>
+</body>
+</html>

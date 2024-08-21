@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>   </title>
+</head>
+<body>
+<form class="tabcontent">      
+<div class="form-control">         
+<inputcolumn>
+        
+<!-- Content: --> 
+ 
+<!-- 
+    
+<name>Origin for gain perturbation</name>       
+    <note>The gain perturbation scales the distance traveled by the hand(s) from their "origin" position (no shift when hand is at origin).</note>
+    <note>The "origin" position should approximately be the hand position at the start of the trial - when they first lift the plate.</note>
+    <note></note>
+    <note>By default, the origin position is computed as follows:</note>
+    <note>&nbsp;&nbsp;&nbsp;1) For each trial, take median hand position when in home</note>
+    <note>&nbsp;&nbsp;&nbsp;2) take the median of quantity (1) across trials 1 to 30, and use this origin position for all adaptation trials </note>
+    <note></note>
+    <note>Expand below to define a different computation for "origin".</note>
+    <br>    -->
+
+ <name> Set "gain origin" to:</name>
+        <inputs>             
+        <label>       
+        <span style='font-size:15px;'>&#8594;</span>
+        &nbsp;Hand position when in home:</label> </inputs>
+<subname></subname>
+        
+            <inputs>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+            <input id="GAINORIGIN_WITHIN_HD" name="trialScript,gainOriginComputationWithinTrial" type="radio" value="homePositionMedian" checked >
+            <label for="GAINORIGIN_WITHIN_HD">Median</label> 
+            <input id="GAINORIGIN_WITHIN_HM" name="trialScript,gainOriginComputationWithinTrial" type="radio" value="homePositionMean">
+            <label for="GAINORIGIN_WITHIN_HM">Mean</label> 
+            <input id="GAINORIGIN_WITHIN_HS" name="trialScript,gainOriginComputationWithinTrial" type="radio" value="homePositionStart">
+            <label for="GAINORIGIN_WITHIN_HS">First</label> 
+            <input id="GAINORIGIN_WITHIN_HE" name="trialScript,gainOriginComputationWithinTrial" type="radio" value="homePositionEnd">
+            <label for="GAINORIGIN_WITHIN_HE">Last position</label> 
+            <br>
+            <br>
+                <span style='font-size:15px;'>&#8594;</span> 	
+        <input style='margin-left: 0px;' id="GAINORIGIN_WITHIN_P" name="trialScript,gainOriginComputationWithinTrial" type="radio" value="plateContact"  >
+        <label for="GAINORIGIN_WITHIN_P">Hand position upon plate contact</label> 	
+            <br>            
+            <br>
+            
+        <span style='font-size:15px;'>&#8594;</span> 	
+        <input style='margin-left: 0px;' id="GAINORIGIN_WITHIN_F" name="trialScript,gainOriginComputationWithinTrial" type="radio" value="fixedPosition">
+        <label for="GAINORIGIN_WITHIN_F">Predefined position: </label> 	
+            <br>
+            <label for="GAINORIGIN_WITHIN_FLX">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Left [meters], &nbsp;  X:</label>
+            <input id="GAINORIGIN_WITHIN_FLX" name="trialScript,leftGainOriginFixedPositionX" type="number" value="0" />
+            <label for="GAINORIGIN_WITHIN_FLY">Y:</label>
+            <input id="GAINORIGIN_WITHIN_FLY" name="trialScript,leftGainOriginFixedPositionY" type="number" value="0" />
+            <label for="GAINORIGIN_WITHIN_FLZ">Z:</label>
+            <input id="GAINORIGIN_WITHIN_FLZ" name="trialScript,leftGainOriginFixedPositionZ" type="number" value="0" />
+
+            <br> 
+            <label for="GAINORIGIN_WITHIN_FRX">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Right [meters], X:</label>
+            <input id="GAINORIGIN_WITHIN_FRX" name="trialScript,rightGainOriginFixedPositionX" type="number" value="0" />
+            <label for="GAINORIGIN_WITHIN_FRY">Y:</label>
+            <input id="GAINORIGIN_WITHIN_FRY" name="trialScript,rightGainOriginFixedPositionY" type="number" value="0" />
+            <label for="GAINORIGIN_WITHIN_FRZ">Z:</label>
+            <input id="GAINORIGIN_WITHIN_FRZ" name="trialScript,rightGainOriginFixedPositionZ" type="number" value="0" />
+
+        </inputs><br> <br>    <br>      <br>  
+
+
+
+
+
+
+
+
+
+        
+    <name style="vertical-align: top;">Computed on trials:</name>
+        <inputs>    <br>     <label>
+   
+        <span style='font-size:15px;'>&#8594;</span>
+        &nbsp;Origin is constant across adaptation trials, and set to the </label>
+            </inputs>
+<subname></subname>
+        
+            <inputs>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+            <input id="GAINORIGIN_BETWEEN_HD" name="trialScript,gainOriginComputationBetweenTrials" type="radio" value="median" checked >
+            <label for="GAINORIGIN_BETWEEN_HD">Median</label> 
+            <input id="GAINORIGIN_BETWEEN_HM" name="trialScript,gainOriginComputationBetweenTrials" type="radio" value="mean">
+            <label for="GAINORIGIN_BETWEEN_HM">Mean</label> 
+            <br>     
+
+
+        <label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of the "origin positions" computed in trials: </label>
+        <br><label for="GAIN_TRIAL_I"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  </label>
+        <input id="GAIN_TRIAL_I" name="trialScript,gainOriginComputationTrialRangeStart" type="number" value="1" />
+        <label for="GAIN_TRIAL_F">to</label>
+        <input id="GAIN_TRIAL_F" name="trialScript,gainOriginComputationTrialRangeEnd" type="number" value="30" />
+        <br>    <br>
+
+        <span style='font-size:15px;'>&#8594;</span> 	
+        <input style='margin-left: 0px;' id="GAINORIGIN_BETWEEN_R" name="trialScript,gainOriginComputationBetweenTrials" type="radio" value="resetEachTrial"  >
+            <label for="GAINORIGIN_BETWEEN_R">Origin is re-computed for each adaptation trial,</label> 		
+            <br>
+            <label for="GAINORIGIN_TRANSITION_T"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and updated smoothly over </label>
+            <input id="GAINORIGIN_TRANSITION_T" name="trialScript,gainOriginTransitionTime" type="number" value="0.1" />   
+            <label> [Seconds]</label>
+            <br>
+            
+            
+        </inputs>
+
+
+
+<!-- END OF Expandable Gain Origin --> 
+    
+    
+    
+ 
+<!-- End of Content --> 
+ 
+</inputcolumn> 
+</div>  
+<figurecolumn>
+    <img src="web/img/parameters/gainOrigin.png" style="width:100%;">
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
+</figurecolumn>
+        
+</form>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Species </title>
+</head>
+<body>
+<form class="tabcontent">      
+<div class="form-control">         
+<inputcolumn>
+        
+<!-- Content: --> 
+ 
+    <name>Swap bird:</name> 
+        <inputs>
+        <input id="CHANGEBIRD_ANY" name="trialScript,changeBirdAnyCondition" type="radio" value="TRUE"  checked >
+        <label for="CHANGEBIRD_ANY">Every trial</label> 
+        <input id="CHANGEBIRD_ANYF" name="trialScript,changeBirdAnyCondition" type="radio" value="FALSE" >
+        <label for="CHANGEBIRD_ANYF">Conditional (expand below) </label>  
+        </inputs>
+ 
+
+    <!-- Expandable Change Bird Condition -->
+    <name></name>
+    <button class="expand-button"  type="button" onclick="toggleExpandableWindow(this,'expandableChangeBird')">
+    Expand swap conditions
+    </button>
+
+    <div class="expwindow" id="expandableChangeBird"> 
+ 
+        <name>Swap if:</name> <inputs> 
+            <input id="OMH" name="trialScript,changeBirdOnSuccess" type="hidden" value="FALSE">
+            <input id="OM" name="trialScript,changeBirdOnSuccess" type="checkbox" value="TRUE" checked>	
+            <label for="OM">Success</label>	 
+            </inputs>  
+
+
+            <subname> </subname> <inputs> 
+            <input id="OMH" name="trialScript,changeBirdOnFailure1" type="hidden" value="FALSE">
+            <input id="OM" name="trialScript,changeBirdOnFailure1" type="checkbox" value="TRUE" checked>	
+            <label for="OM">Failure - Plate too tilted</label>	 
+            </inputs>  
+
+
+           <subname> </subname> <inputs> 
+            <input id="OMH" name="trialScript,changeBirdOnFailure2" type="hidden" value="FALSE">
+            <input id="OM" name="trialScript,changeBirdOnFailure2" type="checkbox" value="TRUE" checked>	
+            <label for="OM">Failure - Plate exited target</label>	 
+            </inputs>  
+
+
+           <subname> </subname> <inputs> 
+            <input id="OMH" name="trialScript,changeBirdOnFailure3" type="hidden" value="FALSE">
+            <input id="OM" name="trialScript,changeBirdOnFailure3" type="checkbox" value="TRUE" checked>	
+            <label for="OM">Failure - Plate fell</label>	 
+            </inputs>  
+
+
+
+            <subname> </subname> <inputs> 
+            <input id="OMH" name="trialScript,changeBirdOnFailure4" type="hidden" value="FALSE">
+            <input id="OM" name="trialScript,changeBirdOnFailure4" type="checkbox" value="TRUE" checked>	
+            <label for="OM">Failure - Time limit reached</label>	 
+            </inputs>  
+
+
+
+            <subname> </subname> <inputs> 
+            <input id="OMH" name="trialScript,changeBirdOnFailure5" type="hidden" value="FALSE">
+            <input id="OM" name="trialScript,changeBirdOnFailure5" type="checkbox" value="TRUE" checked>	
+            <label for="OM">Failure - Workspace exited</label>	 
+            </inputs>  
+        
+        
+        
+        <name> </name>
+            <inputs>	    
+            <input id="CHANGETARGETBIRDBREAK_FLAG_H" name="trialScript,changeBirdOnBreak" type="hidden" value="FALSE">
+            <input id="CHANGETARGETBIRDBREAK_FLAG" name="trialScript,changeBirdOnBreak" type="checkbox" value="TRUE" checked>
+            <label for="CHANGETARGETBIRDBREAK_FLAG">Always on break</label>		
+            </inputs> 
+
+    
+    </div><br><br>
+    
+    
+    
+    <name>Timing:</name>
+        <inputs>		    
+        <input id="TGTBIRD_CHANGESTAGE_5" name="trialScript,changeBirdStage" type="radio" value="5" checked>
+        <label for="TGTBIRD_CHANGESTAGE_5">After plate lift</label> 
+        </inputs> 
+        <subname> </subname> <inputs> 
+        <input id="TGTBIRD_CHANGESTAGE_6" name="trialScript,changeBirdStage" type="radio" value="6" >
+        <label for="TGTBIRD_CHANGESTAGE_6">After feedback</label> 
+        </inputs> 
+        <subname> </subname> <inputs> 
+        <input id="TGTBIRD_CHANGESTAGE_1" name="trialScript,changeBirdStage" type="radio" value="1" >
+        <label for="TGTBIRD_CHANGESTAGE_1">After break</label>
+        </inputs>     
+    
+    <name>Sequence:</name>
+        <inputs>		    
+        <input id="TGTBIRD_SPECIESMODE_R" name="trialScript,targetBirdSpeciesMode" type="radio" value="random" checked>
+        <label for="TGTBIRD_SPECIESMODE_R">Random from all</label> 
+        </inputs> 
+        <subname> </subname> <inputs> 
+        <input id="TGTBIRD_SPECIESMODE_RL" name="trialScript,targetBirdSpeciesMode" type="radio" value="listRandom" >
+        <label for="TGTBIRD_SPECIESMODE_RL">Random from list</label> 
+        </inputs> 
+        <subname> </subname> <inputs> 
+        <input id="TGTBIRD_SPECIESMODE_L" name="trialScript,targetBirdSpeciesMode" type="radio" value="listInOrder" >
+        <label for="TGTBIRD_SPECIESMODE_L">In order from list</label> 
+        </inputs> 
+        <name> &nbsp;</name> <inputs> 
+        <label for="TGTBIRD_SPECIESLIST">    <span style='font-size:15px;'>&#8594;</span>
+        &nbsp;List:</label>		
+        <textarea id="TGTBIRD_SPECIESLIST" name="trialScript,targetBirdSpeciesList" rows="1" cols="30">bluejay>cardinal>robin>chickadee</textarea>                 
+        </inputs>
+        <subname> </subname> <inputs>  
+        <note>Write species names separated by ">"</note>		
+        <note>(cardinal, bluejay, robin, chickadee, goldfinch, or sparrow)</note>
+        </inputs> 		
+        
+
+    
+    
+
+    
+    
+    
+ 
+<!-- End of Content --> 
+ 
+</inputcolumn> 
+</div>  
+<figurecolumn>
+    <img src="web/img/parameters/feedbackBird.png" style="width:100%;">
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
+</figurecolumn>
+        
+</form>
+</body>
+</html>

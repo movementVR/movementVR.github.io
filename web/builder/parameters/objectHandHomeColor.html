@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>   </title>
+</head>
+<body>
+<form class="tabcontent">      
+<div class="form-control">         
+<inputcolumn>
+        
+<!-- Content: --> 
+ 
+ <!--
+<name> Hand home color, with feedback on whether hands are in home position or not </name> <inputs></inputs>-->
+   
+<name title="Hand home mesh color, with feedback on whether hands are in home position or not">Mesh color:</name> 
+    <inputs></inputs>
+<subname title="Mesh color when hands are in home position">Hands in home:</subname>
+    <inputs>
+    <label for="HANDTARGET_COLOR_S_R">R:</label>
+    <input id="HANDTARGET_COLOR_S_R" name="setupScript,handStartingBoundMeshColorSuccessR" type="number" value="0" />
+    <label for="HANDTARGET_COLOR_S_G">G:</label>
+    <input id="HANDTARGET_COLOR_S_G" name="setupScript,handStartingBoundMeshColorSuccessG" type="number" value="0.75" />
+    <label for="HANDTARGET_COLOR_S_B">B:</label>
+    <input id="HANDTARGET_COLOR_S_B" name="setupScript,handStartingBoundMeshColorSuccessB" type="number" value="0.4" />
+    <label for="HANDTARGET_COLOR_S_A">Alpha:</label>
+    <input id="HANDTARGET_COLOR_S_A" name="setupScript,handStartingBoundMeshColorSuccessAlpha" type="number" value="0.3" />
+    </inputs>    
+    
+<subname title="Mesh color when hands are not in home position">Hand not in home:</subname>
+    <inputs>
+    <label for="HANDTARGET_COLOR_U_R">R:</label>
+    <input id="HANDTARGET_COLOR_U_R" name="setupScript,handStartingBoundMeshColorUnsuccessR" type="number" value="1" />
+    <label for="HANDTARGET_COLOR_U_G">G:</label>
+    <input id="HANDTARGET_COLOR_U_G" name="setupScript,handStartingBoundMeshColorUnsuccessG" type="number" value="0" />
+    <label for="HANDTARGET_COLOR_U_B">B:</label>
+    <input id="HANDTARGET_COLOR_U_B" name="setupScript,handStartingBoundMeshColorUnsuccessB" type="number" value="0" />
+    <label for="HANDTARGET_COLOR_U_A">Alpha:</label>
+    <input id="HANDTARGET_COLOR_U_A" name="setupScript,handStartingBoundMeshColorUnsuccessAlpha" type="number" value="0.3" />
+    </inputs>    
+    
+<subname>Coupled?</subname><inputs> 
+    <input id="HANDTARGET_COLOR_CH" name="setupScript,handStartingBoundMeshColorHandsCoupled" type="radio" value="FALSE"  checked >
+    <label for="HANDTARGET_COLOR_CH">No (respective hand in home)</label> 
+    <input id="HANDTARGET_COLOR_C" name="setupScript,handStartingBoundMeshColorHandsCoupled" type="radio" value="TRUE"   >
+    <label for="HANDTARGET_COLOR_C">Yes (both hands in homes)</label> 
+    </inputs>
+    
+    
+ 
+<!-- End of Content --> 
+ 
+</inputcolumn> 
+</div>  
+<figurecolumn>
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
+</figurecolumn>
+        
+</form>
+</body>
+</html>

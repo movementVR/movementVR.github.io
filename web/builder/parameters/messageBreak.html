@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Break </title>
+</head>
+<body>
+<form class="tabcontent">      
+<div class="form-control">         
+<inputcolumn>
+        
+<!-- Content: --> 
+  
+
+<name>Display message?</name>
+    <inputs>	    
+    <input id="BREAK_FLAG_H" name="messagesScript,stage6_displayMessageFlag" type="hidden" value="FALSE">
+    <input id="BREAK_FLAG" name="messagesScript,stage6_displayMessageFlag" type="checkbox" value="TRUE" >
+    <label for="BREAK_FLAG">Yes</label>		
+    </inputs>    
+
+
+<name>Message:</name>
+    <inputs>      
+    <label for="M_BREAK"></label>
+    <textarea id="M_BREAK" name="messagesScript,breakText" rows="1" cols="50">break</textarea>
+    </inputs>   
+
+
+
+
+<button class="expand-button"  type="button" onclick="toggleExpandableWindow(this,'expandableBreakMessage')">
+Expand message appearance
+</button>
+
+    <div class="expwindow" id="expandableBreakMessage">  
+        
+    <subname>Position [m] </subname>
+        <inputs>
+        <label for="MSGBREAK_POS_X">X:</label>
+        <input id="MSGBREAK_POS_X" name="setupScript,breakMessagePositionX" type="number" value="0.4" />
+        <label for="MSGBREAK_POS_Y">Y:</label>
+        <input id="MSGBREAK_POS_Y" name="setupScript,breakMessagePositionY" type="number" value="0.3" />
+        <label for="MSGBREAK_POS_Z">Z:</label>
+        <input id="MSGBREAK_POS_Z" name="setupScript,breakMessagePositionZ" type="number" value="0.6" />
+        </inputs>  
+        
+    <subname>Size </subname>
+        <inputs>
+        <label for="MSGBREAK_POS_X">Width [m]:</label>
+        <input id="MSGBREAK_POS_X" name="setupScript,breakMessageSizeX" type="number" value="0.55" />
+        <label for="MSGBREAK_POS_Y">Height [m]:</label>
+        <input id="MSGBREAK_POS_Y" name="setupScript,breakMessageSizeY" type="number" value="0.4" />
+        <label for="MSGBREAK_POS_Z">Font:</label>
+        <input id="MSGBREAK_POS_Z" name="setupScript,breakMessageFontSize" type="number" value="1" />
+        </inputs>  
+
+
+    <subname>Background shape </subname>
+        <inputs>                
+        <input id="MSGBREAK_TYPE_B" name="setupScript,breakMessageType" type="radio" value="cartoon"  checked >
+        <label for="MSGBREAK_TYPE_B">Cartoon</label> 
+        <input id="MSGBREAK_TYPE_B2" name="setupScript,breakMessageType" type="radio" value="rectangle" >
+        <label for="MSGBREAK_TYPE_B2">Rectangle</label>                  
+        <input id="MSGBREAK_TYPE_B0" name="setupScript,breakMessageType" type="radio" value="none" >
+        <label for="MSGBREAK_TYPE_B0">None</label>    
+        <label for="MSGBREAK_ROT_B">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rotation [deg]:</label>
+        <input id="MSGBREAK_ROT_B" name="setupScript,breakMessageBackgroundRotationZ" type="number" value="0" />   			
+        </inputs>  
+
+    <subname>Background color </subname>
+        <inputs>
+        <label for="MSGBREAK_COLOR_B_R">R:</label>
+        <input id="MSGBREAK_COLOR_B_R" name="setupScript,breakMessageBackgroundColorR" type="number" value="0" />
+        <label for="MSGBREAK_COLOR_B_G">G:</label>
+        <input id="MSGBREAK_COLOR_B_G" name="setupScript,breakMessageBackgroundColorG" type="number" value="0.6" />
+        <label for="MSGBREAK_COLOR_B_B">B:</label>
+        <input id="MSGBREAK_COLOR_B_B" name="setupScript,breakMessageBackgroundColorB" type="number" value="0.8" />
+        <label for="MSGBREAK_COLOR_B_A">Alpha:</label>
+        <input id="MSGBREAK_COLOR_B_A" name="setupScript,breakMessageBackgroundColorAlpha" type="number" value="1" />
+        </inputs>   
+
+    <subname>Text color </subname>
+        <inputs>
+        <label for="MSGBREAK_COLOR_T_R">R:</label>
+        <input id="MSGBREAK_COLOR_T_R" name="setupScript,breakMessageTextColorR" type="number" value="1" />
+        <label for="MSGBREAK_COLOR_T_G">G:</label>
+        <input id="MSGBREAK_COLOR_T_G" name="setupScript,breakMessageTextColorG" type="number" value="1" />
+        <label for="MSGBREAK_COLOR_T_B">B:</label>
+        <input id="MSGBREAK_COLOR_T_B" name="setupScript,breakMessageTextColorB" type="number" value="1" />
+        <label for="MSGBREAK_COLOR_T_A">Alpha:</label>
+        <input id="MSGBREAK_COLOR_T_A" name="setupScript,breakMessageTextColorAlpha" type="number" value="1" />
+        </inputs>    
+
+    <subname>Text offset </subname>
+        <inputs>
+        <label for="MSGBREAK_TOFF_X">X [m]:</label>
+        <input id="MSGBREAK_TOFF_X" name="setupScript,breakMessageTextOffsetX" type="number" value="0.03" />
+        <label for="MSGBREAK_TOFF_Y">Y [m]:</label>
+        <input id="MSGBREAK_TOFF_Y" name="setupScript,breakMessageTextOffsetY" type="number" value="0.015" />
+        <label for="MSGBREAK_TOFF_R">Rotation [deg]:</label>
+        <input id="MSGBREAK_TOFF_R" name="setupScript,breakMessageTextRotationZ" type="number" value="15" />
+        </inputs>  
+ 
+    
+    
+ 
+<!-- End of Content --> 
+ 
+</inputcolumn> 
+</div>  
+<figurecolumn>
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
+</figurecolumn>
+        
+</form>
+</body>
+</html>

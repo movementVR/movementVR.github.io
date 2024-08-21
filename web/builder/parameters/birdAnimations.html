@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Animation </title>
+</head>
+<body>
+<form class="tabcontent">      
+<div class="form-control">         
+<inputcolumn>
+        
+<!-- Content: --> 
+
+
+
+    <name>Entry:</name>
+        <inputs>	
+        <input id="TGTBIRD_ANIM_ENTRY_A" name="trialScript,targetBirdEntryAnimation" type="radio" value="appear">
+        <label for="TGTBIRD_ANIM_ENTRY_A">Appear&emsp;</label> 
+        <input id="TGTBIRD_ANIM_ENTRY_L" name="trialScript,targetBirdEntryAnimation" type="radio" value="landing" checked>
+        <label for="TGTBIRD_ANIM_ENTRY_L">Fly in</label>  
+        </inputs><subname>Fly in from [m]:</subname><inputs>          
+        <label for="TGTBIRD_APPOFFSET_X">X:</label>
+        <input id="TGTBIRD_APPOFFSET_X" name="trialScript,targetBirdAppearanceOffsetX" type="number" value="0" />
+        <label for="TGTBIRD_APPOFFSET_Y">Y:</label>
+        <input id="TGTBIRD_APPOFFSET_Y" name="trialScript,targetBirdAppearanceOffsetY" type="number" value="0.5" />
+        <label for="TGTBIRD_APPOFFSET_Z">Z:</label>
+        <input id="TGTBIRD_APPOFFSET_Z" name="trialScript,targetBirdAppearanceOffsetZ" type="number" value="1" />
+        </inputs><subname> </subname><inputs>     
+        <note>"Fly in": bird appears far away, then flies to target  </note>
+        <note>Define where it appears & flies from (wrt target position)</note>
+        </inputs> 
+
+    <name>Exit:</name>
+        <inputs>
+        <input id="TGTBIRD_ANIM_EXIT_D" name="trialScript,targetBirdExitAnimation" type="radio" value="disappear" >
+        <label for="TGTBIRD_ANIM_EXIT_D">Disappear&emsp;</label> 
+        <input id="TGTBIRD_ANIM_EXIT_T" name="trialScript,targetBirdExitAnimation" type="radio" value="takeoff" checked>
+        <label for="TGTBIRD_ANIM_EXIT_T">Fly away</label> 
+        </inputs><subname>Fly to [m]:</subname><inputs>   
+        <label for="TGTBIRD_DISAPPOFFSET_X">"X:</label>
+        <input id="TGTBIRD_DISAPPOFFSET_X" name="trialScript,targetBirdDepartureOffsetX" type="number" value="0" />
+        <label for="TGTBIRD_DISAPPOFFSET_Y">Y:</label>
+        <input id="TGTBIRD_DISAPPOFFSET_Y" name="trialScript,targetBirdDepartureOffsetY" type="number" value="0.5" />
+        <label for="TGTBIRD_DISAPPOFFSET_Z">Z:</label>
+        <input id="TGTBIRD_DISAPPOFFSET_Z" name="trialScript,targetBirdDepartureOffsetZ" type="number" value="-1" />
+        </inputs><subname> </subname><inputs>     
+        <note>"Fly away": bird flies far away, then disappears  </note>
+        <note>Define where it flies to & disappear (wrt target position)</note>
+        </inputs>  
+    
+    <name>On target:</name> 
+        <inputs>	 
+        <input id="TGTBIRD_ANIM_MAIN_" name="trialScript,targetBirdMainAnimation" type="radio" value="flying" >
+        <label for="TGTBIRD_ANIM_MAIN_">Flying&emsp;</label> 
+        <input id="TGTBIRD_ANIM_MAIN_" name="trialScript,targetBirdMainAnimation" type="radio" value="ground" checked>
+        <label for="TGTBIRD_ANIM_MAIN_">Perched animations</label> 
+        </inputs><subname>Switch every:</subname><inputs>   
+        <input id="TGTBIRD_ANIM_T0" name="trialScript,targetBirdGroundAnimationMinDuration" type="number" value="2" />
+        <label for="TGTBIRD_ANIM_TE"> to </label>
+        <input id="TGTBIRD_ANIM_TE" name="trialScript,targetBirdGroundAnimationMaxDuration" type="number" value="5" />
+        <label for="TGTBIRD_ANIM_TE"> [s] </label>
+        </inputs><subname></subname><inputs>
+        <note>Switch perched animation every _ to _ seconds</note>
+        <note>(preening, pecking, ruffling, or looking around)</note> 
+        <note>(exact time and anim. order are random)</note> 
+        </inputs>
+
+
+    
+ 
+<!-- End of Content --> 
+ 
+</inputcolumn> 
+</div>  
+<figurecolumn>
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
+<!--<img src="web/img/parameters/birdGeneric.png"  style="width:100%">-->
+</figurecolumn>
+        
+</form>
+</body>
+</html>

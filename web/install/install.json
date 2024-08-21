@@ -1,0 +1,14 @@
+{
+    "path": "/web/install/",
+    "html":[
+        "install.html"
+    ],
+    "js":[
+        "install.js"
+    ],
+    "css":[
+    ],
+    "json":[
+        "install.json"
+    ]
+}

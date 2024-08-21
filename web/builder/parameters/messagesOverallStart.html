@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Start Message  </title>
+</head>
+<body>
+<form class="tabcontent">      
+<div class="form-control">         
+<inputcolumn>
+        
+<!-- Content: --> 
+ 
+  
+
+<name>Message:</name>   
+    <inputs>      
+    <label for="M_START"></label>
+    <textarea id="M_START" name="messagesScript,startText" rows="1" cols="50">Welcome!(Loading...)!</textarea>
+    </inputs>         	 
+
+
+
+<button class="expand-button"  type="button" onclick="toggleExpandableWindow(this,'expandableStartMessage')">
+Expand message appearance
+</button>
+
+    <div class="expwindow" id="expandableStartMessage"> 
+
+ 
+    
+            <subname>Position [m] </subname>
+                <inputs>
+                <label for="MSGSTART_POS_X">X:</label>
+                <input id="MSGSTART_POS_X" name="setupScript,startMessagePositionX" type="number" value="0" />
+                <label for="MSGSTART_POS_Y">Y:</label>
+                <input id="MSGSTART_POS_Y" name="setupScript,startMessagePositionY" type="number" value="1" />
+                <label for="MSGSTART_POS_Z">Z:</label>
+                <input id="MSGSTART_POS_Z" name="setupScript,startMessagePositionZ" type="number" value="4" />
+                </inputs>  	   
+
+            <subname>Size </subname>
+                <inputs>
+                <label for="MSGSTART_POS_X">Width [m]:</label>
+                <input id="MSGSTART_POS_X" name="setupScript,startMessageSizeX" type="number" value="10" />
+                <label for="MSGSTART_POS_Y">Height [m]:</label>
+                <input id="MSGSTART_POS_Y" name="setupScript,startMessageSizeY" type="number" value="5" />
+                <label for="MSGSTART_POS_Z">Font:</label>
+                <input id="MSGSTART_POS_Z" name="setupScript,startMessageFontSize" type="number" value="5" />
+                </inputs>  
+
+
+            <subname>Background shape </subname>
+                <inputs>                
+                <input id="MSGSTART_TYPE_B" name="setupScript,startMessageType" type="radio" value="cartoon"   >
+                <label for="MSGSTART_TYPE_B">Cartoon</label> 
+                <input id="MSGSTART_TYPE_B2" name="setupScript,startMessageType" type="radio" value="rectangle" checked>
+                <label for="MSGSTART_TYPE_B2">Rectangle</label>   
+                <input id="MSGSTART_TYPE_B0" name="setupScript,startMessageType" type="radio" value="none" >
+                <label for="MSGSTART_TYPE_B0">None</label>                   
+                <label for="MSGSTART_ROT_B">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rotation [deg]:</label>
+                <input id="MSGSTART_ROT_B" name="setupScript,startMessageBackgroundRotationZ" type="number" value="0" />   			
+                </inputs>  
+
+            <subname>Background color </subname>
+                <inputs>
+                <label for="MSGSTART_COLOR_B_R">R:</label>
+                <input id="MSGSTART_COLOR_B_R" name="setupScript,startMessageBackgroundColorR" type="number" value="0.2" />
+                <label for="MSGSTART_COLOR_B_G">G:</label>
+                <input id="MSGSTART_COLOR_B_G" name="setupScript,startMessageBackgroundColorG" type="number" value="0.65" />
+                <label for="MSGSTART_COLOR_B_B">B:</label>
+                <input id="MSGSTART_COLOR_B_B" name="setupScript,startMessageBackgroundColorB" type="number" value="0.3" />
+                <label for="MSGSTART_COLOR_B_A">Alpha:</label>
+                <input id="MSGSTART_COLOR_B_A" name="setupScript,startMessageBackgroundColorAlpha" type="number" value="0.3" />
+                </inputs>   
+
+            <subname>Text color </subname>
+                <inputs>
+                <label for="MSGSTART_COLOR_T_R">R:</label>
+                <input id="MSGSTART_COLOR_T_R" name="setupScript,startMessageTextColorR" type="number" value="1" />
+                <label for="MSGSTART_COLOR_T_G">G:</label>
+                <input id="MSGSTART_COLOR_T_G" name="setupScript,startMessageTextColorG" type="number" value="0" />
+                <label for="MSGSTART_COLOR_T_B">B:</label>
+                <input id="MSGSTART_COLOR_T_B" name="setupScript,startMessageTextColorB" type="number" value="0" />
+                <label for="MSGSTART_COLOR_T_A">Alpha:</label>
+                <input id="MSGSTART_COLOR_T_A" name="setupScript,startMessageTextColorAlpha" type="number" value="1" />
+                </inputs>    
+
+            <subname>Text offset </subname>
+                <inputs>
+                <label for="MSGSTART_TOFF_X">X [m]:</label>
+                <input id="MSGSTART_TOFF_X" name="setupScript,startMessageTextOffsetX" type="number" value="0" />
+                <label for="MSGSTART_TOFF_Y">Y [m]:</label>
+                <input id="MSGSTART_TOFF_Y" name="setupScript,startMessageTextOffsetY" type="number" value="0" />
+                <label for="MSGSTART_TOFF_R">Rotation [deg]:</label>
+                <input id="MSGSTART_TOFF_R" name="setupScript,startMessageTextRotationZ" type="number" value="0" />
+                </inputs>  
+
+ 
+
+    </div>
+    
+    
+ 
+<!-- End of Content --> 
+ 
+</inputcolumn> 
+</div>  
+<figurecolumn>
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
+</figurecolumn>
+        
+</form>
+</body>
+</html>

@@ -1,0 +1,128 @@
+ 
+
+/* Style the main body  (outside of buttons, tabs, inputs, tabcontents etc..) */
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+} 
+
+h2{
+    font-size: 16px;
+    margin-bottom: 30px; 
+}
+
+h3{
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+h4{
+    font-size: 14px;
+    font-weight: normal;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+h5{
+    font-size: 14px;
+    font-weight: normal;
+    margin-bottom: 15px;
+    margin-top: 0px;
+    font-style: italic;
+    
+}
+h6{
+    display: block;
+    font-size: 13px;
+    font-weight: normal;
+    margin-bottom: 5px;
+    margin-top: 0px;
+    font-style: italic;
+    
+}
+h7{
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: 2px;
+    margin-top: 0px;
+    font-style: italic;
+    
+}
+
+
+/* Style the tab (top row with buttons) */
+.parenttab {
+    overflow: hidden;
+    border: none;
+    background-color: none;	
+    border-bottom: 3px solid #ccc;
+    width: 100%	;		
+  /*  margin: auto;	  
+    margin-top:0px; */
+    text-align: center;
+    align-items: center;  /* Center items vertically */ 
+}
+
+
+.logocontainer { 
+    background-color: white;
+  //  border: 2px solid cyan; 
+    margin: 0;
+    padding: 10px 15px;
+    outline: none;
+    cursor: default;
+    font-family: "Arial Narrow";
+    font-size: 20px;  
+    font-weight: 900; 
+    border-radius: 10px;
+    color: navy; 
+    display: inline-block; /* Ensure the logo container is inline */
+    vertical-align: middle; /* Align with the middle of the text */
+}
+
+
+.logoimg {  
+    height: 50px; /* Adjust the height of the logo as needed */
+    vertical-align: middle; /* Align the image with the middle of the text */
+}
+
+ 
+/* Style the buttons inside the tab (buttons to toggle windows) */
+.parenttab button {
+    background-color: white;
+    border:  20px 20px; 
+    border-color: cyan;
+    margin-left:10px;
+    padding-top:  5px;
+    padding-bottom: 5px;
+    padding-left:  10px;
+    padding-right:  10px;
+    outline: none;
+    cursor: default;
+    font-family: "Arial Narrow";
+    font-size: 16px;  
+    font-weight: bold; 
+    border-radius: 10px; /* Set the border radius for rounded corners */
+    color: navy; 
+}
+
+ 
+
+ 
+
+
+
+/* Style of the overall container for every page  */
+.pagecontainer{			
+    margin: auto;
+    width: 1000px;		
+    text-align: left;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+
+

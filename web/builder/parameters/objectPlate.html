@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Plate Object  </title>
+</head>
+<body>
+<form class="tabcontent">      
+<div class="form-control">         
+<inputcolumn>
+        
+<!-- Content: --> 
+ 
+
+<name>Size [m]:</name>
+    <inputs>
+    <label for="PLATE_SCALE_X">X:</label>
+    <input id="PLATE_SCALE_X" name="setupScript,plateSizeX" type="number" value="0.25" />
+    <label for="PLATE_SCALE_Y">Y:</label>
+    <input id="PLATE_SCALE_Y" name="setupScript,plateSizeY" type="number" value="0.02" />
+    <label for="PLATE_SCALE_Z">Z:</label>
+    <input id="PLATE_SCALE_Z" name="setupScript,plateSizeZ" type="number" value="0.25" />
+    </inputs>         
+    
+  
+<name>Physics:</name>
+    <inputs></inputs>
+    <subname>Mass[kg]:</subname>  
+    <inputs> <input id="PLATE_MASS" name="setupScript,plateMass" type="number" value="1" /></inputs>
+    <subname>Drag:</subname>  
+    <inputs> 
+    <label for="PLATE_DRAG">Linear:</label>
+    <input id="PLATE_DRAG" name="setupScript,plateDrag" type="number" value="0" />
+    <label for="PLATE_ADRAG">Angular:</label>
+    <input id="PLATE_ADRAG" name="setupScript,plateAngularDrag" type="number" value="0.05" />
+    </inputs>  
+    <subname>Friction w/ hands:</subname>
+    <inputs>
+    <label for="PLATE_FRICTIOND">Dynamic:</label>
+    <input id="PLATE_FRICTIOND" name="setupScript,frictionPlateHandsDynamic" type="number" value="0.6" />
+    <label for="PLATE_FRICTIONS">Static:</label>
+    <input id="PLATE_FRICTIONS" name="setupScript,frictionPlateHandsStatic" type="number" value="0.6" />
+    </inputs> 
+
+
+    
+ 
+<!-- End of Content --> 
+ 
+</inputcolumn> 
+</div>  
+<figurecolumn>
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
+</figurecolumn>
+        
+</form>
+</body>
+</html>

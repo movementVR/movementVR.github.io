@@ -1,0 +1,233 @@
+ 
+.trialGameObjectImageSubblock{
+/*    width: 50px; 
+    height: auto; */
+    height: 35px; 
+    width: auto; 
+ //   border: 1px solid blue; 
+    padding: 3px 10px;
+    margin:0px;
+}
+.trialGameObjectTextSubblock{ 
+    padding: 0px;
+    margin:0px; 
+//border: 1px solid green; 
+}
+
+ 
+
+.trialContainerParent {
+    display: block; 
+    width: 100%; 
+} 
+
+ 
+
+.trialLoadButtonContainerClass {
+   // border: 2px solid yellow; 
+    height: 20px;
+    width: 100%;
+    padding: 0px; 
+    margin: 0px; 
+    margin-top: 10px;
+    text-align: center; 
+    display: inline-block; /* Ensure proper inline display */ 
+}
+ 
+.trialInstructionDownloadButtonClass { 
+   
+    padding: 0px 0px 0px 20px;
+    margin: 1px 10px 1px 10px; 
+    font-size: 14px; 
+    font-weight: normal;
+    text-align: center; 
+    text-decoration: none;
+    border: none;
+    background-color: white;
+    color: #1b7e7e;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    display: inline-block; /* Ensure proper inline display */
+    text-decoration: underline;  
+}
+.trialDownloadButtonClass { 
+    padding: 10px 25px 10px 25px;
+    margin: 5px 10px 1px 10px; 
+    font-size: 16px; 
+    font-weight: bold;
+    text-align: center; 
+    text-decoration: none;
+    border: 2px solid #ccc;
+    border: 2px solid #28bdbd;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    background-color:#28bdbd;
+    color: #333;
+    color:white;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    display: inline-block; /* Ensure proper inline display */
+}
+
+  
+.trialUploadButtonClass { 
+    padding: 0px 0px 0px 20px;
+    margin: 1px 10px 1px 10px; 
+    font-size: 14px; 
+    font-weight: normal;
+    text-align: center; 
+    text-decoration: none;
+   // border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    color: #1b7e7e;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    display: inline-block; /* Ensure proper inline display */
+    text-decoration: underline;  
+}
+.trialUploadButtonClass:hover,
+.trialInstructionDownloadButtonClass:hover{     
+    font-weight: bold;  
+    margin: 5px 4px 1px 8px; 
+}
+.trialDownloadButtonClass:hover{
+    background-color: #1f9393;
+    border-color: #1f9393;
+}
+ 
+
+
+.trialContainer {
+    border: 2px solid lightgray;
+    //border-right: none;
+    display: grid;
+    grid-gap: 0px;    
+    height: auto;
+    width: auto;
+    padding: 0px; 
+    margin: 0px;   
+}
+
+.trialBlockBase { 
+    padding: 0px;
+    margin: 0px;  
+    cursor: pointer; 
+    border: 2px solid #ccc;
+    
+    text-align: center;    
+    align-items: center; /* Center items vertically */
+    display: flex; /* Use flexbox layout */
+    justify-content: center; /* Center items horizontally */
+
+}
+
+
+.trialEditBlockTop,
+.trialEditBlockBottom,
+.trialEditBlockQuicklink { 
+   // padding: 2px 16px;
+    padding: 2px 1px;
+    font-size: 14px; 
+    text-align: center; 
+    text-decoration: none;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+   // width: 50%;
+}
+
+.trialEditBlockTop { 
+    margin: 5px 10px 1px 10px;
+}
+.trialEditBlockBottom { 
+    margin: 1px 10px 5px 10px;
+}
+.trialEditBlockQuicklink { 
+    margin: 10px 10px 0px 10px;
+}
+
+
+.trialEditBlockTop:hover,
+.trialEditBlockBottom:hover,
+.trialEditBlockQuicklink:hover {
+    background-color: #e0e0e0;
+    border-color: #999;
+    color: #000 
+}
+
+
+.trialDescriptionBlockRight, .trialDescriptionBlockCenter{    
+    font-style: italic;   
+    background-color: white; 
+    border: none;
+    margin: 10px 10px; 
+    cursor: default;
+}
+
+.trialDescriptionBlockRight {    
+    font-size: 14px;
+    text-align: right; 
+    justify-content: right; /* Center items horizontally */
+}
+
+.trialDescriptionBlockCenter { 
+    font-size: 16px;   
+    margin: 10px 10px 0px 10px;
+}
+
+.trialGamePhaseBlock {
+    font-size: 16px;
+    background-color: none;     
+    border: none;
+    cursor: default;
+}
+ 
+.trialGameObjectBlock {    
+    border: 5px solid transparent; 
+    background-color:paleturquoise;
+    padding: 0px;
+    margin: 12px 5px;     
+    border-radius: 10px;   
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.trialGameObjectBlock:hover {  
+    background-color:darkturquoise;
+}
+.trialGameObjectNameBlock{
+    font-size: 16px;
+    text-align: right; 
+    justify-content: right; /* Center items horizontally */       
+    border: none;    
+  //  margin: 10px 10px; 
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+   
+}
+.trialGameObjectNameBlock:hover { 
+    font-weight: bold;  
+    text-decoration: underline;  
+}
+
+.trialDashedHorizontalGridBlock , .trialSolidHorizontalGridBlock , .trialSolidVerticalGridBlock { 
+    border: none; 
+    background-color:none; 
+    margin: 0px;
+    cursor: default; 
+} 
+
+.trialDashedHorizontalGridBlock {  
+    border-bottom: 1px dashed gainsboro; /* Dashed line */ 
+} 
+ 
+.trialSolidHorizontalGridBlock {  
+    border-bottom: 2px solid lightgray;  
+} 
+ 
+.trialSolidVerticalGridBlock {  
+    border-right: 2px solid lightgray;  
+} 
+

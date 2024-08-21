@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Hand Tracking  </title>
+</head>
+<body>
+<form class="tabcontent">      
+<div class="form-control">         
+<inputcolumn>
+        
+<!-- Content: --> 
+ 
+ 
+
+
+      
+<name>System:</name>
+    <inputs>
+    <input id="MULTIPLECHOICE_QUEST" name="setupScript,rigSystem" type="radio" value="Quest" checked>
+    <label for="MULTIPLECHOICE_QUEST">Quest</label> 
+    <input id="MULTIPLECHOICE_LEAP" name="setupScript,rigSystem" type="radio" value="Leap" >
+    <label for="MULTIPLECHOICE_LEAP">Leap</label>		    
+    </inputs>      
+    <note> </note>   
+    <note> </note>  
+    
+<name>Hands used in task:</name>
+    <inputs>	    	  	    
+    <input id="ACTIVE_L_H" name="handsAndSaveScript,leftHandActiveFlag" type="hidden" value="FALSE">
+    <input id="ACTIVE_L" name="handsAndSaveScript,leftHandActiveFlag" type="checkbox" value="TRUE" checked>	
+    <label for="ACTIVE_L">Left</label>	
+    <input id="ACTIVE_R_H" name="handsAndSaveScript,rightHandActiveFlag" type="hidden" value="FALSE">
+    <input id="ACTIVE_R" name="handsAndSaveScript,rightHandActiveFlag" type="checkbox" value="TRUE" checked>	
+    <label for="ACTIVE_R">Right</label>	  
+    </inputs> 
+    <note>Check both for bimanual tasks, check one for unimanual</note>  
+    <note>Unchecked hands are not be visible in VR & cannot interact with objects</note> 
+    <note> </note>  
+    <note> </note>
+    
+<name>Must be visible:</name>
+    <inputs>	    	  	    
+    <input id="TRACKED_L_H" name="handsAndSaveScript,leftHandTrackingFlag" type="hidden" value="FALSE">
+    <input id="TRACKED_L" name="handsAndSaveScript,leftHandTrackingFlag" type="checkbox" value="TRUE" checked>	
+    <label for="TRACKED_L">Left</label>	
+    <input id="TRACKEDE_R_H" name="handsAndSaveScript,rightHandTrackingFlag" type="hidden" value="FALSE">
+    <input id="TRACKED_R" name="handsAndSaveScript,rightHandTrackingFlag" type="checkbox" value="TRUE" checked>	
+    <label for="TRACKED_R">Right</label>	  
+    </inputs> 
+    <note>Plate freezes if selected hands are not tracked by cameras</note>   
+ 
+
+    
+    
+    
+ 
+<!-- End of Content --> 
+ 
+</inputcolumn> 
+</div>  
+<figurecolumn>
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
+</figurecolumn>
+        
+</form>
+</body>
+</html>

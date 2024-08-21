@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>   </title>
+</head>
+<body>
+<form class="tabcontent">      
+<div class="form-control">         
+<inputcolumn>
+        
+<!-- Content: --> 
+ 
+ 
+    
+<name> Gain magnitude[%]: </name>
+    <inputs>    </inputs>   
+    <namenote>(at adaptation plateau)</namenote> <inputs></inputs>
+    
+<subname>Left hand: </subname>
+    <inputs>
+    <label for="L_GAIN_X">X:</label>
+    <input id="L_GAIN_X" name="trialScript,leftHandGainX" type="number" value="0" />
+    <label for="L_GAIN_Y">Y:</label>
+    <input id="L_GAIN_Y" name="trialScript,leftHandGainY" type="number" value="0" />
+    <label for="L_GAIN_Z">Z:</label>
+    <input id="L_GAIN_Z" name="trialScript,leftHandGainZ" type="number" value="0" />
+    </inputs>  
+
+<subname>Right hand: </subname>    
+    <inputs>
+    <label for="R_GAIN_X">X:</label>
+    <input id="R_GAIN_X" name="trialScript,rightHandGainX" type="number" value="0" />
+    <label for="R_GAIN_Y">Y:</label>
+    <input id="R_GAIN_Y" name="trialScript,rightHandGainY" type="number" value="-50" />
+    <label for="R_GAIN_Z">Z:</label>
+    <input id="R_GAIN_Z" name="trialScript,rightHandGainZ" type="number" value="0" />
+    </inputs>
+
+    <longnotetitle>Gain pertubation:</longnotetitle> 
+    <longnote>Visual hand velocity = (1 + gain) * Real hand velocty</longnote> 
+    <longnotesmaller>&emsp;"0%": visual hand moves like real hand</longnotesmaller>   
+    <longnotesmaller>&emsp;"-100%": visual hand does not move</longnotesmaller> 
+    <longnotesmaller>&emsp;"100%": visual hand moves twice as fast as real hand</longnotesmaller> 
+    <longnote>Note that gain is applied relative to origin, so that:</longnote> 
+    <longnotesmaller>&emsp;Visual hand distance from origin = (1 + gain) * Real hand distance from origin</longnotesmaller> 
+    <longnotesmaller>&emsp;(see Origin tab)</longnotesmaller>   
+    
+    
+    
+    
+ 
+<!-- End of Content --> 
+ 
+</inputcolumn> 
+</div>  
+<figurecolumn>
+    <img src="web/img/parameters/gain.png" style="width:60mm;">
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
+</figurecolumn>
+        
+</form>
+</body>
+</html>

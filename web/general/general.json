@@ -1,0 +1,14 @@
+{
+    "path": "/web/general/",
+    "html":[
+    ],
+    "js":[
+        "general.js"
+    ],
+    "css":[
+        "general.css"
+    ],
+    "json":[
+        "general.json"
+    ]
+}

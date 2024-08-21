@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Break  </title>
+</head>
+<body>
+<form class="tabcontent">      
+<div class="form-control">         
+<inputcolumn>
+        
+<!-- Content: --> 
+<!--
+<name> Break (pause between selected trials) </name> <inputs></inputs>-->
+ 
+<name title="Break = pause between selected trials ">Take break after trial?</name>
+    <inputs>	    
+    <input id="BREAK_FLAG_H" name="trialScript,stage6_breakFlag" type="hidden" value="FALSE">
+    <input id="BREAK_FLAG" name="trialScript,stage6_breakFlag" type="checkbox" value="TRUE" >
+    <label for="BREAK_FLAG">Yes</label>		
+    </inputs>   
+    
+<name>Break duration [s]:</name>
+    <inputs>
+    <label for="BREAK_TIME"></label>
+    <input id="BREAK_TIME" name="trialScript,stage6_breakDuration" type="number" value="30" />
+    </inputs>  
+    
+ 
+<!-- End of Content --> 
+ 
+</inputcolumn> 
+</div>  
+<figurecolumn>
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
+</figurecolumn>
+        
+</form>
+</body>
+</html>

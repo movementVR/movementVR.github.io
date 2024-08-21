@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Plate Contact  </title>
+</head>
+<body>
+<form class="tabcontent">      
+<div class="form-control">         
+<inputcolumn>
+        
+<!-- Content: --> 
+ 
+  
+
+<name>Display instructions?</name> 
+    <inputs>
+    <input id="PIMH" name="messagesScript,stage3_displayMessageFlag" type="hidden" value="FALSE">
+    <input id="PIM" name="messagesScript,stage3_displayMessageFlag" type="checkbox" value="TRUE" checked>	
+    <label for="PIM">Yes</label>	 
+    </inputs>    
+
+<name>Message:</name>
+    <inputs>      
+    <label for="PLATECONTACT_MSG"></label>
+    <textarea id="PLATECONTACT_MSG" name="messagesScript,contactText" rows="1" cols="50">Lift the plate</textarea>
+    </inputs>  
+
+
+
+
+<!-- Expandable Plate Contact Message Position -->
+
+<button class="expand-button"  type="button" onclick="toggleExpandableWindow(this,'expandablePlateContactMessagePositions')">
+Expand message appearance
+</button>
+
+    <div class="expwindow" id="expandablePlateContactMessagePositions"> 
+ 
+
+        <subname>Position [m] </subname>
+            <inputs>
+            <label for="MSGCONTACT_POS_X">X:</label>
+            <input id="MSGCONTACT_POS_X" name="setupScript,contactMessagePositionX" type="number" value="0" />
+            <label for="MSGCONTACT_POS_Y">Y:</label>
+            <input id="MSGCONTACT_POS_Y" name="setupScript,contactMessagePositionY" type="number" value="0.5" />
+            <label for="MSGCONTACT_POS_Z">Z:</label>
+            <input id="MSGCONTACT_POS_Z" name="setupScript,contactMessagePositionZ" type="number" value="3.5" />
+            </inputs>  	   
+
+        <subname>Size </subname>
+            <inputs>
+            <label for="MSGCONTACT_POS_X">Width [m]:</label>
+            <input id="MSGCONTACT_POS_X" name="setupScript,contactMessageSizeX" type="number" value="10" />
+            <label for="MSGCONTACT_POS_Y">Height [m]:</label>
+            <input id="MSGCONTACT_POS_Y" name="setupScript,contactMessageSizeY" type="number" value="5" />
+            <label for="MSGCONTACT_POS_Z">Font:</label>
+            <input id="MSGCONTACT_POS_Z" name="setupScript,contactMessageFontSize" type="number" value="5" />
+            </inputs>  
+
+
+        <subname>Background shape </subname>
+            <inputs>                
+            <input id="MSGCONTACT_TYPE_B" name="setupScript,contactMessageType" type="radio" value="cartoon"   >
+            <label for="MSGCONTACT_TYPE_B">Cartoon</label> 
+            <input id="MSGCONTACT_TYPE_B2" name="setupScript,contactMessageType" type="radio" value="rectangle" checked >
+            <label for="MSGCONTACT_TYPE_B2">Rectangle</label>                 
+            <input id="MSGCONTACT_TYPE_B0" name="setupScript,contactMessageType" type="radio" value="none" >
+            <label for="MSGCONTACT_TYPE_B0">None</label>                 
+            <label for="MSGCONTACT_ROT_B">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rotation [deg]:</label>
+            <input id="MSGCONTACT_ROT_B" name="setupScript,contactMessageBackgroundRotationZ" type="number" value="0" />   			
+            </inputs>  
+
+        <subname>Background color </subname>
+            <inputs>
+            <label for="MSGCONTACT_COLOR_B_R">R:</label>
+            <input id="MSGCONTACT_COLOR_B_R" name="setupScript,contactMessageBackgroundColorR" type="number" value="0.2" />
+            <label for="MSGCONTACT_COLOR_B_G">G:</label>
+            <input id="MSGCONTACT_COLOR_B_G" name="setupScript,contactMessageBackgroundColorG" type="number" value="0.65" />
+            <label for="MSGCONTACT_COLOR_B_B">B:</label>
+            <input id="MSGCONTACT_COLOR_B_B" name="setupScript,contactMessageBackgroundColorB" type="number" value="0.3" />
+            <label for="MSGCONTACT_COLOR_B_A">Alpha:</label>
+            <input id="MSGCONTACT_COLOR_B_A" name="setupScript,contactMessageBackgroundColorAlpha" type="number" value="0.3" />
+            </inputs>   
+
+        <subname>Text color </subname>
+            <inputs>
+            <label for="MSGCONTACT_COLOR_T_R">R:</label>
+            <input id="MSGCONTACT_COLOR_T_R" name="setupScript,contactMessageTextColorR" type="number" value="1" />
+            <label for="MSGCONTACT_COLOR_T_G">G:</label>
+            <input id="MSGCONTACT_COLOR_T_G" name="setupScript,contactMessageTextColorG" type="number" value="0" />
+            <label for="MSGCONTACT_COLOR_T_B">B:</label>
+            <input id="MSGCONTACT_COLOR_T_B" name="setupScript,contactMessageTextColorB" type="number" value="0" />
+            <label for="MSGCONTACT_COLOR_T_A">Alpha:</label>
+            <input id="MSGCONTACT_COLOR_T_A" name="setupScript,contactMessageTextColorAlpha" type="number" value="1" />
+            </inputs>    
+
+        <subname>Text offset </subname>
+            <inputs>
+            <label for="MSGCONTACT_TOFF_X">X [m]:</label>
+            <input id="MSGCONTACT_TOFF_X" name="setupScript,contactMessageTextOffsetX" type="number" value="0" />
+            <label for="MSGCONTACT_TOFF_Y">Y [m]:</label>
+            <input id="MSGCONTACT_TOFF_Y" name="setupScript,contactMessageTextOffsetY" type="number" value="0" />
+            <label for="MSGCONTACT_TOFF_R">Rotation [deg]:</label>
+            <input id="MSGCONTACT_TOFF_R" name="setupScript,contactMessageTextRotationZ" type="number" value="0" />
+            </inputs>  
+
+ 
+
+    </div>
+
+    
+    
+ 
+<!-- End of Content --> 
+ 
+</inputcolumn> 
+</div>  
+<figurecolumn>
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
+</figurecolumn>
+        
+</form>
+</body>
+</html>

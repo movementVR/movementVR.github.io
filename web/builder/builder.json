@@ -1,0 +1,19 @@
+{
+    "path": "/web/builder/",
+    "html":[
+        "builder.html"
+    ],
+    "js":[
+        "builderDef.js",
+        "builder.js"
+    ],
+    "css":[
+        "builder.css",
+        "popup/trialDesignChildrenStyles.css",
+        "popup/tabHtmlStyle.css"
+
+    ],
+    "json":[
+        "builder.json"
+    ]
+}

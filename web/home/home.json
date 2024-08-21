@@ -1,0 +1,13 @@
+{
+    "path": "/web/home/",
+    "html":[
+        "home.html"
+    ],
+    "js":[
+    ],
+    "css":[
+    ],
+    "json":[
+        "home.json"
+    ]
+}

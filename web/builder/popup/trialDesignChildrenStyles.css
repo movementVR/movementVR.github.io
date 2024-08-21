@@ -1,0 +1,278 @@
+/************************* GENERAL ****************************/
+ 
+
+  //  border-style: dashed;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0; 
+}
+
+
+/* TAB PAGE CONTAINER */
+/* Style the tab content - outside of the user inputs display: none;*/
+.tabcontent {
+    font-family: Arial, sans-serif; 
+    display: block;
+ //   border:   none; 
+    line-height: 0.75;
+    text-align: left; 
+  //  width: 760px;  
+/*   / width: 95%;  */
+    vertical-align: top;
+    padding: 0px;
+    margin: 0px; 
+ //   border: 1px solid green; 
+  //  height: 99%;
+   // height:inherit;
+} 
+
+ 
+
+
+/**************************** INPUT COLUMN ********************************************/
+
+.form-control{
+    display: inline-block;
+    width: 610px;
+   // border: 1px solid magenta; 
+    padding: 0px;
+    margin: 0px;  
+         // background-color: #f1f1f1;
+}
+
+.tabcontent inputcolumn{
+    display: inline-block; 
+    width: 600px; 
+    padding: 0px; 
+    margin: 0px;
+    cursor: default;
+   // border: 1px solid blue; 
+} 
+
+.tabcontent inputcolumn name,
+.tabcontent inputcolumn namenote,
+.tabcontent inputcolumn subname {
+    display: inline-block;
+ //   width: 30%;  
+    width: 150px;   
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px; 
+    text-align: right;
+    vertical-align: bottom;
+    margin: 0px;
+}
+
+.tabcontent inputcolumn name {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 15px;  
+    padding-bottom: 4px; 
+} 
+
+.tabcontent inputcolumn name:before{
+    content: '';
+    display: block; 
+}
+
+.tabcontent inputcolumn namenote {
+    font-size: 12px;
+    color: #2F4F4F;
+    font-style: italic; 
+    vertical-align: top; 
+    padding-top: 3px;
+}
+
+.tabcontent inputcolumn subname {
+    font-size: 14px;
+    font-weight: normal;   
+    margin-top: 5px; 
+    padding-bottom: 4px;
+}
+
+.tabcontent inputcolumn inputs {
+    display: inline-block;
+    font-size: 12px;
+    width: 400px;   
+    vertical-align: bottom;  
+//    border: 1px solid red; 
+  //  padding:0px;
+//    margin:0px;
+}
+
+.tabcontent inputcolumn  label {
+    display: inline-block; 
+    padding-right: 2px;
+    padding-left:2px; 
+    padding-top: 0px;
+    padding-bottom: 4px;
+    font-size: 12px;
+    vertical-align: bottom;   
+} 
+
+
+
+.tabcontent inputcolumn note {
+    font-size: 12px;
+    color: #2F4F4F;
+    font-style: italic;
+    display: block; 
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+}
+
+.tabcontent inputcolumn longnote,
+.tabcontent inputcolumn longnotetitle,
+.tabcontent inputcolumn longnotesmaller {
+    color: darkblue;
+    font-style: italic;
+    display: block; 
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+}
+.tabcontent inputcolumn longnote {
+    font-size: 12px;
+    margin-top: 5px;  
+}
+.tabcontent inputcolumn longnotetitle {
+    font-size: 13px;
+    text-decoration: underline;
+    margin-top: 15px;  
+}
+.tabcontent inputcolumn longnotesmaller {
+    font-size: 11px;
+}
+
+
+/***************************** SPECIFIC INPUTS *******************************************/
+/* Style for form inputs - text inputed by users in stirng or number places (not text areas) */
+input  {  
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-right: 0px; 
+    margin-left: 0px;  
+}
+
+input[type=number] {  
+    width: 55px;
+    margin-right: 10px;  
+    padding: 0px;   
+}
+
+input[type=radio] {
+    margin-right: 0px; 
+    margin-left: 0px;  
+    margin-top: 2px;
+    margin-bottom: 3px;
+}
+
+input[type=checkbox] {
+    margin-right: 0px; 
+    margin-left: 0px; 
+    margin-top: 2px;
+    margin-bottom: 3px;
+}
+ 
+
+
+
+/***************************** EXPANDABLE WINDOW **************************************/
+/* EXPANDABLE WINDOW */
+/* Style to show expandable window when the form is focused */
+/*.form-container:focus-within .expandable-window {
+    display: block;
+}*/
+
+.expwindow {
+   display: none;
+   // display: inline-block;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 0px;
+    border: none;
+    background-color:whitesmoke;  
+    width: 100%;  
+}
+
+.expand-button {
+    padding-top: 10px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 0px;
+    border: none;
+    color: indigo;
+    text-decoration: underline;
+    font-style: italic; 
+    font-size: 12px; 
+    display: inline-block;
+    margin: 0px; 
+}
+ 
+
+.expand-button::before { 
+    content: '\25B6'; 
+    font-style: normal;
+    display: inline-block;
+    transform: rotate(0deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.expand-button.expanded::before {
+    content: '\25B6'; 
+    transform: rotate(90deg);
+}
+
+
+/********************** FIGURE COLUMN AND INPUT DIVIDER ***********************************/
+
+
+.tabcontent figurecolumn{
+    display: inline-block;
+    float: right;
+    width: 140px;  
+ //   height: inherit;
+/*/    height: 300px;*/
+    vertical-align:top; 
+    text-align: center;
+    padding: 0px;
+   // padding-top:50px;
+  //  padding-bottom:50px;
+   // margin-top: 30px;
+ //   border: 1px solid magenta; 
+    background-color: white; 
+  //   border-left: 1px dashed #ccc; 
+   //  border-bottom: 1px dashed #ccc; 
+    //height: 100%;
+  //  float: bottom;
+ //    border-left: 5px solid #ccc; 
+   //   background: linear-gradient(to bottom, white 80%, #f1f1f1 100%); /* Vertical gradient with 70% white and 30% #f1f1f1 */
+   //  border-left: 3px solid; /* Set the width of the left border */
+   // border-image: linear-gradient(to bottom, #ccc 40%, #f1f1f1 80%, #f1f1f1 100%) 1; /* Apply the gradient to the border */
+  
+}
+ 
+
+.tabcontent inputdivider{
+    display: block;
+    width: 100%;
+    background-color: #E0FFFF;   
+    color: #191970;
+    font-weight: bold;
+    padding-top: 10px;		  
+    padding-bottom: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    text-align: center;
+}
+
+
+
+

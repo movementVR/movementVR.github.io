@@ -1,0 +1,14 @@
+{
+    "path": "/web/export/",
+    "html":[
+        "export.html"
+    ],
+    "js":[
+        "export.js"
+    ],
+    "css":[
+    ],
+    "json":[
+        "export.json"
+    ]
+}

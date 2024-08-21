@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>   </title>
+</head>
+<body>
+<form class="tabcontent">      
+<div class="form-control">         
+<inputcolumn>
+        
+<!-- Content: --> 
+ 
+ 
+    
+
+
+<!-- Position hands in hand-target -->
+<!--<name> Hand home position appearance </name> 
+    <note>Asks participant to place hands within target hand-meshes to start trial.</note>    
+    <note>Trial proceeds once the selected hands have collided with respective hand-targets.</note>
+    <note>Define here the visual appearance of the hand homes.</note><br><br>-->
+    
+<name>Left:</name>
+    <inputs>	   
+    <input id="LHOMEAPP_SHAPE_HAND" name="setupScript,lefthandStartingBoundMeshShape" type="radio" value="Hand"  checked >
+    <label for="LHOMEAPP_SHAPE_HAND">Hand</label> 
+    <input id="LHOMEAPP_SHAPE_SPHERE" name="setupScript,lefthandStartingBoundMeshShape" type="radio" value="Sphere"   >
+    <label for="LHOMEAPP_SHAPE_SPHERE">Sphere</label> 
+    <input id="LHOMEAPP_SHAPE_CUBE" name="setupScript,lefthandStartingBoundMeshShape" type="radio" value="Cube"   >
+    <label for="LHOMEAPP_SHAPE_CUBE">Cube</label> 
+    <input id="LHOMEAPP_SHAPE_NONE" name="setupScript,lefthandStartingBoundMeshShape" type="radio" value="None"   >
+    <label for="LHOMEAPP_SHAPE_NONE">None</label> 
+    </inputs><subname></subname><inputs>    
+        <input id="LHANDTARGETP_FLAG_H" name="setupScript,lefthandStartingBoundMeshPositionAuto" type="hidden" value="FALSE">
+        <input id="LHANDTARGETP_FLAG" name="setupScript,lefthandStartingBoundMeshPositionAuto" type="checkbox" value="TRUE" checked>
+    <label for="LHANDTARGETP_FLAG">Automatic position</label>		
+        <input id="LHANDTARGETS_FLAG_H" name="setupScript,lefthandStartingBoundMeshSizeAuto" type="hidden" value="FALSE">
+        <input id="LHANDTARGETS_FLAG" name="setupScript,lefthandStartingBoundMeshSizeAuto" type="checkbox" value="TRUE" checked>
+    <label for="LHANDTARGETS_FLAG">Automatic size</label>	
+    </inputs>  
+
+    
+    
+    
+<name>Right:</name>
+    <inputs>	
+    <input id="RHOMEAPP_SHAPE_HAND" name="setupScript,righthandStartingBoundMeshShape" type="radio" value="Hand"  checked >
+    <label for="RHOMEAPP_SHAPE_HAND">Hand</label> 
+    <input id="RHOMEAPP_SHAPE_SPHERE" name="setupScript,righthandStartingBoundMeshShape" type="radio" value="Sphere"   >
+    <label for="RHOMEAPP_SHAPE_SPHERE">Sphere</label> 
+    <input id="RHOMEAPP_SHAPE_CUBE" name="setupScript,righthandStartingBoundMeshShape" type="radio" value="Cube"   >
+    <label for="RHOMEAPP_SHAPE_CUBE">Cube</label> 
+    <input id="RHOMEAPP_SHAPE_NONE" name="setupScript,righthandStartingBoundMeshShape" type="radio" value="None"   >
+    <label for="RHOMEAPP_SHAPE_NONE">None</label> 
+    </inputs><subname></subname><inputs>    
+        <input id="RHANDTARGETP_FLAG_H" name="setupScript,righthandStartingBoundMeshPositionAuto" type="hidden" value="FALSE">
+        <input id="RHANDTARGETP_FLAG" name="setupScript,righthandStartingBoundMeshPositionAuto" type="checkbox" value="TRUE" checked>
+    <label for="RHANDTARGETP_FLAG">Automatic position</label>	
+        <input id="RHANDTARGETS_FLAG_H" name="setupScript,righthandStartingBoundMeshSizeAuto" type="hidden" value="FALSE">
+        <input id="RHANDTARGETS_FLAG" name="setupScript,righthandStartingBoundMeshSizeAuto" type="checkbox" value="TRUE" checked>
+    <label for="RHANDTARGETS_FLAG">Automatic size</label>		
+    </inputs>  
+
+
+<br><br>
+<span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+<button class="expand-button"  type="button" onclick="toggleExpandableWindow(this,'expandableHandHomeVisual')">
+Expand to define position & size manually
+</button>
+
+    <div class="expwindow" id="expandableHandHomeVisual"> 
+
+
+    <name>Left position [m]:</name>
+        <inputs>
+        <label for="LHANDTARGET_POS_X">X:</label>
+        <input id="LHANDTARGET_POS_X" name="setupScript,lefthandStartingBoundMeshLocalPositionX" type="number" value="0" />
+        <label for="LHANDTARGET_POS_Y">Y:</label>
+        <input id="LHANDTARGET_POS_Y" name="setupScript,lefthandStartingBoundMeshLocalPositionY" type="number" value="0" />
+        <label for="LHANDTARGET_POS_Z">Z:</label>
+        <input id="LHANDTARGET_POS_Z" name="setupScript,lefthandStartingBoundMeshLocalPositionZ" type="number" value="0" />
+        </inputs>   
+    <namenote>(offset wrt to actual home)</namenote><inputs></inputs>
+
+    <name>Left size [m]:</name>
+        <inputs>
+        <label for="LHANDTARGET_SIZE_X">X:</label>
+        <input id="LHANDTARGET_SIZE_X" name="setupScript,lefthandStartingBoundMeshSizeX" type="number" value="0.2" />
+        <label for="LHANDTARGET_SIZE_Y">Y:</label>
+        <input id="LHANDTARGET_SIZE_Y" name="setupScript,lefthandStartingBoundMeshSizeY" type="number" value="0.2" />
+        <label for="LHANDTARGET_SIZE_Z">Z:</label>
+        <input id="LHANDTARGET_SIZE_Z" name="setupScript,lefthandStartingBoundMeshSizeZ" type="number" value="0.2" />
+        </inputs>    
+        
+    <br><br>    
+    <name>Right position [m]:</name>
+        <inputs>
+        <label for="RHANDTARGET_POS_X">X:</label>
+        <input id="RHANDTARGET_POS_X" name="setupScript,righthandStartingBoundMeshLocalPositionX" type="number" value="0" />
+        <label for="RHANDTARGET_POS_Y">Y:</label>
+        <input id="RHANDTARGET_POS_Y" name="setupScript,righthandStartingBoundMeshLocalPositionY" type="number" value="0" />
+        <label for="RHANDTARGET_POS_Z">Z:</label>
+        <input id="RHANDTARGET_POS_Z" name="setupScript,righthandStartingBoundMeshLocalPositionZ" type="number" value="0" />
+        </inputs>   
+    <namenote>(offset wrt to actual home)</namenote><inputs></inputs>
+
+    <name>Right size [m]:</name>
+        <inputs>
+        <label for="RHANDTARGET_SIZE_X">X:</label>
+        <input id="RHANDTARGET_SIZE_X" name="setupScript,righthandStartingBoundMeshSizeX" type="number" value="0.2" />
+        <label for="RHANDTARGET_SIZE_Y">Y:</label>
+        <input id="RHANDTARGET_SIZE_Y" name="setupScript,righthandStartingBoundMeshSizeY" type="number" value="0.2" />
+        <label for="RHANDTARGET_SIZE_Z">Z:</label>
+        <input id="RHANDTARGET_SIZE_Z" name="setupScript,righthandStartingBoundMeshSizeZ" type="number" value="0.2" />
+        </inputs>  
+        
+    </div>
+
+    
+ 
+<!-- End of Content --> 
+ 
+</inputcolumn> 
+</div>  
+<figurecolumn>
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
+</figurecolumn>
+        
+</form>
+</body>
+</html>

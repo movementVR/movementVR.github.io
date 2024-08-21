@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Falls Failure Criteria  </title>
+</head>
+<body>
+<form class="tabcontent">      
+<div class="form-control">         
+<inputcolumn>
+        
+<!-- Content: --> 
+<!--
+    
+<name>Failure criteria for plate position that apply across the whole trial</name>    
+    <note>(Trial fails if plate exits allowed region at any point)</note> 
+      		
+<name>Workspace region relative to plate home</name> -->
+    
+<name>Shape & Size:</name>
+    <inputs>
+    <input id="WORKSPACE_SHAPE_SPHERE" name="setupScript,taskWorkspaceBoundShape" type="radio" value="Sphere"  checked>
+    <label for="WORKSPACE_SHAPE_SPHERE">Sphere</label>  
+        <label for="WORKSPACE_RADIUS">of radius [m]:</label>
+        <input id="WORKSPACE_RADIUS" name="setupScript,taskWorkspaceBoundSizeRadius" type="number" value="0.3" />
+    </inputs>
+    <namenote>(centered around plate starting position)</namenote> 
+    <inputs>
+    <input id="WORKSPACE_SHAPE_CUBE" name="setupScript,taskWorkspaceBoundShape" type="radio" value="Cube">
+    <label for="WORKSPACE_SHAPE_CUBE">Cube of size[m]: </label>  
+         <label for="WORKSPACE_SIZEX">X:</label>
+        <input id="WORKSPACE_SIZEX" name="setupScript,taskWorkspaceBoundSizeX" type="number" value="0.3" />
+        <label for="WORKSPACE_SIZEY">Y:</label>
+        <input id="WORKSPACE_SIZEY" name="setupScript,taskWorkspaceBoundSizeY" type="number" value="0.3" />
+        <label for="WORKSPACE_SIZEZ">Z:</label>
+        <input id="WORKSPACE_SIZEZ" name="setupScript,taskWorkspaceBoundSizeZ" type="number" value="0.3" />   
+    </inputs>
+ 
+ 
+    
+
+
+<br><br>
+<name> Additional bounds [m]</name>
+    <inputs> 
+    <label for="GAMEAREA_L">Left:</label>
+    <input id="GAMEAREA_L" name="setupScript,gameBoundLocalPositionLeft" type="number" value="0.5" />
+    <label for="GAMEAREA_R">Right:</label>
+    <input id="GAMEAREA_R" name="setupScript,gameBoundLocalPositionRight" type="number" value="0.5" />
+    </inputs>
+    <namenote>(wrt plate starting position)</namenote> 
+    <inputs> 
+    <label for="GAMEAREA_F">Front:</label>
+    <input id="GAMEAREA_F" name="setupScript,gameBoundLocalPositionFront" type="number" value="0.5" />
+    <label for="GAMEAREA_B">Back:</label>
+    <input id="GAMEAREA_B" name="setupScript,gameBoundLocalPositionBack" type="number" value="0.5" />
+    </inputs>
+    <namenote> </namenote>
+    <inputs> 
+    <label for="GAMEAREA_U">Top:</label>
+    <input id="GAMEAREA_U" name="setupScript,gameBoundLocalPositionTop" type="number" value="0.8" />
+    <label for="GAMEAREA_D">Bottom:</label>
+    <input id="GAMEAREA_D" name="setupScript,gameBoundLocalPositionBottom" type="number" value="1" />
+    <input id="GAMEAREA_GH" name="setupScript,gameBoundBottomIsGround" type="hidden" value="FALSE">
+    <input id="GAMEAREA_G" name="setupScript,gameBoundBottomIsGround" type="checkbox" value="TRUE" checked>	
+    <label for="GAMEAREA_G">Match bottom to ground </label>	 
+    </inputs> 
+
+ 
+<!-- End of Content --> 
+ 
+</inputcolumn> 
+</div>  
+<figurecolumn>
+    <img src="web/img/parameters/workspaceCriteria.png" style="width:100%;">
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
+</figurecolumn>
+        
+</form>
+</body>
+</html>
