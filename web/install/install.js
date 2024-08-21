@@ -67,6 +67,7 @@ function downloadMovementVR_APK()
  //   uri="website/files/movementvrapk.apk";
 	uri="https://www.dropbox.com/scl/fi/eyxwr391ackyk4axa0leh/movementvrapk.apk?rlkey=hkrd06nbar05md9gp17qi3pcx&dl=0";
     link.setAttribute('download', 'movementvrapk.apk');
+    link.setAttribute('target', '_blank');
     link.href = uri;
     document.body.appendChild(link);
     link.click();
