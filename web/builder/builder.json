@@ -5,7 +5,11 @@
     ],
     "js":[
         "builderDef.js",
-        "builder.js"
+        "builderColorInputs.js",
+        "builderTab.js",
+        "builderSave.js",
+        "builderPopup.js",
+        "builder.js" 
     ],
     "css":[
         "builder.css",
