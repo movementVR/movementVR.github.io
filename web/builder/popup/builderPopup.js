@@ -1,16 +1,7 @@
 
 
 function openOptionsWindow(htmlFileName,htmlFileTab) {  
-   //     const windowSizePercent = 0.9;  
-  //  var newWindow = createWindow(windowSizePercent,windowSizePercent); 
-    /*
-        const element = document.querySelector('.trialContainerParent');
-    console.log(element);
-        const style = window.getComputedStyle(element);
-        const widthIn = style.width;
-        const heightIn = style.height;
-    */
-        var newWindow =  createWindow(widthIn,heightIn,'px');   
+        var newWindow =  createWindow(widthIn,heightIn,'px',-5,-5,'+%');   
 
         robustOnLoad(newWindow,function() {
             populateOptionWindow(newWindow,htmlFileName,htmlFileTab);
@@ -64,7 +55,7 @@ function populateOptionWindow(newWindow,htmlFileName,htmlFileTab){
                 changeHeightToFitParent(newWindow,'contentcontainerclass'); // Makes the tabcontent scrollable and makes OK final button always visible           
 
                 newWindow.addEventListener('beforeunload', function (event) {
-                    trialDesignStoreValues(newWindow);
+                    builderSaveStoreOptions(newWindow);
                 }); 
         });
 } 
@@ -94,7 +85,7 @@ function createTabs(newWindow,tabsDefinition,initialTab) {
 function clickTab(newWindow,clickedTab,htmlFileName,flagNewWindow) {  
     
     if (flagNewWindow==false){
-            trialDesignStoreValues(newWindow);        
+            builderSaveStoreOptions(newWindow);        
     }
     
     const folderName = "web/builder/parameters";
@@ -109,10 +100,10 @@ function clickTab(newWindow,clickedTab,htmlFileName,flagNewWindow) {
         .then(html => {
             newWindow.document.getElementById('contentContainer').innerHTML = html;
         
-            popupTabSetup(newWindow,htmlFileName);
+            popupTabSetup(newWindow,htmlFileName,true);
     
         
-        })
+        }) 
         .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
         });

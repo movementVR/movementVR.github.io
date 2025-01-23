@@ -1,0 +1,264 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;  
+    box-sizing: border-box;
+}
+
+
+ 
+ /*  -------------- MAIN CONTAINERS  -------------------- */
+
+.trialexpandMainContainer { 
+    display: inline-block;
+    overflow-x: auto;  /* Enable horizontal scrolling if content overflows */
+    overflow-y: auto;  /* Enable vertical scrolling if content overflows */
+    
+    width: 100%;       /* Takes full width of the parent container */
+/*  height: 100%;      /* Takes full height of the parent container */
+
+    max-width: 100vw;  /* Maximum width is the viewport width */
+    max-height: 100vh; /* Maximum height is the viewport height */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+  
+    margin: 0;
+    padding: 0;     
+    align-items: center; 
+    text-align: center;   
+    
+}
+
+.trialexpandMainContainerBlocks,
+.trialexpandMainContainerInputs{
+    display: inline-block;
+    border: 1px solid black; /* Add border to separate titles */ 
+    overflow-y: scroll;    
+    padding: 5px 15px; 
+    margin: 0; 
+    box-sizing: border-box;
+    background-color: white;    /* Takes full width of the parent container */ 
+     
+}
+
+.trialexpandMainContainerInputs{
+    float:right;
+}
+ 
+ 
+.trialexpandInputsListContainer {  
+  margin: 0;
+  padding: 0; 
+}
+
+
+ /*  -------------- LIST ITEMS PARENT CONTAINERS -------------------- */
+
+.trialexpandInputsItemParent, .trialexpandInputsTitleParent ,.draggingclone,.dragging  {
+  display: flex;   
+  align-items: center; 
+  padding: 0px;   
+  margin: 0;
+
+}
+
+.trialexpandInputsItemParent, .draggingclone ,.dragging{   
+  box-sizing: border-box; 
+  margin-bottom: 5px;  
+  margin-top: 5px; 
+  cursor: pointer;    
+  background-color:#e6e6e6;  
+  border: none;     
+}
+ 
+
+.trialexpandInputsItemParent:hover{
+  outline: 1px solid #1b7e7e;  
+  background-color: #E5F9F9;
+}
+ 
+
+.trialexpandInputsTitleParent { 
+  background-color: none; 
+  border: none;    
+}
+ 
+
+/*  TITLES  */
+
+.trialexpandInputsTitle {
+  text-align: left;
+  font-size: 12px; 
+//  border: 1px solid red; /* Add border to separate titles */
+}
+
+.trialexpandInputsTitleSequenceName,
+.trialexpandInputsTitleSequenceType { 
+    color: #1b7e7e;  
+    font-size: 14px;   
+    padding: 5px; 
+    
+}
+.trialexpandInputsTitleSequenceName{
+    font-weight: 900;
+    text-decoration: underline; 
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;  
+}
+.trialexpandInputsTitleSequenceType {
+    font-weight: 600;
+    background-color: #E5F9F9;
+}
+
+.trialexpandInputsTitleProbability {
+    display: block;		
+}
+
+
+ /*  -------------- LIST ITEMS  -------------------- */
+
+/* INPUTS ITEMS LEFT */
+/*.trialexpandInputsItemOrder, 
+.trialexpandInputsItemPhase, 
+.trialexpandInputsItemTrialType,
+.trialexpandInputsItemRepeats,
+.trialexpandInputsItemDelete,
+.trialexpandInputsItemDrag { 
+}*/
+/* INPUTS ITEMS RIGHT */
+/*.trialexpandInputsItemOrder, 
+.trialexpandInputsItemInheritedInputs,
+.trialexpandInputsItemProbability,
+.trialexpandInputsItemDelete,
+.trialexpandInputsItemDrag { 
+}*/
+
+
+
+
+
+
+/* ------------------------------------------ */ 
+
+ 
+.trialexpandInputsItem { 
+  text-align: center;
+  font-size: 12px; 
+}
+
+.trialexpandInputsItemOrder{
+    display: block;		
+}
+
+
+.trialexpandInputsItemInheritedInputs {  
+    box-sizing: border-box;    
+    background-color: #f1f1f1;   /* this matches original inputs */ 
+    border: 2px solid #b3b3b3;   
+}
+
+
+.trialexpandInputsItemProbability {
+    display: block;	
+}
+ 
+.trialexpandInputsItemInheritedInputs-OuterContainer,
+.trialexpandInputsItemInheritedInputs-InnerContainer {    
+}
+
+.trialexpandInputsItemPhase { 
+  width: 100px; /* Adjust the width as needed */
+    
+}
+
+.trialexpandInputsItemTrialType{      
+}
+
+
+.trialexpandInputsItemDelete {
+    display: flex;
+    justify-content: center; /* Center the delete icon */
+    align-items: center; /* Vertically center the delete icon */
+    cursor: pointer;
+    font-size: 18px; 
+}
+.trialexpandInputsItemDelete:hover {
+    color: red; /* Change color on hover */
+}
+
+.trialexpandInputsItemDrag {
+    cursor: grab;
+	display: block;
+}
+ 
+
+/*  GENERIC    */
+
+/*.draggable {
+    width: 100px;
+    height: 100px;
+    background-color: #3498db;
+    position: absolute;
+    cursor: pointer;
+}
+
+
+.draggingclone {
+    position: absolute;
+}*/
+
+/*.dragging {
+    position: absolute;
+}*/
+
+
+
+
+.trialexpandInputsAddButton{  
+    font-family: Arial, sans-serif;  
+    margin: 0;
+    padding: 0px 0px ; 
+    width:14px;
+    height:14px;
+	display: block;
+}
+.trialexpandInputsAddButton-plusSign {
+    margin: 0;
+    padding: 0px 0px ;
+    position: relative;   
+    font-size: 16px;  
+    top: -4px; /* Moves the sign upwards */
+}
+
+
+ /* Styling for draggable items */
+.draggable-item {
+    padding: 10px;
+    margin: 5px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: move;
+}
+
+/* Style for the item while it's being dragged */
+.dragging {
+    opacity: 0.5;
+}
+
+/* Horizontal line to indicate where the item will be dropped */
+.horizontal-line {
+    width: 100%;
+    height: 2px;
+    background-color: blue;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: none;
+}
+
+
+ /*  -------------- MAIN DROPDOWN (next to OK BUTTON)  -------------------- */
+.trialexpandMainDropdownLabel, .trialexpandMainDropdownSelect {
+    margin-top: 20px;
+} 

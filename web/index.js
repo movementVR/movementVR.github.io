@@ -6,7 +6,7 @@ const pages = [
     { text: 'DESIGN PARADIGM', name: 'builder' }, 
     { text: 'EXPORT DATA', name: 'export' }
 ];
-
+ 
 document.addEventListener("DOMContentLoaded", function() {  
     
     /* OVERALL TOP NAVIGATION MENU */
@@ -62,7 +62,7 @@ function openPage(name,selectedPageLink) {
 
 
 
-function populateTabPage(name){ 
+function populateTabPage(name){  
     /* creates page container  */ 
     const pageContainer = document.createElement('div');
     pageContainer.className = 'pagecontainer';
@@ -72,7 +72,7 @@ function populateTabPage(name){
     const htmlFileName=folderPath+'/'+name+'.html'; 
     const jsonPath=folderPath+'/'+name+'.json';  
     const generalJsonPath='web/general/general.json'; 
-      
+       
     fetch(htmlFileName) 
         .then(response => response.text())
         .then(html => { 
@@ -80,7 +80,7 @@ function populateTabPage(name){
         const doc = parser.parseFromString(html, 'text/html'); // Parse the string into a DOM document        
         pageContainer.innerHTML += doc.body.innerHTML; 
         includeFilesFromJson(jsonPath); 
-        includeFilesFromJson(generalJsonPath); 
+        includeFilesFromJson(generalJsonPath);  
         }); 
 } 
  

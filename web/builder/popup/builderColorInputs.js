@@ -142,11 +142,90 @@ function RGBChannelsToColorPicker(newWindow){
             });
         }); 
         
-    });
+    }); 
 
 }
 
+   
+
+
+////////////////// TRANFORM BACK ///////////
+// Function to process the given HTML content
+function transformColorInputsToRGB(htmlContent) {
+    // Create a temporary DOM element to manipulate the HTML string
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = htmlContent;
+
+    // Find all color inputs
+    const colorInputs = tempDiv.querySelectorAll('input[type="color"]');	
+	 
+    colorInputs.forEach((colorInput,index) => {
+        // Find the parent container (likely <inputs>)
+        const parentInputs = colorInput.closest('inputs');
+
+        if (parentInputs) {
+            // Find associated R, G, B, and A labels and inputs
+            const rInput = parentInputs.querySelector(`#${colorInput.id}_R`);
+            const gInput = parentInputs.querySelector(`#${colorInput.id}_G`);
+            const bInput = parentInputs.querySelector(`#${colorInput.id}_B`);
+            const rLabel = parentInputs.querySelector(`label[for="${colorInput.id}_R"]`);
+            const gLabel = parentInputs.querySelector(`label[for="${colorInput.id}_G"]`);
+            const bLabel = parentInputs.querySelector(`label[for="${colorInput.id}_B"]`); 
+            const colorInputLabel = tempDiv.querySelector(`label[for="${colorInput.id}"]`);
+			
+
+            // Make the R, G, and B labels and inputs visible
+            if (rInput && rLabel) {
+                rInput.style.display = '';
+                rLabel.style.display = '';
+                rInput.style.marginRight = '0';
+                rLabel.style.marginRight = '0';
+            }
+
+            if (gInput && gLabel) {
+                gInput.style.display = '';
+                gLabel.style.display = '';
+                gInput.style.marginRight = '0';
+                gLabel.style.marginRight = '0';
+            }
+
+            if (bInput && bLabel) {
+                bInput.style.display = '';
+                bLabel.style.display = '';
+                bInput.style.marginRight = '0';
+                bLabel.style.marginRight = '0';
+            }
+
+            // Remove the color input element
+            colorInput.remove(); 
+			if (colorInputLabel){
+				colorInputLabel.remove();
+			}
+        }
+    });
+	 
+	// Set widths for form control and input column
+    tempDiv.querySelectorAll('.form-control').forEach((formControl) => {
+        formControl.style.width = '580px';
+    });
+
+    tempDiv.querySelectorAll('inputcolumn').forEach((inputColumn) => {
+        inputColumn.style.width = '575px';
+    });
+
+    // Set a new width for the parent inputs container  
+    tempDiv.querySelectorAll('inputs').forEach((inputs) => {
+        inputs.style.width = '380px';
+    });
+	
+	
+	htmlContent = tempDiv.innerHTML;
+	
  
+	
+    return htmlContent;
+
+}
 
 
  

@@ -1,21 +1,36 @@
 {
     "path": "/web/builder/",
     "html":[
-        "builder.html"
+        "builder.html",
+        "trialExpand/trialExpandHtml.html",
+        "popup/tabHtml.html"
     ],
     "js":[
         "builderDef.js",
-        "builderColorInputs.js",
-        "builderTab.js",
+        "popup/builderInputsWidth.js",
+        "popup/builderColorInputs.js",
+        "trialExpand/trialExpandSave.js",
+        "trialExpand/builderTrialExpand.js",
+        "trialExpand/trialExpand.js",
+        "trialExpand/trialExpandDrag.js",
+        "trialExpand/trialExpandItemEvents.js",
+        "trialExpand/trialExpandTrialTypeDropdown.js",
+		"trialExpand/trialExpandAddItemEvent.js",
+        "trialExpand/trialExpandInputsList.js", 
+        "trialExpand/trialExpandInheritedInput.js",
+        "trialExpand/trialExpandInputOptions.js", 
+        "trialExpand/trialExpandListSetup.js",
+        "trialExpand/trialExpandDef.js",
+        "popup/builderTab.js",
         "builderSave.js",
-        "builderPopup.js",
-        "builder.js" 
+        "popup/builderPopup.js",
+        "builder.js"
     ],
     "css":[
         "builder.css",
         "popup/trialDesignChildrenStyles.css",
-        "popup/tabHtmlStyle.css"
-
+        "popup/tabHtmlStyle.css",
+        "trialExpand/trialExpand.css"
     ],
     "json":[
         "builder.json"

@@ -5,8 +5,16 @@ const heightIn = 450;
 const allTabsDefinition = getAllTabsDefinition();
 const blockData=getBlockData();
 var allTrialDesignForms = {};
+var allParadigmOutput = {};
+var allParadigmInput = {};
+var allParadigmDropdown = {};
+var allTrialsUploaded = {};
 var lastClickedHtmlFileName = "";
-builderStoreAllParameters(allTabsDefinition);
+
+// Stores parameter input form internally, 
+// so that it can be pulled up if the paradigm popup window is used 
+// trialExpandSave -> loadSpecificInputValue function
+builderSaveInitializeOptions(allTabsDefinition);  
 
 // create containers for trial blocks  
 const parentcontainer = document.getElementById('builder_tabID');
@@ -86,25 +94,31 @@ parentcontainer.appendChild(trialDownloadButtonContainer);
 const trialDownloadButton = document.createElement("button");
 trialDownloadButton.className = "trialDownloadButtonClass";    
 trialDownloadButton.textContent = "Download";     
-trialDownloadButton.addEventListener('click', builderCsvDownload); 
+trialDownloadButton.addEventListener('click', builderSaveCsvDownload); 
 trialDownloadButtonContainer.appendChild(trialDownloadButton);   
  
 
+ 
 // Upload Button 
 const trialUploadButton = document.createElement('input');
 trialUploadButton.type = 'file'; 
 trialUploadButton.id = 'csvFileInput'; // Set the ID for the input
 trialUploadButton.accept = '.csv'; 
+trialUploadButton.multiple = true; // Allow multiple file uploads
 trialUploadButton.style.display = 'none'; // Hide the actual file input 
 trialDownloadButtonContainer.appendChild(trialUploadButton); 
-
-// Add event listener for when a file is selected
-trialUploadButton.addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    if (file) {
-        loadCsvAndPopulateForms(file); // Custom function to handle file
-    }
+      
+trialUploadButton.addEventListener('change', 
+   function(event) { // Event listener for files uploads   
+		const files = event.target.files; 
+		if (files.length > 0) {
+			builderSaveCsvUpload(files); // Custom function to handle multiple files
+		}
+		event.target.value = ''; 
 });
+ 
+ 
+
 
 // Create a label that acts as the visual button
 const trialUploadButtonVisual = document.createElement('label');
