@@ -36,6 +36,11 @@ document.addEventListener("DOMContentLoaded", function() {
         populateTabPage(name);
     });  
     document.getElementById('home_buttonID').click();
+	
+	 if (!sessionStorage.getItem("reloaded")) {
+        sessionStorage.setItem("reloaded", "true");
+        location.reload();
+    }
 
 });
                           
