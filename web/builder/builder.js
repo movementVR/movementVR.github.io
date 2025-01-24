@@ -23,15 +23,22 @@ const builderSaveScript = document.querySelector('script[src="/web/builder/build
 const builderDefScript = document.querySelector('script[src="/web/builder/builderDef.js"]');
 const initializedBuilder = builderInitializationWithCheck(builderSaveScript,builderDefScript);
 if (!initializedBuilder){	
-	builderSaveScript.onload = () => { 		
+	const builderSaveScriptOnload = builderSaveScript.onload;
+	builderSaveScript.onload = () => { 	
+		console.log('c1');
+		builderSaveScriptOnload();
 		builderInitializationWithCheck(builderSaveScript,builderDefScript);
 	};	
-	builderDefScript.onload = () => { 		
+	
+	const builderDefScriptOnload = builderDefScript.onload;
+	builderDefScript.onload = () => { 	
+		console.log('c2');
+		builderDefScriptOnload();
 		builderInitializationWithCheck(builderSaveScript,builderDefScript);
 	};
 }	
-
-function builderInitializationWithCheck(builderSaveScript,builderDefScript){
+ 
+function builderInitializationWithCheck(builderSaveScript,builderDefScript){ 
 	console.log('A_'+builderSaveScript.fullyLoaded+'_'+builderDefScript.fullyLoaded);
 	const initializedBuilder = builderSaveScript.fullyLoaded && builderDefScript.fullyLoaded;
 	if (initializedBuilder){

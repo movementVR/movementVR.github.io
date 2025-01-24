@@ -6,6 +6,7 @@
         "popup/tabHtml.html"
     ],
     "js":[
+        "builder.js",
         "builderDef.js",
         "popup/builderInputsWidth.js",
         "popup/builderColorInputs.js",
@@ -23,8 +24,7 @@
         "trialExpand/trialExpandDef.js",
         "popup/builderTab.js",
         "builderSave.js",
-        "popup/builderPopup.js",
-        "builder.js"
+        "popup/builderPopup.js"
     ],
     "css":[
         "builder.css",
