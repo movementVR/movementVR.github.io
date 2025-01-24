@@ -12,8 +12,15 @@ function includeScript(scriptName, targetWindow, onloadTargetFunction) {
     
     if (onloadTargetFunction){
         scriptElement.onload = onloadTargetFunction();
+		
     }
     
+	
+	
+	scriptElement.onload = () => {
+		console.log(scriptName+ "  loaded.");
+	};
+	
     scriptElement.src = scriptName; 
     targetDoc.body.appendChild(scriptElement); 
 	
