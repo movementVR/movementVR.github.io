@@ -33,9 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
         button.textContent = text;
         button.onclick = () => openPage(name, button);
         parentTabContainer.appendChild(button);
-		console.log('A1_'+name);
         populateTabPage(name);
-		console.log('A2_'+name);
     });  
     document.getElementById('home_buttonID').click();
 	
@@ -75,35 +73,22 @@ function populateTabPage(name){
     const pageContainer = document.createElement('div');
     pageContainer.className = 'pagecontainer';
     pageContainer.id = name+'_tabID';
-	
-		console.log('B1_'+name);
     document.body.appendChild(pageContainer);
-	
-		console.log('B2_'+name);
     const folderPath='web/'+name;
     const htmlFileName=folderPath+'/'+name+'.html'; 
     const jsonPath=folderPath+'/'+name+'.json';  
     const generalJsonPath='web/general/general.json'; 
        
-		console.log('B3_'+name);
+	
     fetch(htmlFileName) 
         .then(response => response.text())
         .then(html => { 
-		
-		console.log('B4_'+name);
         const parser = new DOMParser(); // Create a DOMParser instance
-        const doc = parser.parseFromString(html, 'text/html'); // Parse the string into a DOM document  
-		
-		console.log('B5_'+name);
-        pageContainer.innerHTML += doc.body.innerHTML; 
-		console.log('B6_'+name);
-        includeFilesFromJson(jsonPath); 
-		console.log('B7_'+name);
-        includeFilesFromJson(generalJsonPath);  
-		console.log('B8_'+name);
-        }); 
-	
-		console.log('B9_'+name);
+        const doc = parser.parseFromString(html, 'text/html'); // Parse the string into a DOM document
+        pageContainer.innerHTML += doc.body.innerHTML;  
+        includeFilesFromJson(jsonPath);  
+        includeFilesFromJson(generalJsonPath);   
+        });  
 } 
  
                   

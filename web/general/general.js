@@ -9,24 +9,22 @@ function includeScript(scriptName, targetWindow, onloadTargetFunction) {
     }
     
     var scriptElement = targetDoc.createElement('script'); 
+    scriptElement.src = scriptName; 
+    scriptElement.fullyLoaded = false; 
     
     if (onloadTargetFunction){
         scriptElement.onload = onloadTargetFunction();
 		
     }
-    
+       
 	
 	
 	scriptElement.onload = () => {
 		console.log(scriptName+ "  loaded.");
+    	scriptElement.fullyLoaded=true;
 	};
 	
-    scriptElement.src = scriptName; 
-    targetDoc.body.appendChild(scriptElement); 
-	
-	console.log(scriptName);
-	console.log(targetWindow);
-	console.log(targetDoc);
+    targetDoc.body.appendChild(scriptElement);  
 	
     return scriptElement;
 }
