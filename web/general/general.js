@@ -16,6 +16,11 @@ function includeScript(scriptName, targetWindow, onloadTargetFunction) {
     
     scriptElement.src = scriptName; 
     targetDoc.body.appendChild(scriptElement); 
+	
+	console.log(scriptName);
+	console.log(targetWindow);
+	console.log(targetDoc);
+	
     return scriptElement;
 }
 
