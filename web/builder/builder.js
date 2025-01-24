@@ -1,4 +1,4 @@
-////////////////// INITIALIZATION ///////////////////
+////////////////// VARIABLE INITIALIZATION ///////////////////
  
 //// Layout Definitions
 const widthIn = 800;
@@ -17,39 +17,51 @@ var blockData = [];
 var allTabsDefinition = {};
 
 
-////////////////
+//////////////// POST-PONED INITIALIZATION AFTER LOADING OF DEPENDENT SCRIPTS ///////////////////
 
+// Scripts that must be loaded before builder is set up 
 const builderSaveScript = document.querySelector('script[src="/web/builder/builderSave.js"]');
 const builderDefScript = document.querySelector('script[src="/web/builder/builderDef.js"]');
+
+// Sets up builder immeditately if scripts already loaded
 const initializedBuilder = builderInitializationWithCheck(builderSaveScript,builderDefScript);
+
+// Creates listeners otherwise 
+//// --> builderInitializationWithCheck is called when either script is loaded 
 if (!initializedBuilder){	
-	const builderSaveScriptOnload = builderSaveScript.onload;
-	builderSaveScript.onload = () => { 	
-		console.log('c1');
-		builderSaveScriptOnload();
-		builderInitializationWithCheck(builderSaveScript,builderDefScript);
+	// // builderSave.js listener // //
+	const builderSaveScriptOnload = builderSaveScript.onload; // Current onload function
+	builderSaveScript.onload = () => { 	 
+		builderSaveScriptOnload(); // Appends to current onload function
+		builderInitializationWithCheck(builderSaveScript,builderDefScript);  // Builder initialization (if both loaded)
 	};	
 	
+	// // builderDef.js listener // //
 	const builderDefScriptOnload = builderDefScript.onload;
-	builderDefScript.onload = () => { 	
-		console.log('c2');
+	builderDefScript.onload = () => { 	 
 		builderDefScriptOnload();
 		builderInitializationWithCheck(builderSaveScript,builderDefScript);
 	};
 }	
  
-function builderInitializationWithCheck(builderSaveScript,builderDefScript){ 
-	console.log('A_'+builderSaveScript.fullyLoaded+'_'+builderDefScript.fullyLoaded);
+// Function that checks whether all needed scripts are loaded, 
+// and initializes builder if so, by calling builderInitialization() below
+function builderInitializationWithCheck(builderSaveScript,builderDefScript){  
 	const initializedBuilder = builderSaveScript.fullyLoaded && builderDefScript.fullyLoaded;
 	if (initializedBuilder){
 		builderInitialization();
 	}
 	return initializedBuilder;
 }
-												
+				
+
+
+
+////////////////// MAIN FUNCTION THAT SETS UP BUILDER ////////////////////////////////
 	 
 function builderInitialization(){
 	 
+	////////////////// Layout / Savings INITIALIZATION ///////////////////
 
 	//// Gets definitions (layout/data) from builderDef.js
 	blockData=getBlockData(); // definition of main builder layout - which blocks to show and what popup they open

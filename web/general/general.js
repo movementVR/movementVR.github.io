@@ -1,6 +1,8 @@
 
 // includes a javascript in scriptName.js to the doc (if only first argument passsed) or a window (second argument)
-function includeScript(scriptName, targetWindow, onloadTargetFunction) {
+function includeScript(scriptName, targetWindow) {
+	
+	// Gets target document 
     let targetDoc;
     if (targetWindow) {
         targetDoc = targetWindow.document;
@@ -8,25 +10,20 @@ function includeScript(scriptName, targetWindow, onloadTargetFunction) {
         targetDoc = document;
     }
     
+	// Creates and initializes script elemement
     var scriptElement = targetDoc.createElement('script'); 
     scriptElement.src = scriptName; 
     scriptElement.fullyLoaded = false; 
-    
-    if (onloadTargetFunction){
-        scriptElement.onload = onloadTargetFunction();
-		
-    }
-       
-	
-	
-	scriptElement.onload = () => {
-		console.log(scriptName+ "  loaded.");
+     
+	// Sets up listener to track when script has loaded 
+	scriptElement.onload = () => { 
     	scriptElement.fullyLoaded=true;
 	};
 	
-    targetDoc.body.appendChild(scriptElement);  
-	
+	// adds script to document and returns it
+    targetDoc.body.appendChild(scriptElement);  	
     return scriptElement;
+	
 }
 
  
