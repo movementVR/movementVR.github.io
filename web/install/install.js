@@ -1,4 +1,5 @@
 
+		console.log('C_install');
 async function selectDirectory() {
       try {
         // Open the file picker to select a directory

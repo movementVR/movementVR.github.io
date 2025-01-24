@@ -1,5 +1,6 @@
 ////////////////// INITIALIZATION ///////////////////
 
+		console.log('C_builder');
 //// Layout Definitions
 const widthIn = 800;
 const heightIn = 450;
