@@ -32,6 +32,7 @@ if (!initializedBuilder){
 }	
 
 function builderInitializationWithCheck(builderSaveScript,builderDefScript){
+	console.log('A_'+builderSaveScript.fullyLoaded+'_'+builderDefScript.fullyLoaded);
 	const initializedBuilder = builderSaveScript.fullyLoaded && builderDefScript.fullyLoaded;
 	if (initializedBuilder){
 		builderInitialization();
