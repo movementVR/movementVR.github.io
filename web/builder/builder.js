@@ -1,9 +1,11 @@
+////////////////// INITIALIZATION ///////////////////
 
+//// Layout Definitions
 const widthIn = 800;
 const heightIn = 450;
 
-const allTabsDefinition = getAllTabsDefinition();
-const blockData=getBlockData();
+
+//// Variable Initialization
 var allTrialDesignForms = {};
 var allParadigmOutput = {};
 var allParadigmInput = {};
@@ -11,11 +13,22 @@ var allParadigmDropdown = {};
 var allTrialsUploaded = {};
 var lastClickedHtmlFileName = "";
 
+//// Gets definitions (layout/data) from builderDef.js
+const blockData=getBlockData(); // definition of main builder layout - which blocks to show and what popup they open
+const allTabsDefinition = getAllTabsDefinition();   // definition of tabs within popup windows 
+
+//// Initializes parameter storage through builderSave.js
 // Stores parameter input form internally, 
 // so that it can be pulled up if the paradigm popup window is used 
 // trialExpandSave -> loadSpecificInputValue function
 builderSaveInitializeOptions(allTabsDefinition);  
 
+
+
+
+
+////////////////// CONTENT CREATION ///////////////////
+//// Parent creation
 // create containers for trial blocks  
 const parentcontainer = document.getElementById('builder_tabID');
 //parentcontainer.className = "trialContainerParent";  
@@ -24,6 +37,8 @@ container.className = "trialContainer";
 parentcontainer.appendChild(container); 
 
 
+
+//// Sets number of rows and columns for parent container
 // Counts number of rows and columns based on blockData definition
 let maxRow = 0;
 let maxColumn = 0;
@@ -38,14 +53,13 @@ blockData.forEach(block => {
     }
     maxRow = Math.max(maxRow, block.gridRow);
 });    
-
-//container.style.gridTemplateColumns = `repeat(${maxColumn},1fr)`; 
+ 
 container.style.gridTemplateColumns = `1.7fr repeat(${maxColumn-2},1fr) 0.3fr`; 
 container.style.gridTemplateRows = `repeat(${maxRow},1fr)`; 
 
 
  
-
+//// Creates blocks of builder (objects to click to open popups for parameters)
 blockData.forEach(block => {
     const blockElement = document.createElement("div");
     container.appendChild(blockElement);
@@ -86,7 +100,9 @@ blockData.forEach(block => {
 
 
 
-// Download Button 
+////// Creates bottom row (download, upload, instructions...)
+
+//// Download Button 
 const trialDownloadButtonContainer = document.createElement('div');
 trialDownloadButtonContainer.className = 'trialLoadButtonContainerClass';
 parentcontainer.appendChild(trialDownloadButtonContainer); 
@@ -99,7 +115,8 @@ trialDownloadButtonContainer.appendChild(trialDownloadButton);
  
 
  
-// Upload Button 
+//// Upload Button 
+// creates actual Upload Button
 const trialUploadButton = document.createElement('input');
 trialUploadButton.type = 'file'; 
 trialUploadButton.id = 'csvFileInput'; // Set the ID for the input
@@ -108,6 +125,7 @@ trialUploadButton.multiple = true; // Allow multiple file uploads
 trialUploadButton.style.display = 'none'; // Hide the actual file input 
 trialDownloadButtonContainer.appendChild(trialUploadButton); 
       
+// creates listener that does the upload 
 trialUploadButton.addEventListener('change', 
    function(event) { // Event listener for files uploads   
 		const files = event.target.files; 
@@ -119,8 +137,7 @@ trialUploadButton.addEventListener('change',
  
  
 
-
-// Create a label that acts as the visual button
+// Create a label that acts as the visual upload button
 const trialUploadButtonVisual = document.createElement('label');
 trialUploadButtonVisual.htmlFor = 'csvFileInput'; // Match this with the file input ID
 trialUploadButtonVisual.textContent = 'Upload parameters'; // Button text
@@ -130,7 +147,7 @@ trialDownloadButtonContainer.appendChild(trialUploadButtonVisual);
 
 
 
-// Instruction Button  
+//// Instruction Button  
 const trialInstructionDownloadButton = document.createElement("button");
 trialInstructionDownloadButton.className = "trialInstructionDownloadButtonClass";    
 trialInstructionDownloadButton.textContent = "Instructions";     
