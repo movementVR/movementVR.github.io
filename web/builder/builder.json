@@ -28,8 +28,8 @@
     ],
     "css":[
         "builder.css",
-        "popup/trialDesignChildrenStyles.css",
-        "popup/tabHtmlStyle.css",
+        "popup/builderPopupInputs.css",
+        "popup/builderPopup.css",
         "trialExpand/trialExpand.css"
     ],
     "json":[

@@ -111,8 +111,8 @@ function populateTrialExpandWindow(newWindow,trialExpandWindow,htmlContent,htmlF
             trialExpandWindow.document.write(html); // loads base html code  
 
 			// Includes styles and scripts 
-			includeStyle( 'web/builder/popup/tabHtmlStyle.css',trialExpandWindow); 
-			includeStyle( 'web/builder/popup/trialDesignChildrenStyles.css',trialExpandWindow); 
+			includeStyle( 'web/builder/popup/builderPopup.css',trialExpandWindow); 
+			includeStyle( 'web/builder/popup/builderPopupInputs.css',trialExpandWindow); 
 			includeStyle( 'web/builder/trialExpand/trialExpand.css',trialExpandWindow);  
 			includeScript( 'web/builder/trialExpand/trialExpand.js',trialExpandWindow); 
 			includeScript( 'web/builder/trialExpand/trialExpandSave.js',trialExpandWindow); 

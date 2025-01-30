@@ -122,29 +122,48 @@ function builderInitialization(){
 		if (block.hasOwnProperty("color")){
 			blockElement.style.backgroundColor = block.color;
 		}
-
-		// add text content
+		
+		
+		// create the text element
+		//// checks if block should have text content, store text content		
+		let stringTextTitle=block.text;
+		let stringTextBlock=block.text;
+		if (stringTextTitle.startsWith("_")){   // display text in popup title but not in block
+			stringTextTitle=stringTextTitle.slice(1);
+			stringTextBlock=""; 
+		}   		
+		//// creates the actual text object
 		const textElement = document.createElement("span");
-		textElement.textContent = block.text;
+		textElement.textContent =stringTextBlock;
 		textElement.className = "trialGameObjectTextSubblock";  // optional, add class for styling
 		blockElement.appendChild(textElement);
 
 		// create the image element
+		let blockImgSrc=""; 
 		if (block.hasOwnProperty("img")){
-			const imgElement = document.createElement("img");
-			imgElement.src = `web/img/gameobjects/${block.img}.png`;   // assuming you have an imageSrc property in blockData
-			imgElement.alt = block.title;  // optional, for accessibility
-			imgElement.className = "trialGameObjectImageSubblock";  // optional, add class for styling
+			let stringImage=block.img;
+			if (stringImage.startsWith("_")){   // display image in popup title but not in block
+				stringImage=stringImage.slice(1);
+				blockImgSrc = `web/img/gameobjects/${stringImage}.png`;   
+			} else {   // display image in both popup title and block
+				blockImgSrc = `web/img/gameobjects/${block.img}.png`;   
+				const imgElement = document.createElement("img");
+				imgElement.src = blockImgSrc;  
+				imgElement.alt = block.title;  // optional, for accessibility
+				imgElement.className = "trialGameObjectImageSubblock";  // optional, add class for styling
 
-			// insert the image before the text content
-			blockElement.appendChild(imgElement);
+				// insert the image before the text content
+				blockElement.appendChild(imgElement); 
+			}
 		}
 
 
 		// link to page
 		if (block.hasOwnProperty("onclick") && block.onclick.trim() !== ""){    
-			blockElement.setAttribute("onclick", `openOptionsWindow('${block.onclick}','${block.tab}')`);  
-			blockElement.setAttribute("ondblclick", `openOptionsWindow('${block.onclick}','${block.tab}')`);
+			blockElement.setAttribute("onclick", 
+				 `openOptionsWindow('${block.onclick}','${block.tab}','${stringTextTitle}','${blockImgSrc}')`);  
+			blockElement.setAttribute("ondblclick", 
+				 `openOptionsWindow('${block.onclick}','${block.tab}','${stringTextTitle}','${blockImgSrc}')`); 
 		}
 	});
 
@@ -200,9 +219,9 @@ function builderInitialization(){
 	//// Instruction Button  
 	const trialInstructionDownloadButton = document.createElement("button");
 	trialInstructionDownloadButton.className = "trialInstructionDownloadButtonClass";    
-	trialInstructionDownloadButton.textContent = "Instructions";     
-	trialInstructionDownloadButton.addEventListener('click', function() {
-		openOptionsWindow('instructions', 'Download');
+	trialInstructionDownloadButton.textContent = "Instructions";  	 
+	trialInstructionDownloadButton.addEventListener('click', function() {	
+		openOptionsWindow('instructions', 'Download',"Instructions",null);
 	});
 	trialDownloadButtonContainer.appendChild(trialInstructionDownloadButton); 
 

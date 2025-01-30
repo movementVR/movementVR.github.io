@@ -180,6 +180,7 @@ function changeHeightToFitParent(targetWindow,classToResize,manualOffset=20) {
     // 1) calculate the sum of offsetHeight of all children of a targetWindow excluding elements with class classToResize
     let totalOffsetHeight = 0; 
     const childrenArray = targetWindow.document.body.children;  
+	//console.log(childrenArray);
     // Iterate through all children of the target window
     for (let i = 0; i < childrenArray.length; i++) {
         let child = childrenArray[i];

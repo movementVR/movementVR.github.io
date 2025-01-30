@@ -57,12 +57,9 @@
     font-weight: bold;
     text-align: center; 
     text-decoration: none;
-    border: 2px solid #ccc;
     border: 2px solid #28bdbd;
     border-radius: 4px;
-    background-color: #f0f0f0;
     background-color:#28bdbd;
-    color: #333;
     color:white;
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s, color 0.3s;
@@ -184,6 +181,12 @@
     background-color: none;     
     border: none;
     cursor: default;
+}
+.trialGamePhaseBlock:hover { 
+    font-weight: bold;   
+    text-decoration: underline;  
+	transform: scaleX(0.97); /* Scales down horizontally so it does not spill over column width */
+    transform-origin: center; /* Ensures scaling happens from the center */
 }
  
 .trialGameObjectBlock {    
