@@ -8,7 +8,13 @@
 </head>
 <body>  
  
-<h2>Export data </h2>
+	<div id="mainpage-parent" class="mainpage-parent general-parent"> 
+		
+		
+		<div id="mainpage-content" class="mainpage-content page-content">
+
+ 			<div id="Features" class="section-header">Export data</div>
+			<div class="section-content">  
 <h3>Export the motion tracking data collected to MovementVR to .csv file: </h3>
 <h4>&rarr; Select individual .bin files or the folder containing the files to export:</h4> 
     <h5>  &emsp;&emsp;   <button style="display:inline-block; float: left; width:120px; height:30px;margin: 20px; " onclick="document.getElementById('LOAD_FILES').click()"><span>Load files</span></button>
@@ -17,7 +23,10 @@
    	<input id="LOAD_FOLDER" style="margin: 0px; visibility:hidden;"  type="file" webkitdirectory directory  onchange = 'upload(event)' multiple/>
   </h5> 	 
     <div class="fullrow-type largespace"></div>
-  
+  <br>
+			</div>
+ 			<div id="Features" class="section-header">CSV File</div>
+			<div class="section-content"> 
 <h3>The csv file is organized as follows:</h3> 
     <h6> &emsp; &emsp;&rarr;Each row is a frame.</h6>
     <h6> &emsp; &emsp;&rarr;Each column is a variable as follows:</h6> 
@@ -33,8 +42,8 @@
     <h7> &emsp; &emsp;&emsp;&emsp;* if selected, then individual hand bones follow</h7>
     <h7> &emsp; &emsp;&emsp;[units are seconds or meters]</h7>  
     <h7> &emsp; &emsp;&emsp;[positive x = right, positive y = up, positive x = forward]</h7>   
- 
-   
-   
+			</div>
+	</div>
+	</div>
    </body>
 </html>
