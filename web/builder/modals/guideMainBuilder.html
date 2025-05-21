@@ -1,0 +1,162 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+  	<meta charset="UTF-8">
+  	<title>Main Builder Help Guide</title> 
+	 
+</head>
+	
+<body>
+ 
+	
+	
+	
+
+<div id="helpGuide-modal" class="general-modal helpGuide-modal">
+  <div id="helpGuide-parent" class="general-parent modal-parent helpGuide-parent">
+    <div class="helpGuide-top-bar top-bar">
+      <h2 class="top-header">Main Builder Help Guide</h2>
+      <input type="text" id="search-box" class="search-box" placeholder="Search guide...">
+      <span class="x-close">&times;</span>
+    </div>
+	  
+	   
+	  
+	  <div id="helpGuide-content" class="helpGuide-content page-content">
+ 
+
+		<!-- - - - - - - - - - - 1. Overview  - - - - - - - - - - --->
+		<div class="section-header accordion-header" onclick="toggleStickyHeader(this)">1. Overview</div>
+		<div class="section-content accordion-content">
+		  <p>
+			The <strong>Main Builder Interface</strong> is your starting point for designing tasks in MovementVR. From here, you can click on different game objects or buttons. This will open a UI to edit the associated parameters.
+		  </p>
+		  <p>
+			The first window you will open is called <strong>Static Builder Interface</strong>. There, you can define constant parameters or click additional buttons to open other interfaces for advanced options. 
+		  </p>
+			<p>
+			  Help on the different buttons and interfaces will be provided as you go along. You can also open the different guides here: 
+			  <a href="guideStaticBuilder.html" onclick="window.open('guideStaticBuilder.html', '_blank', 'popup=yes,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes'); return false;">Static Builder Guide</a>, 
+			  <a href="guideBuilderInputSource.html" onclick="window.open('guideBuilderInputSource.html', '_blank', 'popup=yes,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes'); return false;">Input Source Popup</a>, 
+			  <a href="guideTrialBuilder.html" onclick="window.open('guideTrialBuilder.html', '_blank', 'popup=yes,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes'); return false;">Trial Builder Guide</a>, and 
+			  <a href="guideImportCsvFile.html" onclick="window.open('guideImportCsvFile.html', '_blank', 'popup=yes,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes'); return false;">CSV File Import Guide</a>. 
+			</p> 
+		</div> 
+		  
+		  
+		<!-- - - - - - - - - - - 2. Trial Sequence   - - - - - - - - - - --->
+		<div class="section-header accordion-header" onclick="toggleStickyHeader(this)"> 2. Trial Sequence </div>
+		<div class="section-content accordion-content"> 
+		  <p>
+			The top row of the interface shows the <strong>Trial Sequence</strong> — a set of labeled columns representing the different "phases" of a single trial: 
+		  </p>
+		  <ol>
+			<li><strong>intertrial</strong>: pause between trials (also called intertrial interval)</li>
+			<li><strong>home position</strong>: participant moves hands to start location</li>
+			<li><strong>plate contact</strong>: plate has appeared - waiting for participant to make contact with the plate and begin lifting it</li>
+			<li><strong>plate lift</strong>: participant is lifting the plate </li>
+			<li><strong>feedback</strong>: plate lift has ended (target reached, plate fell or else) - visual or auditory feedback about success, error, or movement is given</li>
+			<li><strong>break</strong>: optional resting break between selected trials</li>
+		  </ol> 
+		  <p>
+			Use the buttons to the right to edit parameters related to Trial Sequence:
+		  </p>
+			<ul>
+			<li>
+			  Use <strong>Edit Transitions</strong> to configure when and how phases change during a trial (e.g., timing, success/failure conditions, etc.).
+			</li>
+			<li>
+			  Use <strong>Edit Instructions</strong> to customize participant messages shown during phases.
+			</li> 
+		  </ul>
+		</div>
+
+		<!-- - - - - - - - - - - 3. Game Objects  - - - - - - - - - - --->
+		<div class="section-header accordion-header" onclick="toggleStickyHeader(this)">3. Game Objects</div>
+		<div class="section-content accordion-content">
+		  <p>
+			The left column of the interface shows the main game objects and task components:
+		  </p>
+		  <ul>
+			<li><strong>Reinforcement</strong>: Objects/effects related to success/failure feedback</li>
+			<li><strong>Bird</strong>: Virtual bird object that moves and lands on the target</li>
+			<li><strong>Target</strong>: The target for the participant to reach (functional + visual representation)</li>
+			<li><strong>Plate</strong>: The object the user lifts as part of the motor task</li>
+			<li><strong>Hand Home</strong>: Settings for the hand's starting (home) position</li>
+			<li><strong>Hands & Perturbation</strong>: Hand tracking and adaptation perturbation</li>
+			<li><strong>Workspace</strong>: Spatial boundaries defining the allowed environment for the plate</li>
+		  </ul>
+		   
+		  <p> 
+			  Each row of the table corresponds to a game object or logical task component. The horizontal colored bars indicate when each object is active during different trial phases.
+		  </p>
+		  <p>  
+			  Click on an object or component to customize their appearance, position, task behavior, etc... 
+		  </p> 
+		</div>
+		  
+ 
+
+		<!-- - - - - - - - - - - 4.  Quick Links    - - - - - - - - - - --->
+		<div class="section-header accordion-header" onclick="toggleStickyHeader(this)"> 4.  Quick Links </div>
+		<div class="section-content accordion-content">
+		  <p>The right side of the Main Builder includes <strong>Quick Links</strong> — buttons that open commonly used parameter sets grouped by experimental topic:</p>
+		  <ul>
+			<li><strong>Reaching Task</strong>: common reaching task parameters, including home & starting position, target position and success criteria...</li>
+			<li><strong>Motor Adaptation</strong>: perturbation magnitude and schedule</li>
+			<li><strong>Reinforcement</strong>: feedback visuals/sounds/effects to convey success or failure </li>
+			<li><strong>Paradigm</strong>: overall paradigm start & end (messages/delays), trial number display, paradigm phases...</li>
+			<li><strong>Kinematics</strong>: hand tracking and data recording options</li>
+		  </ul>  
+		</div>
+
+		<div class="section-header accordion-header" onclick="toggleStickyHeader(this)">4. Footer Action Buttons</div>
+		<div class="section-content accordion-content">
+			
+		  <p>
+			Below the main grid with Game Objects, you find action buttons to perform actions related to all parameters: 
+		  </p>
+		  <ul>
+			<li>
+				<strong>Download</strong>: After completing your configuration, click <strong>Download</strong> to export all parameter values to a <code>.csv</code> file used at runtime on the headset - see "Run Experiment" for instructions.		 
+			</li>
+			<li>
+			  <strong>Upload Parameters</strong>:  Load all parameters from a <code>.csv</code> file. CSV upload is described in this guide:
+			  	<a href="guideImportCsvFile.html" onclick="window.open('guideImportCsvFile.html', '_blank', 'popup=yes,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes'); return false;">CSV File Import Guide</a>. 
+				However, the <strong>Upload Parameters</strong> button on the main page uploads ALL parameters defined in the file, and loads any constant values into the Static Builder for editing (in constrast to the gear icon described in the guide where you can choose) 
+			</li>
+			<li>
+			  <strong>Save / Load Session</strong>: store or load the full configuration for a Builder session. This includes Input Sources for all parameters and, when applicable, the Trial Builder setup (the UI configuration rather than parameter values - e.g., if a parameter is drawn at random from list, it stores the list and rules for randomization rather than drawn values). The session configuration can be stored in your internal browser memory or exported to <code>.json</code> file.
+			</li>
+			<li>
+			  <strong>Parameter Catalog</strong>: opens a searchable table listing all Builder parameters. Use this to look up variables when preparing CSV files or checking how each field is labeled in the UI. The table contains the following parameter properties: 
+		  		<ul>
+					<li><i>Code Names</i>: internal way parameters must be specified in the csv file used to load parameters from file</li>
+					<li><i>UI Location</i>: Static Builder window and tab where the parameter is found</li>
+					<li><i>Display Label</i>: name and label as shown in the Static Builder</li>
+					<li><i>Type</i>: data type including explanation of the allowed values</li>
+				</ul>
+			</li>   
+ 
+		  </ul> 
+			 
+		</div>
+
+		  
+		  
+		  
+		
+		<!--  ==============================================  --> 
+    </div>
+
+ 
+	  <button id="closeButton" class="closeButton">Close</button>
+  </div>
+</div>
+  
+
+</body>
+</html>

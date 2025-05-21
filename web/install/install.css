@@ -1,0 +1,95 @@
+
+		:root {
+			--accent-darker-color: #187171; 
+		}
+		body {
+			font-family: sans-serif;
+			line-height: 1.6;
+			margin: 2rem;
+			background: #f9f9f9;
+			color: #333;
+		}
+		h1, h2, h3 {
+			color: #2a4a6c;
+		}
+		details {
+			margin-top: 1rem;
+			border: 1px solid #ccc;
+			border-radius: 8px;
+			padding: 1rem;
+			background: #fff; 
+		} 
+		summary {
+			font-size: 1.1rem;
+			font-weight: bold;
+			cursor: pointer;
+		}
+		
+		details.prerequisites:not([open]){
+			padding:0.7rem;
+			margin-top:0.5rem;			
+		}
+
+		details.prerequisites > summary {
+			color:  var(--accent-darker-color);
+		}
+		strong.prerequisites{			
+			color:  var(--accent-darker-color);
+		}
+		details.prerequisites:not([open]) > summary {
+			line-height: 0.1; 
+			font-size:15px; 
+		}
+		
+		
+		.section-options{
+			margin-top: 2rem;     			
+		}
+		
+		/* Vertical space between consecutive <li> */
+		li + li {
+			margin-top: 0.5rem;        
+		}
+		/*  Different space when the *preceding* <li> already ends with an image  */
+		li:has(> img:last-child) + li {
+			margin-top: 1rem;      
+		}
+
+		img.instruction-screenshot {
+			display: block;
+			margin: 1rem 0;
+			max-width: 600px;
+			max-height: 150px;
+			height: auto;
+			border-radius: 6px;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+			border: 1px solid #ccc;
+			transition: transform 0.2s ease-in-out;
+		}
+		img.instruction-screenshot.smaller-max-height { max-height: 100px; }
+		img.instruction-screenshot.larger-max-height  { max-height: 200px; }
+		img.instruction-screenshot.largest-max-height { max-height: 300px; }
+		img.instruction-screenshot.larger-max-dim  { max-width: 90%; max-height: 60vh; }
+
+		.inline-icon{
+			height: 1.5em;
+			vertical-align: middle;
+		}
+		code.larger{
+			color: darkgreen;
+			font-size: large;
+			font-weight: bolder;
+			text-shadow:
+				0.02px 0.02px 0 darkgreen,
+				-0.02px -0.02px 0 darkgreen;
+			letter-spacing: 0.02em;
+			padding: 0 3px;
+		} 
+		
+		/* utility: a tighter line break */
+		.small-br { 
+			margin-top: 3rem;    
+		}
+		.smaller-br { 
+			margin-top: 1.5rem;    
+		}

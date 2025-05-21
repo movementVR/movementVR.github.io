@@ -1,0 +1,129 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+  	<meta charset="UTF-8">
+  	<title>Static Builder Help Guide</title> 
+	 
+</head>
+	
+<body> 
+
+<div id="helpGuide-modal" class="general-modal helpGuide-modal">
+  <div id="helpGuide-parent" class="general-parent modal-parent helpGuide-parent">
+    <div class="helpGuide-top-bar top-bar">
+      <h2 class="top-header">Static Builder Help Guide</h2>
+      <input type="text" id="search-box" class="search-box" placeholder="Search guide...">
+      <span class="x-close">&times;</span>
+    </div>
+	  
+	   
+	  
+	  <div id="helpGuide-content" class="helpGuide-content page-content">
+ 
+		  
+<!-- - - - - - - - - - - 1. Overview  - - - - - - - - - - --->
+    
+		  <div class="section-header accordion-header" onclick="toggleStickyHeader(this)">1. Overview</div>
+			<div class="section-content accordion-content">
+			  <p>
+				The <strong>Static Builder</strong> lets you define constant values for task parameters that do not change across trials. 
+			  </p>
+			  <p>
+				This is the default interface when clicking on an object or button in the main MovementVR Builder GUI. 
+			  </p>
+			</div>
+ 
+<!-- - - - - - - - - - - 2. Organization across windows  - - - - - - - - - - --->  
+		  
+		  
+		  
+		  <div class="section-header accordion-header" onclick="toggleStickyHeader(this)">2. Accessing the desired parameters</div>
+		  <div class="section-content accordion-content">
+			  <p>
+				The content of each <strong>Static Builder</strong> window depends on what you click. Each object or button in the main MovementVR Builder page opens a different window for editing a unique set of parameters specific to that item:
+			  </p> 
+			  <ul>
+				<li>
+				  <strong>Game Objects</strong> buttons<i>(e.g., plate, bird...shown in the main grid)</i>: edit all parameters related to that object, such as appearance, position, and task-relevant behaviors.
+				</li>
+				<li>
+				  <strong>Trial Sequence</strong> buttons <i>(<em>Edit Transitions</em>, <em>Edit Instructions</em> in the top row)</i>: configure how the trial unfolds (e.g. intertrial interval, "home" conditions to start the trial, success/failure criteria...) or participant instructions.
+				</li>
+				<li>
+				  <strong>Quick Links</strong>: shortcuts to frequently used parameters grouped by topic (e.g., adaptation, data collection). These access (and may override) some of the same parameters as object-specific windows.
+				</li>
+			  </ul>
+		  </div>
+
+		   
+		  
+		  
+<!-- - - - - - - - - - - 3. Organization within a Static Builder window  - - - - - - - - - - --->  
+		  
+		  
+		  <div class="section-header accordion-header" onclick="toggleStickyHeader(this)">3. Static Builder organization</div>
+		  <div class="section-content accordion-content">   
+			  <p>
+				Each Static Builder window is organized into multiple <strong>tabs</strong>, sorting the parameters by function (e.g., for editing an object appearance, position, feedback effects...).  
+			  </p>
+			  <p>
+				Within each tab, each row contains a parameter "group" (e.g., an object position in X, Y, Z coordinates). Each row typically includes:	  
+			  </p>
+				<ul>
+				  <li><strong>Name </strong> of parameter group (left column)</li>
+				  <li><strong>Editable input fields</strong> to define parameter values (middle column)</li>
+				  <li><strong>Icons</strong> to access help or advanced options for this parameter group (right column)</li>
+				</ul> 		
+			  
+				<p>Some tabs include <strong>expandable sections</strong> that reveal advanced or rarely used parameters when clicked.</p>
+			  
+			</div>
+
+			 
+		  <!-- - - - - - - - - - - 3. Icons / buttons - - - - - - - - - - --->
+			<div class="section-header accordion-header" onclick="toggleStickyHeader(this)">3. Icons & action buttons </div>
+			<div class="section-content accordion-content">
+			   <p><strong>Inline icons</strong> (right column of each row) provide tools specific to that parameter group:</p> 
+			  <ul>
+				<li><strong>⚙ (gear icon):</strong> advanced options to set parameter values that are not constant but vary trial-by-trial (uploaded as .csv file or defined using Trial Builder interface)</li>
+				<li><strong>? (question mark icon):</strong> tooltip explaining the specific parameters and how to set them (e.g. units, coordinate system...).</li>
+			  </ul>	
+				<p>When you define a parameter using advanced options (via the ⚙ gear icon), it is disabled and no longer editable through the Static Builder. To revert back, click the ⚙ icon again and select the <strong>Static Builder</strong> option.</p> 	
+			  <p><strong>Action buttons</strong> at the bottom of the window apply to all parameters across all tabs within the current Static Builder window:</p> 
+			  <ul>
+				<li><strong>OK:</strong> Saves changes and closes Static Builder window.</li>
+				<li><strong>Cancel / X:</strong> Closes window without saving.</li>
+				<li><strong>Save:</strong> Saves changes but keeps window open to continue editing.</li>
+			  </ul>
+			</div>
+
+		  
+		  <!-- - - - - - - - - - - 4. Finish and export   - - - - - - - - - - ---> 
+			<div class="section-header accordion-header" onclick="toggleStickyHeader(this)">4. Finish and export</div>
+			<div class="section-content accordion-content">
+			  <p> 
+				When you finish setting the parameters in the current Static Builder window, click <storng>OK</storng> to save them and return to the main MovementVR Builder interface.  
+			  </p>
+			  <p>
+				When you have set all the desired parameters, click <strong>Download</strong> on the main MovementVR Builder page to export all parameters to <code>.csv</code> file.
+			  </p>
+			  <p>
+				The .csv file contains both static and trial-varying parameters and is used by the MovementVR application to apply your configured task structure during runtime. It must be transferred to the headset for use - see "Run Experiment" for instructions.
+			  </p>
+			</div>
+  
+		
+		<!--  ==============================================  --> 
+    </div>
+
+ 
+	  <button id="closeButton" class="closeButton">Close</button>
+  </div>
+</div>
+  
+
+</body>
+</html>

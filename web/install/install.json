@@ -1,14 +1,19 @@
 {
-    "path": "/web/install/",
-    "html":[
-        "install.html"
-    ],
-    "js":[
-        "install.js"
-    ],
-    "css":[
-    ],
-    "json":[
-        "install.json"
-    ]
+	"path": "/web/install/",
+	"scripts": {  
+		"entry":[
+			 "install.js"
+		],
+		"main":[ 
+			"install.js" 
+		]
+	},
+    "css": {  
+	},
+    "html": {
+		"main":[
+        	"install.html"
+    	]
+	}
 }
+ 

@@ -3,130 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Appearance  </title>
+    <title></title>
 </head>
 <body>
-<form class="tabcontent">      
-<div class="form-control">         
-<inputcolumn>
+<form class="param-form">
         
-<!-- Content:   --> 
- 
-    <name>Position [m]:</name>
-        <inputs>
-        <label for="TGTBIRD_OFFSET_X">X:</label>
-        <input id="TGTBIRD_OFFSET_X" name="setupScript,tgtBirdPositionOffsetX" type="number" value="0" />
-        <label for="TGTBIRD_OFFSET_Y">Y:</label>
-        <input id="TGTBIRD_OFFSET_Y" name="setupScript,tgtBirdPositionOffsetY" type="number" value="0" />
-        <label for="TGTBIRD_OFFSET_Z">Z:</label>
-        <input id="TGTBIRD_OFFSET_Z" name="setupScript,tgtBirdPositionOffsetZ" type="number" value="0" />
-        </inputs> 
-        <namenote>(wrt target center)&ensp;</namenote>
-        <inputs> 
-        <input id="TGTBIRD_OFFSETYAUTO_H" name="setupScript,tgtBirdPositionOffsetYStandOnTargetFlag" type="hidden" value="FALSE">
-        <input id="TGTBIRD_OFFSETYAUTO" name="setupScript,tgtBirdPositionOffsetYStandOnTargetFlag" type="checkbox" value="TRUE" checked >
-        <label for="TGTBIRD_OFFSETYAUTO">Set Y automatically (bird rests on target)</label>	
-        </inputs> 
-        <br><br>
+<!-- Content: --> 
+        	
 
-
-    <name>Orientation [deg]:</name>
-        <inputs>
-        <label for="TGTBIRD_ROT_X">X:</label>
-        <input id="TGTBIRD_ROT_X" name="setupScript,tgtBirdRotationX" type="number" value="0" />
-        <label for="TGTBIRD_ROT_Y">Y:</label>
-        <input id="TGTBIRD_ROT_Y" name="setupScript,tgtBirdRotationY" type="number" value="0" />
-        <label for="TGTBIRD_ROT_Z">Z:</label>
-        <input id="TGTBIRD_ROT_Z" name="setupScript,tgtBirdRotationZ" type="number" value="0" />
-        </inputs>  
-        <namenote> (0,0,0 = facing user) &ensp;</namenote>
-        <inputs> </inputs> 
-        <br><br>
-
-    <name>Size [m]:</name>
-        <inputs></inputs>
-        <subname>Cardinal</subname>
-        <inputs>
-        <label for="TGTBIRD_CARDINAL_SIZE_X">X:</label>
-        <input id="TGTBIRD_CARDINAL_SIZE_X" name="setupScript,tgtBirdCardinalSizeX" type="number" value="0.4644" />
-        <label for="TGTBIRD_CARDINAL_SIZE_Y">Y:</label>
-        <input id="TGTBIRD_CARDINAL_SIZE_Y" name="setupScript,tgtBirdCardinalSizeY" type="number" value="0.2079" />
-        <label for="TGTBIRD_CARDINAL_SIZE_Z">Z:</label>
-        <input id="TGTBIRD_CARDINAL_SIZE_Z" name="setupScript,tgtBirdCardinalSizeZ" type="number" value="0.2511" />      
-        </inputs>
-        <subname>Bluejay</subname>
-        <inputs>
-        <label for="TGTBIRD_BLUEJAY_SIZE_X">X:</label>
-        <input id="TGTBIRD_BLUEJAY_SIZE_X" name="setupScript,tgtBirdBluejaySizeX" type="number" value="0.4644" />
-        <label for="TGTBIRD_BLUEJAY_SIZE_Y">Y:</label>
-        <input id="TGTBIRD_BLUEJAY_SIZE_Y" name="setupScript,tgtBirdBluejaySizeY" type="number" value="0.2079" />
-        <label for="TGTBIRD_BLUEJAY_SIZE_Z">Z:</label>
-        <input id="TGTBIRD_BLUEJAY_SIZE_Z" name="setupScript,tgtBirdBluejaySizeZ" type="number" value="0.2511" />      
-        </inputs>
-        <subname>Robin</subname>
-        <inputs>
-        <label for="TGTBIRD_ROBIN_SIZE_X">X:</label>
-        <input id="TGTBIRD_ROBIN_SIZE_X" name="setupScript,tgtBirdRobinSizeX" type="number" value="0.4644" />
-        <label for="TGTBIRD_ROBIN_SIZE_Y">Y:</label>
-        <input id="TGTBIRD_ROBIN_SIZE_Y" name="setupScript,tgtBirdRobinSizeY" type="number" value="0.2079" />
-        <label for="TGTBIRD_ROBIN_SIZE_Z">Z:</label>
-        <input id="TGTBIRD_ROBIN_SIZE_Z" name="setupScript,tgtBirdRobinSizeZ" type="number" value="0.2511" />      
-        </inputs>
-        <subname>Chickadee</subname>
-        <inputs>
-        <label for="TGTBIRD_CHICKADEE_SIZE_X">X:</label>
-        <input id="TGTBIRD_CHICKADEE_SIZE_X" name="setupScript,tgtBirdChickadeeSizeX" type="number" value="0.3096" />
-        <label for="TGTBIRD_CHICKADEE_SIZE_Y">Y:</label>
-        <input id="TGTBIRD_CHICKADEE_SIZE_Y" name="setupScript,tgtBirdChickadeeSizeY" type="number" value="0.1386" />
-        <label for="TGTBIRD_CHICKADEE_SIZE_Z">Z:</label>
-        <input id="TGTBIRD_CHICKADEE_SIZE_Z" name="setupScript,tgtBirdChickadeeSizeZ" type="number" value="0.1674" />      
-        </inputs>
-        <subname>Goldfinch</subname>
-        <inputs>
-        <label for="TGTBIRD_GOLDFINCH_SIZE_X">X:</label>
-        <input id="TGTBIRD_GOLDFINCH_SIZE_X" name="setupScript,tgtBirdGoldfinchSizeX" type="number" value="0.3096" />
-        <label for="TGTBIRD_GOLDFINCH_SIZE_Y">Y:</label>
-        <input id="TGTBIRD_GOLDFINCH_SIZE_Y" name="setupScript,tgtBirdGoldfinchSizeY" type="number" value="0.1386" />
-        <label for="TGTBIRD_GOLDFINCH_SIZE_Z">Z:</label>
-        <input id="TGTBIRD_GOLDFINCH_SIZE_Z" name="setupScript,tgtBirdGoldfinchSizeZ" type="number" value="0.1674" />      
-        </inputs>
-        <subname>Sparrow</subname>
-        <inputs>
-        <label for="TGTBIRD_SPARROW_SIZE_X">X:</label>
-        <input id="TGTBIRD_SPARROW_SIZE_X" name="setupScript,tgtBirdSparrowSizeX" type="number" value="0.3096" />
-        <label for="TGTBIRD_SPARROW_SIZE_Y">Y:</label>
-        <input id="TGTBIRD_SPARROW_SIZE_Y" name="setupScript,tgtBirdSparrowSizeY" type="number" value="0.1386" />
-        <label for="TGTBIRD_SPARROW_SIZE_Z">Z:</label>
-        <input id="TGTBIRD_SPARROW_SIZE_Z" name="setupScript,tgtBirdSparrowSizeZ" type="number" value="0.1674" />      
-        </inputs> 
-        <br><br>
-    
-    
-    
-    <name>Scale all by:</name>
-        <inputs>
-        <label for="TGTBIRD_SIZE_X">X:</label>
-        <input id="TGTBIRD_SIZE_X" name="setupScript,tgtBirdsScaleX" type="number" value="1" />
-        <label for="TGTBIRD_SIZE_Y">Y:</label>
-        <input id="TGTBIRD_SIZE_Y" name="setupScript,tgtBirdsScaleY" type="number" value="1" />
-        <label for="TGTBIRD_SIZE_Z">Z:</label>
-        <input id="TGTBIRD_SIZE_Z" name="setupScript,tgtBirdsScaleZ" type="number" value="1" />
-        </inputs> 
-
-        <br><br>
-    
-    
-    
-    
+    <fieldset class="trial-builder-group">
+    <div class="name-type name">Position [m]:</div>
+         <div class="inputs-type inputs">
+        <label for="setupscript-tgtbirdpositionoffsetx" class="label-before-input label-start-block">X:</label>
+        <input id="setupscript-tgtbirdpositionoffsetx" name="setupScript,tgtBirdPositionOffsetX" type="number" step="any">
+        <label for="setupscript-tgtbirdpositionoffsety" class="label-before-input">Y:</label>
+        <input id="setupscript-tgtbirdpositionoffsety" name="setupScript,tgtBirdPositionOffsetY" type="number" step="any">
+        <label for="setupscript-tgtbirdpositionoffsetz" class="label-before-input">Z:</label>
+        <input id="setupscript-tgtbirdpositionoffsetz" name="setupScript,tgtBirdPositionOffsetZ" type="number" step="any">
+        </div> 
+	<div class="name-type namenote">(wrt target center)&ensp;</div>
+         <div class="inputs-type inputs">
+		<label class="label-standalone">&emsp;</label>
+        <input id="setupscript-tgtbirdpositionoffsetystandontargetflag_false" name="setupScript,tgtBirdPositionOffsetYStandOnTargetFlag" type="hidden" value="FALSE">
+        <input id="setupscript-tgtbirdpositionoffsetystandontargetflag_true" name="setupScript,tgtBirdPositionOffsetYStandOnTargetFlag" type="checkbox" value="TRUE">
+        <label for="setupscript-tgtbirdpositionoffsetystandontargetflag_true" class="label-after-input label-end-block">Set Y automatically (bird rests on target)</label>	
+        </div> 
+</fieldset>
+	
+<div class="fullrow-type largespace"></div>
+    <fieldset class="trial-builder-group">
+    <div class="name-type name">Orientation [deg]:</div>
+         <div class="inputs-type inputs">
+        <label for="setupscript-tgtbirdrotationx" class="label-before-input label-start-block">X:</label>
+        <input id="setupscript-tgtbirdrotationx" name="setupScript,tgtBirdRotationX" type="number" step="any">
+        <label for="setupscript-tgtbirdrotationy" class="label-before-input">Y:</label>
+        <input id="setupscript-tgtbirdrotationy" name="setupScript,tgtBirdRotationY" type="number" step="any">
+        <label for="setupscript-tgtbirdrotationz" class="label-before-input">Z:</label>
+        <input id="setupscript-tgtbirdrotationz" name="setupScript,tgtBirdRotationZ" type="number" step="any">
+        </div>  
+        <div class="name-type namenote"> (0,0,0 = facing user) &ensp;</div> 
+</fieldset>
+	
+<div class="fullrow-type largespace"></div>
+    <fieldset class="trial-builder-group">
+    <div class="name-type name">Size [m]:</div>
+         
+        <div class="fullrow-type smallspace"></div>
+         
+        <div class="name-type subname">Cardinal</div>
+         <div class="inputs-type inputs">
+        <label for="setupscript-tgtbirdcardinalsizex" class="label-before-input label-start-block">X:</label>
+        <input id="setupscript-tgtbirdcardinalsizex" name="setupScript,tgtBirdCardinalSizeX" type="number" step="any" min="0">
+        <label for="setupscript-tgtbirdcardinalsizey" class="label-before-input">Y:</label>
+        <input id="setupscript-tgtbirdcardinalsizey" name="setupScript,tgtBirdCardinalSizeY" type="number" step="any" min="0">
+        <label for="setupscript-tgtbirdcardinalsizez" class="label-before-input">Z:</label>
+        <input id="setupscript-tgtbirdcardinalsizez" name="setupScript,tgtBirdCardinalSizeZ" type="number" step="any" min="0">      
+        </div>
+        <div class="fullrow-type smallspace"></div>
+        <div class="name-type subname">Bluejay</div>
+         <div class="inputs-type inputs">
+        <label for="setupscript-tgtbirdbluejaysizex" class="label-before-input label-start-block">X:</label>
+        <input id="setupscript-tgtbirdbluejaysizex" name="setupScript,tgtBirdBluejaySizeX" type="number" step="any" min="0">
+        <label for="setupscript-tgtbirdbluejaysizey" class="label-before-input">Y:</label>
+        <input id="setupscript-tgtbirdbluejaysizey" name="setupScript,tgtBirdBluejaySizeY" type="number" step="any" min="0">
+        <label for="setupscript-tgtbirdbluejaysizez" class="label-before-input">Z:</label>
+        <input id="setupscript-tgtbirdbluejaysizez" name="setupScript,tgtBirdBluejaySizeZ" type="number" step="any" min="0">      
+        </div>
+        <div class="fullrow-type smallspace"></div>
+        <div class="name-type subname">Robin</div>
+         <div class="inputs-type inputs">
+        <label for="setupscript-tgtbirdrobinsizex" class="label-before-input label-start-block">X:</label>
+        <input id="setupscript-tgtbirdrobinsizex" name="setupScript,tgtBirdRobinSizeX" type="number" step="any" min="0">
+        <label for="setupscript-tgtbirdrobinsizey" class="label-before-input">Y:</label>
+        <input id="setupscript-tgtbirdrobinsizey" name="setupScript,tgtBirdRobinSizeY" type="number" step="any" min="0">
+        <label for="setupscript-tgtbirdrobinsizez" class="label-before-input">Z:</label>
+        <input id="setupscript-tgtbirdrobinsizez" name="setupScript,tgtBirdRobinSizeZ" type="number" step="any" min="0">      
+        </div>
+        <div class="fullrow-type smallspace"></div>
+        <div class="name-type subname">Chickadee</div>
+         <div class="inputs-type inputs">
+        <label for="setupscript-tgtbirdchickadeesizex" class="label-before-input label-start-block">X:</label>
+        <input id="setupscript-tgtbirdchickadeesizex" name="setupScript,tgtBirdChickadeeSizeX" type="number" step="any" min="0">
+        <label for="setupscript-tgtbirdchickadeesizey" class="label-before-input">Y:</label>
+        <input id="setupscript-tgtbirdchickadeesizey" name="setupScript,tgtBirdChickadeeSizeY" type="number" step="any" min="0">
+        <label for="setupscript-tgtbirdchickadeesizez" class="label-before-input">Z:</label>
+        <input id="setupscript-tgtbirdchickadeesizez" name="setupScript,tgtBirdChickadeeSizeZ" type="number" step="any" min="0">      
+        </div>
+        <div class="fullrow-type smallspace"></div>
+        <div class="name-type subname">Goldfinch</div>
+         <div class="inputs-type inputs">
+        <label for="setupscript-tgtbirdgoldfinchsizex" class="label-before-input label-start-block">X:</label>
+        <input id="setupscript-tgtbirdgoldfinchsizex" name="setupScript,tgtBirdGoldfinchSizeX" type="number" step="any" min="0">
+        <label for="setupscript-tgtbirdgoldfinchsizey" class="label-before-input">Y:</label>
+        <input id="setupscript-tgtbirdgoldfinchsizey" name="setupScript,tgtBirdGoldfinchSizeY" type="number" step="any" min="0">
+        <label for="setupscript-tgtbirdgoldfinchsizez" class="label-before-input">Z:</label>
+        <input id="setupscript-tgtbirdgoldfinchsizez" name="setupScript,tgtBirdGoldfinchSizeZ" type="number" step="any" min="0">      
+        </div>
+        <div class="fullrow-type smallspace"></div>
+        <div class="name-type subname">Sparrow</div>
+         <div class="inputs-type inputs">
+        <label for="setupscript-tgtbirdsparrowsizex" class="label-before-input label-start-block">X:</label>
+        <input id="setupscript-tgtbirdsparrowsizex" name="setupScript,tgtBirdSparrowSizeX" type="number" step="any" min="0">
+        <label for="setupscript-tgtbirdsparrowsizey" class="label-before-input">Y:</label>
+        <input id="setupscript-tgtbirdsparrowsizey" name="setupScript,tgtBirdSparrowSizeY" type="number" step="any" min="0">
+        <label for="setupscript-tgtbirdsparrowsizez" class="label-before-input">Z:</label>
+        <input id="setupscript-tgtbirdsparrowsizez" name="setupScript,tgtBirdSparrowSizeZ" type="number" step="any" min="0">      
+        </div>         
+</fieldset>
+	
+<div class="fullrow-type largespace"></div>
+    <fieldset class="trial-builder-group">
+    <div class="name-type name">Scale all by:</div>
+         <div class="inputs-type inputs">
+        <label for="setupscript-tgtbirdsscalex" class="label-before-input label-start-block">X:</label>
+        <input id="setupscript-tgtbirdsscalex" name="setupScript,tgtBirdsScaleX" type="number" step="any" min="0">
+        <label for="setupscript-tgtbirdsscaley" class="label-before-input">Y:</label>
+        <input id="setupscript-tgtbirdsscaley" name="setupScript,tgtBirdsScaleY" type="number" step="any" min="0">
+        <label for="setupscript-tgtbirdsscalez" class="label-before-input">Z:</label>
+        <input id="setupscript-tgtbirdsscalez" name="setupScript,tgtBirdsScaleZ" type="number" step="any" min="0">
+        </div>  
+</fieldset>  
  
 <!-- End of Content --> 
  
-</inputcolumn> 
-</div>  
-<figurecolumn>
- <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
-</figurecolumn>
+</form> 
+<div class="param-img">
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  > --> 
+</div>
         
-</form>
-</body>
+</body> 
 </html>

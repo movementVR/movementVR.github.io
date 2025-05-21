@@ -3,40 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>   </title>
+    <title></title>
 </head>
 <body>
-<form class="tabcontent">      
-<div class="form-control">         
-<inputcolumn>
+<form class="param-form">
         
 <!-- Content: --> 
  
  
-    
-<name>Position [m]</name>
-    <inputs>
-    <label for="TARGET_X">X:</label>
-    <input id="TARGET_X" name="setupScript,targetLocalPositionX" type="number" value="0" />
-    <label for="TARGET_Y">Y:</label>
-    <input id="TARGET_Y" name="setupScript,targetLocalPositionY" type="number" value="0.3" />
-    <label for="TARGET_Z">Z:</label>
-    <input id="TARGET_Z" name="setupScript,targetLocalPositionZ" type="number" value="0" />
-    </inputs>         
-    <namenote>(wrt plate start pos.)&ensp;</namenote>
-    <inputs> </inputs> 
-    
-    
+	
+		 
+<fieldset class="trial-builder-group"> 
+	<div class="name-type name">Position [m]</div>
+		 <div class="inputs-type inputs">
+		<label for="setupscript-targetlocalpositionx" class="label-before-input label-start-block">X:</label>
+		<input id="setupscript-targetlocalpositionx" name="setupScript,targetLocalPositionX" type="number" step="any">
+		<label for="setupscript-targetlocalpositiony" class="label-before-input">Y:</label>
+		<input id="setupscript-targetlocalpositiony" name="setupScript,targetLocalPositionY" type="number" step="any">
+		<label for="setupscript-targetlocalpositionz" class="label-before-input">Z:</label>
+		<input id="setupscript-targetlocalpositionz" name="setupScript,targetLocalPositionZ" type="number" step="any">
+		</div>         	
+		<div class="name-type namenote">(wrt plate start pos.)&ensp;</div>
+</fieldset> 
+	  
+
+
  
 <!-- End of Content --> 
  
-</inputcolumn> 
-</div>  
-<figurecolumn>
-    <img src="web/img/parameters/targetPosition.png" style="width:100%;">
- <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
-</figurecolumn>
+</form> 
+<div class="param-img">
+    <img src="web/img/parameters/targetPosition.png" >
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  > --> 
+</div>
         
-</form>
-</body>
+</body> 
 </html>

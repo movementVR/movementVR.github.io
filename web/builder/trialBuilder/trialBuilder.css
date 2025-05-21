@@ -1,0 +1,1493 @@
+ 
+/*  --------------------  BODY ------------------------- */
+
+body *{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+
+
+body {
+	text-align: center;  /* child container centered horizontally */ 
+} 
+ 
+
+ 
+
+ /*  -------------- TOP ROW / MAIN DROPDOWN -------------------- */
+
+.dropdownContainer {
+    --option-padding-left: 0.15em;
+    /* margin-top: 0.15em; */
+    margin-bottom: 0.1em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    /* color: red; */
+}
+
+
+
+/* Main Window Title */
+.source-selector-parent .general-modal.selection-modal .title-row .main-title {
+  font-size: 22px;
+  font-weight: bolder;
+  text-align: center;
+  color: #007070;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+
+.source-selector-container.dropdownContainer {
+    display: flex;
+    flex-direction: row;
+    margin: 9px;
+    padding: 0px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+}
+.dropdownContainer label {
+    color: white;
+    color:  pink;
+    right: 100%;
+    padding: 3px;
+    text-wrap: nowrap;
+    /* font-size: 12; */
+    font-size: 11px;
+    /* position: absolute; */
+}
+
+.source-selector-container.dropdownContainer label {
+    /* position: initial; */
+    font-size: 16px;
+    color:  var(--var-col-darkercyan);
+    font-weight: bold;
+    color: black;
+}
+.dropdownContainer select {
+    background-color: white;
+    color: var(--var-col-darkercyan);
+    padding: var(--option-padding-left);
+    font-size: 14px;
+    /* font-weight: bold; */
+    text-shadow: 0.2px 0.2px;
+    text-shadow: 0.2px 0.2px;
+    border-radius: 5px;
+}
+
+.source-selector-container.dropdownContainer select {
+    padding: 10px;
+    margin: 0px;
+    width: 200;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: white;
+    color: var(--var-col-darkercyan);
+    text-shadow: 0.2px 0.2px;
+    border-radius: 5px;
+    border: 2px solid var(--var-col-darkercyan);
+}
+
+.source-selector-container.dropdownContainer select:hover {
+    background-color: var(--var-col-cyan0);
+}
+
+
+.source-selector-parent {
+    display: flex;
+    position: absolute;
+    background-color: var(--var-col-cyan1);
+}
+
+.source-selector-parent .general-modal.selection-modal { 
+}
+
+.general-modal.selection-modal .selection-modal-parent .close-button {
+    /* color: red; */
+    /* width:  100%; */
+    /* margin:  0 auto; */
+    /* align-self: flex-start; */
+}
+
+.general-modal.selection-modal .selection-modal-parent {
+    width:  auto;
+}
+
+
+.source-selector-parent .general-modal.selection-modal  .modal-parent {
+    display: flex;
+    /* color: red; */
+    flex-direction: column;
+    flex-wrap: nowrap;
+    
+     /* Sets the container to a 16:9 ratio */
+    max-width: 800px;
+}
+
+.source-selector-parent .selection-modal .modal-parent.selection-modal-parent .selection-modal-panel-wrapper {
+    display: flex;
+    flex: 1;
+    gap: inherit;
+}
+.source-selector-parent .selection-modal .modal-parent.selection-modal-parent .selection-modal-panel-wrapper.vert {
+    flex-direction: column;
+}
+.source-selector-parent .selection-modal .modal-parent.selection-modal-parent .selection-modal-panel-wrapper.horiz {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.source-selector-parent .general-modal.selection-modal  .modal-parent  .modal-panel {
+   /* display: flex; */
+   flex: 1;
+   /* color: blue; */
+   max-width: 500px;
+}
+
+.source-selector-parent .general-modal.selection-modal .modal-parent .modal-panel.panel-three .panel-content {
+    /* gap: 30px; */
+    /* margin: 10px; */
+    /* padding: 20px; */
+}
+
+.source-selector-parent .general-modal.selection-modal .modal-parent .modal-panel .panel-content {
+    gap: 20px;
+    padding:  20px;
+}
+
+.source-selector-parent .general-modal.selection-modal  .modal-parent  .modal-panel  .input-row {
+    /* padding: 10px; */
+}
+
+
+.source-selector-parent .general-modal.selection-modal  .modal-parent  .modal-panel  .input-row  p {
+    font-size: 14px;
+    line-height: 1.7;
+    text-align: left;
+}
+
+
+
+
+
+
+
+/* <!-- L1 (1/2): Top Row Container -->  */
+.source-selector-container{
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: 10px;
+	/* border: 1px solid #99bbff; */
+	/* display: none; */
+}
+
+
+/*<!-- L2 (1/2): "Use values from" label --> */
+.overallInputSourceDropdownLabel{
+    /* margin-top: 20px; */
+    /* margin-left: 50px; */
+} 
+
+/*<!-- L2 (2/2): "Use values from" dropdown  --> */
+.overall-input-source-dropdown {
+    margin-top: 20px;
+	margin-right: 100px;
+}   
+
+
+
+
+
+
+
+
+
+/*  -------------- [L1] MAIN CONTAINER -------------------- */
+
+.trialbuilder-parentContainer {
+	display: inline-flex;      /* shrink-wraps the content */
+	flex-direction: column;
+	position: relative;
+}
+ 
+
+/*  PARENT  */
+/*  <!-- L1 (2/2): Main Content Container --> */
+.trialbuilderMainContainer {
+	display: inline-flex;  /* Flexible layout of child elements - inline & width <- children content */
+	flex-wrap: nowrap;  /* Prevents wrapping of child elements */
+	overflow-x: auto;   /* Enables horizontal scrolling when necessary */
+	background-color: #f0f0f0;
+	height: var(--panel-height);
+	background: none;
+	gap: 10px;
+	margin: 10px;
+}
+
+
+
+
+
+/*  -------------- [L2] PANEL CONTAINERS: Left Panel, Right Panel(s) -------------------- */
+
+/*  LEFFT & RIGHT  */
+ /* <!-- L2 (1/2): Left Panel Main Container  -->   */
+ /* <!-- L2 (2/2): Right Panel Main Container  -->   */
+.trialbuilderPanel{ 
+	/* Sizing based on content, do not grow or shrink */
+	display: flex;
+	flex-flow: column;
+	flex-grow: 1; /* do not expand to fill the parent container */
+	flex-shrink: 1; /* individual panels do not shrink (if parent too small -> parent horizontal scrollbar) */
+	flex-basis: auto; /* initial size based on content */
+	border: 2px solid var(--var-col-darkercyan); /* Add border to separate titles */
+	/* --var-panel-radius:  10px; */
+	/* border-radius: var(--var-panel-radius); */
+	/* box-sizing: border-box; */
+	overflow: hidden;
+	border-radius: 5px;
+} 
+ 
+
+
+
+/*  -------------- [L3] TITLE CONTAINER  &  LIST CONTAINER   -------------------- */  
+
+/*  TITLE CONTAINER <fieldset> */
+/* 2 X L3 (1/2): Left and Right Title Containers --> */ 
+.trialbuilderInputsTitleContainer {
+	display: contents; /* fieldset for internal organization, not styling */
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	gap: 12px;
+	/* border: 0.5px solid gray; */
+	/* padding-bottom: 6px; */
+	/* background-color: #c8c8c821; */
+	border: 0px;
+	align-items: stretch;
+}
+
+/*  LIST CONTAINER <ol> */
+/* 2 X L3 (2/2): Left and Right Lists Containers --> */ 
+.trialbuilderInputsListContainer { 
+    overflow-y: scroll;
+    display: flex;
+    flex-flow: column;
+    flex: auto;
+    margin-top: var(--panellist-top-margin);
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+} 
+ 
+
+.trialbuilderInputsListContainer.blocks-panel {
+    padding: var(--left-panel-padding);
+    gap: 5px;
+    margin-top: var(--panellist-top-margin);
+    background: none;
+} 
+.trialbuilderInputsListContainer.inputs-panel {
+    padding: var(--right-panel-padding);
+	gap:5px;
+} 
+
+ 
+
+
+/*  -------------- [L4] TITLE ROW  -------------------- */  
+
+
+
+/*  TITLE ROW  <header> */
+/* 2 X L4 (1/1) (Left: "Trial Blocks", Right: phase name + dropdown)    */
+.trialbuilderInputsTitleParent {
+	display: flex;   /* Flexible layout of child elements - inline */
+	align-items: center;  /* centers children vertically */
+	     /* centers children horizontally  */
+	/* background-color: white; */
+	/* border-bottom: 1px solid black; */
+	/* height: 40px; */
+	/* width: 100%; */
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-self: stretch;
+	/* background-color: var(--var-col-darkercyan); */
+	min-height: 25px;
+	/* flex-grow: 0; */
+	flex-shrink: 1;
+	flex-basis: auto;
+	min-height: 25px;
+}
+.trialbuilderInputsTitleParent.blocks-panel {
+	padding: var(--left-panel-padding);
+}
+.trialbuilderInputsTitleParent.inputs-panel {
+	padding: var(--right-panel-padding);
+}
+
+
+.panelTitleRow.trialbuilderInputsTitleParent {
+	 min-height: 30px;
+	 background-color: var(--var-col-darkercyan);
+}
+.listTitleRow.trialbuilderInputsTitleParent {
+	 /* min-height: 0px; */
+}
+
+
+
+
+ 
+
+/*  ROW 2   */
+.listTitleRow .trialbuilderInputsTitle.itemInheritedInputs.inputs-panel  { /*"sequence values"*/
+    /* gap: 10px; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
+} 
+.listTitleRow .trialbuilderInputsTitle.listTitle  {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--var-col-darkercyan);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+ 
+
+
+
+.trialbuilderInputsTitleParent.listTitleRow  .listLabel {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: baseline;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: min-content;
+    /* font-size: 12px; */
+    /* transform: translate(-2px, 5px); */
+    /* line-height: 0.9; */
+}
+
+.trialbuilderInputsTitleParent.listTitleRow.blocks-panel .listLabel {
+    color: red;
+    font-size: 14px;
+    color:  var(--var-col-darkercyan);
+    text-shadow: 0.2px 0.2px;
+}
+
+.trialbuilderInputsTitleParent.listTitleRow.inputs-panel .listLabel {
+    font-size: 12px;
+    line-height: 0.9;
+    padding: 0px;
+    margin: 0px;
+}  
+
+
+
+
+
+
+/*  -------------- [L4B] TITLE, "ELEMENT" CONTAINER FOR GROUPING ITEMS  -------------------- */  
+
+
+.trialbuilderInputsTitleElement{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+ /* "headerContainer" = Col 2-6/6 - Left + Right Panel (Row 1)
+(Left: Panel Title )
+(Right: Trial type Title +  Dropdown for sequence selection ) */ 
+.panelTitleRow .trialbuilderInputsTitleElement.headerContainer {
+    justify-content: space-between;
+    align-items: center;
+}
+   
+/* "repeatsContainer" = Col 3-4/6 - Left Panel */
+.trialbuilderInputsTitleElement.repeatsContainer{
+	justify-content: flex-start;
+	align-items: flex-end;
+}
+ 
+/* "borderContainer" = Col 2-4/6 - Right Panel */
+.trialbuilderInputsTitleElement.borderContainer { 
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+
+/* "probabilityContainer" = Col 5-6/6 - Right Panel */
+.trialbuilderInputsTitleElement.probabilityContainer {
+	display: flex;
+	flex-grow: 0;
+	flex-shrink: 1;
+	min-height: 0;
+	align-items: stretch;
+	/* position: absolute; */
+	justify-content: flex-end;
+	align-self: flex-end;
+	/* flex-basis: min-content; */
+}
+
+
+/* "buttonsContainer" = Col 5-6/6 - Left Panel */ 
+.trialbuilderInputsTitleElement.buttonsContainer {
+	justify-content: flex-end;
+	align-items: flex-end;
+}
+
+
+/*  -------------- [L5] COLUMN ITEMS WITHIN TITLE ROWS -------------------- */   
+
+
+/* Title Row Element, General Superclass */
+.trialbuilderInputsTitle { 
+}
+
+/* Col 1/6 - Both Panels: "Order" (Empty for Item Order)  */
+/* 2X <!-- L5 (1/6)  -->  */
+.trialbuilderInputsTitle.itemOrder { 
+}	  
+
+
+/* 1) Row 1 Phase Name */    
+.panelTitleRow .trialbuilderInputsTitleElement.headerContainer .trialbuilderInputsTitle.panelTitle{
+	font-size: 16px;
+	font-weight: 900;
+	color: white;
+	padding: 3px;
+}
+
+
+
+
+/* Col 2/6 - Left Panel: "TrialType" (Label "Trial Blocks")  */ 
+/* Col 3/6 - Left Panel: "RepeatsText" (Empty for Repeats Label)  */ 
+/* Col 4/6 - Left Panel: "Repeats" (Empty for Repeats Input)  */ 
+
+
+
+
+
+/* Col 5/6 - Both Panels: "Delete" (Empty for Delete Button)  */
+/* 2X <!-- L5 (5/6)  -->  */ 
+.trialbuilderInputsTitle.itemDelete{
+} 
+
+/* Col 6/6 - Both Panels: "Add" ("+" Add Item Button)  */
+/* 2X <!-- L5 (6/6)  -->  */  
+.trialbuilderInputsTitle.itemAdd{   
+    font-size: 16px;   
+	line-height: 0.7em;  
+    cursor: pointer;   
+} 
+
+.listTitleRow .trialbuilderInputsTitle.itemAdd {
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    background-color: darkcyan;
+    border: none;
+    padding: 6px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+.listTitleRow .trialbuilderInputsTitle.itemAdd:hover {
+    background-color: var(--var-col-darkercyan);
+}
+
+.trialbuilderInputsTitle.itemAdd.blocks-panel{
+	/* height: var(--left-col6-width); */
+	transform: translateX(-10px);
+}
+.trialbuilderInputsTitle.itemAdd.inputs-panel{
+  	/* height: var(--right-col4-width); */
+}  
+	 
+ 
+
+
+
+/*  -------------- MISCELLANEOUS TITLE ROW  --------------  */   
+
+
+.trialbuilderInputsTitleParent.listTitleRow.blocks-panel  .listLabel {
+	text-wrap: nowrap;
+	/* transform: translate(0px, 0px); */
+}
+
+.trialbuilderInputsTitleParent.listTitleRow.blocks-panel .repeatsContainer .listLabel {
+    padding-left: 7;
+}
+
+.trialbuilderInputsTitleParent.listTitleRow.inputs-panel  .listLabel{
+    transform: translate(-2px, 5px);
+}
+
+
+
+
+
+
+/*  -------------- [L4] LIST ELEMENT ROW(S)  -------------------- */  
+/*  LIST ELEMENT ROW  <li> */
+/* L4 (*variable number*): List element (draggable) (both panels) */
+.trialbuilderInputsItemParent{
+	display: flex;      /* Flexible layout of child elements - inline */
+	align-items: center;  /* centers children vertically */
+	justify-content: center;     /* centers children horizontally  */
+	flex-flow: row; 
+	
+	/* Styles that will be used by draggable items */
+	--cursor-drag: pointer; /* shows "hand" cursor for grabbing */
+	--outline-drag: 1px solid var(--var-col-darkercyan);
+	--background-color-drag: #E5F9F9;
+	--opacity-drag: 0.5;
+}
+ 
+
+.trialbuilderInputsItemParent.blocks-panel {
+	/* border: 1.5px solid var(--var-col-darkercyan); */
+	/* border-bottom:  1.5px solid var(--var-col-darkercyan); */
+}
+
+/*  -------------- [L4B] LIST, "ELEMENT" CONTAINER FOR GROUPING ITEMS  -------------------- */  
+/* STYLE FOR ELEMENTS FOR GROUPING */
+/* Col 2-4/6 - Right Panel */
+.trialbuilderInputsItemElement.borderContainer {
+    display: flex;
+    border: 1.5px solid var(--var-col-darkercyan);
+}
+
+.trialbuilderInputsItemElement.borderContainer.blocks-panel {border-top-left-radius: var(--list-element-radius);border-bottom-left-radius: var(--list-element-radius);}
+
+.trialbuilderInputsItemElement.borderContainer.blocks-panel {
+	background-color: var(--var-col-inputBackgroundLightGray);
+}
+
+.trialbuilderInputsItemElement.buttonsContainer.blocks-panel {
+    display: flex;
+    border: 1.5px solid var(--var-col-darkercyan);
+    border-left: none;
+    align-items: stretch;
+    border-top-right-radius: var(--list-element-radius);
+    border-bottom-right-radius: var(--list-element-radius);
+}
+
+.trialbuilderInputsItemParent.blocks-panel {
+    /* color: red; */
+    /* border: 1.5px solid var(--var-col-darkercyan); */
+    /* border-radius: 550px; */
+    /* overflow: hidden; */
+    /* background-color: var(--var-col-inputBackgroundLightGray); */
+}
+
+.trialbuilderInputsItemElement.borderContainer.blocks-panel {
+    padding: 7px 0px 7px 0px;
+}
+
+
+/* Col 5-6/6 - Both Panels */
+.trialbuilderInputsItemElement.probabilityContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+    justify-content: center;
+} 
+ 
+ 
+
+/*  -------------- [L5] COLUMN ITEMS WITHIN LIST ELEMENTS ROWS -------------------- */   
+ 
+/* List Element Item, General Superclass */
+.trialbuilderInputsItem {
+	text-align: center;/* horizontal alignment */
+	font-size: 12px;
+} 
+
+/* Col 1/6 - Both Panels: "Order" (Item Number)  */
+/* 2X <!-- L5 (1/6)  -->  */
+.trialbuilderInputsItem.itemOrder.inputs-panel{ 
+	/* Styles that will be used by panels with numbered elements */  
+	/* (itemOrder = numerical, for Left Panel & Right sequential/blocked/random)  */
+	--display-order: list-item; /* shows "hand" cursor for grabbing */
+	--transform-order: translateX(-2px); /* shows "hand" cursor for grabbing */
+}
+
+.trialbuilderInputsItem.itemOrder.blocks-panel {
+    --display-order: list-item;
+    /* --transform-order: translateX(-5px); */
+    text-align: center;
+    align-self: center;
+}   
+ 
+/* Col 2/6 - Left Panel: "TrialType" (trial type dropdown)  */
+/* Col 3/6 - Left Panel: "RepeatsText" (Repeats Label)  */
+/* Col 4/6 - Left Panel: "Repeats" (Repeats Input)  */
+
+/* Col 2/6 - Right Panel: "InheritedInputs" (Container with Parameters Input Group from Builder) */
+/* Col 3/6 - Right Panel: "Probability" (probability input)  */
+/* Col 4/6 - Right Panel: "ProbabilityText" (probability "/N" label)  */
+
+
+
+/* Col 5/6 - Both Panels: "Delete" (🗑 Delete Button)  */
+/* 2X <!-- L5 (5/6)  -->  */ 
+.trialbuilderInputsItem.itemDelete{    
+    font-size: 18px;  
+	cursor: pointer;	
+	align-self: stretch; /* occupies the entire parent container height */
+	display: flex;   /* flex so that we can set vertical alignment of child text */
+	flex-direction: row;
+	align-items: center; /* vertical alignment of child text = center */	
+}
+
+span.trialbuilderInputsItem.itemDelete.blocks-panel {display: flex;justify-self: flex-end;justify-content: flex-end;} 
+.trialbuilderInputsItem.itemDelete:hover {
+    color: red; /* Change color on hover */
+}
+ 
+
+
+/* Col 6/6 - Both Panels: "Drag" (☰ Drag Item Button)  */
+/* 2X <!-- L5 (6/6)  -->  */  
+.trialbuilderInputsItem.itemDrag{
+    cursor: grab;
+    align-self: stretch; /* occupies the entire parent container height */
+    display: flex;   /* flex so that we can set vertical alignment of child text */
+    flex-direction: row;
+    align-items: center; /* vertical alignment of child text = center */
+}
+
+span.trialbuilderInputsItem.itemDrag.blocks-panel {
+    display: flex;
+    justify-self: flex-start;
+    justify-content: flex-end;
+}    
+
+/*  -------------- [L5] ITEM WIDTHS AND MARGINS (Title Row & List Elements items)  --------------  */   
+ 
+  
+/* LEFT PANEL */	
+/* Col 1/6 -"Order"  */				
+.itemOrder.blocks-panel {
+  	width: var(--left-col1-width);
+  	margin-right: var(--left-col1-margin);
+}
+
+/* Col 2-4/6 - Border Element Container */
+.borderContainer.blocks-panel { 
+    width: var(--left-width-border-el); 
+}
+
+/* Col 3-4/6 - Repeats Element Container */
+.repeatsContainer.blocks-panel {
+    width: var(--left-width-repeats-el);
+}
+/* Col 5-6/6 - Probability Element Container*/
+.buttonsContainer.block-panel {
+    width: var(--left-width-buttons-el);
+}
+.trialbuilderInputsTitleElement.headerContainer.blocks-panel {
+    width:  var(--left-width-header-el);
+}
+
+/* Col 2/6 - "TrialType"  */
+.itemTrialType.blocks-panel{
+	width: var(--left-col2-width);
+	margin-right: var(--left-col2-margin);
+	margin-left: var(--left-col2-marginLeft);
+}
+
+.itemTrialType.blocks-panel {
+    margin-left: 10px;
+}  
+/* Col 3/6 - "RepeatsText" */ 
+.itemRepeatsText.blocks-panel{
+	width: var(--left-col3-width);
+	margin-right: var(--left-col3-margin);
+}
+/* Col 4/6 - "Repeats" */
+.itemRepeats.blocks-panel{
+	width: var(--left-col4-width);
+	margin-right: var(--left-col4-margin); 
+} 
+/* Col 5/6 - "Delete" */ 
+.itemDelete.blocks-panel{
+	width: var(--left-col5-width);
+	margin-right: var(--left-col5-margin);
+} 
+/* Col 6/6 - "Add" (title row), "Drag" (list element)  */  
+.itemAdd.blocks-panel{
+	/* width: var(--left-col6-width); 
+	margin-right: var(--left-col6-margin); */
+}  
+.itemDrag.blocks-panel{
+	width: var(--left-col6-width); 
+	margin-right: var(--left-col6-margin); 
+}  
+  
+
+
+/* RIGHT PANEL */	
+/* Col 1/6 - "Order"  */
+.itemOrder.inputs-panel{ 
+  	width: var(--right-col1-width);
+  	margin-right: var(--right-col1-margin);
+}
+
+/* Col 2-4/6 - Border Element Container */
+.borderContainer.inputs-panel {
+    width: var(--right-width-border-el);
+}
+/* Col 5-6/6 - Probability Element Container*/
+.probabilityContainer.inputs-panel { 
+    width: var(--right-width-probab-el); 
+} 
+.trialbuilderInputsTitleElement.headerContainer.inputs-panel {
+    width:  var(--right-width-header-el);
+}
+/* Col 2/6 - "InheritedInputs"  */ 
+.itemInheritedInputs.inputs-panel{
+  	width: var(--right-col2-width);
+  	margin-right: var(--right-col2-margin);
+}
+/* Col 3/6 - "Probability" */	
+.itemProbability.inputs-panel{
+  	width: var(--right-col5-width);
+  	margin-left: var(--right-col5-marginLeft); 
+}
+
+  
+/* Col 4/6 - "ProbabilityText" */		
+.itemProbabilityText.inputs-panel{
+  	width: var(--right-col6-width);
+  	margin-left: var(--right-col6-marginLeft);
+} 
+/* Col 5/6 - "Delete" */  
+.itemDelete.inputs-panel{
+  	width: var(--right-col3-width);
+  	margin-right: var(--right-col3-margin); 
+} 
+/* Col 6/6 - "Add" (title row)  */  
+.itemAdd.inputs-panel{
+  	/* width: var(--right-col4-width); */
+  	/* margin-right: var(--right-col4-margin); */
+} 
+/* Col 6/6 - "Drag" (list element)  */  
+.itemDrag.inputs-panel{
+  	width: var(--right-col4-width); 
+  	margin-right: var(--right-col4-margin);
+} 
+  
+
+
+
+
+
+
+
+
+/*  --------------------  DEFINITIONS  /  VARIABLES  ------------------------- */
+:root {   /* Panel Height */
+  --panel-height: 400px;
+  --left-panel-padding: 0px 5px 0px 20px;
+  --right-panel-padding: 0px 25px 0px 30px;
+  --panellist-top-margin: 3px;
+  --list-element-radius: 25px;
+}
+
+/* [L5] ITEMS, Column Widths (Right Margins):
+	Left Panel:
+		Order: 15(0), 
+		TrialType: 150(5),
+		RepeatsText: 10(2), 
+		Repeats: 40(2), 
+		Delete: 10(5), 
+		Drag: 14(5)   
+	Right Panel:
+		Order: 20(0), 
+		InheritedInputs: 450(20), 
+		Delete: 10(10), 
+		Drag: 14(5), 
+		Probability: 40(2), 
+		ProbabilityText: 10(20)   */
+:root {
+  /* Left Panel Column Definitions */
+  --left-col1-width: 5px;
+  --left-col1-margin: 0;
+  --left-col2-width: 150px;
+  --left-col2-margin: 10px;
+  --left-col3-width: 10px;
+  --left-col3-margin: 2px;
+  --left-col4-width: 40px;
+  --left-col4-margin: 25px;
+  --left-col5-width: 20px;
+  --left-col5-margin: 10px;
+  --left-col6-width: 10px;
+  --left-col6-margin: 10px;
+  --left-col2-marginLeft: 15px;
+ 
+  /* Right Panel Column Definitions */
+  --right-col1-width: 0px;
+  --right-col1-margin: 0px;
+  --right-col2-width: 450px; /* Must adjust to fit static builder parameters */
+  --right-col2-margin: 10px;
+  --right-col3-width: 10px;
+  --right-col3-margin: 10px;
+  --right-col4-width: 14px;
+  --right-col4-margin: 5px;
+  --right-col5-width: 40px;
+  --right-col5-marginLeft: 20px;
+  --right-col6-width: 10px;
+  --right-col6-marginLeft: 2px;
+}
+/* computed */
+:root {	
+  /* Left Panel Column Definitions */
+  /* borderContainer: Sum widths and margins for left cols 1, 3, and 4 */
+  --left-width-border-el: calc( 
+    var(--left-col2-width) + var(--left-col2-margin) + var(--left-col2-marginLeft) +
+    var(--left-col3-width) + var(--left-col3-margin) +
+    var(--left-col4-width) + var(--left-col4-margin)
+  );
+
+  /* trialsContainer: Sum widths and margins for left cols 3, and 4 */
+  --left-width-repeats-el: calc( 
+    var(--left-col3-width) + var(--left-col3-margin) +
+    var(--left-col4-width) + var(--left-col4-margin)
+  );
+
+  /*buttonsContainer:  Sum widths and margins for left cols 5 and 6 */
+  --left-width-buttons-el: calc(
+    var(--left-col5-width) + var(--left-col5-marginLeft) +
+    var(--left-col6-width) + var(--left-col6-marginLeft)
+  );
+  /* title headerContainer element */
+  --left-width-header-el: calc(var(--left-width-repeats-el) + var(--left-width-buttons-el) );
+
+	
+  /* Right Panel Column Definitions */
+  /* borderContainer: Sum widths and margins for right cols 2, 3, and 4 */
+  --right-width-border-el: calc(
+    var(--right-col2-width) + var(--right-col2-margin) +
+    var(--right-col3-width) + var(--right-col3-margin) +
+    var(--right-col4-width) + var(--right-col4-margin)
+  );
+
+  /*probabilityContainer:  Sum widths and margins for right cols 5 and 6 */
+  --right-width-probab-el: calc(
+    var(--right-col5-width) + var(--right-col5-marginLeft) +
+    var(--right-col6-width) + var(--right-col6-marginLeft)
+  );
+  /* title header element */
+  --right-width-header-el: calc(var(--right-width-border-el) + var(--right-width-probab-el) );
+}
+ 
+
+/* RIGHT PANEL SEQUENCE TYPES:
+SEQUENCE:	N, +/🗑/☰, Prob, Labels,		 						
+constant: 	1, 	0,		0, 	 [''],					 	
+linear: 	2, 	0,   	0,   ['first','last'] (ROTATED),				
+uniform: 	2, 	0,   	0,   ['min','max'] (ROTATED),					
+normal: 	2, 	0,   	0,   ['&mu;','&sigma;&sup2;'], 	
+sequential: 3, 	1,		0,   ['1','2','3'],					
+blocked: 	3, 	1,		0,   ['1','2','3'],							
+random: 	3,	1,		1,   ['1','2','3']				*/
+
+/*justify-content: flex-start;*/ /* Aligns items horizontally to the left */
+/*align-items: flex-start;*/     /* Aligns items vertically to the top */
+/*text-align: left;*/  /* children aligned left */ 
+
+
+ 
+
+/*  -------------- GENERAL - OVERRIDE  -------------------- */
+
+.template,  /* template elements are hidden and are used to create clones   */
+.hidden{ /* 'hidden' class hides elements that are not templates (e.g. panels or options not in use) */
+	display: none !important;
+}
+
+/* #endregion */
+
+
+
+
+
+
+
+
+
+
+/*==========================================================================================
+=                                                                                          =
+=                               LEFT PANEL                                                 =
+=                                                                                          =
+==========================================================================================*/
+
+/* #region LeftPanel */
+
+/*  -------------- {left} [L4] TITLE ROW -------------------- */   
+.trialbuilderInputsTitleParent.blocks-panel {
+	/* background-color: var(--var-col-darkercyan); */
+}
+/*  -------------- {left} [L5] COLUMN ITEMS WITHIN TITLE ROWS -------------------- */   
+
+/* Col 2/6 - Left Panel: "TrialType" (Label "Trial Blocks")  */
+/* Left: <!-- L5 (2/6)  -->  */
+.trialbuilderInputsTitle.itemTrialType.blocks-panel{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: flex-end;
+}  
+ 
+/* Col 3/6 - Left Panel: "RepeatsText" (Empty for Repeats Label)  */
+/* Left: <!-- L5 (3/6)   --> 	 */	
+.trialbuilderInputsTitle.itemRepeatsText.blocks-panel{ 
+}
+
+/* Col 4/6 - Left Panel: "Repeats" (Empty for Repeats Input)  */
+/* Left: <!-- L5 (4/6)   --> 	 */	
+.trialbuilderInputsTitle.itemRepeats.blocks-panel{ 
+} 
+
+
+
+/*  -------------- {left} [L4] LIST ELEMENT ROW(S)  -------------------- */  
+ 
+/* Additional Item Parent Styles:
+	-> cursor: pointer (hand) (effect shown for selectable or draggable items)
+	-> hover (effect shown for selectable or draggable items)
+	-> Selected (Selectable: Left Panel) 
+	-> Dragging (Draggable: Left Panel, Right Panel sequenceType: sequential, blocked, random)  */
+.trialbuilderInputsItemParent.blocks-panel  {    /* mouse pointer */
+	cursor: var(--cursor-drag);
+	/* padding: 0px 15px 0px 0px; */
+	/* height:  50px; */
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: stretch;
+	flex-grow: 0;
+	flex-shrink: 1;
+	flex-basis: fit-content;
+	/* padding: 0px; */
+	/* margin: 0px; */
+	display:  flex;
+	flex-direction: row;
+	align-content: center;
+}
+.trialbuilderInputsItemParent.blocks-panel:hover .trialbuilderInputsItemElement{   /* hover effect */
+	outline: var(--outline-drag);
+	background-color: var(--background-color-drag);
+} 
+.trialbuilderInputsItemParent.blocks-panel.selected .trialbuilderInputsItemElement{  /* Style for the item when selected */
+	outline: var(--outline-drag);
+	background-color: var(--background-color-drag);
+} 
+.trialbuilderInputsItemParent.blocks-panel.dragging .trialbuilderInputsItemElement{  /* Style for the item while it's being dragged */	 
+    opacity: var(--opacity-drag);
+}  
+
+
+/*  -------------- {left} [L5] COLUMN ITEMS WITHIN LIST ELEMENTS ROWS -------------------- */ 
+
+/* Col 1/6 - Both Panels: "Order" (Item Number)  */
+/* itemOrder = numbered elements  */
+.trialbuilderInputsItem.itemOrder.blocks-panel {
+	display: var(--display-order);   /* automatic numbering of list elements */ 
+	transform: var(--transform-order);   /* shifts it more left */ 
+}  
+
+/* Col 2/6 - Left Panel: "TrialType" (trial type dropdown)  */
+/* Left: <!-- L5 (2/6)  -->  */
+.trialbuilderInputsItem.itemTrialType.blocks-panel{
+    text-align: left;
+}  
+ 
+/* Col 3/6 - Left Panel: "RepeatsText" (Repeats Label)  */
+/* Left: <!-- L5 (3/6)   --> 	 */	
+.trialbuilderInputsItem.itemRepeatsText.blocks-panel{  
+	text-align: right; 
+	font-size: 16px;
+}
+
+/* Col 4/6 - Left Panel: "Repeats" (Repeats Input)  */
+/* Left: <!-- L5 (4/6)   --> 	 */	
+.trialbuilderInputsItem.itemRepeats.blocks-panel{  
+} 
+
+
+
+/* #endregion */
+
+
+
+
+
+
+
+
+
+
+/*==========================================================================================
+=                                                                                          =
+=                              RIGHT PANEL                                                 =
+=                                                                                          =
+==========================================================================================*/
+
+/* #region RightPanel */
+
+
+ 
+
+/*  -------------- {right} [L4B] TITLE, "ELEMENT" CONTAINER FOR GROUPING ITEMS  -------------------- */  
+
+
+
+/*  -------------- {right} [L5] COLUMN ITEMS WITHIN TITLE ROWS -------------------- */   
+
+/*  ROW 1  -> headerContainer -> items = panelTitle (phase name) + dropdownContainer (dropdown) */
+
+/* 2) Row 1 Dropwdown Container */    
+.panelTitleRow .trialbuilderInputsTitleElement.headerContainer .trialbuilderInputsTitle.dropdownContainer.inputs-panel{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: flex-start;
+	position: relative;
+	/* color: red; */
+}
+.panelTitleRow .trialbuilderInputsTitleElement.headerContainer .trialbuilderInputsTitle.dropdownContainer.inputs-panel.insidelabel{
+	--option-padding-left: 0.6em;
+	--option-padding-top: 1.1em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+}
+.panelTitleRow .trialbuilderInputsTitleElement.headerContainer .trialbuilderInputsTitle.dropdownContainer.inputs-panel.outsidelabel{
+	--option-padding-left: 0.25em;
+	margin-top: 1em;
+	margin-bottom: 0.5em;
+}
+.panelTitleRow .trialbuilderInputsTitleElement.headerContainer .trialbuilderInputsTitle.dropdownContainer.inputs-panel.notchedlabel{
+	--option-padding-left: 0.3em;
+	margin-top: 1.1em;
+	margin-bottom: 1em;
+}
+.panelTitleRow .trialbuilderInputsTitleElement.headerContainer .trialbuilderInputsTitle.dropdownContainer.inputs-panel.inlinelabel{
+	--option-padding-left: 0.15em;
+	/* margin-top: 0.15em; */
+	margin-bottom: 0.1em;
+	/* color: red; */
+}
+
+
+.panelTitleRow .trialbuilderInputsTitleElement.headerContainer .trialbuilderInputsTitle.dropdownContainer.inputs-panel label {  /* Row 1 Dropwdown -> label */
+    font-size: 11px;
+    position: absolute;
+}
+.panelTitleRow .trialbuilderInputsTitleElement.headerContainer .trialbuilderInputsTitle.dropdownContainer.inputs-panel.insidelabel label {  /* Row 1 Dropwdown -> label */
+    top: 0px;
+    color: #008080d1;
+    padding: 1px 2px;
+}
+.panelTitleRow .trialbuilderInputsTitleElement.headerContainer .trialbuilderInputsTitle.dropdownContainer.inputs-panel.outsidelabel label {  /* Row 1 Dropwdown -> label */
+    color: white;
+    bottom: 100%;
+    left:  0px;
+    padding: 0px;
+}
+.panelTitleRow .trialbuilderInputsTitleElement.headerContainer .trialbuilderInputsTitle.dropdownContainer.inputs-panel.notchedlabel label {  /* Row 1 Dropwdown -> label */
+    color: white;
+	top:  -0.6em; 
+    left:  1em; 
+    background-color: var(--var-col-darkercyan); 
+    --self-padding-left: 4px; 
+    padding: 0px var(--self-padding-left); 
+    left: calc( 1ch + var(--option-padding-left) - var(--self-padding-left));  
+}
+.panelTitleRow .trialbuilderInputsTitleElement.headerContainer .trialbuilderInputsTitle.dropdownContainer.inputs-panel.inlinelabel label {  /* Row 1 Dropwdown -> label */
+    color: white;
+    right: 100%;
+    padding: 3px;
+    text-wrap: nowrap;
+    /* font-size: 12; */
+}
+
+
+.panelTitleRow .trialbuilderInputsTitleElement.headerContainer .trialbuilderInputsTitle.dropdownContainer.inputs-panel select{  /* Row 1 Dropwdown -> dropdown */
+    font-size: 14px;
+    /* font-weight: bold; */
+    text-shadow: 0.2px 0.2px;
+    text-shadow: 0.2px 0.2px;
+    border-radius: 5px;
+}
+.panelTitleRow .trialbuilderInputsTitleElement.headerContainer .trialbuilderInputsTitle.dropdownContainer.inputs-panel.insidelabel select{
+	background-color: white;
+	color: var(--var-col-darkercyan);
+    padding-left: var(--option-padding-left);
+    padding-right: var(--option-padding-left);
+    padding-bottom: var(--option-padding-left);
+    padding-top: var(--option-padding-top);
+}
+.panelTitleRow .trialbuilderInputsTitleElement.headerContainer .trialbuilderInputsTitle.dropdownContainer.inputs-panel.outsidelabel select{
+	background-color: white;
+	color: var(--var-col-darkercyan);
+    padding: var(--option-padding-left);
+}
+.panelTitleRow .trialbuilderInputsTitleElement.headerContainer .trialbuilderInputsTitle.dropdownContainer.inputs-panel.notchedlabel select{
+	background: none;
+	color: white;
+	border: 1.5px solid white;
+	padding: var(--option-padding-left);
+	text-shadow: 0.2px 0.2px;
+}
+.panelTitleRow .trialbuilderInputsTitleElement.headerContainer .trialbuilderInputsTitle.dropdownContainer.inputs-panel.inlinelabel select{
+	background-color: white;
+	color: var(--var-col-darkercyan);
+    padding: var(--option-padding-left);
+}
+
+  
+
+/* Col 3/6 - Right Panel: "Probability" ("probability weight" title)  */
+/* Right: <!-- L5 (3/6)   --> 	 */
+/*	probability visible for sequenceType: random,
+		    not visible for sequenceType: constant, linear, uniform, normal, sequential, blocked  */	
+[sequence="random"]     .trialbuilderInputsTitleElement.probabilityContainer.inputs-panel {
+	visibility: visible; /* shows probability input */
+}  	
+[sequence="constant"]   .trialbuilderInputsTitleElement.probabilityContainer.inputs-panel,
+[sequence="linear"]     .trialbuilderInputsTitleElement.probabilityContainer.inputs-panel,
+[sequence="uniform"]    .trialbuilderInputsTitleElement.probabilityContainer.inputs-panel,
+[sequence="normal"]     .trialbuilderInputsTitleElement.probabilityContainer.inputs-panel,
+[sequence="sequential"] .trialbuilderInputsTitleElement.probabilityContainer.inputs-panel,
+[sequence="blocked"]    .trialbuilderInputsTitleElement.probabilityContainer.inputs-panel{ 
+	visibility: hidden; /* no probability input */ 
+} 	 
+
+
+
+/*  - - - - - - - - - Add Button - - - - - - - - - */
+
+/* Col 6/6 - Both Panels: "Add" ("+" Add Item Button)  */
+/* 2X <!-- L5 (6/6)  -->  */  
+/*	'+' button visible for sequenceType: sequential, blocked, random,
+		   not visible for sequenceType: constant, linear, uniform, normal  */		 
+[sequence="sequential"] .trialbuilderInputsTitle.itemAdd.inputs-panel,
+[sequence="blocked"]    .trialbuilderInputsTitle.itemAdd.inputs-panel,
+[sequence="random"]     .trialbuilderInputsTitle.itemAdd.inputs-panel {  
+	visibility: visible; /* shows + button */ 
+}  	
+[sequence="constant"] .trialbuilderInputsTitle.itemAdd.inputs-panel,
+[sequence="linear"]   .trialbuilderInputsTitle.itemAdd.inputs-panel,
+[sequence="uniform"]  .trialbuilderInputsTitle.itemAdd.inputs-panel,
+[sequence="normal"]   .trialbuilderInputsTitle.itemAdd.inputs-panel{ 
+	visibility: hidden; /* no + button */ 
+} 
+
+
+
+
+
+
+
+/*  -------------- {right} [L4] LIST ELEMENT ROW(S)  -------------------- */  
+
+/*  - - - - - - - - - Draggable Properties  - - - - - - - - - */
+/* Additional Item Parent Styles:
+	-> cursor: pointer (hand) (effect shown for selectable or draggable items)
+	-> hover (effect shown for selectable or draggable items)
+	-> Selected (Selectable: Left Panel) 
+	-> Dragging (Draggable: Left Panel, Right Panel sequenceType: sequential, blocked, random)  */
+[sequence="sequential"] .trialbuilderInputsItemParent.inputs-panel, /* mouse pointer */ 
+[sequence="blocked"] 	.trialbuilderInputsItemParent.inputs-panel,
+[sequence="random"] 	.trialbuilderInputsItemParent.inputs-panel { 
+	cursor: var(--cursor-drag);   
+}
+/* hover effect (draggable sequence types) -> acts on child borderContainer */ 
+[sequence="sequential"] .trialbuilderInputsItemParent.inputs-panel 
+									.trialbuilderInputsItemElement.borderContainer:hover,
+[sequence="blocked"] 	.trialbuilderInputsItemParent.inputs-panel
+									.trialbuilderInputsItemElement.borderContainer:hover,
+[sequence="random"] 	.trialbuilderInputsItemParent.inputs-panel
+									.trialbuilderInputsItemElement.borderContainer:hover { 
+	outline: var(--outline-drag);  
+	background-color: var(--background-color-drag);   
+}
+/* Style for the item while it's being dragged */
+[sequence="sequential"] .trialbuilderInputsItemParent.inputs-panel.dragging,
+[sequence="blocked"] 	.trialbuilderInputsItemParent.inputs-panel.dragging,
+[sequence="random"] 	.trialbuilderInputsItemParent.inputs-panel.dragging { 	 
+    opacity: var(--opacity-drag);
+}  
+
+
+
+/*  - - - - - - - - - # elements - - - - - - - - - */ 
+/* SETS # VISIBLE ELEMENTS FOR DIFFERENT SEQUENCE TYPES */
+/*	constant: 1
+ 	linear, uniform, normal: 2
+	sequential, blocked, random: any # (no change of display properties)
+*/
+[sequence=""] .trialbuilderInputsItemParent:nth-of-type(n+1),			
+[sequence="constant"] .trialbuilderInputsItemParent:nth-of-type(n+2),
+[sequence="linear"]   .trialbuilderInputsItemParent:nth-of-type(n+3),
+[sequence="uniform"]  .trialbuilderInputsItemParent:nth-of-type(n+3),
+[sequence="normal"]   .trialbuilderInputsItemParent:nth-of-type(n+3) { 
+	display: none; /* only shows selected # */ 
+} 	 
+
+ 
+
+
+/*  -------------- {right} [L5] COLUMN ITEMS WITHIN LIST ELEMENTS ROWS -------------------- */ 
+
+
+/*  - - - - - - - - - itemOrder - - - - - - - - - */
+
+/* Col 1/6 - Both Panels: "Order" (Item Number)  */
+/* --> sequential/blocked/random: itemOrder = numbered elements   */ 
+[sequence="sequential"]	.trialbuilderInputsItem.itemOrder.inputs-panel,
+[sequence="blocked"]	.trialbuilderInputsItem.itemOrder.inputs-panel,
+[sequence="random"]		.trialbuilderInputsItem.itemOrder.inputs-panel {
+	display: var(--display-order);   /* automatic numbering of list elements */ 
+	transform: var(--transform-order);   /* shifts it more left */ 
+} 
+/* --> constant: itemOrder = none */
+[sequence="constant"] .trialbuilderInputsItem.itemOrder.inputs-panel {  
+  	visibility: hidden; /* no element labels */	
+} 
+/* --> linear: itemOrder = ['first','last'] (rotated) */ 
+[sequence="linear"] .trialbuilderInputsItem.itemOrder.inputs-panel {  
+  	/*transform: rotate(-90deg);*/ /* rotates element 45 degrees */	
+ /*   display: inline-block;*/
+    transform: rotate(-90deg) translate(-10px, -60%);
+} 
+[sequence="linear"] .trialbuilderInputsItemParent:nth-of-type(1)
+  .trialbuilderInputsItem.itemOrder.inputs-panel::before {
+	content: 'first'; 
+} 
+[sequence="linear"] .trialbuilderInputsItemParent:nth-of-type(2)
+  .trialbuilderInputsItem.itemOrder.inputs-panel::before {
+	content: 'last';
+} 
+/* --> uniform: itemOrder = ['min','max'] (rotated) */ 
+[sequence="uniform"] .trialbuilderInputsItem.itemOrder.inputs-panel {  
+  	/*transform: rotate(-90deg);*/ /* rotates element 45 degrees */	
+    transform: rotate(-90deg) translate(-10px, -60%);
+} 
+[sequence="uniform"] .trialbuilderInputsItemParent:nth-of-type(1)
+  .trialbuilderInputsItem.itemOrder.inputs-panel::before {
+	content: 'min'; 
+} 
+[sequence="uniform"] .trialbuilderInputsItemParent:nth-of-type(2)
+  .trialbuilderInputsItem.itemOrder.inputs-panel::before {
+	content: 'max';
+} 
+/* --> normal: itemOrder = [μ,σ²] */   
+[sequence="normal"] .trialbuilderInputsItem.itemOrder.inputs-panel {  
+  	/*transform: rotate(-90deg);*/ /* rotates element 45 degrees */	
+    transform: rotate(0deg) translate(-15px, -0%);
+} 
+[sequence="normal"] .trialbuilderInputsItemParent:nth-of-type(1)
+  .trialbuilderInputsItem.itemOrder.inputs-panel::before {
+	content: 'μ'; 
+} 
+[sequence="normal"] .trialbuilderInputsItemParent:nth-of-type(2)
+  .trialbuilderInputsItem.itemOrder.inputs-panel::before {
+	content: 'σ²';
+} 
+
+
+
+/*  - - - - - - - - - itemInheritedInputs - - - - - - - - - */
+
+/* Col 2/6 - Right Panel: "InheritedInputs" (Container with Parameters Input Group from Builder) */
+/* Right: <!-- L5 (2/6)  --> */ 
+.trialbuilderInputsItem.itemInheritedInputs.inputs-panel{
+	text-align: left;
+	background-color: #f1f1f1;   /* this matches original inputs */
+	--border-width: 2px; /* border width (takes part of available width -> used in .param-form padding calc) */
+	/* border: var(--border-width) solid #b3b3b3; */   
+	
+	/* - IMPORTANT! Keep right and left margins to zero - they are set later in .param-form */
+	padding: 5px 0px 5px 0px; /* top right bottom left */
+	border-right:  inherit;
+	align-self: stretch;
+} 
+
+.trialbuilderInputsItem.itemInheritedInputs.inputs-panel .outer-container,
+.trialbuilderInputsItem.itemInheritedInputs.inputs-panel .inner-container{    
+	display: contents; /* Ensures it does not disrupt grid structure */
+} 
+ 
+.builder.trial .content .trialbuilderInputsItem.itemInheritedInputs.inputs-panel .tabpanel .param-form{
+	margin: 0px; /* overrides margin of staticBuilder grid */ 
+	 
+	/* simulates left margin by adding horizontal translation while ensuring content still fits in parent */
+	/* translation (left margin) = (if fits) left-margin-preferred, (otherwise) available space-ie-align right
+	 		calc: (parent width - parent border(L+R) - 100% Self Width) / 2  
+					=>  available space / 2   ( / 2: splits padding equally L & R)
+			clamp(LOWER BOUND = 0, PREFERRED = --left-margin-preferred, UPPER BOUND = calc available space)
+			[see testStyles.css for full explanation] */
+	--left-margin-preferred: 30px; /* preferred left margin (used as long as no right spill) */
+	transform: translateX( 
+		clamp(0px, var(--left-margin-preferred),   
+			calc( var(--right-col2-width) - var(--border-width)*2 - 100% )/2
+		) 
+	);
+}
+
+
+
+
+
+/* handling non-numeric types for numeric-specific sequence types  */
+ 
+[sequence="linear"] .trialbuilderInputsItemParent:nth-of-type(1) .non-numerical-note,
+[sequence="uniform"] .trialbuilderInputsItemParent:nth-of-type(1) .non-numerical-note,
+[sequence="normal"] .trialbuilderInputsItemParent:nth-of-type(1) .non-numerical-note {
+	position: relative; 
+}
+
+[sequence="linear"] .trialbuilderInputsItemParent:nth-of-type(1) .non-numerical-note::after,
+[sequence="uniform"] .trialbuilderInputsItemParent:nth-of-type(1) .non-numerical-note::after,
+[sequence="normal"] .trialbuilderInputsItemParent:nth-of-type(1) .non-numerical-note::after {
+	content: "(constant)";
+	position: absolute; 
+    left: calc(100% + 5px);
+    top: 50%;    
+    transform: translateY(-50%);
+	color: red;
+	font-style: italic;
+	font-size: 12px;
+	pointer-events: none;
+}
+
+[sequence="linear"] .trialbuilderInputsItemParent:nth-of-type(n+2) .non-numerical-input,
+[sequence="uniform"] .trialbuilderInputsItemParent:nth-of-type(n+2) .non-numerical-input,
+[sequence="normal"] .trialbuilderInputsItemParent:nth-of-type(n+2) .non-numerical-input {
+	visibility: hidden;
+}
+
+
+.trialbuilder-parentContainer.non-numerical-only option[value="linear"],
+.trialbuilder-parentContainer.non-numerical-only option[value="uniform"],
+.trialbuilder-parentContainer.non-numerical-only option[value="normal"]{
+    display: none;
+}
+ 
+
+
+/*  - - - - - - - - - itemProbability(Text) - - - - - - - - - */
+
+/* Col 3-4/6: probabilityContainer: probability input + label  */ 
+/*	probability visible for sequenceType: random,
+		    not visible for sequenceType: constant, linear, uniform, normal, sequential, blocked  */	
+[sequence="random"]     .probabilityContainer.inputs-panel {  
+	visibility: visible; /* shows probability input */ 
+} 
+[sequence=""]   .probabilityContainer.inputs-panel, 	
+[sequence="constant"]   .probabilityContainer.inputs-panel,
+[sequence="linear"]     .probabilityContainer.inputs-panel,
+[sequence="uniform"]    .probabilityContainer.inputs-panel,
+[sequence="normal"]     .probabilityContainer.inputs-panel,
+[sequence="sequential"] .probabilityContainer.inputs-panel,
+[sequence="blocked"]    .probabilityContainer.inputs-panel{ 
+	visibility: hidden; /* no probability input */ 
+} 
+
+/* Col 3/6 - Right Panel: "Probability" (probability input)  */
+/* Right: <!-- L5 (3/6)   --> 	 */	 
+ 
+/* Col 4/6 - Right Panel: "ProbabilityText" (probability "/N" label)  */
+/* Right: <!-- L5 (4/6)   --> 	 */		
+.trialbuilderInputsItem.itemProbabilityText.inputs-panel{   
+	
+} 
+/* "/N" only for sequenceType: random,
+   other sequenceTypes: probability not visible -> no label */
+:root {  
+	--rightpanel-n: "0"; /* Sets "/N" to variable that will be set to TOT N ELEMENTS using javascript */
+}
+[sequence="random"] .trialbuilderInputsItem.itemProbabilityText.inputs-panel::after {  
+	content: "/" var(--rightpanel-n);   
+}
+
+
+
+/*  - - - - - - - - - itemDelete - - - - - - - - - */
+
+/* Col 5/6: "Delete" (🗑 Delete Button)  */
+/* 'delete' button visible for sequenceType: sequential, blocked, random,
+		   		not visible for sequenceType: constant, linear, uniform, normal  */	
+.trialbuilderInputsItem.itemDelete.blocks-panel,
+[sequence="sequential"] .trialbuilderInputsItem.itemDelete.inputs-panel,
+[sequence="blocked"]    .trialbuilderInputsItem.itemDelete.inputs-panel,
+[sequence="random"]     .trialbuilderInputsItem.itemDelete.inputs-panel {   
+	visibility: visible; /* shows 🗑 button */  
+}  	
+[sequence="constant"] .trialbuilderInputsItem.itemDelete.inputs-panel,
+[sequence="linear"]   .trialbuilderInputsItem.itemDelete.inputs-panel,
+[sequence="uniform"]  .trialbuilderInputsItem.itemDelete.inputs-panel,
+[sequence="normal"]   .trialbuilderInputsItem.itemDelete.inputs-panel { 
+	visibility: hidden; /* no 🗑 button */ 
+} 	
+ 
+
+
+/*  - - - - - - - - - itemDrag - - - - - - - - - */
+
+/* Col 6/6: "Drag" (☰ Drag Item Button)  */ 
+/* 'drag' button visible for sequenceType: sequential, blocked, random,
+		   		not visible for sequenceType: constant, linear, uniform, normal  */		
+.trialbuilderInputsItem.itemDrag.blocks-panel,
+[sequence="sequential"] .trialbuilderInputsItem.itemDrag.inputs-panel,
+[sequence="blocked"]    .trialbuilderInputsItem.itemDrag.inputs-panel,
+[sequence="random"]     .trialbuilderInputsItem.itemDrag.inputs-panel {   
+	visibility: visible; /* shows ☰ button */  
+}  	
+[sequence="constant"] .trialbuilderInputsItem.itemDrag.inputs-panel,
+[sequence="linear"]   .trialbuilderInputsItem.itemDrag.inputs-panel,
+[sequence="uniform"]  .trialbuilderInputsItem.itemDrag.inputs-panel,
+[sequence="normal"]   .trialbuilderInputsItem.itemDrag.inputs-panel { 
+	visibility: hidden; /* no ☰ button */ 
+} 	 
+ 
+
+
+/* #endregion */
+
+
+
+
+
+ 

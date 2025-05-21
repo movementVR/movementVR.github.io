@@ -3,90 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>   </title>
+    <title></title>
 </head>
 <body>
-<form class="tabcontent">      
-<div class="form-control">         
-<inputcolumn>
+<form class="param-form">
         
 <!-- Content: --> 
- 
-
- 
-    
-<name>Position [m]:</name>
-    <inputs>
-    <label for="TARGETMESH_OFFSET_X">X:</label>
-    <input id="TARGETMESH_OFFSET_X" name="setupScript,targetMeshPositionOffsetX" type="number" value="0" />
-    <label for="TARGETMESH_OFFSET_Y">Y:</label>
-    <input id="TARGETMESH_OFFSET_Y" name="setupScript,targetMeshPositionOffsetY" type="number" value="0" />
-    <label for="TARGETMESH_OFFSET_Z">Z:</label>
-    <input id="TARGETMESH_OFFSET_Z" name="setupScript,targetMeshPositionOffsetZ" type="number" value="0" />
-    </inputs>         
-    <namenote>(wrt target center, offset)&ensp;</namenote>
-    <inputs> </inputs> 
-
-<name>Size:</name>
-    <inputs>	<label style='font-size:15px; margin-bottom:1px;'>&#8594;</label> 		        
-        <label> &nbsp;Automatic - match to:</label> 
-        </inputs><subname></subname><inputs>  
-        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input id="TARGETMESH_SIZE_AUTO_PT" name="setupScript,targetMeshSizeAuto" type="radio" value="platePlusTarget" checked >
-        <label for="TARGETMESH_SIZE_AUTO_PT">Target size: entire plate must lay within mesh for success</label>  
-        </inputs><subname></subname><inputs>  
-        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input id="TARGETMESH_SIZE_AUTO_CT" name="setupScript,targetMeshSizeAuto" type="radio" value="centerTarget" >
-        <label for="TARGETMESH_SIZE_AUTO_CT">Target size: plate center must lay within mesh for success</label>  
-        </inputs><subname></subname><inputs>  
-        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input id="TARGETMESH_SIZE_AUTO_P" name="setupScript,targetMeshSizeAuto" type="radio" value="plate"  >
-        <label for="TARGETMESH_SIZE_AUTO_P">Plate size: mesh shows ideal plate position, at target center</label>  
-        
-    </inputs><name>&nbsp;</name><inputs>  
-        <label style='font-size:15px; margin-bottom:1px;'>&#8594;</label> 	
-        <input style='margin-left: 0px;' id="TARGETMESH_SIZE_AUTO_N" name="setupScript,targetMeshSizeAuto" type="radio" value="none">
-        <label for="TARGETMESH_SIZE_AUTO_N">Manual [meters]: </label> 
-        </inputs><subname></subname><inputs> 
-            <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
-            <label for="TARGETMESH_SIZE_X">X:</label>
-            <input id="TARGETMESH_SIZE_X" name="setupScript,targetMeshSizeX" type="number" value="0.2" />
-            <label for="TARGETMESH_SIZE_Y">Y:</label>
-            <input id="TARGETMESH_SIZE_Y" name="setupScript,targetMeshSizeY" type="number" value="0.005" />
-            <label for="TARGETMESH_SIZE_Z">Z:</label>
-            <input id="TARGETMESH_SIZE_Z" name="setupScript,targetMeshSizeZ" type="number" value="0.2" />
-            </inputs>  
-    
-    
-<name>Shape:</name>
-    <inputs>		    
-    <input id="TARGETMESH_SHAPE_CU" name="setupScript,targetMeshShape" type="radio" value="Cube" checked>
-    <label for="TARGETMESH_SHAPE_CU">Cube&ensp;</label> 
-    <input id="TARGETMESH_SHAPE_CY" name="setupScript,targetMeshShape" type="radio" value="Cylinder">
-    <label for="TARGETMESH_SHAPE_CY">Cylinder&ensp;</label> 
-    <input id="TARGETMESH_SHAPE_CA" name="setupScript,targetMeshShape" type="radio" value="Capsule"  >
-    <label for="TARGETMESH_SHAPE_CA" >Capsule&ensp;</label> 
-    <input id="TARGETMESH_SHAPE_SP" name="setupScript,targetMeshShape" type="radio" value="Sphere">
-    <label for="TARGETMESH_SHAPE_SP">Sphere&ensp;</label> 
-    </inputs><subname>&nbsp;</subname><inputs>  
-    <input id="TARGETMESH_SHAPE_PL" name="setupScript,targetMeshShape" type="radio" value="Plate" style='margin-left:4px;'>
-    <label for="TARGETMESH_SHAPE_PL">Plate&ensp;</label> 
-    <input id="TARGETMESH_SHAPE_PG" name="setupScript,targetMeshShape" type="radio" value="PlateAndGrape" style='margin-left:1px;'>
-    <label for="TARGETMESH_SHAPE_PG">Plate+Grape&ensp;</label> 
-    </inputs> 
- 
-
-    
-    
- 
+		 
+<fieldset class="trial-builder-group"> 
+	<div class="name-type name">Mesh Position [m]:</div>
+		 <div class="inputs-type inputs">
+		<label for="setupscript-targetmeshpositionoffsetx" class="label-before-input label-start-block">X:</label>
+		<input id="setupscript-targetmeshpositionoffsetx" name="setupScript,targetMeshPositionOffsetX" type="number" step="any">
+		<label for="setupscript-targetmeshpositionoffsety" class="label-before-input">Y:</label>
+		<input id="setupscript-targetmeshpositionoffsety" name="setupScript,targetMeshPositionOffsetY" type="number" step="any">
+		<label for="setupscript-targetmeshpositionoffsetz" class="label-before-input">Z:</label>
+		<input id="setupscript-targetmeshpositionoffsetz" name="setupScript,targetMeshPositionOffsetZ" type="number" step="any">
+		</div>         
+		<div class="name-type namenote">(wrt target center, offset)&ensp;</div> 
+</fieldset> 
+	
+		<div class="fullrow-type largespace"></div> 
+<fieldset class="trial-builder-group"> 
+	<div class="name-type name">Mesh Shape:</div>
+		 <div class="inputs-type inputs">		    
+		<input id="setupscript-targetmeshshape_cube" name="setupScript,targetMeshShape" type="radio" value="Cube">
+		<label for="setupscript-targetmeshshape_cube" class="label-after-input">Cube&ensp;</label> 
+		<input id="setupscript-targetmeshshape_cylinder" name="setupScript,targetMeshShape" type="radio" value="Cylinder">
+		<label for="setupscript-targetmeshshape_cylinder" class="label-after-input">Cylinder&ensp;</label> 
+		<input id="setupscript-targetmeshshape_capsule" name="setupScript,targetMeshShape" type="radio" value="Capsule">
+		<label for="setupscript-targetmeshshape_capsule" class="label-after-input">Capsule&ensp;</label> 
+		<input id="setupscript-targetmeshshape_sphere" name="setupScript,targetMeshShape" type="radio" value="Sphere">
+		<label for="setupscript-targetmeshshape_sphere" class="label-after-input label-end-block">Sphere&ensp;</label> 
+		</div><div class="fullrow-type smallspace"></div><div class="name-type subname">&nbsp;</div> <div class="inputs-type inputs">  
+		<input id="setupscript-targetmeshshape_plate" name="setupScript,targetMeshShape" type="radio" value="Plate">
+		<label for="setupscript-targetmeshshape_plate" class="label-after-input">Plate&ensp;</label> 
+		<input id="setupscript-targetmeshshape_plateandgrape" name="setupScript,targetMeshShape" type="radio" value="PlateAndGrape">
+		<label for="setupscript-targetmeshshape_plateandgrape" class="label-after-input label-end-block">Plate+Grape&ensp;</label> 
+		</div> 	
+</fieldset> 
+	
+		<div class="fullrow-type largespace"></div> 
+<fieldset class="trial-builder-group"> 
+	<div class="name-type name">Mesh Size:</div>
+		 <label class="inputs-type label-standalone"><span style='font-size:15px;'>&#8594;</span>&nbsp;Automatic – show success region:</label> 
+			<div class="inputs-type inputs">  
+				<label class="label-standalone">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+				<input id="setupscript-targetmeshsizeauto_centertarget" name="setupScript,targetMeshSizeAuto" type="radio" value="centerTarget">
+				<label for="setupscript-targetmeshsizeauto_centertarget" class="label-after-input label-end-block">Success when <b><u>plate center</u></b> inside mesh (size=target)</label>  
+			</div> 	
+			<div class="inputs-type inputs">  
+				<label class="label-standalone">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+				<input id="setupscript-targetmeshsizeauto_plateplustarget" name="setupScript,targetMeshSizeAuto" type="radio" value="platePlusTarget">
+				<label for="setupscript-targetmeshsizeauto_plateplustarget" class="label-after-input label-end-block">Success when <b><u>entire plate</u></b> inside mesh (size=target+plate)</label>  
+			</div> 	
+		<div class="fullrow-type mediumspace"></div>
+		 <label class="inputs-type label-standalone"><span style='font-size:15px;'>&#8594;</span>&nbsp;Automatic – preview lifted object at target:</label> 
+			<div class="inputs-type inputs">  
+				<label class="label-standalone">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+				<input id="setupscript-targetmeshsizeauto_plate" name="setupScript,targetMeshSizeAuto" type="radio" value="plate">
+				<label for="setupscript-targetmeshsizeauto_plate" class="label-after-input label-end-block">Mesh shows <b><u>Plate</u></b> outline (size=plate)</label>  
+			</div>
+			<div class="inputs-type inputs">  
+				<label class="label-standalone">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+				<input id="setupscript-targetmeshsizeauto_plateplusgrape" name="setupScript,targetMeshSizeAuto" type="radio" value="platePlusGrape">
+				<label for="setupscript-targetmeshsizeauto_plateplusgrape" class="label-after-input label-end-block">Mesh shows <b><u>Plate+Grape</u></b> outline (size=plate+grape)</label>  
+			</div>	
+		<div class="inputs-type inputsnote">
+				<label class="label-standalone">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+				(Note: also set 'Shape' to 'plate' or 'plate+grape')</div>
+	<div class="fullrow-type mediumspace"></div><div class="name-type name">&nbsp;</div> <div class="inputs-type inputs">  
+			<label class="label-standalone"><span style='font-size:15px;'>&#8594;</span>&nbsp;</label> 	
+			<input id="setupscript-targetmeshsizeauto_none" name="setupScript,targetMeshSizeAuto" type="radio" value="none">
+			<label for="setupscript-targetmeshsizeauto_none" class="label-after-input label-end-block">Manual [meters]: </label> 
+			</div><div class="inputs-type inputs"> 
+				<label class="label-standalone">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+				<label for="setupscript-targetmeshsizex" class="label-before-input">X:</label>
+				<input id="setupscript-targetmeshsizex" name="setupScript,targetMeshSizeX" type="number" step="any" min="0">
+				<label for="setupscript-targetmeshsizey" class="label-before-input">Y:</label>
+				<input id="setupscript-targetmeshsizey" name="setupScript,targetMeshSizeY" type="number" step="any" min="0">
+				<label for="setupscript-targetmeshsizez" class="label-before-input">Z:</label>
+				<input id="setupscript-targetmeshsizez" name="setupScript,targetMeshSizeZ" type="number" step="any" min="0">
+				</div>  	
+</fieldset> 
+	
+	 
+	<div class="longnote-type longnote">“Mesh” = visible shape of the target. It changes the target appearance, </div> 
+	<div class="longnote-type longnote"> but NOT the functional success critera</div> 
+	
 <!-- End of Content --> 
  
-</inputcolumn> 
-</div>  
-<figurecolumn>
- <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
-</figurecolumn>
+</form> 
+<div class="param-img">
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  > --> 
+</div>
         
-</form>
-</body>
+</body> 
 </html>

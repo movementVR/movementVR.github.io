@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+  <meta charset="UTF-8">    
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session Configuration</title>  
+</head>
+<body>  
+  <div class="config-modal hidden"> 
+    <div class="modal-parent">
+      <!-- Close button as a cross at top-right -->
+	  <div class="title-row">
+      	<h1 class="main-title"> </h1>
+      	<h3 class="main-subtitle"></h3>
+	  </div>
+      <button id="closeModalBtn" class="x-close">&times;</button>
+      
+      <div class="modal-panel save-panel ">
+        <h2 class="panel-title">Save session</h2>
+		<div class = "panel-content">
+			<div class = "input-row">
+				<label for="configName" class="name-label">Name:</label>
+				<input type="text" id="configName" placeholder="Enter name" class="name-input">
+				<button class="save-button">Save locally</button>
+				<button class="export-button">Export</button>
+			</div>
+		</div>
+      </div>
+		
+	  <div class="modal-panel import-panel">
+        <h2 class="panel-title">Import from file</h2>
+		<div class = "panel-content">
+			<div class = "input-row">				
+			  <!-- File input for selecting a JSON file --> 
+			  <input type="file" id="jsonInput" class="file-input" accept=".json">
+			  <button class="import-button">Load JSON</button>  
+			  <span class="import-info hidden">Loaded!</span>
+			</div>
+		</div>
+      </div>
+		
+      <div class="modal-panel load-panel "> 
+        <h2 class="panel-title">Local storage</h2>		  
+		<div class = "panel-content">
+			<header class="config-list-header">
+			  <span class="header-item config-name">Name</span> <!--element=span -->
+			  <span class="header-item config-date">Date/Time</span>  <!--element=span-->
+			  <span class="header-item config-load"> </span>  <!--element=button-->
+			  <span class="header-item config-export"> </span>  <!--element=button-->
+			  <span class="header-item config-delete"> </span>   <!--element=button-->
+			</header>		
+			<ul id="configList" class="config-list">	 
+				<li class="config-item empty-list">
+					<span class="config-name"><span>No configurations saved.</span></span>
+					<span class="config-date"><span></span></span>
+					<button class="config-load"></button>
+					<button class="config-export">Export</button>
+					<button class="config-delete"></button>
+				</li>	 
+				<li class="config-item template">
+					<span class="config-name"><span></span></span>
+					<span class="config-date"><span></span></span>
+					<button class="config-load">Load</button> 
+					<button class="config-export">Export</button>
+					<button class="config-delete">Delete</button>
+				</li>
+			  <!-- Dynamically populated list -->
+			</ul>
+		  </div>
+      </div>
+		
+	  <button class="close-button">Close</button>
+    </div> 
+  </div>
+</body>
+</html>

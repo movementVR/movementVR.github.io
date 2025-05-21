@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>startScript.cs Documentation</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			line-height: 1.6;
+			margin: 2rem;
+		}
+		h1, h2, h3 {
+			color: #2a4a6c;
+			margin-top: 2rem;
+		}
+		.code {
+			background-color: #f4f4f4;
+			padding: 0.5rem;
+			border-left: 3px solid #ccc;
+			font-family: monospace;
+			white-space: pre-wrap;
+		}
+		.section {
+			margin-bottom: 2rem;
+		}
+	</style>
+</head>
+<body>
+
+<h1>Documentation: <code>startScript.cs</code></h1>
+
+<div class="section">
+	<h2>1. Overview</h2>
+	<p>
+		<code>startScript</code> coordinates the initialization sequence for a MovementVR experimental session. It initializes key components (e.g., setup, tracking, messaging, plate and grape objects), handles any delay before the experiment begins, and activates the trial execution logic. This script runs once at the beginning and then disables itself.
+	</p>
+</div>
+
+<div class="section">
+	<h2>2. Functional Blocks</h2>
+
+	<h3>Startup Sequence</h3>
+	<ul>
+		<li>In <code>Start()</code>, initializes and calls startup on all major subsystems: setup, tracking, plate, targets, and messages.</li>
+		<li>Displays the "start" message to the user.</li>
+	</ul>
+
+	<h3>Delayed Start</h3>
+	<ul>
+		<li>Waits for <code>experimentStartTimeDelay</code> seconds before activating trial logic.</li>
+		<li>Completes setup with delayed calibration (e.g., headset reference), enables gameplay triggers, hides the start message, and enables <code>trialScript</code>.</li>
+	</ul>
+
+	<h3>Component Interactions</h3>
+	<ul>
+		<li>Interacts with <code>handsAndSaveScript</code>, <code>setupScript</code>, <code>messagesScript</code>, <code>plateAndGrapeScript</code>, and <code>trialScript</code>.</li>
+	</ul>
+
+</div>
+
+<div class="section">
+	<h2>3. Full Technical Details</h2>
+
+	<h3>Fields</h3>
+	<div class="code">
+// Inputs
+float experimentStartTimeDelay = float.MaxValue;
+System.DateTime experimentStartTime;
+
+// References
+setupScript setupScriptVar;
+handsAndSaveScript handsAndSaveScriptVar;
+messagesScript messagesScriptVar;
+	</div>
+
+	<h3>Start()</h3>
+	<div class="code">
+void Start() {
+	setupScriptVar = GetComponentInParent&lt;setupScript&gt;(true);
+	handsAndSaveScriptVar = GetComponentInParent&lt;handsAndSaveScript&gt;(true);
+	messagesScriptVar = GetComponentInChildren&lt;messagesScript&gt;(true);
+
+	GetComponentInChildren&lt;plateAndGrapeScript&gt;(true).startup();
+	GetComponentInChildren&lt;taskWorkspaceScript&gt;(true).startup();
+	setupScriptVar.startup();
+	handsAndSaveScriptVar.startup();
+	GetComponentInChildren&lt;plateScript&gt;(true).startup();
+	GetComponentInChildren&lt;targetScript&gt;(true).startup();
+
+	foreach (handTriggerScript s in GetComponentsInChildren&lt;handTriggerScript&gt;(true)) {
+		s.startup();
+	}
+
+	setupScriptVar.updateObjectProperties(true, false);
+	messagesScriptVar.messageDisplay("start", true);
+	StartCoroutine(delayedStartup());
+}
+	</div>
+
+	<h3>delayedStartup()</h3>
+	<div class="code">
+private IEnumerator delayedStartup() {
+	experimentStartTime = DateTime.Now;
+
+	yield return new WaitUntil(() =>
+		(DateTime.Now - experimentStartTime).TotalSeconds >= experimentStartTimeDelay);
+
+	handsAndSaveScriptVar.delayedSetup();
+	setupScriptVar.updateObjectProperties(false, true);
+	handsAndSaveScriptVar.infoSave();
+
+	transform.Find("PlateAndGrape/PlateStand").gameObject.SetActive(true);
+	transform.Find("Triggers/Target").gameObject.SetActive(true);
+	transform.Find("Triggers/GameareaBoundary").gameObject.SetActive(true);
+
+	messagesScriptVar.messageDisplay("start", false);
+	GetComponentInParent&lt;trialScript&gt;().enabled = true;
+	enabled = false;
+}
+	</div>
+
+	<h3>OnEnable() / Update()</h3>
+	<div class="code">
+void OnEnable() {
+	// Empty
+}
+
+void Update() {
+	// Empty
+}
+	</div>
+
+</div>
+
+</body>
+</html>

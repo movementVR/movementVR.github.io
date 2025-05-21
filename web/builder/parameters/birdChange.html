@@ -3,143 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Species </title>
+    <title></title>
 </head>
 <body>
-<form class="tabcontent">      
-<div class="form-control">         
-<inputcolumn>
+<form class="param-form">
         
 <!-- Content: --> 
  
-    <name>Swap bird:</name> 
-        <inputs>
-        <input id="CHANGEBIRD_ANY" name="trialScript,changeBirdAnyCondition" type="radio" value="TRUE"  checked >
-        <label for="CHANGEBIRD_ANY">Every trial</label> 
-        <input id="CHANGEBIRD_ANYF" name="trialScript,changeBirdAnyCondition" type="radio" value="FALSE" >
-        <label for="CHANGEBIRD_ANYF">Conditional (expand below) </label>  
-        </inputs>
- 
+	
 
-    <!-- Expandable Change Bird Condition -->
-    <name></name>
-    <button class="expand-button"  type="button" onclick="toggleExpandableWindow(this,'expandableChangeBird')">
+    <fieldset class="trial-builder-group">
+    <div class="name-type name">Swap bird:</div> 
+         <div class="inputs-type inputs">
+        <input id="trialscript-changebirdanycondition_true" name="trialScript,changeBirdAnyCondition" type="radio" value="TRUE">
+        <label for="trialscript-changebirdanycondition_true" class="label-after-input">Every trial</label> 
+        <input id="trialscript-changebirdanycondition_false" name="trialScript,changeBirdAnyCondition" type="radio" value="FALSE">
+        <label for="trialscript-changebirdanycondition_false" class="label-after-input label-end-block">Conditional (expand below) </label>  
+        </div> 
+</fieldset>
+	 
+
+    <!-- Expandable Change Bird Condition --> 
+	<div class="fullrow-type smallspace"></div>
+    <button class="inputs-type expand-button collapsed" type="button" data-target="#expandableChangeBird"><span>
     Expand swap conditions
-    </button>
+    </span></button>
 
-    <div class="expwindow" id="expandableChangeBird"> 
- 
-        <name>Swap if:</name> <inputs> 
-            <input id="OMH" name="trialScript,changeBirdOnSuccess" type="hidden" value="FALSE">
-            <input id="OM" name="trialScript,changeBirdOnSuccess" type="checkbox" value="TRUE" checked>	
-            <label for="OM">Success</label>	 
-            </inputs>  
+    <div class="fullrow-type expand-window collapsed" id="expandableChangeBird"> 
+  
+	
+<fieldset class="trial-builder-group"> 
+        <div class="name-type name">Swap if:</div>  <div class="inputs-type inputs"> 
+            <input id="trialscript-changebirdonsuccess_false" name="trialScript,changeBirdOnSuccess" type="hidden" value="FALSE">
+            <input id="trialscript-changebirdonsuccess_true" name="trialScript,changeBirdOnSuccess" type="checkbox" value="TRUE">	
+            <label for="trialscript-changebirdonsuccess_true" class="label-after-input label-end-block">Success</label>	 
+            </div>  
 
+            <div class="inputs-type inputs"> 
+            <input id="trialscript-changebirdonfailure1_false" name="trialScript,changeBirdOnFailure1" type="hidden" value="FALSE">
+            <input id="trialscript-changebirdonfailure1_true" name="trialScript,changeBirdOnFailure1" type="checkbox" value="TRUE">	
+            <label for="trialscript-changebirdonfailure1_true" class="label-after-input label-end-block">Failure - Plate too tilted</label>	 
+            </div>  
 
-            <subname> </subname> <inputs> 
-            <input id="OMH" name="trialScript,changeBirdOnFailure1" type="hidden" value="FALSE">
-            <input id="OM" name="trialScript,changeBirdOnFailure1" type="checkbox" value="TRUE" checked>	
-            <label for="OM">Failure - Plate too tilted</label>	 
-            </inputs>  
+            <div class="inputs-type inputs"> 
+            <input id="trialscript-changebirdonfailure2_false" name="trialScript,changeBirdOnFailure2" type="hidden" value="FALSE">
+            <input id="trialscript-changebirdonfailure2_true" name="trialScript,changeBirdOnFailure2" type="checkbox" value="TRUE">	
+            <label for="trialscript-changebirdonfailure2_true" class="label-after-input label-end-block">Failure - Plate exited target</label>	 
+            </div>  
 
+            <div class="inputs-type inputs"> 
+            <input id="trialscript-changebirdonfailure3_false" name="trialScript,changeBirdOnFailure3" type="hidden" value="FALSE">
+            <input id="trialscript-changebirdonfailure3_true" name="trialScript,changeBirdOnFailure3" type="checkbox" value="TRUE">	
+            <label for="trialscript-changebirdonfailure3_true" class="label-after-input label-end-block">Failure - Plate fell</label>	 
+            </div>  
 
-           <subname> </subname> <inputs> 
-            <input id="OMH" name="trialScript,changeBirdOnFailure2" type="hidden" value="FALSE">
-            <input id="OM" name="trialScript,changeBirdOnFailure2" type="checkbox" value="TRUE" checked>	
-            <label for="OM">Failure - Plate exited target</label>	 
-            </inputs>  
-
-
-           <subname> </subname> <inputs> 
-            <input id="OMH" name="trialScript,changeBirdOnFailure3" type="hidden" value="FALSE">
-            <input id="OM" name="trialScript,changeBirdOnFailure3" type="checkbox" value="TRUE" checked>	
-            <label for="OM">Failure - Plate fell</label>	 
-            </inputs>  
-
-
-
-            <subname> </subname> <inputs> 
-            <input id="OMH" name="trialScript,changeBirdOnFailure4" type="hidden" value="FALSE">
-            <input id="OM" name="trialScript,changeBirdOnFailure4" type="checkbox" value="TRUE" checked>	
-            <label for="OM">Failure - Time limit reached</label>	 
-            </inputs>  
-
-
-
-            <subname> </subname> <inputs> 
-            <input id="OMH" name="trialScript,changeBirdOnFailure5" type="hidden" value="FALSE">
-            <input id="OM" name="trialScript,changeBirdOnFailure5" type="checkbox" value="TRUE" checked>	
-            <label for="OM">Failure - Workspace exited</label>	 
-            </inputs>  
-        
-        
-        
-        <name> </name>
-            <inputs>	    
-            <input id="CHANGETARGETBIRDBREAK_FLAG_H" name="trialScript,changeBirdOnBreak" type="hidden" value="FALSE">
-            <input id="CHANGETARGETBIRDBREAK_FLAG" name="trialScript,changeBirdOnBreak" type="checkbox" value="TRUE" checked>
-            <label for="CHANGETARGETBIRDBREAK_FLAG">Always on break</label>		
-            </inputs> 
-
-    
-    </div><br><br>
-    
-    
-    
-    <name>Timing:</name>
-        <inputs>		    
-        <input id="TGTBIRD_CHANGESTAGE_5" name="trialScript,changeBirdStage" type="radio" value="5" checked>
-        <label for="TGTBIRD_CHANGESTAGE_5">After plate lift</label> 
-        </inputs> 
-        <subname> </subname> <inputs> 
-        <input id="TGTBIRD_CHANGESTAGE_6" name="trialScript,changeBirdStage" type="radio" value="6" >
-        <label for="TGTBIRD_CHANGESTAGE_6">After feedback</label> 
-        </inputs> 
-        <subname> </subname> <inputs> 
-        <input id="TGTBIRD_CHANGESTAGE_1" name="trialScript,changeBirdStage" type="radio" value="1" >
-        <label for="TGTBIRD_CHANGESTAGE_1">After break</label>
-        </inputs>     
-    
-    <name>Sequence:</name>
-        <inputs>		    
-        <input id="TGTBIRD_SPECIESMODE_R" name="trialScript,targetBirdSpeciesMode" type="radio" value="random" checked>
-        <label for="TGTBIRD_SPECIESMODE_R">Random from all</label> 
-        </inputs> 
-        <subname> </subname> <inputs> 
-        <input id="TGTBIRD_SPECIESMODE_RL" name="trialScript,targetBirdSpeciesMode" type="radio" value="listRandom" >
-        <label for="TGTBIRD_SPECIESMODE_RL">Random from list</label> 
-        </inputs> 
-        <subname> </subname> <inputs> 
-        <input id="TGTBIRD_SPECIESMODE_L" name="trialScript,targetBirdSpeciesMode" type="radio" value="listInOrder" >
-        <label for="TGTBIRD_SPECIESMODE_L">In order from list</label> 
-        </inputs> 
-        <subname> &nbsp;</subname> <inputs> 
-        <label for="TGTBIRD_SPECIESLIST">    <span style='font-size:15px;'>&#8594;</span>
+            <div class="inputs-type inputs"> 
+            <input id="trialscript-changebirdonfailure4_false" name="trialScript,changeBirdOnFailure4" type="hidden" value="FALSE">
+            <input id="trialscript-changebirdonfailure4_true" name="trialScript,changeBirdOnFailure4" type="checkbox" value="TRUE">	
+            <label for="trialscript-changebirdonfailure4_true" class="label-after-input label-end-block">Failure - Time limit reached</label>	 
+            </div> 
+	
+            <div class="inputs-type inputs"> 
+            <input id="trialscript-changebirdonfailure5_false" name="trialScript,changeBirdOnFailure5" type="hidden" value="FALSE">
+            <input id="trialscript-changebirdonfailure5_true" name="trialScript,changeBirdOnFailure5" type="checkbox" value="TRUE">	
+            <label for="trialscript-changebirdonfailure5_true" class="label-after-input label-end-block">Failure - Workspace exited</label>	 
+            </div>          
+         
+             <div class="inputs-type inputs">	    
+            <input id="trialscript-changebirdonbreak_false" name="trialScript,changeBirdOnBreak" type="hidden" value="FALSE">
+            <input id="trialscript-changebirdonbreak_true" name="trialScript,changeBirdOnBreak" type="checkbox" value="TRUE">
+            <label for="trialscript-changebirdonbreak_true" class="label-after-input label-end-block">Always on break</label>		
+            </div> 
+</fieldset>
+	 
+    </div>
+	 
+	
+<div class="fullrow-type largespace"></div>
+    <fieldset class="trial-builder-group">
+    <div class="name-type name">Timing:</div>
+         <div class="inputs-type inputs">		    
+        <input id="trialscript-changebirdstage_5" name="trialScript,changeBirdStage" type="radio" value="5">
+        <label for="trialscript-changebirdstage_5" class="label-after-input label-end-block">After plate lift</label> 
+        </div> 
+          <div class="inputs-type inputs"> 
+        <input id="trialscript-changebirdstage_6" name="trialScript,changeBirdStage" type="radio" value="6">
+        <label for="trialscript-changebirdstage_6" class="label-after-input label-end-block">After feedback</label> 
+        </div> 
+          <div class="inputs-type inputs"> 
+        <input id="trialscript-changebirdstage_1" name="trialScript,changeBirdStage" type="radio" value="1">
+        <label for="trialscript-changebirdstage_1" class="label-after-input label-end-block">After break</label>
+        </div>     
+  
+</fieldset>
+	
+    <div class="fullrow-type largespace"></div> 
+<fieldset class="trial-builder-group">   
+    <div class="name-type name">Sequence:</div>
+         <div class="inputs-type inputs">		    
+        <input id="trialscript-targetbirdspeciesmode_random" name="trialScript,targetBirdSpeciesMode" type="radio" value="random">
+        <label for="trialscript-targetbirdspeciesmode_random" class="label-after-input label-end-block">Random from all</label> 
+        </div> 
+          <div class="inputs-type inputs"> 
+        <input id="trialscript-targetbirdspeciesmode_listrandom" name="trialScript,targetBirdSpeciesMode" type="radio" value="listRandom">
+        <label for="trialscript-targetbirdspeciesmode_listrandom" class="label-after-input label-end-block">Random from list</label> 
+        </div> 
+          <div class="inputs-type inputs"> 
+        <input id="trialscript-targetbirdspeciesmode_listinorder" name="trialScript,targetBirdSpeciesMode" type="radio" value="listInOrder">
+        <label for="trialscript-targetbirdspeciesmode_listinorder" class="label-after-input label-end-block">In order from list</label> 
+        </div> 
+           <div class="inputs-type inputs"> 
+        <label for="trialscript-targetbirdspecieslist" class="label-before-input label-start-block">    <span style='font-size:15px;'>&#8594;</span>
         &nbsp;List:</label>		
-        <textarea id="TGTBIRD_SPECIESLIST" name="trialScript,targetBirdSpeciesList" rows="1" cols="30">bluejay>cardinal>robin>chickadee</textarea>                 
-        </inputs>
-        <subname> </subname> <inputs>  
-        <note>Write species names separated by ">"</note>		
-        <note>(cardinal, bluejay, robin, chickadee, goldfinch, or sparrow)</note>
-        </inputs> 		
-        
-
-    
-    
-
-    
-    
+        <textarea id="trialscript-targetbirdspecieslist" name="trialScript,targetBirdSpeciesList" 
+  			data-custom-validator="validateTargetBirdSpeciesList"></textarea>                 
+        </div> 
+    	<div class="fullrow-type smallspace"></div>
+        <div class="inputs-type inputsnote">Write species names separated by ">"</div>		
+        <div class="inputs-type inputsnote">(cardinal, bluejay, robin, chickadee, goldfinch, or sparrow)</div>
+</fieldset>
     
  
 <!-- End of Content --> 
  
-</inputcolumn> 
-</div>  
-<figurecolumn>
-    <img src="web/img/parameters/feedbackBird.png" style="width:100%;">
- <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
-</figurecolumn>
+</form> 
+<div class="param-img">
+    <img src="web/img/parameters/feedbackBird.png" >
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  > --> 
+</div>
+	
+	
+<script>
+	// custom function to validate textarea input  <textarea id="trialscript-targetbirdspecieslist" name="trialScript,targetBirdSpeciesList">
+	function validateTargetBirdSpeciesList(value) {
+		const allowedSpecies = ['cardinal','bluejay','robin','chickadee','goldfinch','sparrow'];
+		const regExpCheck = new RegExp('^\\s*(?:' + allowedSpecies.join('|') + ')' + '(?:\\s*>\\s*(?:' + allowedSpecies.join('|') + '))*' + '\\s*$', 'i');
+		if (!regExpCheck.test(value)) {
+			return 'Invalid list. Please write species listed below separated by >.';
+		}
+		return '';  // no error
+	}
+
+</script>	
         
-</form>
-</body>
+</body> 
 </html>

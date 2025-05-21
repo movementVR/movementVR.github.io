@@ -3,51 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>   </title>
+    <title></title>
 </head>
 <body>
-<form class="tabcontent">      
-<div class="form-control">         
-<inputcolumn>
+<form class="param-form">
         
 <!-- Content: --> 
  
+	
+		 
+<fieldset class="trial-builder-group"> 
+	<div class="name-type name">Size [m]:</div>
+		 <div class="inputs-type inputs">
+		<label for="setupscript-platestandsizex" class="label-before-input label-start-block">X:</label>
+		<input id="setupscript-platestandsizex" name="setupScript,plateStandSizeX" type="number" step="any" min="0">
+		<label for="setupscript-platestandsizez" class="label-before-input">Z:</label>
+		<input id="setupscript-platestandsizez" name="setupScript,plateStandSizeZ" type="number" step="any" min="0">
+		</div>
+		<div class="fullrow-type smallspace"></div><div class="inputs-type inputsnote">Y is set automatically from plate starting position</div>   	
+</fieldset>   
  
-      
-<name>Size [m]:</name>
-    <inputs>
-    <label for="PLATESTAND_SCALE_X">X:</label>
-    <input id="PLATESTAND_SCALE_X" name="setupScript,plateStandSizeX" type="number" value="0.1" />
-    <label for="PLATESTAND_SCALE_Z">Z:</label>
-    <input id="PLATESTAND_SCALE_Z" name="setupScript,plateStandSizeZ" type="number" value="0.1" />
-    </inputs>  
-    <subname></subname><inputs>
-    <note>Y is set automatically from plate starting position</note></inputs>
-    
-    
-<name>Color: </name>
-    <inputs>
-    <label for="PLATESTAND_COLOR_B_R">R:</label>
-    <input id="PLATESTAND_COLOR_B_R" name="setupScript,plateStandColorR" type="number" value="0.4" />
-    <label for="PLATESTAND_COLOR_B_G">G:</label>
-    <input id="PLATESTAND_COLOR_B_G" name="setupScript,plateStandColorG" type="number" value="0.2" />
-    <label for="PLATESTAND_COLOR_B_B">B:</label>
-    <input id="PLATESTAND_COLOR_B_B" name="setupScript,plateStandColorB" type="number" value="0" />
-    <label for="PLATESTAND_COLOR_B_A">Alpha:</label>
-    <input id="PLATESTAND_COLOR_B_A" name="setupScript,plateStandColorAlpha" type="number" value="0.5" />
-    </inputs>   
-    
-    
-    
+	
+		<div class="fullrow-type largespace"></div> 
+<fieldset class="trial-builder-group"> 
+	<div class="name-type name">Color: </div>
+		 <div class="inputs-type inputs">
+		<input type="color" id="setupscript-platestandcolor_picker" class="picker-color helper-input">
+		<label for="setupscript-platestandcolorr" class="label-before-input hidden-color hidden-label">R:</label>
+		<input id="setupscript-platestandcolorr" name="setupScript,plateStandColorR" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+		<label for="setupscript-platestandcolorg" class="label-before-input hidden-color hidden-label">G:</label>
+		<input id="setupscript-platestandcolorg" name="setupScript,plateStandColorG" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+		<label for="setupscript-platestandcolorb" class="label-before-input hidden-color hidden-label">B:</label>
+		<input id="setupscript-platestandcolorb" name="setupScript,plateStandColorB" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+		<label for="setupscript-platestandcoloralpha" class="label-before-input">Alpha:</label>
+		<input id="setupscript-platestandcoloralpha" name="setupScript,plateStandColorAlpha" type="number" step="any" min="0" max="1">
+		</div>   	
+</fieldset> 
+	 
+ 
  
 <!-- End of Content --> 
  
-</inputcolumn> 
-</div>  
-<figurecolumn>
- <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
-</figurecolumn>
+</form> 
+<div class="param-img">
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  > --> 
+</div>
         
-</form>
-</body>
+</body> 
 </html>

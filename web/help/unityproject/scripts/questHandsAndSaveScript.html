@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>questHandsAndSaveScript.cs Documentation</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			line-height: 1.6;
+			margin: 2rem;
+		}
+		h1, h2, h3 {
+			color: #2a4a6c;
+			margin-top: 2rem;
+		}
+		.code {
+			background-color: #f4f4f4;
+			padding: 0.5rem;
+			border-left: 3px solid #ccc;
+			font-family: monospace;
+			white-space: pre-wrap;
+		}
+		.section {
+			margin-bottom: 2rem;
+		}
+	</style>
+</head>
+<body>
+
+<h1>Documentation: <code>questHandsAndSaveScript.cs</code></h1>
+
+<div class="section">
+	<h2>1. Overview</h2>
+	<p>
+		<code>questHandsAndSaveScript</code> is a subclass of <code>handsAndSaveScript</code> designed specifically for Oculus Quest hand tracking using Unity's XR Hands framework. It handles hand mesh activation, tracking detection, fingertip and collider data saving, and gain perturbation offsets through <code>offsetHandProcessor</code>.
+	</p>
+</div>
+
+<div class="section">
+	<h2>2. Functional Blocks</h2>
+
+	<h3>Rig Initialization</h3>
+	<ul>
+		<li><code>rigSetup()</code> links Unity XR hand and collider objects, headset, wrist positions, and fingertip markers if saving is enabled.</li>
+	</ul>
+
+	<h3>Tracking Status</h3>
+	<ul>
+		<li><code>leftNotTracking()</code> and <code>rightNotTracking()</code> determine whether the respective hands are being actively tracked.</li>
+	</ul>
+
+	<h3>Data Saving</h3>
+	<ul>
+		<li><code>additionalFrameSave()</code>: Writes fingertip positions if enabled.</li>
+		<li><code>additionalInfoSave()</code>: Writes shape parameters for hand colliders if enabled.</li>
+	</ul>
+
+	<h3>Hand State Management</h3>
+	<ul>
+		<li><code>setHandGameobjectActivity()</code>: Activates or disables each hand’s mesh and colliders based on current task flags.</li>
+	</ul>
+
+	<h3>Perturbation Control</h3>
+	<ul>
+		<li><code>applyLeftPerturbation()</code> and <code>applyRightPerturbation()</code>: Apply real-time gain perturbations via <code>offsetHandProcessor</code>.</li>
+	</ul>
+</div>
+
+<div class="section">
+	<h2>3. Full Technical Details</h2>
+
+	<h3>Quest Hand References</h3>
+	<div class="code">
+// GameObjects
+GameObject leftHandCollidersObject;
+GameObject rightHandCollidersObject;
+GameObject leftHandTrackingObject;
+GameObject rightHandTrackingObject;
+
+// Mesh and tracking
+SkinnedMeshRenderer leftHandTracker;
+SkinnedMeshRenderer rightHandTracker;
+UnityEngine.XR.Hands.Samples.VisualizerSample.offsetHandProcessor handProcessorScript;
+
+// Optional fingertip tracking
+Transform[] allFingertips = new Transform[10];
+	</div>
+
+	<h3>rigSetup()</h3>
+	<div class="code">
+protected override void rigSetup() {
+	headsetTransform = transform.Find("/XR Origin/Camera Offset/Main Camera");
+
+	leftHandCollidersObject = transform.Find("/XR Origin/Camera Offset/Left Hand Colliders").gameObject;
+	rightHandCollidersObject = transform.Find("/XR Origin/Camera Offset/Right Hand Colliders").gameObject;
+
+	leftHandTrackingObject = transform.Find("/XR Origin/Camera Offset/Left Hand Tracking").gameObject;
+	rightHandTrackingObject = transform.Find("/XR Origin/Camera Offset/Right Hand Tracking").gameObject;
+
+	leftHandTracker = leftHandTrackingObject.transform.Find("LeftHand").GetComponent&lt;SkinnedMeshRenderer&gt;();
+	rightHandTracker = rightHandTrackingObject.transform.Find("RightHand").GetComponent&lt;SkinnedMeshRenderer&gt;();
+
+	leftWrist = transform.Find("/XR Origin/Camera Offset/Left Hand Tracking/L_Wrist");
+	rightWrist = transform.Find("/XR Origin/Camera Offset/Right Hand Tracking/R_Wrist");
+
+	handProcessorScript = transform.Find("/XR Origin/Camera Offset/Hand Visualizer")
+		.GetComponent&lt;offsetHandProcessor&gt;();
+
+	allCollidersLeftHand = leftHandCollidersObject.GetComponentsInChildren&lt;CapsuleCollider&gt;(true);
+	allCollidersRightHand = rightHandCollidersObject.GetComponentsInChildren&lt;CapsuleCollider&gt;(true);
+	allCollidersInHands = allCollidersLeftHand.Concat(allCollidersRightHand).ToArray();
+
+	if (saveFingertipPosition) {
+		var allMarkers = leftHandCollidersObject.GetComponentsInChildren&lt;Transform&gt;(true)
+			.Concat(rightHandCollidersObject.GetComponentsInChildren&lt;Transform&gt;(true));
+		int i = 0;
+		foreach (var marker in allMarkers) {
+			if (marker.name.Contains("Tip")) allFingertips[i++] = marker;
+		}
+	}
+}
+	</div>
+
+	<h3>Tracking Status Checks</h3>
+	<div class="code">
+protected override bool leftNotTracking() {
+	return !leftHandTrackingObject.activeInHierarchy || !leftHandTracker.enabled;
+}
+
+protected override bool rightNotTracking() {
+	return !rightHandTrackingObject.activeInHierarchy || !rightHandTracker.enabled;
+}
+	</div>
+
+	<h3>additionalFrameSave()</h3>
+	<div class="code">
+protected override void additionalFrameSave(BinaryWriter binWriter) {
+	if (saveFingertipPosition) {
+		foreach (Transform fingertip in allFingertips) {
+			binWriter.Write(fingertip.position.x);
+			binWriter.Write(fingertip.position.y);
+			binWriter.Write(fingertip.position.z);
+		}
+	}
+}
+	</div>
+
+	<h3>additionalInfoSave()</h3>
+	<div class="code">
+protected override void additionalInfoSave(BinaryWriter binWriter) {
+	if (saveBoneColliderShapes) {
+		foreach (CapsuleCollider c in allCollidersInHands) {
+			binWriter.Write(c.center.x);
+			binWriter.Write(c.center.y);
+			binWriter.Write(c.center.z);
+			binWriter.Write(c.height);
+			binWriter.Write(c.radius);
+			binWriter.Write((float)c.direction);
+		}
+	}
+}
+	</div>
+
+	<h3>setHandGameobjectActivity()</h3>
+	<div class="code">
+protected override void setHandGameobjectActivity() {
+	if (leftHandActiveFlag) {
+		leftHandTrackingObject.SetActive(true);
+		leftHandCollidersObject.GetComponent&lt;handBonesScript&gt;().resetToActive();
+	} else {
+		leftHandTrackingObject.SetActive(false);
+		leftHandCollidersObject.SetActive(false);
+	}
+
+	if (rightHandActiveFlag) {
+		rightHandTrackingObject.SetActive(true);
+		rightHandCollidersObject.GetComponent&lt;handBonesScript&gt;().resetToActive();
+	} else {
+		rightHandTrackingObject.SetActive(false);
+		rightHandCollidersObject.SetActive(false);
+	}
+}
+	</div>
+
+	<h3>applyLeftPerturbation() & applyRightPerturbation()</h3>
+	<div class="code">
+public override void applyLeftPerturbation(Vector3 offset) {
+	leftHandOffset = offset;
+	handProcessorScript.leftHandOffset = offset;
+}
+
+public override void applyRightPerturbation(Vector3 offset) {
+	rightHandOffset = offset;
+	handProcessorScript.rightHandOffset = offset;
+}
+	</div>
+
+</div>
+
+</body>
+</html>

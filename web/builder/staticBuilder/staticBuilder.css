@@ -1,0 +1,110 @@
+
+/* ///////////////////  CONTENT   ////////////////////   */ 
+ 
+.builder.static .content{
+	display: flex; /* vertical block occupying the full width */ 
+	flex-direction: column; /* stacks children vertically */
+	width: 100%; 
+	flex: 1; /* Height = remaining space */   	
+    overflow: hidden; /* needed so it does not expand?? check  */
+}
+
+
+/* keep name choice for accessibility - ARIA roles ("tablist", "tab", "tabpanel") */
+
+.builder.static .content .tablist{ /* Navigation Menu with Tab Buttons */  
+	overflow: hidden;
+	border-bottom: 1px solid #ccc;
+	display: flex;
+	align-items: flex-end; /* Align children to the bottom */ 
+    flex-shrink: 0; /* Prevent shrinking of fixed-height elements */
+}
+
+.builder.static .content .tablist .tab { /* tab buttons */
+	background-color: #f2f2f2; 
+	float: left;
+	border: 1px solid #ccc;;
+	outline: none;
+	cursor: pointer;
+	padding: 2px 10px;
+	transition: background-color 0.3s;
+}
+.builder.static .content .tablist .tab:hover {
+	background-color: #ddd;
+}
+.builder.static .content .tablist .tab.active {
+	background-color: white;
+	padding: 4px 13px;
+}
+
+
+.builder.static .content .tabpanel { /* Tab Panels w/ form content (form styled in form utils) */
+	display: flex; /* needed for inline children (param-form and param-img) */
+	align-items: flex-start; /* vertical float = top */
+	width: 100%; /* takes up full width of content container */
+	flex-grow: 1; /* takes up remaining height of content container (after tablist menu) */
+	flex-shrink: 1;
+	flex-basis: 1;
+	
+
+	/* container appearance (border/background) */
+	border: 1px solid #ccc; 
+	border-top: none;         
+	background-color: #f1f1f1;     
+	overflow-y: scroll; /* always shows scroll bar */  
+}
+
+ 
+
+.builder.static .content .tabpanel *{ 
+	font-family: Arial, sans-serif;
+	/*line-height: 0.75;  */
+    margin: 0;
+    padding: 0;    
+	box-sizing: border-box;    
+}  
+   
+
+
+
+
+/********************** HELP ***********************************/
+
+/* HELP MODIF */
+
+
+
+ /* Help window title row colors -> red  */ 
+.builder.static .title.help { 
+    color:#c22424;   /* text color */ 
+} 
+.builder.static .title.help::before,.builder.static .title.help::after { 
+    background-color: #c22424;  /* Line color */ 
+} 
+ 
+
+ /***************************** IMAGE COLUMN *********************************/
+.param-img{
+    /* second flex-item after .param-form */
+    flex: 1 1 0;            /* basis 0 → grow to fill the rest, shrink if needed */
+    align-self: flex-start; /* stay top-aligned with the form */ 
+}
+
+.param-img img{
+    display: block;  
+    width: 100%;      /* stretch across the whole column we just earned  */
+    height: auto;     /* keep the original aspect ratio                   */
+    object-fit: contain; /* do not distort   */
+    max-height: 340px; /* max height hard coded to fit in static builder popup without creating y-scroll */
+}
+
+
+
+
+
+
+
+
+
+
+

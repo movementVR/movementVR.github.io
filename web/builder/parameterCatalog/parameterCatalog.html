@@ -1,0 +1,37 @@
+<!-- Parameter Catalog popup  --> 
+
+<div class="controls parameterCatalog">
+<!--
+	<button class="catalog-toprow" id="helpButtonCatalog" title="Help Guide">
+		Help
+	</button>
+
+	<button class="catalog-toprow" id="downloadCSV" title="Download current view as CSV">
+		Download as CSV
+	</button>
+-->
+
+	<span class="catalog-toprow">View Mode:</span>
+	<label title="shows duplicate entries for parameters that can be edited from multiple locations in the Builder">
+		<input type="radio" name="viewToggle" value="full" checked>
+		All Builder Locations
+	</label>
+
+	<label title="shows each unique parameter once, combining all Builder locations into a single entry">
+		<input type="radio" name="viewToggle" value="unique">
+		Unique Parameters
+	</label>
+</div>
+ 
+<table id="paramTable" class="display parameterCatalog" width="100%">
+	<thead>
+		<tr>
+			<th>Code Name</th>
+			<th>UI Location</th>
+			<th>Display Label</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+</table> 
+ 

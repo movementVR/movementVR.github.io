@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+	<meta charset="UTF-8">
+	<title>Trial Builder Help Guide</title>  
+	
+</head>
+	
+<body>
+ 
+	
+
+<div id="helpGuide-modal" class="general-modal helpGuide-modal">
+  <div id="helpGuide-parent" class="general-parent modal-parent helpGuide-parent">
+    <div class="helpGuide-top-bar top-bar">
+      <h2 class="top-header">Trial Builder Help Guide</h2>
+      <input type="text" id="search-box" class="search-box" placeholder="Search guide...">
+      <span class="x-close">&times;</span>
+    </div>
+	  
+	   
+	  
+	  <div id="helpGuide-content" class="helpGuide-content page-content"> 
+		  
+<!-- - - - - - - - - - - 1. Overview  - - - - - - - - - - --->
+      <div class="section-header accordion-header" onclick="toggleStickyHeader(this)">1. Overview &thinsp; </div>
+       <div class="section-content accordion-content">
+		   
+		  
+			<h3>Trial Builder</h3> 
+			<p>The Trial Builder allows you to design experiments with parameter values that change across trials. Unlike the Static Builder — which sets a single, constant value for parameters — the Trial Builder provides tools to  create trial-by-trial sequences of parameter values.
+			</p> 
+		  
+			<h4>Before we start: Select "Trial Builder" as the Input Source</h4>
+			<p>
+			To open and use the Trial Builder, you must select <strong>Trial Builder</strong> as the <em>Input Source</em> for the parameter group you are configuring.
+			</p>
+			<p>
+			When you click the <strong>⚙ icon</strong> next to a parameter group in the Static Builder, a popup will prompt you to select an Input Source. The "Input Source" tells the builder which interface or file it should use when generating parameter values for your experiment. 
+			</p>
+
+			<p>
+			MovementVR provides three main Input Source options:
+			</p> 
+		  
+			<ul>
+			<li><strong>Static Builder: </strong> A form-like interface that allows you to set a single value per parameter. Use this for parameters that remain constant across all trials (standard perturbation schedules can also be set here). <em>(Default option)</em></li>
+			<li><strong>Trial Builder:</strong> A list-like interface that provides tools to generate sequences of values for each parameter. Use this for parameter values that change across trials. </li>
+			<li><strong>File (CSV):</strong> Import parameter values across trials from a CSV file. Use this if you prefer coding over the UI or want to reuse previously generated values (see the SAVE/LOAD guide for details).</li>
+			</ul> 
+				
+		  <p>Warning: Selecting an Input Source will disables all other input sources and ignore or discard any data they contain (see the SAVE / LOAD guide for details). </p>
+	 
+		
+		  
+		   <h4>Configuring your experiment with the Trial Builder    </h4>
+    <p>In the Trial Builder, you will generate a trial-by-trial sequence of parameter values,  for the parameters selected via the  ⚙ icon (in contrast to the Static Builder, the Trial Builder focuses on a single group of parameters).  </p> 
+		  
+		  	<p>
+			  The Trial Builder window consists of two main panels, and configuring an experiment involves four main steps divided between these panels:
+			</p>
+
+			<div style="margin: 20px 0; padding: 10px; background-color: #f9f9f9; border-left: 4px solid #4CAF50;">
+			  <strong>Left Panel:</strong> Manage the list of phases and assign trial types.
+			</div>
+
+			<ol>
+			  <li><strong>Subdivide trials into phases:</strong> Organize your experiment into consecutive blocks of trials, called <em>phases</em>.</li>
+			  <li><strong>Assign a trial type to each phase:</strong> Each phase is associated with a <em>trial type</em> that defines how parameters behave during that phase. Multiple phases can share the same trial type if they require identical behavior.</li>
+			</ol>
+
+			<div style="margin: 20px 0; padding: 10px; background-color: #f9f9f9; border-left: 4px solid #4CAF50;">
+			  <strong>Right Panel:</strong> Configure trial type settings and parameter value generation.
+			</div>
+
+			<ol start="3">
+			  <li><strong>Define how parameter values behave in each trial type:</strong> Specify the method used to generate parameter values—whether they follow a fixed sequence, are randomized, ramp up/down, or adhere to a statistical distribution (this is called the <em>sequence type</em>).</li>
+			  <li><strong>Provide the necessary input values:</strong> Enter specific values to control the sequence, such as the list of parameter values, start and end points for ramps, or parameters for statistical distributions.</li>
+			</ol>
+
+		   
+		  
+		  
+		  
+		   <h5>Example</h5>
+        <p>
+          For instance, we may use the Trial Builder to define the perturbation magnitude parameter for a gradual adaptation paradigm: 
+		</p>	
+			 
+		 <ol>
+		  <li><strong>Phases:</strong>
+			<ul>
+			  <li>Baseline</li>
+			  <li>Early Adaptation</li>
+			  <li>Adaptation Plateau</li>
+			  <li>Washout</li>
+			</ul>
+		  </li>
+
+		  <li><strong>Trial Types:</strong>
+			<ul>
+			  <li>
+				<strong>no perturbation</strong> <em>(assigned to: Baseline, Washout)</em>
+			  </li>
+			  <li>
+				<strong>gradually increasing</strong> <em>(assigned to: Early Adaptation)</em>
+			  </li>
+			  <li>
+				<strong>full perturbation</strong> <em>(assigned to: Adaptation Plateau)</em>
+			  </li>
+			</ul>
+		  </li>
+
+		  <li><strong>Sequence Types:</strong>
+			<ul>
+			  <li>no perturbation = constant value</li>
+			  <li>gradually increasing = gradual ramp</li>
+			  <li>full perturbation = constant value</li>
+			</ul>
+		  </li>
+
+		  <li><strong>Input Values:</strong>
+			<ul>
+			  <li>
+				<strong>no perturbation:</strong> Constant Value = <em>0%</em>
+			  </li>
+			  <li>
+				<strong>gradually increasing:</strong> Starting Value = <em>0%</em>, Ending Value = <em>100%</em>
+			  </li>
+			  <li>
+				<strong>full perturbation:</strong> Constant Value = <em>100%</em>
+			  </li>
+			</ul>
+		  </li>
+		</ol>
+
+		   
+		  
+      </div>
+		
+	  
+	   
+	  
+	  
+	  
+<!-- - - - - - - - - - - 2. Left Panel  - - - - - - - - - - ---> 		
+		
+      <div class="section-header accordion-header" onclick="toggleStickyHeader(this)">2. Left Panel &thinsp;</div>
+       <div class="section-content accordion-content">
+		  
+			<h3>Left Panel: Experiment Phases </h3>
+			<p>
+			The left panel is where you organize the experiment into phases. It consists of a list of “phases”, where each row in the list represents one “phase”.  
+				Each “phase” (each row) has the following elements:
+			</p>
+		
+			<h4>Trial Type Dropdown</h4>
+			<p>
+			Each row has a dropdown menu to select the “trial type” for that phase. By default, you see three options: Baseline, Learning, and Washout. Select &lt;add option&gt; in the dropdown to create additional “trial types”.<br>
+			Multiple rows (phases) can share the same trial type if needed. For example, you might have two separate phases that both use the “unperturbed” trial type but occur at different times in the experiment, such as pre and post learning.
+			</p>
+
+			<h4>Number of Trials</h4>
+			<p>
+			Next to the “trial type” dropdown, there is a numeric input field where you set the number of trials in that phase.
+			</p>
+
+			<h4>Adding, Removing, and Reordering Phases</h4>
+			<p>
+			You can use the + button at the top-right of the left panel to add a new phase row. Each row also has a delete button (trash icon) to remove it. You can click-and-drag a row to reorder phases, which changes the sequence in which they appear during the experiment.
+			</p>
+
+			<h4>Selecting a Phase and Viewing Parameters</h4>
+			<p>
+			Click on a phase row in the left panel to select it. This opens the “Trial Type Settings” panel (right panel) for the “trial type” associated with that phase.
+			Note that there is only one “Trial Type Settings” panel for each “trial type”: if two phases share the same trial type, they both link to the same “Trial Type Settings” panel, and any changes will apply to all phases using that trial type.
+			</p>
+		
+		</div>
+
+	  
+	  
+	  
+<!-- - - - - - - - - - - 3. Right Panel Overview  - - - - - - - - - - --->
+	  
+      <div class="section-header accordion-header" onclick="toggleStickyHeader(this)">3. Right Panel: Overview &thinsp; </div>
+       <div class="section-content accordion-content"> 
+
+			<h3>Right Panel: Trial Type Settings</h3>
+			<p>
+			The Trial Type Settings Panel (right panel) is where you configure the parameter values for each “trial type” selected in the left panel. You only need to configure a “trial type” once, and any phases using that “trial type” will automatically use the same settings.
+			</p>
+			<p>
+			The top row of the panel shows the name of the selected “trial type”, and the Sequence Type Dropdown (top-right) – which allows you to choose how parameters will change across trials (details below).
+			The main area of the panel consists of a “parameter input” list, containing repeated instances of the “selected parameter group” (each row is one instance; note that it is possible that you may only have a single item in the list).
+			</p>
+			<p>
+			Defining trial-by-trial parameter values for the current “trial type” involves two steps:
+			</p>
+			<ol>
+			<li>Select the correct sequence type using the “Sequence Type Dropdown”. This section will modify certain aspects of the “parameter input” list.</li>
+			<li>Fill in the values for each row of the “parameter input” list, in a way that is appropriate to the selected sequence type. You may need to add / remove / reorder rows as needed.</li>
+			</ol>
+
+      </div>
+
+	  
+	  
+<!-- - - - - - - - - - - 4. Right Panel Sequence Type   - - - - - - - - - - --->
+	  
+      <div class="section-header accordion-header" onclick="toggleStickyHeader(this)">4. Right Panel: Sequence Type &thinsp;</div>
+       <div class="section-content accordion-content"> 
+
+			<h3>Sequence Type Dropdown (Right Panel)</h3>
+			<p>
+			Each Phase Panel features a “Sequence Type” dropdown in its title bar (top right). Use this dropdown to select how parameters will vary across trials in this phase. Each dropdown option offers a different method for generating the trial-by-trial sequence of parameter values:
+			</p>
+
+			<h4>Deterministic options <span class="option-description">(predefined values and order, no randomness)</span></h4>
+
+			<h5>Constant values</h5>
+			<p>
+			Parameter values are constant across all trials in this phase. The right panel shows a single row of input fields where you can enter the fixed value for each parameter.
+			</p>
+
+			<h5>Gradual ramp</h5>
+			<p>
+			Parameter values change linearly trial-by-trial starting at the start value and ending at the end value you provide. The right panel shows two rows of input fields: one for the start value and one for the end value of each parameter.
+			</p>
+
+			<h5>Ordered sequence</h5>
+			<p>
+			Parameter values change trial-by-trial according to a predefined list of values, which you define using the right panel.
+			The right panel shows multiple rows of input fields: each row corresponds to a single trial where you can enter the parameter values for that trial. These values are applied sequentially, trial-by-trial, in the order you set.
+			Click “Add Value” at the top-right of the panel to insert new rows. Click-and-drag existing rows to reorder them, or click “Remove” on a row to delete it.
+			</p>
+
+			<h4>Randomized order options <span class="option-description">(random sampling of predefined values)</span></h4>
+
+			<h5>Random sequence</h5>
+			<p>
+			For each trial, parameter values are drawn with replacement from a list of values that you define using the right panel.
+			The right panel shows multiple rows of input fields: each row represents one potential set of parameter values for one trial. Enter each potential set of parameter values on a separate row.
+			Click “Add Value” at the top-right of the panel to insert new rows. Click-and-drag existing rows to reorder them, or click “Remove” on a row to delete it.
+			The order of entries in the list is irrelevant.
+			On each trial, parameter values are selected at random from your list using probability weights specified to the right of each row. Each weight is 1/1 by default (equal probability); weights are normalized automatically.
+			Values are drawn with replacement, meaning that the same value may appear multiple times before others are used.
+			</p>
+
+			<h5>Blocked random sequence</h5>
+			<p>
+			For each trial, parameter values are drawn without replacement (with block reset) from a list of values that you define using the right panel.
+			The right panel shows multiple rows of input fields: each row represents one potential set of parameter values for one trial. Enter each potential set of parameter values on a separate row.
+			Click “Add Value” at the top-right of the panel to insert new rows. Click-and-drag existing rows to reorder them, or click “Remove” on a row to delete it.
+			The order of entries in the list is irrelevant.
+			On each trial, parameter values are selected at random from your list using equal probability across parameter values that have not yet been drawn.
+			Values are drawn without replacement within each block (block = full list of values): every potential set of parameter values is selected exactly once before any repeats occur; when all values have been used, the block resets (list reshuffles).
+			</p>
+
+			<h4>Random values options <span class="option-description">(values generated from a probability distribution)</span></h4>
+
+			<h5>Uniform Distribution</h5>
+			<p>
+			Parameter values are randomly generated for each trial based on a uniform distribution. You define the minimum and maximum bounds, and all values within this range have equal probability.
+			The right panel shows two rows of input fields corresponding to these bounds.
+			</p>
+
+			<h5>Normal Distribution</h5>
+			<p>
+			Parameter values are randomly generated for each trial based on a normal distribution. You define the mean and variance of the distribution.
+			The right panel shows two rows of input fields corresponding to these parameters.
+			</p>
+		  
+      </div>
+		
+		
+	  
+<!-- - - - - - - - - - - 5. Example  - - - - - - - - - - --->
+		
+      <div class="section-header accordion-header" onclick="toggleStickyHeader(this)">5. Implementation Example &thinsp;</div>
+       <div class="section-content accordion-content">
+      <h5>Expanded Example: Gain Visuomotor Adaptation Paradigm</h5>
+		<p>
+		  In this example, we are working with a gain visuomotor adaptation paradigm using the parameter <strong>gainY</strong> to control visual perturbation. Here, the visual perturbation slows the appearance of the right hand:
+		</p>
+		<ul>
+		  <li><em>gain = 1</em>: No perturbation (the hand moves normally).</li>
+		  <li><em>gain > 1</em>: The hand appears slower than normal.</li>
+		</ul>
+		<p>
+		  Our experimental design includes:
+		</p>
+		<ul>
+		  <li><strong>20 Baseline (BL) Trials</strong> without perturbation</li>
+		  <li><strong>100 Trials</strong> with gradual introduction of perturbation</li>
+		  <li><strong>50 Trials</strong> at maximum perturbation value (<em>gain = 1.5</em>)</li>
+		  <li><strong>40 Washout Trials</strong> returning to no perturbation</li>
+		</ul>
+		<p>
+		  We can structure the experiment as follows:
+		</p>
+		<ol>
+		  <li>
+			<strong>Phases</strong> (<em>Left Panel</em>):
+			<ul>
+			  <li><strong>Baseline</strong> (20 trials; Trial Type: <em>No Perturbation</em>)</li>
+			  <li><strong>Initial Adaptation</strong> (100 trials; Trial Type: <em>Gradually Increasing</em>)</li>
+			  <li><strong>Adaptation Plateau</strong> (50 trials; Trial Type: <em>Full Perturbation</em>)</li>
+			  <li><strong>Washout</strong> (40 trials; Trial Type: <em>No Perturbation</em>)</li>
+			</ul>
+		  </li>
+		  <li>
+			<strong>Trial Types</strong> (<em>Left Panel</em>):
+			<ul>
+			  <li><strong>No Perturbation:</strong> Used in the Baseline and Washout phases.</li>
+			  <li><strong>Gradually Increasing:</strong> Used in the Initial Adaptation phase.</li>
+			  <li><strong>Full Perturbation:</strong> Used in the Adaptation Plateau phase.</li>
+			</ul>
+		  </li>
+		  <li>
+			<strong>Sequence Type</strong> (<em>Right Panel</em>):
+			<ul>
+			  <li><strong>No Perturbation:</strong> Set as <em>Constant</em> (same value across trials).</li>
+			  <li><strong>Gradually Increasing:</strong> Set as <em>Ramp</em> (linear change from start to end value).</li>
+			  <li><strong>Full Perturbation:</strong> Set as <em>Constant</em> (fixed maximum perturbation value).</li>
+			</ul>
+		  </li>
+		  <li>
+			<strong>Values</strong> (<em>Right Panel</em>):
+			<ul>
+			  <li><strong>No Perturbation:</strong> Constant value of 1.</li>
+			  <li><strong>Gradually Increasing:</strong> Ramp from 1 (start) to 1.5 (end).</li>
+			  <li><strong>Full Perturbation:</strong> Constant value of 1.5.</li>
+			</ul>
+		  </li>
+		</ol>
+		<p> 
+
+		  
+      </div>
+
+		
+		
+		
+		
+		
+		
+		<!--  ==============================================  --> 
+    </div>
+
+ 
+	  <button id="closeButton" class="closeButton">Close</button>
+  </div>
+</div> 
+	
+	  
+	
+	
+</body>
+</html>

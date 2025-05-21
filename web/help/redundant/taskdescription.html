@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MovementVR – Lifting Task</title>
+	<link rel="stylesheet" href="/web/general/general.css">
+	<link rel="stylesheet" href="/web/general/page.css">
+</head>
+<body>
+	<div id="mainpage-parent" class="mainpage-parent general-parent">
+		<div id="mainpage-content" class="mainpage-content page-content">
+
+			<div class="section-header">The MovementVR Task</div>
+			<div class="section-content">
+				
+				<p>The tasks designed with MovementVR are lifting tasks. On each trial, participants lift a plate of grapes up to a target with a bird perched on it. Their hands are tracked in real time and rendered as fully articulated virtual hands that interact with objects just like in real life. This allows participants to lift the virtual plate in the same way they would in the real world.</p>
+
+				<div class="section-panel-header">Task Elements</div>
+				<ul class="section-panel list-shortitems">
+					<li><strong class="emphasis">Plate & Grape:</strong> The object participants lift each trial. Physics-based interaction allows natural grasp and movement. If it tilts or falls, the grape drops.</li>
+					<li><strong class="emphasis">Target:</strong> The goal location for the plate. It can change color to indicate success/failure and includes a visible mesh that defines feedback and trial conditions.</li>
+					<li><strong class="emphasis">Hand Home:</strong> Starting position for each hand, defined by location and a "no-hand" zone to avoid premature interaction.</li>
+					<li><strong class="emphasis">Bird & Perch:</strong> An animated bird sits at the target. Its species, sound, and behavior provide outcome-linked feedback.</li>
+					<li><strong class="emphasis">Feedback Messages:</strong> Cartoons and sounds show success or failure after each trial.</li>
+					<li><strong class="emphasis">Hands:</strong> Real-time tracked, articulated VR hands with 19 bones for natural interaction.</li>
+					<li><strong class="emphasis">Workspace:</strong> The bounded area within which the plate must stay. Exiting ends the trial as a failure.</li>
+					<li><strong class="emphasis">Text & UI:</strong> Instructional messages, trial number, and visual elements support user guidance.</li>
+					<li><strong class="emphasis">Background:</strong> A medieval-style immersive garden and port setting with ambient birds and scenery.</li>
+				</ul>
+
+				<div class="section-panel-header">Trial Phases</div>
+				<ul class="section-panel list-shortitems">
+					<li><strong class="emphasis">Intertrial:</strong> Pause between trials.</li>
+					<li><strong class="emphasis">Home Position:</strong> Hands return to defined start zone.</li>
+					<li><strong class="emphasis">Plate Contact:</strong> User initiates lift by touching the plate.</li>
+					<li><strong class="emphasis">Plate Lift:</strong> Active lifting phase toward the target.</li>
+					<li><strong class="emphasis">Feedback:</strong> Outcome shown via color, animation, or cartoon.</li>
+					<li><strong class="emphasis">Break:</strong> Optional rest between trials.</li>
+				</ul>
+
+				<div class="section-panel-header">Success and Failure Criteria</div>
+				<ul class="section-panel list-shortitems">
+					<li><strong class="emphasis">Success:</strong> Plate center reaches target zone, remains within for required duration, and stays below tilt threshold.</li>
+					<li><strong class="emphasis">Failure:</strong> Plate tilts or leaves zone too soon, falls, exits workspace, or exceeds time limit.</li>
+				</ul>
+
+				<div class="section-panel-header">Motor Learning Applications</div>
+				<ul class="section-panel list-shortitems">
+					<li><strong class="emphasis">Adaptation via Gain Perturbation:</strong> Virtual hand moves with scaled gain relative to real hand. Perturbation ramps up and down by phase.</li>
+					<li><strong class="emphasis">Reinforcement Learning:</strong> Real-time visual feedback plus adaptive animations and sounds tied to success or failure.</li>
+					<li><strong class="emphasis">Custom Feedback:</strong> Target color, bird behavior, and effects can change based on task outcome.</li>
+				</ul>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

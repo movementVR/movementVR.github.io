@@ -1,0 +1,109 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+  	<meta charset="UTF-8">
+  	<title> Import File Help Guide</title> 
+	 
+</head>
+	
+<body>
+ 
+	
+	
+
+<div id="helpGuide-modal" class="general-modal helpGuide-modal">
+  <div id="helpGuide-parent" class="general-parent modal-parent helpGuide-parent">
+    <div class="helpGuide-top-bar top-bar">
+      <h2 class="top-header"> Import File Help Guide</h2>
+      <input type="text" id="search-box" class="search-box" placeholder="Search guide...">
+      <span class="x-close">&times;</span>
+    </div>
+	  
+	   
+	  
+	  <div id="helpGuide-content" class="helpGuide-content page-content">
+ 
+		  
+<!-- - - - - - - - - - - 1. Overview  - - - - - - - - - - --->
+
+<div class="section-header accordion-header" onclick="toggleStickyHeader(this)">1. Overview</div>
+<div class="section-content accordion-content">
+  <p>
+    The <strong>Import Parameters from CSV</strong> popup appears when you choose <em>File</em> as the input source for one or more parameters via the ⚙ gear icon. It allows you to upload a CSV file and assign parameter values based on its contents.
+  </p>
+  <p>
+    The imported values can define trial-by-trial sequences or constant values, depending on the parameter type and file structure. This tool is ideal for researchers who prefer coding or wish to reuse previously generated configurations.
+  </p>
+</div>
+
+<div class="section-header accordion-header" onclick="toggleStickyHeader(this)">2. Step-by-Step Instructions</div>
+<div class="section-content accordion-content">
+  <h4>Step 1: Upload File</h4>
+  <p>
+    Click <strong>Choose File</strong> to upload your <code>.csv</code> file. Once uploaded, the filename and a “Loaded!” message confirm that the file has been read.
+  </p>
+
+  <h4>Step 2: Select Parameters</h4>
+  <p>
+    Choose whether to import values for:
+  </p>
+  <ul>
+    <li><strong>Selected parameters only:</strong> Use this option to import only the specific parameters for which you initiated the File input source. The list of parameters appears next to the radio button.</li>
+    <li><strong>All parameters in file:</strong> This imports all parameters found in the CSV (helpful when loading a pre-made full task configuration).</li>
+  </ul>
+
+  <h4>Step 3: Review Method for Constant Parameters</h4>
+  <p>
+    If your file includes parameters with a <strong>single constant value</strong> (not trial-by-trial), choose how they should be handled:
+  </p>
+  <ul>
+    <li><strong>Keep Method as "File"</strong> (default): These values remain read-only and are still shown in Static Builder, but cannot be edited there.</li>
+    <li><strong>Convert Method to "Static Builder"</strong>: The constant value is copied into the Static Builder and becomes editable there.</li>
+  </ul>
+</div>
+ 
+
+<div class="section-header accordion-header" onclick="toggleStickyHeader(this)">3. CSV Format</div>
+<div class="section-content accordion-content">
+  <p>A valid CSV file should follow this structure:</p>
+  <pre><code>
+  scriptName  , paramName              , trial1 , trial2 , trial3
+  setupScript , tgtBirdPositionOffsetX , 0.1    , 0.2    , 0.3
+  setupScript , tgtBirdPositionOffsetY , 0.2    , 0.2    , 0.25
+  setupScript , tgtBirdPositionOffsetZ , 0.5    , 0.5    , 0.5
+...</code></pre>
+  <ul>
+    <li>The first two columns together (<code>scriptName</code> and <code>paramName</code>) identify the parameter.</li>  
+    <li>Each following column represents a trial. The number of columns determines the number of trials.</li>
+    <li>If a value is constant across all trials, you can write a single value in column 3 and leave subsequent columns blank.</li>
+    <li>A file can contain a mix of constant and trial-varying definitions.</li>
+  </ul>
+  <p><strong>Parameter Catalog:</strong> Click "Parameter Catalog" on the main Builder page to access a list of all parameters with their <code>scriptName</code> and <code>paramName</code>, location in the Builder UI, definition and allowed values.</p>
+</div>
+
+<div class="section-header accordion-header" onclick="toggleStickyHeader(this)">5. Finalizing Import</div>
+<div class="section-content accordion-content">
+  <p>
+    After selecting your options, click <strong>OK</strong> to complete the import and return to the Static Builder interface. The imported parameters will now appear with a "File" tag and be disabled for editing unless converted.
+  </p>
+  <p>
+    Click <strong>Cancel</strong> to exit without making changes.
+  </p>
+</div>
+
+
+		
+		<!--  ==============================================  --> 
+    </div>
+
+ 
+	  <button id="closeButton" class="closeButton">Close</button>
+  </div>
+</div>
+  
+
+</body>
+</html>

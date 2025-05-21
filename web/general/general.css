@@ -1,129 +1,218 @@
- 
-
-/* Style the main body  (outside of buttons, tabs, inputs, tabcontents etc..) */
-body{
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    font-size: 15px;
+/* General styles of the body for all windows */
+body {
+    margin: 0;  /* Overall margin for the main window */ 
+    font-family: Arial, sans-serif; /* Font style unless otherwise specified  */  
 } 
 
-h2{
-    font-size: 16px;
-    margin-bottom: 30px; 
+* {
+    box-sizing: border-box; /* Include borders, padding etc... in element size */ 
+}
+ 
+
+
+/* *************  COLORS  ************* */
+:root{
+	--var-col-darkercyan:  #1b7e7e;
+	--var-col-darkbutton: darkcyan;
+	--var-col-mediumcyan:  #1f9393;
+	--var-col-brightcyan: #28bdbd;
+	--var-col-cyan2: darkturquoise;
+	--var-col-cyan1: paleturquoise;
+	--var-col-cyan0: #eeffff;
+	--var-col-inputBackgroundLightGray: #f1f1f1;
+}
+ 
+
+/* *************  GENERAL  ************* */
+.clickable {
+	cursor: pointer;
 }
 
-h3{
-    font-size: 15px;
-    margin-bottom: 10px;
-}
 
-h4{
-    font-size: 14px;
-    font-weight: normal;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
 
-h5{
-    font-size: 14px;
-    font-weight: normal;
-    margin-bottom: 15px;
-    margin-top: 0px;
-    font-style: italic;
-    
-}
-h6{
+/* *************  FRAMES  ************* */
+
+.general-iframe {
     display: block;
-    font-size: 13px;
-    font-weight: normal;
-    margin-bottom: 5px;
-    margin-top: 0px;
-    font-style: italic;
-    
-}
-h7{
-    display: block;
-    font-size: 12px;
-    font-weight: normal;
-    margin-bottom: 2px;
-    margin-top: 0px;
-    font-style: italic;
-    
-}
-
-
-/* Style the tab (top row with buttons) */
-.parenttab {
-    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     border: none;
-    background-color: none;	
-    border-bottom: 3px solid #ccc;
-    width: 100%	;		
-  /*  margin: auto;	  
-    margin-top:0px; */
-    text-align: center;
-    align-items: center;  /* Center items vertically */ 
+    z-index: 1000;
 }
 
-
-.logocontainer { 
-    background-color: white;
-  //  border: 2px solid cyan; 
-    margin: 0;
-    padding: 10px 15px;
-    outline: none;
-    cursor: default;
-    font-family: "Arial Narrow";
-    font-size: 20px;  
-    font-weight: 900; 
-    border-radius: 10px;
-    color: navy; 
-    display: inline-block; /* Ensure the logo container is inline */
-    vertical-align: middle; /* Align with the middle of the text */
+.general-iframe.help-iframe { 
+	 /* places help modal are on top of modal from which Help is clicked */
+    z-index: 1001;
 }
-
-
-.logoimg {  
-    height: 50px; /* Adjust the height of the logo as needed */
-    vertical-align: middle; /* Align the image with the middle of the text */
-}
-
- 
-/* Style the buttons inside the tab (buttons to toggle windows) */
-.parenttab button {
-    background-color: white;
-    border:  20px 20px; 
-    border-color: cyan;
-    margin-left:10px;
-    padding-top:  5px;
-    padding-bottom: 5px;
-    padding-left:  10px;
-    padding-right:  10px;
-    outline: none;
-    cursor: default;
-    font-family: "Arial Narrow";
-    font-size: 16px;  
-    font-weight: bold; 
-    border-radius: 10px; /* Set the border radius for rounded corners */
-    color: navy; 
-}
-
- 
-
  
 
 
 
-/* Style of the overall container for every page  */
-.pagecontainer{			
-    margin: auto;
-    width: 1000px;		
-    text-align: left;
-    padding-right: 20px;
-    padding-left: 20px;
-     
+
+
+/* *************  MODALS / POPUPS  ************* */
+ 
+
+
+/* Modal Container */
+.general-modal {
+  display: flex; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  align-items: center; /* vertical alignment */
+  justify-content: center; /* horizontal alignment */
+  z-index: 999;  /* bring to front */
 }
 
 
 
+/* Modal Content */
+.general-modal .modal-parent {
+  display: flex;
+  flex-direction: column;
+}
+
+/* action modals -> tighter rows (tight-space 
+like source selection in builder etc...)*/
+.action-modal *{
+	font-family: Arial, sans-serif;
+	line-height: 0.75;    
+	box-sizing: border-box;  
+	margin: 0;
+	padding: 0;    
+
+}  
+
+.general-modal.action-modal .modal-parent { 
+	margin: 0;
+	padding: 0; 
+	gap: 15px;
+	position: relative;
+	border-radius: 10px; 
+	background: #ddebe9;   
+}
+
+		
+ 
+/* Close Button (Top Right Cross) */
+.general-modal .x-close {
+  align-self: flex-end;
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 27px;
+  color: var(--var-col-darkercyan); 
+  cursor: pointer;
+}
+.general-modal .x-close:hover {
+  color: var(--var-col-mediumcyan);
+}
+ 
+ 
+/* Modals bubble panels  */
+.general-modal .modal-panel { 
+  display: flex;
+  flex-direction: column;
+  width: 100%; 
+  border: 1.5px solid var(--var-col-darkercyan);
+  border-radius: 10px; 
+  background: white; 
+}
+ 
+
+/* Title for Each Panel */
+.general-modal .modal-panel .panel-title { 
+  margin-bottom: 5px;
+  padding: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  background-color: var(--var-col-darkercyan);
+  border-radius:  7px 7px 0px 0px; /* top-left top-right bottom-right bottom-left*/
+  border: 1px solid var(--var-col-darkercyan);
+}
+
+/* Content for Each Panel */
+.general-modal .modal-panel .panel-content {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+ 
+ 
+/* modal buttons in panels */
+.general-modal .modal-panel .panel-content button{
+  height: 1.4em;	
+  margin-left: 5px;    
+  padding: 4px 5px;
+  background-color: var(--var-col-brightcyan);
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white; 
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+} 
+.general-modal .modal-panel .panel-content button:hover{  
+  background-color: var(--var-col-mediumcyan);
+  border-color: var(--var-col-mediumcyan);
+}
+ 
+
+/* modal buttons in footer */
+.general-modal .button-footer{
+	display: flex;
+	
+}
+
+
+.general-modal .primary-button,
+.general-modal .secondary-button{ 
+  margin: 0px auto; 
+  margin-bottom: 5px;
+  padding: 7px 12px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;	
+} 
+
+.general-modal .primary-button{
+  color: white;
+  background-color: var(--var-col-darkercyan);	
+  border: none;
+  font-weight: bold;
+}
+.general-modal .primary-button:hover{  
+  background-color: var(--var-col-mediumcyan);
+  border-color: var(--var-col-mediumcyan);
+} 
+
+.general-modal .secondary-button{  
+	background-color: whitesmoke;
+	border-width: thin;
+}
+.general-modal .secondary-button:hover{  
+	background-color: gainsboro;
+}
+ 
+ 
+/* Modal Utility (Overwrite) - Hidden */
+.general-modal.hidden,
+.general-modal .hidden,
+.general-modal .template {
+  display: none !important;
+} 

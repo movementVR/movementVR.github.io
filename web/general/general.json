@@ -1,14 +1,24 @@
 {
-    "path": "/web/general/",
-    "html":[
-    ],
-    "js":[
-        "general.js"
-    ],
-    "css":[
-        "general.css"
-    ],
-    "json":[
-        "general.json"
-    ]
+	"path": "/web/general/",
+	"scripts": {   
+		"main":[ 
+			"general.js",
+			"page.js"
+		] 
+	},
+    "css": {   
+		"global":[
+        	"general.css",
+        	"page.css"
+    	],
+		"guide":[
+			"guide.css"		
+		]
+	},
+	"scopedScripts": {  
+		"guide":[
+			"guide.js"			
+		]
+	} 
 }
+ 

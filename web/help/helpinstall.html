@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MovementVR App Installation Guide</title>
+	<link rel="stylesheet" href="/web/install/install.css"> 
+	<style>
+		 
+	</style>
+</head>
+<body>
+
+<h1>MovementVR: Installation &amp; Export Guide</h1>
+<p>This guide walks you through installing the MovementVR app, uploading your configuration, running the app, and exporting recorded data. This assumes you have already created your experimental configuration and have your <code>parameters.csv</code> file ready. If not, please return to the Builder tab.</p>
+	
+	<p><strong>If you’ve already set up Hand Tracking and Developer Mode,</strong> you can jump to <a href="#step1-install-app">Step 1. Install MovementVR App via SideQuest</a>. Otherwise, expand the <strong class="prerequisites">Headset Setup Prerequisites</strong> sections below.</p>
+
+
+<!-- ────────────────────────────────────────────────────────────── -->
+<details class="prerequisites"> 
+	<summary>Headset Setup Prerequisites: Hand Tracking</summary>
+
+	<p>To continue with the MovementVR app setup, your headset <strong>must</strong> have Hand Tracking enabled—this lets you navigate with your hands instead of controllers. You can follow the <a href="https://www.meta.com/help/quest/290147772643252/" target="_blank">official Meta instructions</a> or use the steps below:</p>
+
+	<ol>
+		<li>
+			Wear your headset and open <strong>Quick Settings</strong> by clicking the clock in the bottom-left corner of the universal menu (if the menu isn’t visible, press the Meta/Oculus button on your right controller).
+			<img class="instruction-screenshot" src="/web/img/helphandtracking/quicksettings.png" alt="Quick Settings panel opened inside Quest headset">
+		</li>
+
+		<li>
+			Open <strong>Settings</strong> by clicking the gear icon in the top-right corner of Quick Settings.
+			<img class="instruction-screenshot" src="/web/img/helphandtracking/settings.png" alt="Gear icon for opening Settings from Quick Settings">
+		</li>
+
+		<li>
+			In Settings, click <strong>Movement tracking</strong> (subtitled “Hand Tracking”).
+			<img class="instruction-screenshot larger-max-height" src="/web/img/helphandtracking/handtracking.png" alt="Movement tracking (Hand Tracking) option in Settings menu">
+		</li>
+
+		<li>
+			Toggle <strong>Hand and body tracking</strong> ON, then follow the on-screen prompts to finish setup.
+			<img class="instruction-screenshot" src="/web/img/helphandtracking/handtrackingtoggle.png" alt="Hand and body tracking toggle switched ON">
+		</li>
+	</ol>
+</details>
+	
+<!-- ────────────────────────────────────────────────────────────── -->
+<details class="prerequisites">
+	<summary>Headset Setup Prerequisites: Developer Mode</summary>
+
+	<p>To continue with the MovementVR app setup, your headset <strong>must</strong> have Developer Mode enabled. If it is not enabled — or you are unsure whether it is — there are three easy ways to set it up:</p>
+
+	<h3 class="section-options">Option&nbsp;1 <small>(recommended, especially if you're unsure of Developer Mode status)</small></h3>
+	<p>Simply continue with the rest of the MovementVR setup. When you install SideQuest, the platform will automatically detect whether Developer Mode is enabled. If it is not, SideQuest provides clear step-by-step instructions and videos to guide you through the process.</p>
+	<img class="instruction-screenshot largest-max-height" src="/web/img/helpdevelopermode/SideQuestHelp.png" alt="SideQuest screen that offers automatic Developer-Mode setup guidance">
+ 
+	<h3 class="section-options">Option&nbsp;2</h3>
+	<p>Follow the official instructions for setting up your device and enabling Developer Mode, available here:&nbsp;
+		<a href="https://developers.meta.com/horizon/documentation/native/android/mobile-device-setup" target="_blank">
+			https://developers.meta.com/horizon/documentation/native/android/mobile-device-setup
+		</a>
+	</p> 
+	<h3 class="section-options">Option&nbsp;3</h3>
+	<p>The steps below were written in May&nbsp;2025 and may change over time. Search online for “Enable Developer Mode on Meta Quest&nbsp;2” (or your model) for the most up-to-date instructions.</p>
+
+	<ol>
+		<li>
+			Make sure the <strong>Meta Horizon</strong> app is installed on your phone or tablet, and that you remember the login credentials for the Meta account linked to your headset (this is the same app and account used during initial headset setup — it was previously called the Meta Quest or Oculus app).
+		</li>
+
+		<li>
+			Set up a <strong>Meta Developer account</strong> by following the steps at&nbsp;
+			<a href="https://developers.meta.com/horizon/manage/organizations/create/" target="_blank">
+				https://developers.meta.com/horizon/manage/organizations/create/
+			</a>.
+			Log in with the <em>same</em> Meta account used for your headset and Meta app. You may be asked to complete two-factor authentication (common authenticator apps, text message, or credit-card verification all work). Finally, create your “Developer Organization” by choosing a name.
+		</li>
+
+		<li>
+			Enable <strong>Developer Mode</strong> in the Meta Horizon app:<br>
+			Tap&nbsp;
+			<img class="inline-icon" src="/web/img/helpdevelopermode/appMenuIcon.png"            alt="Meta Horizon ‘Menu’ icon"> Menu&nbsp;→
+			<img class="inline-icon" src="/web/img/helpdevelopermode/appDevicesIcon.png"         alt="Meta Horizon ‘Devices’ icon"> Devices&nbsp;→
+			<img class="inline-icon" src="/web/img/helpdevelopermode/appMyDeviceIcon.png"        alt="Icon representing your selected headset"> <strong>(select your headset)</strong>&nbsp;→
+			<img class="inline-icon" src="/web/img/helpdevelopermode/appHeadsetSettingsIcon.png" alt="‘Headset settings’ gear icon"> Headset&nbsp;settings&nbsp;→
+			<img class="inline-icon" src="/web/img/helpdevelopermode/appDeveloperModeIcon.png"   alt="‘Developer Mode’ wrench icon"> Developer&nbsp;Mode&nbsp;→
+			<img class="inline-icon" src="/web/img/helpdevelopermode/appToggleIcon.png"          alt="Toggle switch control"> Toggle&nbsp;<strong>ON</strong>. 
+			<div class="smaller-br"></div> 
+			<img class="instruction-screenshot larger-max-dim" src="/web/img/helpdevelopermode/appInstructionsP1.png" alt="Meta Horizon screenshot showing Developer Mode toggle – page 1"> 
+			<div class="small-br"></div> 
+			<img class="instruction-screenshot" src="/web/img/helpdevelopermode/appInstructionsP2.png" alt="Meta Horizon screenshot confirming Developer Mode enabled – page 2">
+		</li>
+			<br>
+
+		<li>
+			Connect your headset to your computer and put it on. You should be prompted to tap
+			<code class="larger">"Allow USB debugging"</code> — check <em>Always allow from this computer</em> to avoid future prompts. If you don’t see the prompt, unplug → re-plug or restart the headset. See the&nbsp;
+			<a href="https://developers.meta.com/horizon/documentation/native/android/mobile-device-setup" target="_blank">Meta documentation</a>
+			for any additional settings or drivers you may need.
+			<br>
+			<img class="instruction-screenshot larger-max-height" src="/web/img/helpdevelopermode/hmdDebugging.png" alt="In-headset prompt asking to allow USB debugging">
+		</li>
+	</ol>
+</details>
+
+ 
+
+<!-- ────────────────────────────────────────────────────────────── -->
+<details id="step1-install-app" open>
+	<summary>Step&nbsp;1. Install MovementVR App via SideQuest</summary>
+	<ol>
+		<li>Download the <strong>MovementVR APK</strong> file:
+		<button onclick="downloadMovementVR_APK()"><span>Download APK</span></button>
+		</li>
+	
+		<li>Download & Install the <strong>SideQuest Desktop App</strong> on your computer:&nbsp;
+			<a href="https://sidequestvr.com/setup-howto" target="_blank">https://sidequestvr.com/setup-howto</a>
+		</li>
+		<li>Open <strong>SideQuest</strong>
+		</li> 
+	
+		<li>
+			Launch the SideQuest <strong>APK Installer</strong> by clicking the icon&nbsp;
+			<img class="inline-icon" src="/web/img/helpinstall/sidequestInstallIcon.png" alt="SideQuest ‘Install APK’ icon">
+			labeled&nbsp;<strong>"Install APK file from folder on computer"</strong> in the top navigation bar.
+			<img class="instruction-screenshot" src="/web/img/helpinstall/sidequestInstallBtn.png" alt="SideQuest Install APK button highlighted">
+		</li>
+
+		<li>
+			When prompted, select the downloaded&nbsp;<code class="larger">MovementVR.apk</code>&nbsp;file.
+			<img class="instruction-screenshot" src="/web/img/helpinstall/movementvrAPK.png" alt="File-dialog with MovementVR.apk selected">
+		</li>
+	</ol>
+</details>
+ 
+
+<!-- ────────────────────────────────────────────────────────────── -->
+<details>
+	<summary>Step&nbsp;2. Launch the App Once to Create Folders</summary>
+
+	<ol>
+		<li>
+			Open the <strong>App Manager</strong> by clicking the icon&nbsp;
+			<img class="inline-icon" src="/web/img/helpinstall/downloadedAppsIcon.png" alt="SideQuest ‘Installed Apps’ icon">
+			labeled&nbsp;<strong>"Currently installed apps"</strong> in the top navigation bar.
+			<img class="instruction-screenshot" src="/web/img/helpinstall/sidequestAppsBtn.png" alt="SideQuest Installed Apps panel">
+		</li>
+
+		<li>
+			Locate&nbsp;<code class="larger">com.MovementVR.MovementVR</code> and click the gear icon&nbsp;
+			<img class="inline-icon" src="/web/img/helpinstall/sidequestGearIcon.png" alt="SideQuest gear icon for app options">
+			<img class="instruction-screenshot" src="/web/img/helpinstall/sidequestRunApp.png" alt="SideQuest menu with ‘Run App’ option">
+		</li>
+
+		<li>
+			In the popup, click&nbsp;<strong>"Launch App"</strong>&nbsp;
+			<img class="inline-icon" src="/web/img/helpinstall/sidequestLaunchAppIcon.png" alt="SideQuest ‘Launch App’ icon">
+			<img class="instruction-screenshot smaller-max-height" src="/web/img/helpinstall/sidequestRunAppPopup.png" alt="SideQuest Launch App confirmation popup">
+		</li>
+
+		<li>
+			<strong>Put on the headset</strong> &amp; wait for the app to start.
+			<img class="instruction-screenshot smaller-max-height" src="/web/img/helpinstall/hmdAppStarted.png" alt="MovementVR splash screen inside headset">
+		</li>
+
+		<li>
+			Once it has launched, <strong>quit the app</strong> as you would any other app on the headset.
+			<img class="instruction-screenshot smaller-max-height" src="/web/img/helpinstall/hmdAppQuit.png" alt="In-headset screenshot showing how to quit the app">
+		</li>
+
+		<li>
+			Return to SideQuest and click&nbsp;<strong>"Done"</strong>&nbsp;
+			<img class="inline-icon" src="/web/img/helpinstall/sidequestLaunchAppDoneIcon.png" alt="SideQuest ‘Done’ button icon">
+			to close the popup.
+		</li>
+	</ol>
+
+	<p>This ensures the internal app folder is created.</p>
+</details>
+
+<!-- ────────────────────────────────────────────────────────────── -->
+<details>
+	<summary>Step&nbsp;3. Upload Your <code>parameters.csv</code> File to the App</summary>
+
+	<ol>
+		<li>
+			Open the <strong>File Manager</strong> by clicking the icon&nbsp;
+			<img class="inline-icon" src="/web/img/helpinstall/manageFilesIcon.png" alt="SideQuest ‘Manage Files’ icon">
+			labeled&nbsp;<strong>"Manage files on the headset"</strong> in the top navigation bar.
+			<img class="instruction-screenshot" src="/web/img/helpinstall/sidequestFilesBtn.png" alt="SideQuest File Manager button">
+		</li>
+
+		<li>
+			Navigate to:&nbsp;<code class="larger">Android/data/com.MovementVR.MovementVR/files</code>
+			<img class="instruction-screenshot" src="/web/img/helpinstall/sidequestFileManager.png" alt="SideQuest File Manager view of MovementVR directory">
+		</li>
+
+		<li>
+			Click the&nbsp;<img class="inline-icon" src="/web/img/helpinstall/addFileIcon.png" alt="SideQuest ‘Add File’ plus icon"> button labeled&nbsp;<strong>"Add file"</strong> at the bottom-right corner.  
+			In the floating menu, click&nbsp;
+			<img class="inline-icon" src="/web/img/helpinstall/uploadFileIcon.png" alt="SideQuest ‘Upload File’ arrow icon">
+			(<strong>"Upload file to this folder"</strong>).
+			<img class="instruction-screenshot" src="/web/img/helpinstall/sidequestFileManagerAppFolder.png" alt="SideQuest File Manager ready for file upload">
+		</li>
+
+		<li>
+			Select your <code class="larger">parameters.csv</code> file containing your experiment configuration.
+			<img class="instruction-screenshot" src="/web/img/helpinstall/sidequestLoadParameters.png" alt="Dialog showing parameters.csv selected for upload">
+		</li>
+	</ol>
+</details>
+
+<!-- ────────────────────────────────────────────────────────────── -->
+<details>
+	<summary>Step&nbsp;4. Running the App</summary>
+
+	<ol>
+		<li>
+			Disconnect your headset from the computer and put it on.
+			<img class="instruction-screenshot smaller-max-height" src="/web/img/helpinstall/hmdWear.png" alt="User wearing Quest headset ready to run app">
+		</li>
+
+		<li>
+			Inside the headset, open the <strong>App Library</strong> by clicking the icon&nbsp;
+			<img class="inline-icon" src="/web/img/helpinstall/hmdAppLibraryIcon.png" alt="App Library bookshelf icon">
+			in the universal menu. (If the universal menu is hidden, click the Meta&nbsp;
+			<img class="inline-icon" src="/web/img/helpinstall/metaIcon.png" alt="Meta logo icon">
+			or Oculus&nbsp;
+			<img class="inline-icon" src="/web/img/helpinstall/oculusIcon.png" alt="Oculus logo icon">
+			icons to open it.)
+			<img class="instruction-screenshot" src="/web/img/helpinstall/hmdAppLibrary.png" alt="App Library main screen inside headset">
+		</li>
+
+		<li>
+			Locate the <strong>dropdown</strong> at the top-right of the App Library (labelled “All” or another filter).  
+			If it’s not visible, click the <strong>Search</strong> bar at the top to reveal it.
+			<img class="instruction-screenshot" src="/web/img/helpinstall/hmdAppLibrarySearchBar.png" alt="Search bar showing app-filter dropdown">
+		</li>
+
+		<li>
+			In the dropdown, select <strong>"Unknown Sources"</strong>.<br>
+			<em>If “Unknown Sources” is missing, ensure Developer Mode is enabled and search online for updated instructions as these settings often change.</em>
+			<img class="instruction-screenshot largest-max-height" src="/web/img/helpinstall/hmdAppLibraryUnknownSources.png" alt="Unknown Sources list with MovementVR available">
+		</li>
+
+		<li>
+			Find the <strong>MovementVR</strong> app and click it to run.<br>
+			<em>Tip: switch from controllers to hand-tracking before starting the app; switching inside the app can sometimes be glitchy.</em>
+			<img class="instruction-screenshot" src="/web/img/helpinstall/hmdAppLibraryMovementVR.png" alt="MovementVR app tile inside Unknown Sources">
+		</li>
+	</ol>
+</details>
+
+<!-- ────────────────────────────────────────────────────────────── -->
+<details>
+	<summary>Step&nbsp;5. Export the Recorded Data</summary>
+
+	<p>Congratulations on running your first MovementVR experiment! The steps below explain how to export the data recorded by the app.</p>
+
+	<ol>
+		<li>Reconnect the headset to the computer and open&nbsp;<strong>SideQuest</strong>.</li>
+
+		<li>
+			In SideQuest, open the <strong>File Manager</strong>&nbsp;
+			(<img class="inline-icon" src="/web/img/helpinstall/manageFilesIcon.png" alt="SideQuest ‘Manage Files’ icon"> in the top navigation bar) and navigate to&nbsp;
+			<code class="larger">Android/data/com.MovementVR.MovementVR/files</code>.
+		</li>
+
+		<li>
+			You should see your <strong>data folder(s)</strong> with names formatted as&nbsp;
+			<code class="larger">data_YYYY_MM_DD_HH_mm_ss</code>.  
+			Click the save icon&nbsp;
+			<img class="inline-icon" src="/web/img/helpinstall/saveIcon.png" alt="SideQuest ‘Save’ floppy-disk icon">
+			to the right of a folder to export it.
+			<img class="instruction-screenshot" src="/web/img/helpinstall/sidequestExport.png" alt="SideQuest export folder dialog">
+		</li>
+
+		<li>
+			Click <strong>Select location</strong>&nbsp;
+			<img class="inline-icon" src="/web/img/helpinstall/exportSelectLocationBtn.png" alt="Select destination folder icon">
+			to choose where to save your data, then click <strong>Save to PC</strong>&nbsp;
+			<img class="inline-icon" src="/web/img/helpinstall/exportSaveToPcBtn.png" alt="Save to PC arrow icon">
+			<img class="instruction-screenshot larger-max-height" src="/web/img/helpinstall/sidequestExportPopup.png" alt="SideQuest export progress popup">
+		</li>
+	</ol>
+
+	<p><strong>Next</strong>: proceed to the <strong>Analyzer</strong> tab on the MovementVR website to learn how to process your data.</p>
+</details>
+
+</body>
+</html>

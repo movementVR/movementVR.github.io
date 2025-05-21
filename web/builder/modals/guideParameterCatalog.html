@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Parameter Catalog Help Guide</title> 
+</head>
+<body>
+
+<div id="helpGuide-modal" class="general-modal helpGuide-modal">
+  <div id="helpGuide-parent" class="general-parent modal-parent helpGuide-parent">
+    <div class="helpGuide-top-bar top-bar">
+      <h2 class="top-header">Parameter Catalog Help Guide</h2>
+      <input type="text" id="search-box" class="search-box" placeholder="Search guide...">
+      <span class="x-close">&times;</span>
+    </div>
+
+    <div id="helpGuide-content" class="helpGuide-content page-content">
+
+<!-- - - - - - - - - - - 1. Overview - - - - - - - - - - --->
+<div class="section-header accordion-header" onclick="toggleStickyHeader(this)">1. Overview</div>
+<div class="section-content accordion-content">
+  <p>
+    The <strong>Parameter Catalog</strong> provides a searchable reference table listing all parameters available across the Builder interface. It is useful for verifying parameter labels, checking where parameters appear in the UI, and preparing valid CSV files.
+  </p>
+  <p>
+    Click <strong>Parameter Catalog</strong> on the main Builder page to launch this table.
+  </p>
+</div>
+
+<!-- - - - - - - - - - - 2. Table Columns - - - - - - - - - - --->
+<div class="section-header accordion-header" onclick="toggleStickyHeader(this)">2. Table Columns</div>
+<div class="section-content accordion-content">
+  <ul>
+    <li><strong>Code Name:</strong> Internal identifier used in CSV files (<code>scriptName,paramName</code> format).</li>
+    <li><strong>UI Location:</strong> Builder window and tab where the parameter is edited (e.g., <em>Intertrial → Message → Edit Instructions</em>).</li>
+    <li><strong>Display Label:</strong> How the parameter is shown to the user in the Builder interface (e.g., <em>Size [m]: → Width</em>).</li>
+    <li><strong>Type:</strong> Input type and any constraints (e.g., <code>number (min=0, max=1)</code> or <code>checkbox (values: TRUE, FALSE)</code>).</li>
+    <li><strong>Description:</strong>Description of the parameter group this parameter is part of.</li>
+  </ul>
+</div>
+
+<!-- - - - - - - - - - - 3. View Modes - - - - - - - - - - --->
+<div class="section-header accordion-header" onclick="toggleStickyHeader(this)">3. View Modes</div>
+<div class="section-content accordion-content">
+  <p>The toggle buttons above the table control whether duplicate entries are shown:</p>
+  <ul>
+    <li>
+      <strong>All Builder Locations:</strong> Shows each parameter as many times as it appears in the Builder. This includes duplicates when the same parameter is editable from multiple buttons or links.
+    </li>
+    <li>
+      <strong>Unique Parameters:</strong> Shows each parameter only once, with all its Builder locations merged into a single line.
+    </li>
+  </ul>
+  <p>Use the <strong>Unique Parameters</strong> mode when preparing a clean list of variables for CSV files.</p>
+</div>
+
+<!-- - - - - - - - - - - 4. Exporting as CSV - - - - - - - - - - --->
+<div class="section-header accordion-header" onclick="toggleStickyHeader(this)">4. Exporting as CSV</div>
+<div class="section-content accordion-content">
+  <p>
+    Click <strong>Download as CSV</strong> to export the current view (either all locations or unique parameters) to a <code>.csv</code> file.
+  </p>
+  <p>
+    This file contains the same four columns shown in the table. It can be used to reference valid <code>scriptName,paramName</code> pairs, check type constraints, or build your own parameter import files.
+  </p>
+</div>
+
+<!-- - - - - - - - - - - 5. Example Use - - - - - - - - - - --->
+<div class="section-header accordion-header" onclick="toggleStickyHeader(this)">5. Example Use: Preparing a CSV File</div>
+<div class="section-content accordion-content">
+  <p>
+    When importing parameters via the <strong>File</strong> method (⚙ icon → File), you must use the correct <code>scriptName,paramName</code> combination. These are found in the <strong>Code Name</strong> column.
+  </p>
+  <p>
+    Sample structure:
+  </p>
+  <pre><code>
+  scriptName  , paramName              , trial1 , trial2 , trial3
+  setupScript , tgtBirdPositionOffsetX , 0.1    , 0.2    , 0.3
+  setupScript , tgtBirdPositionOffsetY , 0.2    , 0.2    , 0.25
+  setupScript , tgtBirdPositionOffsetZ , 0.5    , 0.5    , 0.5
+  </code></pre>
+  <ul>
+    <li>The first two columns identify the parameter.</li>
+    <li>Each additional column defines values for a trial.</li>
+    <li>Use one value and leave other columns blank to define a constant.</li>
+  </ul>
+</div>
+
+<!--  ==============================================  -->
+    </div>
+
+    <button id="closeButton" class="closeButton">Close</button>
+  </div>
+</div>
+ 
+
+</body>
+</html>

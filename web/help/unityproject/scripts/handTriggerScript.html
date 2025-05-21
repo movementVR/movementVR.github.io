@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>handTriggerScript.cs Documentation</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			line-height: 1.6;
+			margin: 2rem;
+		}
+		h1, h2, h3 {
+			color: #2a4a6c;
+			margin-top: 2rem;
+		}
+		.code {
+			background-color: #f4f4f4;
+			padding: 0.5rem;
+			border-left: 3px solid #ccc;
+			font-family: monospace;
+			white-space: pre-wrap;
+		}
+		.section {
+			margin-bottom: 2rem;
+		}
+	</style>
+</head>
+<body>
+
+<h1>Documentation: <code>handTriggerScript.cs</code></h1>
+
+<div class="section">
+	<h2>1. Overview</h2>
+	<p>
+		<code>handTriggerScript</code> is a base class for detecting hand-trigger interactions in a VR motor learning task. It monitors when either the left or right hand enters or exits a trigger volume and determines if all (or specific) hand conditions are met for progressing the experiment. It is designed to be extended by child classes like <code>handsStartingPositionScript</code> and <code>handGainResetScript</code>.
+	</p>
+</div>
+
+<div class="section">
+	<h2>2. Functional Blocks</h2>
+
+	<h3>Initialization</h3>
+	<ul>
+		<li><code>startup()</code>: Sets references to key scripts in the task hierarchy and calls a child-implemented <code>individualStartup()</code>.</li>
+		<li><code>OnEnable()</code>: Sets the initial condition depending on whether the hand is expected to be inside or outside the trigger volume. Automatically considers inactive hands as condition met.</li>
+	</ul>
+
+	<h3>Trigger Events</h3>
+	<ul>
+		<li><code>OnTriggerStay()</code>: Updates state when a relevant hand collider is inside the trigger volume.</li>
+		<li><code>OnTriggerExit()</code>: Updates state when a hand leaves the trigger volume.</li>
+	</ul>
+
+	<h3>Condition Checking</h3>
+	<ul>
+		<li><code>allHandConditionsMet()</code>: Returns true if all active hand triggers have met their condition.</li>
+		<li><code>oneHandConditionsMet(bool)</code>: Returns true if all active triggers for the specified hand have met their condition.</li>
+	</ul>
+
+	<h3>Collision Relevance</h3>
+	<ul>
+		<li><code>relevantCollision(Collider)</code>: Uses hand tracking system to determine if a collision is from the correct hand and body part.</li>
+		<li><code>inactiveHand()</code>: Returns true if the hand assigned to this trigger is not active in the current trial.</li>
+	</ul>
+
+	<h3>Override Hooks</h3>
+	<p>
+		Designed for extension: child classes should implement <code>individualStartup()</code> and <code>changeState()</code>.
+	</p>
+</div>
+
+<div class="section">
+	<h2>3. Full Technical Details</h2>
+
+	<h3>Class Variables</h3>
+	<div class="code">
+public bool targetTypeInsideOf;  // true: trigger checks for inside, false: outside
+public bool targetHandLeft;     // true: left hand, false: right hand
+public bool handConditionMet;
+
+protected handsAndSaveScript handsAndSaveScriptVar;
+protected trialScript trialScriptVar;
+protected setupScript setupScriptVar;
+protected Transform meshParentTransform;
+protected string triggerType;
+protected handTriggerScript[] handTriggerScriptVars;
+	</div>
+
+	<h3>Start and Enable</h3>
+	<div class="code">
+void Start() {
+	// Unused in base class
+}
+
+public void startup() {
+	trialScriptVar = transform.Find("/Task").GetComponent&lt;trialScript&gt;();
+	setupScriptVar = transform.Find("/Task").GetComponent&lt;setupScript&gt;();
+	handsAndSaveScriptVar = transform.Find("/Task").GetComponent&lt;handsAndSaveScript&gt;();
+	individualStartup();
+}
+
+private void OnEnable() {
+	changeState(!targetTypeInsideOf || inactiveHand(), true);
+}
+	</div>
+
+	<h3>Trigger Events</h3>
+	<div class="code">
+private void OnTriggerStay(Collider other) {
+	if (isActiveAndEnabled && relevantCollision(other)) {
+		changeState(targetTypeInsideOf, false);
+	}
+}
+
+private void OnTriggerExit(Collider other) {
+	if (isActiveAndEnabled && relevantCollision(other)) {
+		changeState(!targetTypeInsideOf, false);
+	}
+}
+	</div>
+
+	<h3>Condition Checks</h3>
+	<div class="code">
+protected bool allHandConditionsMet() {
+	foreach (handTriggerScript s in handTriggerScriptVars) {
+		if (s.isActiveAndEnabled &amp;&amp; !s.handConditionMet) return false;
+	}
+	return true;
+}
+
+protected bool oneHandConditionsMet(bool leftHandFlag) {
+	foreach (handTriggerScript s in handTriggerScriptVars) {
+		if (s.targetHandLeft == leftHandFlag &amp;&amp; s.isActiveAndEnabled &amp;&amp; !s.handConditionMet) return false;
+	}
+	return true;
+}
+	</div>
+
+	<h3>Utility Methods</h3>
+	<div class="code">
+bool relevantCollision(Collider other) {
+	return handsAndSaveScriptVar.isCollisionWithHand(other, targetHandLeft, targetTypeInsideOf, triggerType);
+}
+
+protected bool inactiveHand() {
+	return (targetHandLeft &amp;&amp; !handsAndSaveScriptVar.leftHandActiveFlag) ||
+	       (!targetHandLeft &amp;&amp; !handsAndSaveScriptVar.rightHandActiveFlag);
+}
+	</div>
+
+	<h3>Override Methods</h3>
+	<div class="code">
+protected virtual void individualStartup() {
+	// To be implemented by subclasses
+}
+
+protected virtual void changeState(bool conditionMet, bool calledFromOnEnable) {
+	// To be implemented by subclasses
+}
+	</div>
+
+	<h3>Update</h3>
+	<div class="code">
+void Update() {
+	// Unused
+}
+	</div>
+</div>
+
+</body>
+</html>

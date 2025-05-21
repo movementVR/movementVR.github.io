@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>handsStartingPositionScript.cs Documentation</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			line-height: 1.6;
+			margin: 2rem;
+		}
+		h1, h2, h3 {
+			color: #2a4a6c;
+			margin-top: 2rem;
+		}
+		.code {
+			background-color: #f4f4f4;
+			padding: 0.5rem;
+			border-left: 3px solid #ccc;
+			font-family: monospace;
+			white-space: pre-wrap;
+		}
+		.section {
+			margin-bottom: 2rem;
+		}
+	</style>
+</head>
+<body>
+
+<h1>Documentation: <code>handsStartingPositionScript.cs</code></h1>
+
+<div class="section">
+	<h2>1. Overview</h2>
+	<p>
+		<code>handsStartingPositionScript</code> is a trigger script in Unity used for detecting whether a user's virtual hands are within a predefined "starting position" zone at the beginning of a trial. This class changes the color of a visual boundary mesh to indicate success or failure and communicates readiness to the trial controller. It inherits from <code>handTriggerScript</code>.
+	</p>
+</div>
+
+<div class="section">
+	<h2>2. Functional Blocks</h2>
+
+	<h3>Startup Logic</h3>
+	<ul>
+		<li>Sets the trigger type to <code>"handStarting"</code>.</li>
+		<li>Finds and stores references to all sibling <code>handsStartingPositionScript</code> triggers.</li>
+		<li>Chooses the correct mesh (left or right) to control based on hand.</li>
+	</ul>
+
+	<h3>State Change Handling</h3>
+	<ul>
+		<li><code>changeState()</code>: Updates the internal state based on whether the condition was met, triggers the visual update, and signals the trial controller to begin (stage 1) or stay at waiting (stage 0).</li>
+	</ul>
+
+	<h3>Mesh Feedback</h3>
+	<ul>
+		<li><code>setMeshState()</code>: Changes the color of the mesh to visually indicate whether the starting hand condition has been met.</li>
+	</ul>
+
+</div>
+
+<div class="section">
+	<h2>3. Full Technical Details</h2>
+
+	<h3>Class Declaration</h3>
+	<div class="code">
+public class handsStartingPositionScript : handTriggerScript
+	</div>
+
+	<h3>Start Method</h3>
+	<div class="code">
+void Start() {
+	// Currently unused
+}
+	</div>
+
+	<h3>individualStartup()</h3>
+	<div class="code">
+protected override void individualStartup() {
+	triggerType = "handStarting";
+	handTriggerScriptVars = transform.Find("/Task/Triggers/HandStartingPosition")
+		.GetComponentsInChildren&lt;handsStartingPositionScript&gt;(true);
+
+	if (targetHandLeft) {
+		meshParentTransform = transform.Find("/Task/Triggers/HandStartingPosition/LeftMesh");
+	} else {
+		meshParentTransform = transform.Find("/Task/Triggers/HandStartingPosition/RightMesh");
+	}
+}
+	</div>
+
+	<h3>Update Method</h3>
+	<div class="code">
+void Update() {
+	// Currently unused
+}
+	</div>
+
+	<h3>changeState()</h3>
+	<div class="code">
+protected override void changeState(bool conditionMet, bool calledFromOnEnable) {
+	handConditionMet = conditionMet;
+	setMeshState();
+	if (conditionMet && allHandConditionsMet() && !calledFromOnEnable) {
+		trialScriptVar.trialStageTrigger(1);
+	} else {
+		trialScriptVar.trialStageTrigger(0);
+	}
+}
+	</div>
+
+	<h3>setMeshState()</h3>
+	<div class="code">
+void setMeshState() {
+	Renderer meshRenderer = meshParentTransform.GetComponentInChildren&lt;Renderer&gt;(false);
+	if (meshRenderer != null) {
+		bool relevantConditionsMet =
+			(setupScriptVar.handStartingBoundMeshColorHandsCoupled &amp;&amp; allHandConditionsMet()) ||
+			(!setupScriptVar.handStartingBoundMeshColorHandsCoupled &amp;&amp; oneHandConditionsMet(targetHandLeft));
+
+		if (relevantConditionsMet) {
+			meshRenderer.material.color = new Color(
+				setupScriptVar.handStartingBoundMeshColorSuccessR,
+				setupScriptVar.handStartingBoundMeshColorSuccessG,
+				setupScriptVar.handStartingBoundMeshColorSuccessB,
+				setupScriptVar.handStartingBoundMeshColorSuccessAlpha
+			);
+		} else {
+			meshRenderer.material.color = new Color(
+				setupScriptVar.handStartingBoundMeshColorUnsuccessR,
+				setupScriptVar.handStartingBoundMeshColorUnsuccessG,
+				setupScriptVar.handStartingBoundMeshColorUnsuccessB,
+				setupScriptVar.handStartingBoundMeshColorUnsuccessAlpha
+			);
+		}
+	}
+}
+	</div>
+
+</div>
+
+</body>
+</html>

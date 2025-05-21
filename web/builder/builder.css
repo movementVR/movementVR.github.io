@@ -1,236 +1,231 @@
- 
-.trialGameObjectImageSubblock{
-/*    width: 50px; 
-    height: auto; */
-    height: 35px; 
-    width: auto; 
- //   border: 1px solid blue; 
-    padding: 3px 10px;
-    margin:0px;
-}
-.trialGameObjectTextSubblock{ 
-    padding: 0px;
-    margin:0px; 
-//border: 1px solid green; 
-}
 
  
+  /* **********************    MAIN GRID CONTAINER & GENERAL   ********************** */
 
-.trialContainerParent {
-    display: block; 
-    width: 100%; 
-} 
-
- 
-
-.trialLoadButtonContainerClass {
-   // border: 2px solid yellow; 
-    height: 20px;
-    width: 100%;
-    padding: 0px; 
-    margin: 0px; 
-    margin-top: 10px;
-    text-align: center; 
-    display: inline-block; /* Ensure proper inline display */ 
-}
- 
-.trialInstructionDownloadButtonClass { 
-   
-    padding: 0px 0px 0px 20px;
-    margin: 1px 10px 1px 10px; 
-    font-size: 14px; 
-    font-weight: normal;
-    text-align: center; 
-    text-decoration: none;
-    border: none;
-    background-color: white;
-    color: #1b7e7e;
-    cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
-    display: inline-block; /* Ensure proper inline display */
-    text-decoration: underline;  
-}
-.trialDownloadButtonClass { 
-    padding: 10px 25px 10px 25px;
-    margin: 5px 10px 1px 10px; 
-    font-size: 16px; 
-    font-weight: bold;
-    text-align: center; 
-    text-decoration: none;
-    border: 2px solid #28bdbd;
-    border-radius: 4px;
-    background-color:#28bdbd;
-    color:white;
-    cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
-    display: inline-block; /* Ensure proper inline display */
-}
-
-  
-.trialUploadButtonClass { 
-    padding: 0px 0px 0px 20px;
-    margin: 1px 10px 1px 10px; 
-    font-size: 14px; 
-    font-weight: normal;
-    text-align: center; 
-    text-decoration: none;
-   // border: 2px solid #ccc;
-    border-radius: 4px;
-    background-color: white;
-    color: #1b7e7e;
-    cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
-    display: inline-block; /* Ensure proper inline display */
-    text-decoration: underline;  
-}
-.trialUploadButtonClass:hover,
-.trialInstructionDownloadButtonClass:hover{     
-    font-weight: bold;  
-    margin: 5px 4px 1px 8px; 
-}
-.trialDownloadButtonClass:hover{
-    background-color: #1f9393;
-    border-color: #1f9393;
-}
- 
-
-
-.trialContainer {
-    border: 2px solid lightgray;
-    //border-right: none;
+.builderGrid { /* main builder container  (grid with game objects and trial sequence)   */
+    margin: 0 auto;    /* Center the container horizontally */
     display: grid;
-    grid-gap: 0px;    
-    height: auto;
-    width: auto;
-    padding: 0px; 
-    margin: 0px;   
+    grid-gap: 0px;    /* base gap between elements */
+    height: auto; 
+    width: 1000px;  
+    border: 2px solid lightgray; 
+    align-items: center; /* Center children items vertically */ 
 }
-
-.trialBlockBase { 
-    padding: 0px;
-    margin: 0px;  
-    cursor: pointer; 
-    border: 2px solid #ccc;
-    
-    text-align: center;    
+ 
+.builderGrid .element { /* base class for elements in grid */  
+    display: flex; /* Use flexbox layout */       
     align-items: center; /* Center items vertically */
-    display: flex; /* Use flexbox layout */
-    justify-content: center; /* Center items horizontally */
-
+	cursor: pointer;  /* hand mouse */   
 }
+ 
 
+/* ******************* GRID CLICKABLE OBJECTS ***************** */
 
-.trialEditBlockTop,
-.trialEditBlockBottom,
-.trialEditBlockQuicklink { 
-   // padding: 2px 16px;
-    padding: 2px 1px;
-    font-size: 14px; 
-    text-align: center; 
-    text-decoration: none;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    background-color: #f0f0f0;
-    color: #333;
-    cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
-   // width: 50%;
+ /* top row - trial sequence blocks */
+.builderGrid .element.name-block.trial-sequence { 
+    justify-content: center; /* Center items horizontally */ 	  
+    text-align: center;  /* Centers items horizontally (important if new line) */    
+    font-size: 16px;     
 }
-
-.trialEditBlockTop { 
-    margin: 5px 10px 1px 10px;
-}
-.trialEditBlockBottom { 
-    margin: 1px 10px 5px 10px;
-}
-.trialEditBlockQuicklink { 
-    margin: 10px 10px 0px 10px;
-}
-
-
-.trialEditBlockTop:hover,
-.trialEditBlockBottom:hover,
-.trialEditBlockQuicklink:hover {
-    background-color: #e0e0e0;
-    border-color: #999;
-    color: #000 
-}
-
-
-.trialDescriptionBlockRight, .trialDescriptionBlockCenter{    
-    font-style: italic;   
-    background-color: white; 
-    border: none;
-    margin: 10px 10px; 
-    cursor: default;
-}
-
-.trialDescriptionBlockRight {    
-    font-size: 14px;
-    text-align: right; 
-    justify-content: right; /* Center items horizontally */
-}
-
-.trialDescriptionBlockCenter { 
-    font-size: 16px;   
-    margin: 10px 10px 0px 10px;
-}
-
-.trialGamePhaseBlock {
-    font-size: 16px;
-    background-color: none;     
-    border: none;
-    cursor: default;
-}
-.trialGamePhaseBlock:hover { 
+.builderGrid .element.name-block.trial-sequence :hover { 
     font-weight: bold;   
     text-decoration: underline;  
 	transform: scaleX(0.97); /* Scales down horizontally so it does not spill over column width */
     transform-origin: center; /* Ensures scaling happens from the center */
 }
  
-.trialGameObjectBlock {    
-    border: 5px solid transparent; 
-    background-color:paleturquoise;
-    padding: 0px;
-    margin: 12px 5px;     
-    border-radius: 10px;   
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-}
 
-.trialGameObjectBlock:hover {  
-    background-color:darkturquoise;
-}
-.trialGameObjectNameBlock{
+ /* left column - game objects blocks */
+.builderGrid .element.name-block.game-object{
     font-size: 16px;
-    text-align: right; 
-    justify-content: right; /* Center items horizontally */       
-    border: none;    
-  //  margin: 10px 10px; 
+    justify-content: right; /* Aligns items right horizontally */   
+    text-align: right;  /* Aligns items right horizontally (important if new line) */   
     transition: background-color 0.3s ease; /* Smooth transition for background color */
    
 }
-.trialGameObjectNameBlock:hover { 
+.builderGrid .element.name-block.game-object:hover { 
     font-weight: bold;  
     text-decoration: underline;  
 }
-
-.trialDashedHorizontalGridBlock , .trialSolidHorizontalGridBlock , .trialSolidVerticalGridBlock { 
-    border: none; 
-    background-color:none; 
-    margin: 0px;
-    cursor: default; 
+.builderGrid .element.name-block.game-object img{  /* child images: little images next to object names  */
+    height: 35px; 
+    width: auto;  /* keep ratio */
+    padding: 3px 10px;   /* included in height */
 } 
 
-.trialDashedHorizontalGridBlock {  
-    border-bottom: 1px dashed gainsboro; /* Dashed line */ 
+ /* main grid - horizontal cyan bars (game objects in time) */
+.builderGrid .element.bar-block {   
+	height: 15px; 
+    margin-left: 5px;
+    margin-right: 5px;      
+    border-radius: 10px; 
+    background-color:paleturquoise;   
+    transition: background-color 0.3s ease; /* Smooth transition for background color */ 
 } 
- 
-.trialSolidHorizontalGridBlock {  
+.builderGrid .element.bar-block:hover {  
+    background-color:darkturquoise;
+} 
+
+
+/* ******************* GRID NON-CLICKABLE TITLES / LABELS ***************** */
+
+.builderGrid .element.description {   
+    font-style: italic;    
+    cursor: default;
+}
+
+.builderGrid .element.description.trial-sequence {   /* "trial sequence" */     
+	margin: 10px 10px;  /* vertical horizontal */
+    justify-content: right; /* Aligns items horizontally */
+    text-align: right;   /* Aligns items horizontally (important if new line) */ 
+    font-size: 14px;
+}
+
+.builderGrid .element.description.quick-links { /* "quick links" */
+    margin: 10px 10px 0px 10px; /* top right bottom left */
+    justify-content: left; /* Aligns items horizontally */
+    text-align: left;   /* Aligns items horizontally (important if new line) */ 
+    font-size: 16px;   
+}
+
+
+  /* **********************   GRID BUTTONS   ********************** */
+.builderGrid .element.button{  
+	margin-left: 10px;
+	margin-right: 10px;
+    padding: 2px 1px; 
+    border-radius: 4px;    
+    border: 2px solid #ccc;
+    background-color: #f0f0f0;  
+    font-size: 14px; 	
+    justify-content: center; /* Center items horizontally */ 	  
+    text-align: center;  /* Centers items horizontally (important if new line) */    
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.builderGrid .element.button.edit-transitions { /* top row "edit transitions" */ 
+	margin-top: 5px;
+	margin-bottom: 1px;
+}
+.builderGrid .element.button.edit-instructions { /* top row "edit instructions" */
+	margin-top: 1px;
+	margin-bottom: 5px; 
+}
+.builderGrid .element.button.quick-links { /* buttons under "quick links" */ 
+}
+
+.builderGrid .element.button:hover {
+    background-color: #e0e0e0;
+    border-color: #999; 
+}
+
+/* ************************ GRID LINES ELEMENTS ********************** */
+.builderGrid .element.line{ 
+	height: 100%;  
+    cursor: default;  
+} 
+.builderGrid .element.line.dashedHorizontal {  
+    border-bottom: 1px dashed lightgray; /* Dashed line */  
+}  
+.builderGrid .element.line.solidHorizontal {  
     border-bottom: 2px solid lightgray;  
-} 
- 
-.trialSolidVerticalGridBlock {  
+}  
+.builderGrid .element.line.solidVertical {  
     border-right: 2px solid lightgray;  
 } 
+ 
 
+  /* **********************   BOTTOM ROW BUTTONS    ********************** */
+
+.builderBottomRowContainer { 
+	display: flex;    
+    justify-content: center; /* Center children buttons horizontally */ 	   
+    text-align: center; /* Center children buttons horizontally (important if new line) */ 
+    align-items: center;       /* Center children vertically */
+    margin: 15px auto;    /* [vertical, horizontal]: Center the container horizontally */ 
+	padding: 0px 100px;
+	gap: 20px;
+}
+
+.builderBottomRowContainer .buttonMain{  /* Download Button */ 
+	padding: 5px 20px; /* vertical horizontal */    
+	
+    border-radius: 4px;  /* Shape specs  */ 
+    background-color:var(--var-col-brightcyan);
+    border:none;	
+	
+	font-size: 16px;  /* Text specs  */ 
+    font-weight: bold; 
+    color:white;
+	
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s; 
+}
+
+.builderBottomRowContainer .buttonMain:hover{
+    background-color: var(--var-col-mediumcyan); 
+} 
+.builderBottomRowContainer .buttonMain.download {     
+}
+
+
+.builderBottomRowContainer .buttonSecondary,
+.builderBottomRowContainer .buttonHelpInfo{   
+	
+    font-size: 14px; 
+    font-weight: normal;
+    text-align: center; 
+	
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s; 
+}
+
+.builderBottomRowContainer .buttonSecondary,
+.builderBottomRowContainer .buttonHelpInfo{    
+	padding: 5px 10px; /* vertical horizontal */      
+    border: 1px solid gray; 
+	border-radius: 3px; 
+	background-color: #f0f0f0
+}
+ 
+.builderBottomRowContainer .buttonSecondary:hover,
+.builderBottomRowContainer .buttonHelpInfo:hover{   
+    background-color: #e0e0e0;
+    border-color: #999;
+}
+
+.builderBottomRowContainer .buttonSecondary{  
+}
+.builderBottomRowContainer .buttonMain{  
+	width: 130px;
+	height:35px; 
+}
+.builderBottomRowContainer .buttonHelpInfo{
+	
+}
+.builderBottomRowContainer .buttonSecondary.uploadParam{
+	display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.builderBottomRowContainer .buttonHelpInfo.parameterCatalog{
+	margin-right: auto;
+}
+
+/*
+.builderBottomRowContainer .buttonSecondary.sessionConfig{	 
+	min-width: 155px;  
+} 
+.builderBottomRowContainer .buttonHelpInfo.instructions {    
+	min-width: 80px;  
+}  
+.builderBottomRowContainer .buttonHelpInfo.parameterCatalog {    
+	min-width: 80px;  
+}  
+.builderBottomRowContainer .buttonSecondary.uploadParam { 
+	min-width: 135px; 	  
+}
+*/
+
+ 

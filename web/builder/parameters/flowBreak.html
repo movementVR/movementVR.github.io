@@ -3,39 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Break  </title>
+    <title></title>
 </head>
 <body>
-<form class="tabcontent">      
-<div class="form-control">         
-<inputcolumn>
+<form class="param-form">
         
-<!-- Content: --> 
-<!--
-<name> Break (pause between selected trials) </name> <inputs></inputs>-->
- 
-<name title="Break = pause between selected trials ">Take break after trial?</name>
-    <inputs>	    
-    <input id="BREAK_FLAG_H" name="trialScript,stage6_breakFlag" type="hidden" value="FALSE">
-    <input id="BREAK_FLAG" name="trialScript,stage6_breakFlag" type="checkbox" value="TRUE" >
-    <label for="BREAK_FLAG">Yes</label>		
-    </inputs>   
+<!-- Content: -->  
+	 
+
+	<fieldset class="trial-builder-group">
+	<div class="name-type name">Break frequency:</div>
+		 <div class="inputs-type inputs">
+		 <label for="trialscript-stage6_breakfrequency" class="label-before-input label-start-block">take a break every</label> 
+		<input id="trialscript-stage6_breakfrequency" name="trialScript,stage6_breakFrequency" type="number" step="1" min="0">
+		 <label class="label-after-input">trials</label> 
+		</div>  
+</fieldset>
+	
+	
+	<!-- Expandable Origin Message Bubble -->
+
+	<div class="fullrow-type smallspace"></div>
+	<button class="inputs-type expand-button collapsed" type="button" data-target="#expandableOriginMessageBubble"><span>
+	Expand to create custom break schedule
+	</span></button>
+
+	<div class="fullrow-type expand-window collapsed" id="expandableOriginMessageBubble"> 	
+			
+		<div class="fullrow-type largespace"></div>
+			<fieldset class="trial-builder-group">
+			<div class="name-type name">Take break after this trial</div>
+				 <div class="inputs-type inputs">	    
+				<input id="trialscript-stage6_breakflag_false" name="trialScript,stage6_breakFlag" type="hidden" value="FALSE">
+				<input id="trialscript-stage6_breakflag_true" name="trialScript,stage6_breakFlag" type="checkbox" value="TRUE">
+				<label for="trialscript-stage6_breakflag_true" class="label-after-input label-end-block">Yes</label>		
+				</div>   
+				<div class="fullname-type namenote">This checkbox should be used with the gear icon. Takes a break for every trial that this flag is TRUE (regardless of frequency specified above; the frequency variable will dictate break presence for trials where this flag is FALSE)</div>	       
+		</fieldset>
+	
+	</div> <!-- END of expandable window -->
+	
+						
+<div class="fullrow-type largespace"></div>
+	<fieldset class="trial-builder-group">
+	<div class="name-type name">Break duration [s]:</div>
+		 <div class="inputs-type inputs">
+		<!-- <label for="trialscript-stage6_breakduration" class="label-before-input label-start-block"></label> -->
+		<input id="trialscript-stage6_breakduration" name="trialScript,stage6_breakDuration" type="number" step="any" min="0">
+		</div>  
+</fieldset>
+	
+	
+
+	<div class="longnote-type longnotetitle">Phase 6 = Break</div>   
+		<div class="longnote-type longnote">&emsp;&#8594; Pause before next trial (feedback msg disappears, no plate/hand home) </div>   
+		<div class="longnote-type longnotesmaller">&emsp;&emsp; a) Duration as defined above (in seconds) </div>  
+		<div class="longnote-type longnotesmaller">&emsp;&emsp; b) "Frequency = N" means "take a break every Nth trial"</div>
+		<div class="longnote-type longnotesmaller">&emsp;&emsp; c) The checkbox under "Expand to create custom break schedule" can overwrite the defined Frequency. Use this with the gear icon! (otherwise you will take a break every trial) </div> 
+        
     
-<name>Break duration [s]:</name>
-    <inputs>
-    <label for="BREAK_TIME"></label>
-    <input id="BREAK_TIME" name="trialScript,stage6_breakDuration" type="number" value="30" />
-    </inputs>  
-    
+	 
  
 <!-- End of Content --> 
  
-</inputcolumn> 
-</div>  
-<figurecolumn>
- <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
-</figurecolumn>
+</form> 
+<div class="param-img">
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  > --> 
+</div>
         
-</form>
-</body>
+</body> 
 </html>

@@ -1,0 +1,283 @@
+
+/* *************  MAIN WINDOW CONTAINERS  ************* */
+.config-modal  *{ 
+	font-family: Arial, sans-serif;
+	line-height: 0.75;  
+    margin: 0;
+    padding: 0;    
+	box-sizing: border-box;    
+}  
+
+/* Modal Container */
+.config-modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  align-items: center; /* vertical alignment */
+  justify-content: center; /* horizontal alignment */
+  z-index: 999;  /* bring to front */
+}
+ 
+
+/* Modal Content */
+.config-modal .modal-parent {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: relative;
+  width: 580px; 
+  padding: 10px;
+  border-radius: 10px; 
+  background: #ddebe9; 
+}
+
+
+/* *************  MAIN WINDOW ELEMENTS  ************* */
+/* Close Button (Top Right Cross) */
+.config-modal .x-close {
+  align-self: flex-end;
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 27px;
+  color: var(--var-col-darkercyan); 
+  cursor: pointer;
+}
+.config-modal .x-close:hover {
+  color: var(--var-col-mediumcyan);
+}
+ 
+/* Main Window Title */
+.config-modal .title-row .main-title {  
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: var(--var-col-darkercyan); 
+}
+.config-modal .title-row .main-subtitle {
+  margin-top: 5px; 
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  color: var(--var-col-darkercyan);
+}
+
+/* *************  PANELS GENERAL  ************* */
+/* Panel Structure */
+.config-modal .modal-panel { 
+  display: flex;
+  flex-direction: column;
+  width: 100%; 
+  border: 1.5px solid var(--var-col-darkercyan);
+  border-radius: 10px; 
+  background: white; 
+}
+
+/* Title for Each Panel */
+.config-modal .modal-panel .panel-title { 
+  margin-bottom: 5px;
+  padding: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  background-color: var(--var-col-darkercyan);
+  border-radius:  7px 7px 0px 0px; /* top-left top-right bottom-right bottom-left*/
+  border: 1px solid var(--var-col-darkercyan);
+}
+
+/* Content for Each Panel */
+.config-modal .modal-panel  .panel-content {
+  display: flex;
+  flex-direction: column; 
+  padding: 5px; 
+}
+
+
+/* *************  SAVE / IMPORT PANELS  ************* */
+.config-modal .save-panel  .panel-content .input-row,
+.config-modal .import-panel  .panel-content .input-row{
+  display: flex; 
+  align-items: center; /* Vertically centers the items */
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+.config-modal .save-panel  .panel-content .name-label,
+.config-modal .import-panel  .panel-content .name-label { 
+  font-size: 12px;  
+}
+.config-modal .save-panel  .panel-content .name-input,
+.config-modal .import-panel  .panel-content .name-input {  
+  width: 320px;
+  padding: 2px 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* *************  SAVE PANEL  ************* */
+
+.config-modal .save-panel  .panel-content .name-label {
+  width: 50px;  
+}
+.config-modal .save-panel  .panel-content .name-input{  
+  width: 320px;
+}
+
+
+/* *************  IMPORT PANEL  ************* */ 
+.config-modal .import-panel  .panel-content {
+	padding-left: 15px;  /* general is 5px */
+}
+.config-modal .import-panel  .panel-content .file-input{ 
+	width: 360px;
+	font-size: 12px;
+}
+.config-modal .import-panel  .panel-content .import-info{
+	padding-left: 10px;
+	font-size: 12px;
+}
+
+
+/* *************  LOAD PANEL  ************* */
+
+.config-modal .load-panel .panel-content .config-list-header {	
+  display: flex;
+  align-items: center;
+  padding-bottom: 5px; 
+  padding-left: 5px;  
+}
+.config-modal .load-panel .panel-content .config-list-header  .header-item  { 
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+.config-modal .load-panel .panel-content .config-list {
+  height: 150px; 
+  padding-left: 5px; 
+  overflow-y: scroll; 
+  list-style: none; 
+  border-top: 1px solid lightgray;  
+  background-color: whitesmoke;
+}
+.config-modal .load-panel .panel-content .config-list .config-item {
+  display: flex;
+  height: 1.5em;
+  line-height: 1.5em;
+  align-items: center; 
+  border-bottom: 1px dashed gainsboro;
+}
+
+/* size */
+.config-modal .load-panel .panel-content .config-name{
+	width: 220px; 
+	z-index: 2;  
+	
+}
+.config-modal .load-panel .panel-content .config-date{
+  	margin-left: 5px; 
+	width: 140px;       
+	z-index: 3; 
+} 
+.config-modal .load-panel .panel-content .config-list .config-item .config-name span,
+.config-modal .load-panel .panel-content .config-list .config-item .config-date span{ 
+	display: inline-block;    
+	width: inherit;  
+	padding: 1px;
+    white-space: nowrap;      /* Keep text on one line */
+    overflow: hidden;         /* Hide overflow */ 
+    text-overflow: ellipsis;  /* Show ellipsis (...) */  
+	background-color: whitesmoke;  
+}
+
+/*  show full text on over if too long */
+.config-modal .load-panel .panel-content .config-list .config-item .config-name span:hover ,
+.config-modal .load-panel .panel-content .config-list .config-item .config-date span:hover {  
+	width: auto; 
+}  
+.config-modal .load-panel .panel-content .config-list .config-item .config-name span{ 
+    font-size: 12px;
+} 
+.config-modal .load-panel .panel-content .config-list .config-item .config-date span{ 
+    font-size: 11px; 
+}
+
+
+.config-modal .load-panel .panel-content .config-list .config-item .config-load.loaded{
+	position:relative;
+	visibility: hidden;
+}
+.config-modal .load-panel .panel-content .config-list .config-item .config-load.loaded::after{
+	content: 'loaded!'; 
+	font-size: 12px;
+	font-weight: normal;
+	position: absolute;
+	right: 0;
+	color:black;
+	visibility: visible;
+	//top: 0;
+	//background: yellow;
+/*	/color: blue;*/
+}
+
+/* *************  GENERAL BUTTONS  ************* */
+.config-modal .modal-panel .panel-content button{
+  height: 1.4em;	
+  margin-left: 5px;    
+  padding: 4px 5px;
+  background-color: var(--var-col-brightcyan);
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white; 
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+} 
+.config-modal .modal-panel .panel-content button:hover{  
+  background-color: var(--var-col-mediumcyan);
+  border-color: var(--var-col-mediumcyan);
+}
+ 
+/* *************  CLOSE BUTTON  ************* */
+.config-modal .close-button{ 
+  margin: 0px auto; 
+  margin-bottom: 5px;
+  padding: 7px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  background-color: var(--var-col-darkercyan);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+	
+} 
+.config-modal .close-button:hover{  
+  background-color: var(--var-col-mediumcyan);
+  border-color: var(--var-col-mediumcyan);
+}
+ 
+
+/* *************  GENERAL OVERWRITE  ************* */
+/* Utility: Hidden Class */
+.config-modal.hidden,
+.config-modal .hidden,
+.config-modal .template {
+  display: none !important;
+}
+.config-modal .empty-list button{
+	visibility: hidden !important;
+}
+
+
+

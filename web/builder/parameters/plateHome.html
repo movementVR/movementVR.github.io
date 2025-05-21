@@ -3,43 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>   </title>
+    <title></title>
 </head>
 <body>
-<form class="tabcontent">      
-<div class="form-control">         
-<inputcolumn>
+<form class="param-form">
         
 <!-- Content: --> 
  
  
-    
-    
-<!-- PLATE "HOME" = position in "plate contact" phase --> 
-<name title="plate position in plate contact phase"> Starting position [m] </name>
-    <inputs>
-    <label for="PLATE_X">X:</label>
-    <input id="PLATE_X" name="setupScript,platePositionX" type="number" value="0" />
-    <label for="PLATE_Y">Y:</label>
-    <input id="PLATE_Y" name="setupScript,platePositionY" type="number" value="-0.3" />
-    <label for="PLATE_Z">Z:</label>
-    <input id="PLATE_Z" name="setupScript,platePositionZ" type="number" value="0.5" />
-    </inputs> 
-    <namenote>(wrt headset center eye)</namenote>
-    
-    
-    
-    
+	
+<fieldset class="trial-builder-group"> 
+	<!-- PLATE "HOME" = position in "plate contact" phase -->  
+	<div class="name-type name"> Starting position [m] </div>
+		 <div class="inputs-type inputs">
+		<label for="setupscript-platepositionx" class="label-before-input label-start-block">X:</label>
+		<input id="setupscript-platepositionx" name="setupScript,platePositionX" type="number" step="any">
+		<label for="setupscript-platepositiony" class="label-before-input">Y:</label>
+		<input id="setupscript-platepositiony" name="setupScript,platePositionY" type="number" step="any">
+		<label for="setupscript-platepositionz" class="label-before-input">Z:</label>
+		<input id="setupscript-platepositionz" name="setupScript,platePositionZ" type="number" step="any">
+		</div> 	
+		<div class="name-type namenote">(wrt headset center eye)&emsp;</div>	
+</fieldset> 
+	
+ 
+ 
+	 
+ 
  
 <!-- End of Content --> 
  
-</inputcolumn> 
-</div>  
-<figurecolumn>
-    <img src="web/img/parameters/plateStartingPosition.png" style="width:100%;">
- <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
-</figurecolumn>
+</form> 
+<div class="param-img">
+    <img src="web/img/parameters/plateStartingPosition.png" >
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  > --> 
+</div>
         
-</form>
-</body>
+</body> 
 </html>

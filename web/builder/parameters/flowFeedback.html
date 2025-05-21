@@ -3,35 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Feedback  </title>
+    <title></title>
 </head>
 <body>
-<form class="tabcontent">      
-<div class="form-control">         
-<inputcolumn>
+<form class="param-form">
         
 <!-- Content: --> 
- 
- 
-    
-<name>Message duration [s]:</name>
-    <inputs>
-    <label for="FEEDBACKMSG_TIME"></label>
-    <input id="FEEDBACKMSG_TIME" name="trialScript,stage5_outcomeMessageDuration" type="number" value="1" />
-    </inputs> 
-    <name> </name> <inputs> </inputs>  
+  
+	
 
+	<fieldset class="trial-builder-group">
+	<div class="name-type name">Message duration [s]:</div>
+		 <div class="inputs-type inputs">
+		<!-- <label for="trialscript-stage5_outcomemessageduration" class="label-before-input label-start-block"></label> -->
+		<input id="trialscript-stage5_outcomemessageduration" name="trialScript,stage5_outcomeMessageDuration" type="number" step="any" min="0">
+		</div>  
+</fieldset> 
+
+
+	<div class="longnote-type longnotetitle">Phase 5 = Feedback</div>   
+		<div class="longnote-type longnote">&emsp;1) Feedback is delivered in 3 ways: </div>    
+		<div class="longnote-type longnotesmaller">&emsp;&emsp; a) Particle effect around plate & target</div>
+		<div class="longnote-type longnotesmaller">&emsp;&emsp; b) Bird sound and swapping</div>
+		<div class="longnote-type longnotesmaller">&emsp;&emsp; c) Feedback message</div>
+		<div class="longnote-type longnotesmaller">&emsp;&emsp; (define a,b,c parameters under "feedback" object)</div>
+		<div class="longnote-type longnote">&emsp;2) At phase start, plate disappears and feedback message appears</div> 
+		<div class="longnote-type longnote">&emsp;3) Phase ends after amount of time defined above </div>  
+ 
+        
     
     
  
 <!-- End of Content --> 
  
-</inputcolumn> 
-</div>  
-<figurecolumn>
- <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
-</figurecolumn>
+</form> 
+<div class="param-img">
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  > --> 
+</div>
         
-</form>
-</body>
+</body> 
 </html>

@@ -33,14 +33,9 @@ const upload = async (event) => {
     });
 
     // At this point you'll have an array of results
-    let res = await Promise.all(files);
-	console.log("here");
-	console.log(res);
-	for (i=0;i<res.length;i++){
-		console.log(i);
-		floatarray = new  Float32Array(res[i]);
-		console.log(floatarray);
-		console.log( new  Float32Array(res[i]));
+    let res = await Promise.all(files); 
+	for (i=0;i<res.length;i++){ 
+		floatarray = new  Float32Array(res[i]); 
 	}
   
 }

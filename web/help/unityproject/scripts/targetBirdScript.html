@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>targetBirdScript.cs Documentation</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			line-height: 1.6;
+			margin: 2rem;
+		}
+		h1, h2, h3 {
+			color: #2a4a6c;
+			margin-top: 2rem;
+		}
+		.code {
+			background-color: #f4f4f4;
+			padding: 0.5rem;
+			border-left: 3px solid #ccc;
+			font-family: monospace;
+			white-space: pre-wrap;
+		}
+		.section {
+			margin-bottom: 2rem;
+		}
+	</style>
+</head>
+<body>
+
+<h1>Documentation: <code>targetBirdScript.cs</code></h1>
+
+<div class="section">
+	<h2>1. Overview</h2>
+	<p>
+		<code>targetBirdScript</code> controls the bird animations, sounds, and motion behavior associated with a target in MovementVR. It handles entry and exit animations, randomized idle animations, and physical bird movements such as takeoff, flight, and landing. The script is used to display a responsive and animated bird on target objects, optionally triggered by trial events.
+	</p>
+</div>
+
+<div class="section">
+	<h2>2. Functional Blocks</h2>
+
+	<h3>Initialization</h3>
+	<ul>
+		<li><code>Awake()</code>: Caches the parent <code>setupScript</code>.</li>
+		<li><code>Start()</code>: Loads audio clips and volumes from setupScript and initializes sound sources.</li>
+	</ul>
+
+	<h3>Lifecycle Control</h3>
+	<ul>
+		<li><code>OnEnable()</code>: Positions the bird, sets animation state, and begins idle or flight behavior based on <code>entryAnimation</code>.</li>
+		<li><code>OnDisable()</code>: Stops motion, resets transform, and plays particle effects.</li>
+	</ul>
+
+	<h3>Flight State Machine</h3>
+	<ul>
+		<li><code>Update()</code>: Drives the main loop that switches between ground, takeoff, flight, and landing.</li>
+		<li>State transitions are managed via <code>toStage0()</code> to <code>toStage3()</code>.</li>
+	</ul>
+
+	<h3>Motion and Animation</h3>
+	<ul>
+		<li><code>motionGround()</code>: Periodically triggers random idle animations.</li>
+		<li><code>motionTakeoff()</code>, <code>motionFlying()</code>, <code>motionLanding()</code>: Move the bird and control flight direction and smooth landings.</li>
+	</ul>
+
+	<h3>Feedback</h3>
+	<ul>
+		<li><code>Sing(bool success)</code>: Triggers a chirp or fail sound with an accompanying animation.</li>
+		<li><code>PlaySong()</code>: Plays the currently selected sound.</li>
+	</ul>
+
+</div>
+
+<div class="section">
+	<h2>3. Full Technical Details</h2>
+
+	<h3>Variables</h3>
+	<div class="code">
+// Components
+Animator animator;
+AudioSource[] birdSounds;
+
+// Animation timing
+System.DateTime animationStartTime;
+float timeInAnimation;
+int songHash;
+
+// Configurable animation states
+public string entryAnimation;
+public string mainAnimation;
+public string exitAnimation;
+public Vector3 birdAppearanceOffset;
+public Vector3 birdDepartureOffset;
+public float groundAnimationMinDuration;
+public float groundAnimationMaxDuration;
+
+// State
+bool birdTakeoffFlag;
+int flightStage;
+System.DateTime stageStartTime;
+Quaternion stageStartRotation;
+float rotationDuration;
+Vector3 refVelocityForLanding;
+
+// Position
+Vector3 targetPosition, globalTargetPosition, targetRotation;
+Vector3 originalPosition, originalRotation;
+
+// References
+setupScript setupScriptVar;
+	</div>
+
+	<h3>Awake() and Start()</h3>
+	<div class="code">
+void Awake() {
+	setupScriptVar = GetComponentInParent&lt;setupScript&gt;();
+}
+
+void Start() {
+	birdSounds = GetComponents&lt;AudioSource&gt;();
+	var setup = GetComponentInParent&lt;setupScript&gt;();
+	if (setup.successSound != null) {
+		birdSounds[0].clip = setup.successSound;
+		birdSounds[1].clip = setup.successSound;
+	}
+	if (setup.failSound != null) {
+		birdSounds[2].clip = setup.failSound;
+	}
+	for (int i = 0; i < 3; i++) {
+		birdSounds[i].volume = setup.targetBirdVolume;
+	}
+}
+	</div>
+
+	<h3>OnEnable()</h3>
+	<div class="code">
+void OnEnable() {
+	transform.parent.localPosition = setupScriptVar.getTargetBirdPosition();
+	transform.parent.localRotation = setupScriptVar.getTargetBirdRotation();
+
+	animator = GetComponent&lt;Animator&gt;();
+	birdTakeoffFlag = false;
+	originalPosition = transform.localPosition;
+	originalRotation = transform.localEulerAngles;
+	targetPosition = transform.localPosition;
+	globalTargetPosition = transform.position;
+	targetRotation = transform.localEulerAngles;
+
+	timeInAnimation = Random.Range(groundAnimationMinDuration, groundAnimationMaxDuration);
+	animationStartTime = System.DateTime.Now;
+	stageStartTime = System.DateTime.Now;
+
+	if (entryAnimation == "landing") {
+		flightStage = 2;
+		stageStartRotation = transform.localRotation;
+		animator.applyRootMotion = false;
+		animator.SetBool("flying", true);
+		transform.position += birdAppearanceOffset;
+		rotationDuration = 0;
+	}
+	else if (entryAnimation == "appear") {
+		flightStage = 0;
+		animator.applyRootMotion = true;
+		animator.SetBool("flying", false);
+	}
+	GetComponent&lt;ParticleSystem&gt;().Play();
+}
+	</div>
+
+	<h3>disableBird() and OnDisable()</h3>
+	<div class="code">
+public void disableBird() {
+	if (exitAnimation == "takeoff") {
+		stageStartTime = DateTime.Now;
+		birdTakeoffFlag = true;
+	} else if (exitAnimation == "disappear") {
+		enabled = false;
+	}
+}
+
+void OnDisable() {
+	GetComponent&lt;ParticleSystem&gt;().Play();
+	var rb = GetComponent&lt;Rigidbody&gt;();
+	rb.velocity = Vector3.zero;
+	rb.angularVelocity = Vector3.zero;
+	rb.isKinematic = true;
+	transform.localPosition = originalPosition;
+	transform.localEulerAngles = originalRotation;
+	rb.isKinematic = false;
+	rb.drag = 1;
+}
+	</div>
+
+	<h3>Flight State Machine: Update() and Transitions</h3>
+	<div class="code">
+void Update() {
+	switch (flightStage) {
+		case 0: motionGround(); toStage1(); break;
+		case 1: motionTakeoff(); toStage2(); break;
+		case 2: motionFlying(); toStage3(); break;
+		case 3: motionLanding(); toStage0(); break;
+	}
+}
+	</div>
+
+	<h3>Flight Transitions</h3>
+	<div class="code">
+// toStage0 - arrive or disappear
+// toStage1 - begin takeoff
+// toStage2 - reposition and begin flying
+// toStage3 - initiate landing
+	</div>
+
+	<h3>Motion Methods</h3>
+	<div class="code">
+void motionGround() {
+	// Switch between idle animations
+}
+
+void motionTakeoff() {
+	GetComponent&lt;Rigidbody&gt;().AddForce(transform.forward * 100 * Time.deltaTime + transform.up * 100 * Time.deltaTime);
+}
+
+void motionFlying() {
+	// Apply forward force and rotate toward target
+}
+
+void motionLanding() {
+	// Smooth damp to final position
+}
+	</div>
+
+	<h3>Sing() and Animator Triggers</h3>
+	<div class="code">
+public void Sing(bool success) {
+	songHash = success ? Mathf.RoundToInt(Random.value) : 2;
+	timeInAnimation = 100;
+	animator.SetTrigger("sing");
+}
+
+void PlaySong() {
+	birdSounds[songHash].Play();
+}
+
+void ResetHopInt() {
+	animator.SetInteger("hop", 0);
+}
+	</div>
+
+</div>
+
+</body>
+</html>

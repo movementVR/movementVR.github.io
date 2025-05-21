@@ -1,38 +1,166 @@
 {
-    "path": "/web/builder/",
-    "html":[
-        "builder.html",
-        "trialExpand/trialExpandHtml.html",
-        "popup/tabHtml.html"
-    ],
-    "js":[
-        "builderDef.js",
-        "popup/builderInputsWidth.js",
-        "popup/builderColorInputs.js",
-        "trialExpand/trialExpandSave.js",
-        "trialExpand/builderTrialExpand.js",
-        "trialExpand/trialExpand.js",
-        "trialExpand/trialExpandDrag.js",
-        "trialExpand/trialExpandItemEvents.js",
-        "trialExpand/trialExpandTrialTypeDropdown.js",
-		"trialExpand/trialExpandAddItemEvent.js",
-        "trialExpand/trialExpandInputsList.js", 
-        "trialExpand/trialExpandInheritedInput.js",
-        "trialExpand/trialExpandInputOptions.js", 
-        "trialExpand/trialExpandListSetup.js",
-        "trialExpand/trialExpandDef.js",
-        "popup/builderTab.js",
-        "builderSave.js",
-        "popup/builderPopup.js",
-        "builder.js"
-    ],
-    "css":[
-        "builder.css",
-        "popup/builderPopupInputs.css",
-        "popup/builderPopup.css",
-        "trialExpand/trialExpand.css"
-    ],
-    "json":[
-        "builder.json"
-    ]
+	"path": "/web/builder/",
+	"scripts": { 
+		"entry": [
+			"builder.js"
+			],
+		"main":[ 
+			"builder.js",
+			"builderDef.js"
+		],
+		"staticBuilder":[		 
+			"staticBuilder/staticBuilder.js",
+			"staticBuilder/staticBuilderForm.js",
+			"staticBuilder/staticBuilderHelp.js"
+		],
+		"trialBuilder":[		
+			"trialBuilder/trialBuilder.js", 
+			"trialBuilder/trialBuilderContent.js",
+			"trialBuilder/trialBuilderGUI.js" 
+		],
+		"sharedIO":[		
+			"sharedIO/builderIOSelection.js", 
+			"sharedIO/builderConfigIO.js", 
+			"sharedIO/builderFileIO.js",
+			"sharedIO/builderGUIIO.js", 
+			"sharedIO/builderGUIIOTrials.js",
+			"sharedIO/sessionConfiguration.js"  
+		],
+		"sharedUtils":[		
+			"sharedUtils/builderFormUtils.js",
+			"sharedUtils/builderWindowUtils.js"
+		],
+		"parameterCatalog":[
+			"parameterCatalog/parameterCatalog.js"	
+		],
+		"testingUtils":[		
+			"testingUtils/testWidths.js"
+		]
+	},
+    "css": {   
+		"main":[
+			"builder.css"
+		],
+		"staticBuilder":[
+			"staticBuilder/staticBuilder.css", 		
+			"staticBuilder/staticBuilderHelp.css",
+			{ "$include": "sharedUtils" }
+		],
+		"trialBuilder":[
+			"trialBuilder/trialBuilder.css", 	
+			{ "$include": "sharedUtils" }
+		],	  
+		"sharedIO":[
+        	"sharedIO/sessionConfiguration.css"
+    	], 
+		"sharedUtils":[		
+			"sharedUtils/builderFormUtils.css",
+			"sharedUtils/builderWindowUtils.css"
+		],			
+		"parameterCatalog":[
+			"parameterCatalog/parameterCatalog.css" 
+    	]
+	},
+    "html": {
+		"main":[
+        	"builder.html"
+    	],		
+		"staticBuilder":[
+        	"staticBuilder/staticBuilder.html"
+    	],			
+		"trialBuilder":[
+			"trialBuilder/trialBuilder.html" 
+    	],	
+		"sharedIO":[
+        	"sharedIO/sessionConfiguration.html"
+    	],	
+		"parameterCatalog":[
+			"parameterCatalog/parameterCatalog.html" 
+    	],	 
+		"parameters":[
+			"parameters/birdAnimations.html",
+			"parameters/birdAppearance.html",
+			"parameters/birdChange.html",
+			"parameters/birdPerch.html",
+			"parameters/birdSounds.html",
+			"parameters/flowBreak.html",
+			"parameters/flowFeedback.html",
+			"parameters/flowGeneralFailurePlate.html",
+			"parameters/flowGeneralFailureTime.html",
+			"parameters/flowHome.html",
+			"parameters/flowIntertrial.html",
+			"parameters/flowOverallStart.html",
+			"parameters/flowPlateContact.html",
+			"parameters/flowPlateLiftTargetSuccess.html",
+			"parameters/handRecording.html",
+			"parameters/handTracking.html",
+			"parameters/homeFeedback.html",
+			"parameters/homeMesh.html",
+			"parameters/homePosition.html",
+			"parameters/messageBreak.html",
+			"parameters/messageFeedback.html",
+			"parameters/messageGeneralTrialNumber.html",
+			"parameters/messageHome.html",
+			"parameters/messageIntertrial.html",
+			"parameters/messagePlateContact.html",
+			"parameters/messagePlateLift.html",
+			"parameters/messagesOverallEnd.html",
+			"parameters/messagesOverallStart.html",
+			"parameters/perturbationMagnitude.html",
+			"parameters/perturbationOrigin.html",
+			"parameters/perturbationSchedule.html",
+			"parameters/perturbationSmoothing.html",
+			"parameters/plateFeedback.html",
+			"parameters/plateGrape.html",
+			"parameters/plateHome.html",
+			"parameters/plateObject.html",
+			"parameters/plateStand.html",
+			"parameters/targetFeedback.html",
+			"parameters/targetMesh.html",
+			"parameters/targetPosition.html"
+		]
+	}, 
+	"modals": {
+		"global": [         
+            {"id": "error", "file": "modals/errorGeneric.html" },            
+			{"id": "inputsource", "file": "modals/builderInputSource.html"},
+			{"id": "disabledwindow", "file": "modals/disabledWindow.html"},
+			{"id": "importcsv", "file": "modals/importCsvFile.html"}
+		], 
+		"main": [
+			{"id": "guideBuilder", "file": "modals/guideMainBuilder.html", "selection": "guideUtils"}
+		], 
+		"staticBuilder": [
+			{"id": "guide", "file": "modals/guideStaticBuilder.html", "selection": "guideUtils"},
+			{"id": "inputSourceGuide", "file": "modals/guideBuilderInputSource.html", "selection": "guideUtils"},
+			{"id": "importCsvGuide", "file": "modals/guideImportCsvFile.html", "selection": "guideUtils"}
+		], 
+		"trialBuilder": [
+			{"id": "guide", "file": "modals/guideTrialBuilder.html", "selection": "guideUtils"}
+		], 
+		"parameterCatalog": [
+			{"id": "guide", "file": "modals/guideParameterCatalog.html", "selection": "guideUtils"}
+		]
+	},
+	"externalScripts": { 
+		"parameterCatalog": [
+			"https://code.jquery.com/jquery-3.7.1.min.js",
+			"https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js",
+			"https://cdn.jsdelivr.net/npm/colresizable@1.6/colResizable-1.6.min.js"
+		],
+		"guideUtils": [ 
+			"/web/general/guide.js"
+		]
+	},
+	"externalCss": { 
+		"parameterCatalog": [
+			"https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"
+		],
+		"guideUtils": [ 
+			"/web/general/general.css",
+			"/web/general/guide.css"
+		] 				 
+	}
 }
+
+ 

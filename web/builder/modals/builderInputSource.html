@@ -1,0 +1,578 @@
+ <!DOCTYPE html>
+<html lang="en"> 
+   
+
+<head>
+  <link rel="stylesheet" href="/web/general/general.css">  
+  <link rel="stylesheet" href="/web/builder/sharedUtils/builderFormUtils.css"> 
+    
+    <style> 
+
+/* -------- action modals  -------- */
+
+ 
+	.general-modal.selection-modal{
+	}
+
+    .general-modal.selection-modal .selection-modal-parent {
+        width:  auto; 
+        max-height: 85%; 
+		/*margin: 0;
+		padding: 0;   */ 
+    }
+        
+    .general-modal.selection-modal   .modal-parent.selection-modal-parent  .x-close {
+        color:white;
+    }
+    .general-modal.selection-modal   .modal-parent.selection-modal-parent  .x-close:hover {
+        color:#ddebe9;
+    }
+
+    .general-modal.selection-modal .modal-parent .modal-panel{
+        padding-bottom: 10px;  
+		min-height: 0; /* allows the height to shrink below the height of the content (needed for scroll) */   
+    }
+        
+    .general-modal.selection-modal .modal-parent .modal-panel .panel-title { 
+        padding: 10px;
+        font-size: 16px;
+    }
+
+
+    .general-modal.selection-modal .modal-parent .modal-panel .panel-scroll {
+		display: flex;
+		flex-direction: column;
+		overflow-y: auto;
+    }
+		
+    .general-modal.selection-modal .modal-parent .modal-panel .panel-content {
+        gap: 10px;
+        padding: 20px 20px 20px 20px;  
+    }
+
+    .general-modal.selection-modal  .modal-parent  .modal-panel  .input-row { 
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .general-modal.selection-modal  .modal-parent  .modal-panel  .input-row:nth-of-type(n+2)
+    {  
+        border-top: 1px dashed #c7e3df;
+        padding-top: 15px;
+    }
+        
+
+    .general-modal.selection-modal  .modal-parent  .modal-panel  .input-row  p,
+    .general-modal.selection-modal  .modal-parent  .modal-panel  .input-row  label 
+    {
+        font-size: 14px; 
+        text-align: left;
+        line-height: 2; 
+    }
+        
+    /* Radio button with Input Source Selection panel */    
+    .general-modal.selection-modal  .modal-parent  .modal-panel  .input-row  p.section-title
+    { 
+        font-size: 16px;
+        font-size: 16px;
+        line-height: 1px;  
+    }
+        
+    .general-modal.selection-modal .modal-parent .modal-panel .input-row .source-warning {
+        font-size: 12px;
+        line-height: 1;
+        font-style: italic;
+        color: red;
+        margin: 0px 20px 5px 20px;
+        max-width: 500px; 
+    }
+
+
+    .builder.general-modal.selection-modal .content.modal-parent .modal-panel .input-row .inputbubble {
+        display: flex;
+        align-self: stretch;
+        background: #ddebe9;
+        width: auto;
+        margin: 0px 20px;
+        flex-direction: column;
+        border-radius: 10px; 
+        padding: 5px 10px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }         
+    .builder.general-modal.selection-modal .content.modal-parent .modal-panel .input-row .inputbubble.tabpanel {
+        flex-direction: row;
+    }
+    .general-modal.selection-modal .modal-parent .modal-panel .input-row .inputbubble .note {
+        font-size: 12px;
+        line-height: 1;
+        font-style: italic;
+    }
+        
+        
+    /* Override input fields formatting (wrt these styles or forms styles) */  
+    .builder.general-modal.selection-modal .content.modal-parent .modal-panel .input-row .tabpanel .param-form{
+        row-gap: 0px;
+        margin: 0px;
+    } 
+    .builder.general-modal.selection-modal .content.modal-parent .modal-panel .input-row .tabpanel .param-form label{
+        line-height: 0.75; 
+    }
+
+
+    .hidden{ /* 'hidden' class hides elements that are not templates (e.g. panels or options not in use) */
+        display: none !important;
+    }
+
+    .disabled {  /* disables element (disables step 2 panel & OK button if no param selected) */
+        opacity:.45 !important; 
+        cursor: not-allowed;
+    }
+
+ 
+ 
+
+ </style>
+</head>
+
+
+ <body>	  
+
+        <div id="input-source-modal" class="builder general-modal action-modal selection-modal"> 
+            <div class="content modal-parent selection-modal-parent"> 
+              <button id="x-close" class="x-close">×</button> 
+                   
+                <div class="modal-panel">
+                  <h2 class="panel-title">Advanced: vary parameters across trials</h2>
+                  <div class="panel-scroll"> 
+                  <div class="panel-content"> 
+                      
+                    <!-- Selected Parameters -->
+                    <div class="input-row">
+                      <p class="section-title"><strong>Step 1: Select Parameters</strong> </p>
+                        <p>Use the checkboxes to select which parameters you want to configure.</p>                        
+                        <div class="inputbubble tabpanel">
+                            <form id="parameter-content" class="param-form"> </form>
+                            <p class="note">(In: <span id="parameter-group">[Param Name]</span>)</p>
+                        </div>
+                        <p class="source-warning">   </p>
+                    </div>
+
+                    <!-- How to set parameter values -->
+                    <div id="step2-panel" class="input-row">
+                      <p class="section-title"><strong>Step 2: Choose Method</strong></p>
+                      <p>How would you like to define the values for the selected parameters?</p>
+                      <div class="inputbubble">
+                          
+                          <div>
+                            <input type="radio" id="staticBuilderID" name="inputSource" value="staticBuilder" checked>
+                            <label for="staticBuilderID">
+                                <strong>Static Builder:</strong> Keep the parameters constant using the previous window
+                            </label>
+                          </div>
+
+                          <div>
+                            <input type="radio" id="trialBuilderID" name="inputSource" value="trialBuilder">
+                            <label for="trialBuilderID">
+                                <strong>Trial Builder:</strong> Vary the parameters across trials using a GUI
+                            </label>
+                          </div>
+
+                          <div>
+                            <input type="radio" id="csvFileID" name="inputSource" value="csvFile">
+                            <label for="csvFileID">
+                                <strong>File:</strong> Vary the parameters across trials using a CSV file
+                            </label>
+                          </div>
+                          
+                        </div>
+                    </div>
+					</div>
+					<div class="button-footer">
+                      <button id="help-button" class="help-button secondary-button">Help</button>
+                      <button id="continue-button" class="primary-button">Continue</button>
+					</div>
+
+                  </div>
+                </div>
+ 
+            </div> 
+        </div> 
+  
+    <script>
+        
+        
+    let popupCallback = null;
+
+    function openModal(parameterGroupText, currentInputSources, originalHtmlContent, setOpacityFun, callbackFun, inputSourceGuide) {
+        
+        // 1) Displays "selected parameter"
+        const parameterGroupElement = document.getElementById('parameter-group');
+        parameterGroupElement.textContent = parameterGroupText;
+        
+        // 2) Setup Parameter Selection (creates checkboxes and sets up listeners for them)
+        const mappedInputSources = setupParameterSelection(originalHtmlContent); 
+        
+        // 3) Performs initial selection for Steps 1 & 2 
+        //   (checks appropriate checkboxes and radio buttons based on previous selections from user or default) 
+        parseInputSelection(currentInputSources, mappedInputSources); 
+ 
+        // 4) Sets Callback
+        const continueButton = document.getElementById('continue-button');
+        continueButton.onclick = () => handleUserResponse(mappedInputSources);
+        popupCallback = callbackFun;
+
+        // 5) Sets X Close
+        const xClose = document.getElementById('x-close');
+        xClose.onclick = () => closeModal();
+		
+		// 6) Sets Help
+        const helpButton = document.getElementById('help-button');
+        helpButton.onclick = () => helpButtonClick(inputSourceGuide); 
+     
+        // 7) Opens Window
+        window.frameElement.style.display = "block";
+        const modal = document.getElementById('input-source-modal');
+        modal.classList.remove('hidden');
+     
+        // 8) Resets opacity of input fields 
+        setOpacityFun(window, true);
+    
+    }
+
+    function handleUserResponse(mappedInputSources) {
+        const response = document.querySelector('input[name="inputSource"]:checked').value;
+
+        // Gather the names of all checked boxes inside #parameter-content
+        const selectedParameterNames = [];
+        const unselectedParameterNames = [];
+        const checkboxes = document.querySelectorAll('#parameter-content input[type="checkbox"]');
+        checkboxes.forEach(cb => {
+            
+            
+            
+            // 1. Work out which parameter-name(s) this checkbox represents
+            //    – normally just cb.name, but fall back to the reverse-lookup if the
+            //      checkbox only has an id.
+            const paramNames = cb.name
+                                ? [cb.name]
+                                : getNamesForId(cb.id, mappedInputSources);   // returns an array
+
+            // 2. Push each name to the correct bucket
+            paramNames.forEach(name => {
+                if (cb.checked) {
+                    selectedParameterNames.push(name);
+                } else {
+                    unselectedParameterNames.push(name);
+                }
+            });
+            
+             
+        });
+
+		document.querySelector("p.source-warning").innerText=""; // resets Warning Message to empty
+         
+        
+		closeModal();
+
+        if (popupCallback) { 
+            popupCallback(response, selectedParameterNames, unselectedParameterNames);
+        }
+        
+        // Support function 
+        function getNamesForId(id, map) {
+          return Object.keys(map).filter(name => map[name] === id);
+        }
+        
+    }
+		
+	function helpButtonClick(inputSourceGuide){
+		if (inputSourceGuide){
+			inputSourceGuide.contentWindow.openModal(); 	
+		}    
+	}
+
+    function closeModal() {
+        const modal = document.getElementById('input-source-modal');
+        modal.classList.add('hidden');
+        window.frameElement.style.display = "none";
+    }
+
+    
+//////////////////// SETUP PARAMETER SELECTION (TRANSFORM FORM INPUT FIELDS -> CHECKBOXES) /////////////////////
+    function setupParameterSelection(originalHtmlContent){
+        
+        // adds original HTML content  
+        const step1Panel = document.getElementById('parameter-content');
+        step1Panel.innerHTML = originalHtmlContent; // sets the form content to transformed snippet 
+        
+        // transforms it to support parameter selection
+        return transformHtmlContent(step1Panel); 
+        
+        
+        // Transform <input> or <textarea> into a <checkbox> 
+        function transformHtmlContent(step1Panel) { 
+        
+            const mappedInputSources = {}; // ref hidden->helper inputs
+            
+            // 1) Transforms input elements and labels 
+            // Select all input or textarea elements
+            const elements = step1Panel.querySelectorAll('input, textarea');
+            elements.forEach((oldElem) => { 
+                 // If NOT hidden, replaces it with checkbox (otherwise removes it)
+                if (oldElem.type !== "hidden" && !oldElem.classList.contains("hidden-input")) {
+                    
+                    // A) Formats label 
+                    let labelElem = document.querySelector(`label[for="${oldElem.id}"]`); // label element
+                    if (labelElem) { 
+                        // Formats label:
+                        // -> defines the label as "label after input" class
+                        labelElem.classList.remove('label-before-input', 'label-start-block');
+                        labelElem.classList.add('label-after-input');
+                        // -> only keeps "main" content (removes :, (), ...)
+                        labelElem.textContent = labelElem.textContent
+                          .replace(/:.*/, '')            // Removes : and content after 
+                          .replace(/\s*\([^)]*\)/g, '')  // Removes content in (parentheses)
+                          .trim();                       // Removes leading/trailing whitespace
+                    } else { // creates label
+                        labelElem = document.createElement('label');
+                        labelElem.setAttribute('for', oldElem.id); 
+                        labelElem.classList.add('label-after-input');
+                        labelElem.textContent = `(${oldElem.type})`;
+                        oldElem.parentNode.insertBefore(labelElem, oldElem.nextSibling); // insert label AFTER input
+                    }
+                    
+                    // B) Checks IF FIRST INPUT WITH THIS NAME -> MAIN PROCESSING (to Checkbox)                     
+                    const htmlTag  = oldElem.tagName;  // input or textarea
+                    const nameAttr = oldElem.name; // name attribute     
+                    const firstElem  = step1Panel.querySelector(
+                                    `${htmlTag}[name="${nameAttr}"]:not([type="hidden"])`);
+                    
+                 
+                    if (oldElem === firstElem || !nameAttr){ 
+
+                       // C) Create the new checkbox, copying over the attributes from the old element   
+                        const checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox'; 
+                        for (const { name, value } of oldElem.attributes) { 
+                            if (name !== 'type'){ // don’t overwrite "checkbox"
+                                checkbox.setAttribute(name, value);
+                            } 
+                        }
+
+
+                        // D) Sets up listener for checkboxes 
+                        // (at least one checkbox must be selected to enable Step 2 & 'OK')
+                        checkbox.addEventListener('change', updateStates);
+
+
+                        // E) Adds checkbox for old input child (before the label)
+                        // (Replaces old input child - as we later remove this)
+                        oldElem.parentNode.insertBefore(checkbox, labelElem);   
+                        
+                    } else {     
+                        
+                    // (B): if NOT the first of its tag/name -> remove input and add label to main 
+                        // adds label to main (first) label 
+                        const firstLabel = document.querySelector(`label[for="${firstElem.id}"]`); // label element
+                        firstLabel.textContent += '/' + labelElem.textContent;
+                        
+                        // removes original label
+                        labelElem.remove(); 
+                        
+                    } 
+                    
+                } else if (oldElem.classList.contains('hidden-input')) { 
+
+                    // For hidden-input elements -> stores reference to helper-input 
+                    const helperRefId = oldElem.getAttribute('helperRefId'); 
+                    if (helperRefId) { 
+                        mappedInputSources[oldElem.name] = helperRefId;
+                    } 
+                            
+                } 
+                oldElem.remove(); // removes the old element from the DOM
+                
+                
+
+            }); 
+            
+            // 2) Removes all notes
+            step1Panel.querySelectorAll('.inputsnote, .namenote').forEach(el => el.remove()); 
+             
+            // returns ref hidden->helper
+            return mappedInputSources;
+            
+        }
+            
+    }
+        
+    // // Function Updates States of Panel 2 & OK Button (enable/disable) // //
+    function updateStates () {          
+        // 1) gets referernce to elements 
+        const step1Panel = document.getElementById('parameter-content'); // panel with param checkboxes
+        const step2Panel = document.getElementById('step2-panel'); // panel with source radio btns (state update)
+        const okBtn      = document.getElementById('continue-button'); // ok/continue button (state update)
+
+        // 2) computes flags 
+        // 2a) is any checkbox checked?
+        const anyCheckboxChecked = step1Panel.querySelectorAll('input[type="checkbox"]:checked').length > 0;
+        // 2b) is any radio checked?
+        const anyRadioChecked = step2Panel.querySelectorAll('input[type="radio"]:checked').length > 0; 
+
+        // 3) enabled/disables objects based on flags
+        // 3a) (anyCheckboxChecked -> enables panel 2)
+        step2Panel.classList.toggle('disabled', !anyCheckboxChecked); 
+        step2Panel.querySelectorAll('input[type="radio"]')
+                  .forEach(el => { el.disabled = !anyCheckboxChecked; }); 
+        // 3b) (anyCheckboxChecked & anyRadioChecked -> enables OK)
+        okBtn.classList.toggle('disabled', !(anyCheckboxChecked && anyRadioChecked)); 
+        okBtn.disabled = !(anyCheckboxChecked && anyRadioChecked);
+        
+        // 4) adds explanations
+        if (!anyCheckboxChecked){       // a) both Step 2 and OK disabled
+            const checkCheckboxesMsg = "Select Parameters in Step 1 to continue.";
+            step2Panel.title = checkCheckboxesMsg;
+            okBtn.title = checkCheckboxesMsg;
+        } else if (!anyRadioChecked){   // b) only OK disabled
+            step2Panel.title = "";
+            okBtn.title = "Choose Method in Step 2 to continue.";            
+        } else {                        // c) none disabled         
+            step2Panel.title = "";
+            okBtn.title = "";
+        }
+
+    }
+        
+        
+
+//////////////////////////  PARSES INPUT SOURCE FOR THE DIFFERENT PARAMETERS ///////////////////////
+    // Subset selection logic + warning
+    function parseInputSelection(currentInputSources, mappedInputSources) { 
+
+        // // Parses currentInputSources -> Grab all keys and values
+        const allKeys = Object.keys(currentInputSources);
+        const allValues = Object.values(currentInputSources);
+         
+        // // Option (1) = all values are the same // // 
+        const uniqueValues = [...new Set(allValues)];
+        if (uniqueValues.length === 1) { // if all uniform     
+            // Option 1, Step 1: Check all parameter boxes
+            checkParamBoxes(allKeys,mappedInputSources); 
+            
+            // Option 1, Step 2: Checks radio button for uniform input source  
+            const uniformSource = uniqueValues[0];  // Gets uniform input source
+            document.querySelector(`input[name="inputSource"][value="${uniformSource}"]`).checked = true;  
+            
+            return;
+        }
+        
+
+        // // Option (2) = remaining values are the same, after filtering 'staticBuilder' // // 
+        const filteredEntries = Object.entries(currentInputSources)
+            .filter(([_, val]) => val !== "staticBuilder");   // Filter out 'staticBuilder'
+        const filteredValues = filteredEntries.map(([_, val]) => val);
+        const uniqueFilteredValues = [...new Set(filteredValues)];
+        
+        if (uniqueFilteredValues.length === 1) { // if remainder is uniform
+            
+            displayWarning(currentInputSources);   // Display warning (not all sources matched)
+
+            // Gets the "uniform except Static-Builder" source value 
+            const finalValue = uniqueFilteredValues[0];
+            
+            // Grab the parameter names that match this finalValue
+            const finalKeys = filteredEntries
+                .filter(([_, v]) => v === finalValue)
+                .map(([k]) => k);
+            
+            // Option 2, Step 1: check parameters that match selected source
+            checkParamBoxes(finalKeys,mappedInputSources);
+            
+            // Option 2, Step 2: selects radio for source = uniform after filtering staticBuilder
+            document.querySelector(`input[name="inputSource"][value="${finalValue}"]`).checked = true;  
+            
+            return;            
+        }
+        
+
+        // // Option (3) = parameter sources include both trialBuilder and csvFile // // 
+        //   (Not uniform even after excluding staticBuilder) 
+        displayWarning(currentInputSources);    // Display warning (not all sources matched)
+        
+        // Option 3, Step 1: empty array, starts with NO parameters checked 
+        checkParamBoxes([],mappedInputSources);    
+        
+        // Option 3, Step 2: none selected  
+        document.querySelectorAll('input[name="inputSource"]').forEach(radio => {
+            radio.checked = false; // deselect all 
+            radio.addEventListener('change', updateStates); // sets up listener -> enable OK on any selection
+        });
+
+        updateStates(); // updates Step 2 & OK button state (disabled)
+        
+
+        // // // SUPPORT FUNCTIONS // // //
+        // Function: Displays warning that different parameters <- different sources, 
+        // and provides details of each (param, source)
+        function displayWarning(currentInputSources) { 
+            // Find the <p class="source-warning"> element
+            const warningEl = document.querySelector("p.source-warning"); 
+
+            // Build the warning text
+            let text = "Warning! Different sources are currently selected for these parameters:\n";
+            // Append each key-value pair
+            for (const [paramName, sourceValue] of Object.entries(currentInputSources)) {
+                
+				// Gets the label text for each input:
+                const inputElem = document.querySelector(`#parameter-content input[name="${paramName}"]`); // input
+                const inputElemLabel = document.querySelector(`label[for="${inputElem.id}"]`); // label 
+                const inputElemLabelText = inputElemLabel.textContent.trim().replace(/:$/, "");  // label text
+				
+				// Gets the label text for the selected source for this input (radio button label)
+				const sourceElem = document.querySelector(`input[name="inputSource"][value="${sourceValue}"]`); // radio
+                const sourceElemLabel = document.querySelector(`label[for="${sourceElem.id}"] strong`); // label 
+                const sourceElemLabelText = sourceElemLabel.textContent.trim().replace(/:$/, "");  // label text 
+				
+				// Appends the info for this input to the warning text 
+                text += `${inputElemLabelText} = ${sourceElemLabelText}; `; 
+            }
+			
+			// swap out the final “; ” for a period
+			text = text.replace(/;+\s*$/, ".");
+			
+            // Display in the <p class="source-warning">
+            warningEl.innerText = text;
+        }
+        
+        // Function: handles checking parameter checkboxes given parameter names 
+        function checkParamBoxes(paramNames,mappedInputSources) {
+            // For each param name, check the box if it exists
+            paramNames.forEach(name => { 
+                const box = document.querySelector(`#parameter-content input[type="checkbox"][name="${name}"]`);
+                if (box) {
+                    box.checked = true;
+                } else {
+                    const mappedBox = document.querySelector(
+                        `#parameter-content input[type="checkbox"][id="${ mappedInputSources[name]}"]`);
+                    if (mappedBox) {
+                        mappedBox.checked = true;
+                    }  
+                         
+                }
+            });
+        }
+
+        
+    } 
+
+    </script>
+     
+</body>
+		
+</html>
+
+  <!--  &nbsp; such as &thinsp;, &ensp;,and &emsp;.-->

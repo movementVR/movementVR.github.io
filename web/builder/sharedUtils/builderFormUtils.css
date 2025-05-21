@@ -1,0 +1,400 @@
+ 
+
+/* 
+CURRENT MAX WIDTHS:
+	col 1 + 2 = 450px (messages htmls)
+	use testWidths.js in web/builder/testingUtils
+
+
+BASE
+	shared base:
+		.builder .content .tabpanel .param-form
+
+	content container for trial popup:
+		.builder .content .tabpanel .param-form fieldset
+
+
+NAMES 
+	cols:
+		.name-type : col1
+		.fullname-type : col2 
+	style:
+		.name
+		.subname
+		.namenote
+	e.g:
+		.name-type.subname
+		.fullname-type.name
+ 
+  
+INPUTS
+	.inputs-type.inputs
+	.inputs-type.inputsnote 
+
+
+INLINE BUTTONS
+	.icons-type
+
+
+LONG NOTES (full row) 
+	.longnote-type.longnote  
+	.longnote-type.longnotetitle  
+	.longnote-type.longnotesmaller
+
+
+VERTICAL SPACES (full row)
+	.fullrow-type.largespace 
+	.fullrow-type.mediumspace
+	.fullrow-type.smallspace
+
+
+
+EXPANDABLE
+	window:
+		.fullrow-type.expand-window
+	
+	button:
+		.expand-button
+			(for now, all .expand-button are .inputs-type, 
+			 but they may be paired with .fullrow-type as needed)  
+
+	status:
+		.collapsed
+		.expanded
+
+	eg:
+		.fullrow-type.expand-window.collapsed
+		.inputs-type.expand-button.expanded
+ 
+
+SPECIFIC INPUT FIELDS 
+	(many specified below)
+
+	Note On Colors: 
+	class="picker-color helper-input"   VISIBLE, color picker
+	class="hidden-color hidden-input"   FUNCTIONAL, numerical RGB (background, hidden)
+						   (these are synced via script)
+
+
+HIDDEN INPUT & HELPER INPUTS THAT WILL NOT BE SAVED TO CSV
+    class = "hidden-input" 
+    class = "hidden-label" 
+    class = "helper-input" 
+ 
+*/ 
+	 
+
+
+/**************************** INPUT COLUMN ********************************************/
+ 
+
+/* param-form: grid layout */
+.builder .content .tabpanel .param-form{	
+	display: grid;  
+	align-items: center;  /* vertical alignment = centered (needed to not stretch heights) */  
+	margin: 20px 10px 10px 15px;  /* top right bottom left */
+	 /* Width of col: 1) max content width, 2) content width if enough space, 3) remaining space */
+ 	grid-template-columns: max-content auto 1fr; 
+	max-width: fit-content; /* Prevents unwanted wrapping */	
+	row-gap: 3px;	 
+	white-space: nowrap; /* Prevents text wrapping */    
+}   
+
+.builder .content .tabpanel .param-form *{	
+	line-height: 0.75;  
+	align-items: center;  /* vertical alignment = centered  (needed to not stretch heights) */  
+}
+
+/* Fieldset for grouping without disrupting grid */
+	/* can have 2 classes:  "trial-builder-group" or "no-trial-builder-group" */
+.builder .content .tabpanel .param-form fieldset { 
+	display: contents; /* Ensures it does not disrupt grid structure */
+}
+
+
+/***************************** EXPANDABLE WINDOW **************************************/
+/* EXPANDABLE WINDOW */ 
+/*.builder .content .tabpanel .param-form .fullrow-type.expand-window*/
+.content .tabpanel .param-form .fullrow-type.expand-window { 
+}
+
+.content .tabpanel .param-form .fullrow-type.expand-window.collapsed {
+	display: none;
+}
+.builder .content .tabpanel .param-form .fullrow-type.expand-window.expanded {  
+	display: grid;
+	align-items: center;    /* needed to not stretch the height of children text */	
+	margin: 0px; 
+  	grid-template-columns: inherit;	 
+	row-gap: inherit;		
+	transform: translateY(-5px);  /* creates overlap with the expand button */	
+	padding: 10px 7px 10px 10px;  /* top right bottom left */	
+	background-color:whitesmoke;  
+	border: 1px dotted darkcyan;   
+}   
+
+/* for now, all .expand-buttons are .inputs-type, 
+   but they may be paired with .fullrow-type as needed */
+.builder .content .tabpanel .param-form .expand-button { 
+	display: flex;	  
+	align-items: center; /* vertical alignment = centered (needed to align triangle correctly) */
+	border: none;  
+	z-index: 1; 
+	background: none; 
+    font-size: 12px;  /* font size and color in parent because they also apply to the triangle */ 
+	color: darkcyan;	 
+} 
+
+.builder .content .tabpanel .param-form .expand-button::before { 
+    content: '\25B6';  
+	z-index: 2;	 
+}
+
+.builder .content .tabpanel .param-form .expand-button.collapsed::before {  
+    transform: rotate(0deg);  
+}
+
+.builder .content .tabpanel .param-form .expand-button.expanded::before {   
+    transform: rotate(90deg);  
+    transition: transform 0.3s ease-in-out;  /* only eases transition from collapsed to expanded */
+}
+ 
+
+.builder .content .tabpanel .param-form .expand-button span{ 	  
+    font-style: italic; 
+    text-decoration: underline;	 	
+	transform: translateX(-12px);
+	padding: 5px 5px 5px 15px;  /* top right bottom left */ 
+}
+.builder .content .tabpanel .param-form .expand-button.collapsed span{ 
+	font-weight: normal; 
+	text-shadow: 0.2px 0.2px 0 currentcolor; /* Offset x, y, blur radius, color */
+	background: none; 
+	border: none;  
+}
+.builder .content .tabpanel .param-form .expand-button.expanded span{
+	font-weight: bold;   
+	text-shadow: none; 
+	background-color:whitesmoke;   
+	border: 1px dotted darkcyan;   
+} 
+ 
+ 
+
+  	/* / /  ******************** Name Types **************** / / */  
+  
+/* Name-type styles: occupy the first column */
+.builder .content .tabpanel .param-form .name-type {
+	grid-column: 1 / span 1; /* col = 1 */  
+	text-align: right;	   
+} 
+.builder .content .tabpanel .param-form .fullname-type{	
+	grid-column: 1 / span 2; /* col = 1+2 */
+	text-align: left;	 
+}
+
+ 
+ 
+.builder .content .tabpanel .param-form .name-type.name,
+.builder .content .tabpanel .param-form .fullname-type.name{
+    font-size: 14px; 
+    color: black;
+    font-weight: bold; 
+	padding-bottom: 0.17em; /* Adjustment to centered text that has parts below line (letters like p, y, or []) */
+	padding-right: 10px;   	/* right space */  
+} 
+
+ 
+.builder .content .tabpanel .param-form .name-type.subname,
+.builder .content .tabpanel .param-form .fullname-type.subname {
+    font-size: 14px;
+    color: black;
+    font-weight: normal;
+	padding-bottom: 0.05em; 
+	padding-right: 10px;  
+}
+ 
+.builder .content .tabpanel .param-form .name-type.namenote,
+.builder .content .tabpanel .param-form .fullname-type.namenote {
+    font-size: 12px;
+    color: #2F4F4F;
+    font-style: italic;  
+}
+
+
+
+  	/* / /  ******************** Inputs Types **************** / / */  
+/* Inputs-type styles: occupy the second column */
+.builder .content .tabpanel .param-form .inputs-type {
+	grid-column: 2 / span 1;  /* col = 1*/
+	display: flex;
+	flex-wrap: nowrap; /* Prevents children elements wrapping */
+	min-width: fit-content; /* Ensures the input fields don't shrink */ 
+	align-items: center; /* vertical alignment = centered */  
+}
+
+.builder .content .tabpanel .param-form .inputs-type.inputs {    
+    font-size: 12px; 
+    color: black; 
+	min-height: 15px;
+}
+
+
+
+.builder .content .tabpanel .param-form .inputs-type.inputsnote {
+    font-size: 12px;
+    color: #2F4F4F;
+    font-style: italic; 
+}
+ 
+
+  	/* / /  ******************** Misc: Label Tag **************** / / */  
+/*LABELS FOR INPUT OR NO SPECIFIC INPUT
+	<label for=(input ID)> .. class="label-before-input" OR class="label-after-input"  (in inputs-type inputs container)
+OR <label class="label-standalone">   (in inputs-type inputs container), or
+	<label class="inputs-type label-standalone"> (outside of container)
+ALSO  label-start-block  or   label-end-block  */
+
+.builder .content .tabpanel .param-form label {
+    font-size: 12px;    
+    color: black;   
+} 
+
+.builder .content .tabpanel .param-form label.label-before-input{	
+	padding-left: 15px; 
+	padding-right: 2px; 	 
+} 
+
+.builder .content .tabpanel .param-form label.label-after-input{	
+	padding-left: 2px; 
+	padding-right: 15px;   
+} 
+.builder .content .tabpanel .param-form label.label-after-input + label.label-before-input{	
+	padding-left: 0px;  
+}
+
+.builder .content .tabpanel .param-form label.label-start-block{	
+	padding-left: 0px;  
+}
+
+.builder .content .tabpanel .param-form label.label-end-block{	
+	padding-right: 0px;  
+}
+ 
+
+  	/* / /  ******************** Long Note Type **************** / / */  
+.builder .content .tabpanel .param-form .longnote-type{
+	grid-column: 1 / span 3; /* Ensures the border spans both grid columns */   
+	display: flex;
+	flex-wrap: nowrap;  /* Prevents children elements wrapping */
+	/*min-width: fit-content;*/
+     
+	
+    color: darkblue;
+    font-style: italic;     
+}
+ 
+.builder .content .tabpanel .param-form .longnote-type.longnote {
+    font-size: 12px;
+    margin-top: 5px;  
+    margin-bottom: 3px;  
+    margin-left: 5px;  
+}
+
+.builder .content .tabpanel .param-form .longnote-type.longnotetitle {
+    font-size: 13px;
+    text-decoration: underline; 
+	margin-top: 20px; 
+    margin-bottom: 0px;  
+}
+
+.builder .content .tabpanel .param-form .longnote-type.longnotesmaller {
+    font-size: 11px;   
+    margin-left: 10px;
+}
+
+/* Reduce margin-top if two long note elements of the same type / longnote after title */
+.builder .content .tabpanel .param-form .longnote-type.longnote + .longnote-type.longnote{
+	margin-top: 0px;
+} 
+
+  	/* / /  ******************** Full Row Type **************** / / */  
+.builder .content .tabpanel .param-form .fullrow-type{
+	grid-column: 1 / span 3; /* Ensures the border spans both grid columns */   
+	display: flex;
+	flex-wrap: nowrap; /* Prevents inputs from wrapping */
+	min-width: fit-content; /* Ensures the input fields don't shrink */  
+	
+}
+
+.builder .content .tabpanel .param-form .fullrow-type.largespace{
+	height: 15px;
+}
+
+.builder .content .tabpanel .param-form .fullrow-type.mediumspace{
+	height: 5px;
+}
+
+.builder .content .tabpanel .param-form .fullrow-type.smallspace{
+	height: 0px;	
+} 
+
+
+
+/***************************** SPECIFIC INPUTS *******************************************/
+/* Style for form inputs - text inputed by users in stirng or number places (not text areas) */
+
+.builder .content .tabpanel .param-form .inputs-type.inputs input  {     
+  /*  padding: 1px;*/
+}
+
+.builder .content .tabpanel .param-form .inputs-type.inputs textarea {	 
+	width: 30ch; /* 1ch is the width of a character  */ 	
+	height: 1.4em;
+	line-height: 1.3em; /* centered vertically <- correct line height (slighly less for textarea due to expand symbol)*/  
+}
+
+.builder .content .tabpanel .param-form .inputs-type.inputs input[type=number] {  
+	width: 8ch; /* 1ch is the width of a character (must allow extra for arrows at the right, not included) */ 
+	height: 1.3em; /* 1em is the height of a character */
+	line-height: 1.3em; /* input text is centered vertically by ensuring it has the correct line height */ 
+}
+.builder .content .tabpanel .param-form .inputs-type.inputs input[type=number]::placeholder {  
+	font-size: smaller;
+    font-style: italic;
+}
+
+.builder .content .tabpanel .param-form .inputs-type.inputs input[type=radio] {
+}
+
+.builder .content .tabpanel .param-form .inputs-type.inputs input[type=checkbox] {
+}
+
+.builder .content .tabpanel .param-form .inputs-type.inputs input[type=color] {
+	border: none;
+	padding: 0px;
+	margin: 0px; 
+	height: 20px;
+	width: 40px;
+}
+
+ 
+
+  	/* / /  ******************** Color Related **************** / / */  
+.builder .content .tabpanel .param-form .inputs-type.inputs .picker-color {
+}
+
+.builder .content .tabpanel .param-form .inputs-type.inputs .hidden-color {
+	display: none;
+}
+
+ 
+/***************************** ENABLED / DISABLED OVERWRITE *********************************/
+.builder .disabled-parameter {
+    cursor: not-allowed;
+    opacity: 0.75;
+}
+
+
+ 
+

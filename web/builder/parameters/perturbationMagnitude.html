@@ -3,63 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>   </title>
+    <title></title>
 </head>
 <body>
-<form class="tabcontent">      
-<div class="form-control">         
-<inputcolumn>
+<form class="param-form">
         
 <!-- Content: --> 
- 
- 
-    
-<name> Gain magnitude[%]: </name>
-    <inputs>    </inputs>   
-    <namenote>(at adaptation plateau)</namenote> <inputs></inputs>
-    
-<subname>Left hand: </subname>
-    <inputs>
-    <label for="L_GAIN_X">X:</label>
-    <input id="L_GAIN_X" name="trialScript,leftHandGainX" type="number" value="0" />
-    <label for="L_GAIN_Y">Y:</label>
-    <input id="L_GAIN_Y" name="trialScript,leftHandGainY" type="number" value="0" />
-    <label for="L_GAIN_Z">Z:</label>
-    <input id="L_GAIN_Z" name="trialScript,leftHandGainZ" type="number" value="0" />
-    </inputs>  
 
-<subname>Right hand: </subname>    
-    <inputs>
-    <label for="R_GAIN_X">X:</label>
-    <input id="R_GAIN_X" name="trialScript,rightHandGainX" type="number" value="0" />
-    <label for="R_GAIN_Y">Y:</label>
-    <input id="R_GAIN_Y" name="trialScript,rightHandGainY" type="number" value="-50" />
-    <label for="R_GAIN_Z">Z:</label>
-    <input id="R_GAIN_Z" name="trialScript,rightHandGainZ" type="number" value="0" />
-    </inputs>
+   
+	   
+	<div class="fullname-type name"> Gain magnitude at adaptation plateau [%]: </div>   
+	
+<fieldset class="trial-builder-group">   
+	<div class="fullrow-type smallspace"></div>   
+	<div class="name-type subname">Left hand: </div>
+		 <div class="inputs-type inputs">
+		<label for="gainscript-lefthandgainx" class="label-before-input label-start-block">X:</label>
+		<input id="gainscript-lefthandgainx" name="gainScript,leftHandGainX" type="number" step="any">
+		<label for="gainscript-lefthandgainy" class="label-before-input">Y:</label>
+		<input id="gainscript-lefthandgainy" name="gainScript,leftHandGainY" type="number" step="any">
+		<label for="gainscript-lefthandgainz" class="label-before-input">Z:</label>
+		<input id="gainscript-lefthandgainz" name="gainScript,leftHandGainZ" type="number" step="any">
+		</div>  
+</fieldset>   
+	
+<fieldset class="trial-builder-group">   
+	<div class="fullrow-type smallspace"></div>   
+	<div class="name-type subname">Right hand: </div>    
+		 <div class="inputs-type inputs">
+		<label for="gainscript-righthandgainx" class="label-before-input label-start-block">X:</label>
+		<input id="gainscript-righthandgainx" name="gainScript,rightHandGainX" type="number" step="any">
+		<label for="gainscript-righthandgainy" class="label-before-input">Y:</label>
+		<input id="gainscript-righthandgainy" name="gainScript,rightHandGainY" type="number" step="any">
+		<label for="gainscript-righthandgainz" class="label-before-input">Z:</label>
+		<input id="gainscript-righthandgainz" name="gainScript,rightHandGainZ" type="number" step="any">
+		</div>
+</fieldset>   
+	  
 
-    <longnotetitle>Gain pertubation:</longnotetitle> 
-    <longnote>Visual hand velocity = (1 + gain) * Real hand velocty</longnote> 
-    <longnotesmaller>&emsp;"0%": visual hand moves like real hand</longnotesmaller>   
-    <longnotesmaller>&emsp;"-100%": visual hand does not move</longnotesmaller> 
-    <longnotesmaller>&emsp;"100%": visual hand moves twice as fast as real hand</longnotesmaller> 
-    <longnote>Note that gain is applied relative to origin, so that:</longnote> 
-    <longnotesmaller>&emsp;Visual hand distance from origin = (1 + gain) * Real hand distance from origin</longnotesmaller> 
-    <longnotesmaller>&emsp;(see Origin tab)</longnotesmaller>   
-    
-    
-    
-    
+		<div class="longnote-type longnotetitle">Gain pertubation:</div> 
+		<div class="longnote-type longnote">Visual hand velocity = (1 + gain) * Real hand velocty</div> 
+		<div class="longnote-type longnotesmaller">&emsp;"0%": visual hand moves like real hand</div>   
+		<div class="longnote-type longnotesmaller">&emsp;"-100%": visual hand does not move</div> 
+		<div class="longnote-type longnotesmaller">&emsp;"100%": visual hand moves twice as fast as real hand</div> 
+		<div class="longnote-type longnote">Note that gain is applied relative to origin, so that:</div> 
+		<div class="longnote-type longnotesmaller">&emsp;Visual hand distance from origin = (1 + gain) * Real hand distance from origin</div> 
+		<div class="longnote-type longnotesmaller">&emsp;(see Origin tab)</div>   
+
+		<div class="longnote-type longnotetitle">Gain pertubation paradigm:</div> 
+		<div class="longnote-type longnote">Option 1: Use Paradigm Tab in Static Builder to follow standard adaptation schedule</div>
+		<div class="longnote-type longnote">Option 2: Click the gear icon in this tab to customize gain trial-by-trial</div> 
+		<div class="longnote-type longnotesmaller">&emsp;(choosing Option 2 will overwrite the Paradigm Tab values)</div>  
+ 
  
 <!-- End of Content --> 
  
-</inputcolumn> 
-</div>  
-<figurecolumn>
-    <img src="web/img/parameters/gain.png" style="width:60mm;">
- <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
-</figurecolumn>
+</form> 
+<div class="param-img">
+    <img src="web/img/parameters/gain.png">
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  > --> 
+</div>
         
-</form>
-</body>
+</body> 
 </html>

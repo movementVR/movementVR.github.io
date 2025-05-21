@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>grapeScript.cs Documentation</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			line-height: 1.6;
+			margin: 2rem;
+		}
+		h1, h2, h3 {
+			color: #2a4a6c;
+			margin-top: 2rem;
+		}
+		.code {
+			background-color: #f4f4f4;
+			padding: 0.5rem;
+			border-left: 3px solid #ccc;
+			font-family: monospace;
+			white-space: pre-wrap;
+		}
+		.section {
+			margin-bottom: 2rem;
+		}
+	</style>
+</head>
+<body>
+
+	<h1>Documentation: <code>grapeScript.cs</code></h1>
+
+	<div class="section">
+		<h2>1. Overview</h2>
+		<p>
+			The <code>grapeScript</code> class manages interaction behavior for individual grapes in a Unity VR motor learning experiment. It determines how grapes respond to collisions, particularly with hands or boundaries. It allows certain collisions (like those with the participant's virtual hands) to be temporarily ignored and also notifies the trial controller when a grape falls out of bounds.
+		</p>
+	</div>
+
+	<div class="section">
+		<h2>2. Functional Blocks</h2>
+
+		<h3>Initialization</h3>
+		<p>
+			Links to the parent <code>trialScript</code> and <code>handsAndSaveScript</code> to handle stage control and hand-collision logic.
+		</p>
+
+		<h3>Collision Handling</h3>
+		<ul>
+			<li>If <code>grapeAlwaysIgnoreHands</code> is true and the collision is with a hand, ignore future collisions with that hand.</li>
+			<li>If the grape hits the game area boundary, the trial is marked as failed by calling <code>trialStageTrigger(-3)</code>.</li>
+		</ul>
+
+		<h3>Cleanup on Disable</h3>
+		<p>
+			When the grape is disabled, previously ignored hand collisions are re-enabled via <code>resetIgnoreCollision()</code>.
+		</p>
+	</div>
+
+	<div class="section">
+		<h2>3. Full Technical Details</h2>
+
+		<h3>Class & Variables</h3>
+		<div class="code">
+public class grapeScript : baseclass
+{
+	public bool ignoreHandsFlag;
+	bool grapeAlwaysIgnoreHands;
+
+	trialScript trialScriptVar;
+	handsAndSaveScript headHandsScriptObj;
+	List&lt;Collider&gt; ignoredColliders = new List&lt;Collider&gt;();
+		</div>
+
+		<h3>Start Method</h3>
+		<div class="code">
+void Start() {
+	trialScriptVar = GetComponentInParent&lt;trialScript&gt;();
+	headHandsScriptObj = GetComponentInParent&lt;handsAndSaveScript&gt;();
+}
+		</div>
+
+		<h3>Update Method</h3>
+		<p>No logic is implemented in <code>Update()</code>.</p>
+
+		<h3>Collision Handling</h3>
+		<div class="code">
+void OnCollisionEnter(Collision collision) {
+	// Ignore hand collision if applicable
+	if (grapeAlwaysIgnoreHands && headHandsScriptObj.isCollisionWithHands(collision.collider)) {
+		ignoredColliders.Add(collision.collider);
+		foreach (Collider plateCollider in GetComponentsInChildren&lt;Collider&gt;()) {
+			Physics.IgnoreCollision(collision.collider, plateCollider);
+		}
+	}
+
+	// If grape hits game area boundary, trigger trial failure
+	if (collision.transform.parent.name == "GameareaBoundary") {
+		trialScriptVar.trialStageTrigger(-3);
+	}
+}
+		</div>
+
+		<h3>OnDisable</h3>
+		<div class="code">
+private void OnDisable() {
+	resetIgnoreCollision();
+}
+		</div>
+
+		<h3>Reset Ignored Collisions</h3>
+		<div class="code">
+public void resetIgnoreCollision() {
+	foreach (Collider ignoredCollider in ignoredColliders) {
+		if (ignoredCollider != null) {
+			foreach (Collider plateCollider in GetComponentsInChildren&lt;Collider&gt;()) {
+				if (plateCollider != null) {
+					Physics.IgnoreCollision(ignoredCollider, plateCollider, false);
+				}
+			}
+		}
+	}
+}
+		</div>
+
+	</div>
+
+</body>
+</html>

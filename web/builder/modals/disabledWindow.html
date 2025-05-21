@@ -1,0 +1,41 @@
+ <!DOCTYPE html>
+<html lang="en"> 
+   
+
+<head>
+  <link rel="stylesheet" href="/web/general/general.css">   
+ 
+</head>
+
+
+ <body>	  
+
+	<div id="disabled-window-modal" class="builder general-modal"> 
+
+	</div> 
+  
+    <script>
+
+		function openModal(hoverMessage="") { 
+			// opens modal
+			window.frameElement.style.display = "block";
+			const modal = document.getElementById('disabled-window-modal');
+			modal.classList.remove('hidden');
+			
+			// adds title (message that is displayed on hover)
+			modal.title = hoverMessage;
+		}
+    
+		function closeModal() {
+			// close modal
+			const modal = document.getElementById('disabled-window-modal');
+			modal.classList.add('hidden');
+			window.frameElement.style.display = "none";
+		} 
+		
+    </script>
+     
+</body>
+		
+</html>
+ 

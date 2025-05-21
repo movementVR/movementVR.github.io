@@ -1,0 +1,131 @@
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MovementVR Help Guide</title>
+	<link rel="stylesheet" href="/web/general/general.css">
+	<link rel="stylesheet" href="/web/general/page.css">
+</head>
+<body>
+<div id="mainpage-parent" class="mainpage-parent general-parent">
+	<div id="mainpage-content" class="mainpage-content page-content">
+
+		<div class="section-header">Help Guide</div>
+		<div class="section-content">
+
+			<div class="section-panel-header">MovementVR</div>
+			
+			
+MovementVR is a platform designed to make it easy to create and run motor learning experiments in Virtual Reality — no coding required. You can design your experiment using a graphical interface, run it on a standalone VR headset, and analyze the collected data with provided tools.
+
+This guide will walk you through each step: understanding the VR motor task (<a class="emphasis">MovementVR Task</a>), designing your own experiment using the Builder, running it in the VR App, and exporting or analyzing the data with the Analyzer.
+			
+			<p><strong>MovementVR</strong> is a platform to make experiments in Virtual Reality easy. You can design and run your motor learning experiment without coding. gettings started... In this you will This guide will help you get started by familiarizing you with the VR motor task (section MovementVR Task) , learn how to design your own experiment *Builder), how to run the designed experiment in the provided VR app () and export/process the collectd data ()</p>
+
+			<div class="section-panel-header">MovementVR Task</div> 
+			<div class="section-content"> 
+				<div class="section-panel-header">Task Elements</div>
+				<ul class="section-panel list-shortitems">
+					<li><strong class="emphasis">Plate & Grape:</strong> The object participants lift each trial. Physics-based interaction allows natural grasp and movement. If it tilts or falls, the grape drops.</li>
+					<li><strong class="emphasis">Target:</strong> The goal location for the plate. It can change color to indicate success/failure and includes a visible mesh that defines feedback and trial conditions.</li>
+					<li><strong class="emphasis">Hand Home:</strong> Starting position for each hand, defined by location and a "no-hand" zone to avoid premature interaction.</li>
+					<li><strong class="emphasis">Bird & Perch:</strong> An animated bird sits at the target. Its species, sound, and behavior provide outcome-linked feedback.</li>
+					<li><strong class="emphasis">Feedback Messages:</strong> Cartoons and sounds show success or failure after each trial.</li>
+					<li><strong class="emphasis">Hands:</strong> Real-time tracked, articulated VR hands with 19 bones for natural interaction.</li>
+					<li><strong class="emphasis">Workspace:</strong> The bounded area within which the plate must stay. Exiting ends the trial as a failure.</li>
+					<li><strong class="emphasis">Text & UI:</strong> Instructional messages, trial number, and visual elements support user guidance.</li>
+					<li><strong class="emphasis">Background:</strong> A medieval-style immersive garden and port setting with ambient birds and scenery.</li>
+				</ul>
+
+				<div class="section-panel-header">Trial Phases</div>
+				<ul class="section-panel list-shortitems">
+					<li><strong class="emphasis">Intertrial:</strong> Pause between trials.</li>
+					<li><strong class="emphasis">Home Position:</strong> Hands return to defined start zone.</li>
+					<li><strong class="emphasis">Plate Contact:</strong> User initiates lift by touching the plate.</li>
+					<li><strong class="emphasis">Plate Lift:</strong> Active lifting phase toward the target.</li>
+					<li><strong class="emphasis">Feedback:</strong> Outcome shown via color, animation, or cartoon.</li>
+					<li><strong class="emphasis">Break:</strong> Optional rest between trials.</li>
+				</ul>
+
+				<div class="section-panel-header">Success and Failure Criteria</div>
+				<ul class="section-panel list-shortitems">
+					<li><strong class="emphasis">Success:</strong> Plate center reaches target zone, remains within for required duration, and stays below tilt threshold.</li>
+					<li><strong class="emphasis">Failure:</strong> Plate tilts or leaves zone too soon, falls, exits workspace, or exceeds time limit.</li>
+				</ul>
+
+				<div class="section-panel-header">Motor Learning Applications</div>
+				<ul class="section-panel list-shortitems">
+					<li><strong class="emphasis">Adaptation via Gain Perturbation:</strong> Virtual hand moves with scaled gain relative to real hand. Perturbation ramps up and down by phase.</li>
+					<li><strong class="emphasis">Reinforcement Learning:</strong> Real-time visual feedback plus adaptive animations and sounds tied to success or failure.</li>
+					<li><strong class="emphasis">Custom Feedback:</strong> Target color, bird behavior, and effects can change based on task outcome.</li>
+				</ul>
+
+			</div>
+
+			<div class="section-panel-header">Builder</div>
+			<p>The <strong>MovementVR Builder</strong> is the GUI for designing your task. You can define all aspects of the experiment — from object positions to adaptation parameters — using an intuitive point-and-click interface. Over 500 parameters can be customized.</p>
+			<ul class="section-panel list-shortitems">
+				<li><a href="/web/help/builder_guide.html">Main Builder Guide</a></li>
+				<li><a href="/web/help/static_builder.html">Static Builder</a>: Set constant parameters</li>
+				<li><a href="/web/help/trial_builder.html">Trial Builder</a>: Define trial-by-trial changes</li>
+				<li><a href="/web/help/parameter_catalog.html">Parameter Catalog</a>: Reference for editable parameters</li>
+				<li><a href="/web/help/input_source.html">Input Source Selection</a>: Choose which hand is tracked, and what data is saved</li>
+				<li><a href="/web/help/csv_import.html">CSV File Import</a>: Upload custom parameter values</li>
+			</ul>
+
+			<div class="section-panel-header">4. VR App</div>
+			<ul class="section-panel list-shortitems">
+				<li><strong>Download:</strong> Visit the MovementVR website and download the <code>.apk</code> for your VR headset (e.g., Meta Quest 2).</li>
+				<li><strong>Install:</strong> Transfer the <code>.apk</code> to your device and install using standard sideloading procedures (step-by-step guide provided online).</li>
+				<li><strong>Load experiment:</strong> Move the <code>.csv</code> file created with the Builder into the <code>/MovementVR/Experiments</code> folder on the headset.</li>
+				<li><strong>Run the app:</strong> Open the MovementVR app and select your experiment from the list.</li>
+			</ul>
+
+			<div class="section-panel-header">5. Analyzer</div>
+			<p>Use the <strong>MovementVR Analyzer</strong> to convert and examine data collected in the VR app.</p>
+
+			<div class="section-subpanel-header">a) Export & Conversion</div>
+			<ul class="section-panel list-shortitems">
+				<li>Connect the headset to a PC and extract the <code>.bin</code> data files from internal memory.</li>
+				<li>Upload the <code>.bin</code> files to the Analyzer interface.</li>
+				<li>Click "Export" to convert them into standard <code>.csv</code> files.</li>
+			</ul>
+
+			<div class="section-subpanel-header">b) CSV Structure</div>
+			<ul class="section-panel list-shortitems">
+				<li><strong>Columns:</strong> Time, hand positions (per joint), object positions, trial phase markers, success/failure, etc.</li>
+				<li><strong>Rows:</strong> Each row represents a frame (i.e., one time point during the task).</li>
+			</ul>
+
+			<div class="section-subpanel-header">c) MATLAB Analysis</div>
+			<ul class="section-panel list-shortitems">
+				<li><strong>Download MATLAB package:</strong> Zip file with scripts and example data provided on the Analyzer page.</li>
+				<li><strong>Pipeline:</strong> Load converted CSV &rarr; Extract trial boundaries &rarr; Compute metrics like success rate and trajectory deviations.</li>
+				<li><strong>Example scripts:</strong> Illustrative code provided for trial-by-trial plotting, computing adaptation curves, and visualizing hand trajectories.</li>
+			</ul>
+
+		</div>
+	</div>
+</div>
+</body>
+</html>
+
+
+
+<!--1) general overview
+
+2) motor task (task description)
+
+ (take from paper MovementVR Software Implementation for the next sections)
+3) builder
+include links to guides within builder: main builder guide, static builder, trial builder, parameter catalog, input source selection, csv file import 
+
+4) vr app - how to download, install, save builder csv to internal folder, execute...
+
+5) analyzer
+a) export/converter
+b) col and rows in csv explanation
+b) matlab zipped folder for download -> steps till trial-by-trial trajectoris + illustgrative code for how to.....succss ratge + motor adaptation -->
+
+

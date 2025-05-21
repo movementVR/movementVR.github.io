@@ -1,14 +1,20 @@
 {
-    "path": "/web/export/",
-    "html":[
-        "export.html"
-    ],
-    "js":[
-        "export.js"
-    ],
-    "css":[
-    ],
-    "json":[
-        "export.json"
-    ]
+	"path": "/web/export/",
+	"scripts": {  
+		"entry":[
+			"export.js"
+		], 
+		"main":[ 
+			"export.js" 
+		]
+	},
+    "css": {  
+	},
+    "html": {
+		"main":[
+        	"export.html"
+    	]
+	}
 }
+
+  

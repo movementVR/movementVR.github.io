@@ -3,242 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Home </title>
+    <title></title>
 </head>
 <body>
-<form class="tabcontent">      
-<div class="form-control">         
-<inputcolumn>
-  
-    
-<!-- Content: --> 
- 
-    
-<name title="Wrist position must be within home sphere (or cube) to start trial">Wrist criteria</name>
-    <inputs></inputs>
-    <subname>Which hand(s)?</subname> 
-        <inputs>
-        <input id="HOME_L_H" name="setupScript,lefthandStartingInBoundFlag" type="hidden" value="FALSE">
-        <input id="HOME_L" name="setupScript,lefthandStartingInBoundFlag" type="checkbox" value="TRUE" checked>	
-        <label for="HOME_L">Left</label>	 
-        <input id="HOME_R_H" name="setupScript,righthandStartingInBoundFlag" type="hidden" value="FALSE">
-        <input id="HOME_R" name="setupScript,righthandStartingInBoundFlag" type="checkbox" value="TRUE" checked>	
-        <label for="HOME_R">Right</label>	
-        </inputs>  
-    <subname>Home radius [m]:</subname>	
-        <inputs>
-        <label for="LHOME_R">Left:</label>
-        <input id="LHOME_R" name="setupScript,lefthandStartingInBoundSizeRadius" type="number" value="0.1" />
-        <label for="RHOME_R">Right:</label>
-        <input id="RHOME_R" name="setupScript,righthandStartingInBoundSizeRadius" type="number" value="0.1" />
-        </inputs>  
-
-    
-<!-- Expandable Home Shape -->
-
-<name></name>
-<button class="expand-button"  type="button" onclick="toggleExpandableWindow(this,'expandableHomeShape')">
-Expand to change home shape to a cube
-</button>
-    <div class="expwindow" id="expandableHomeShape"> 
-
-    <name>Left shape:</name>
-        <inputs>
-        <input id="LHOME_SHAPE_SPHERE" name="setupScript,lefthandStartingInBoundShape" type="radio" value="Sphere"  checked >
-        <label for="LHOME_SHAPE_SPHERE">Sphere</label> 
-        <input id="LHOME_SHAPE_CUBE" name="setupScript,lefthandStartingInBoundShape" type="radio" value="Cube" >
-        <label for="LHOME_SHAPE_CUBE">Cube</label>  
-        </inputs>
-        <subname></subname><inputs>
-        <note>If "cube" selected, specify size below: </note> 
-        </inputs>
+<form class="param-form">
         
-    
-    <name>Left cube size[m]</name>
-        <inputs> 
-        <label for="LHOME_SIZEX">X:</label>
-        <input id="LHOME_SIZEX" name="setupScript,lefthandStartingInBoundSizeX" type="number" value="0.1" />
-        <label for="LHOME_SIZEY">Y:</label>
-        <input id="LHOME_SIZEY" name="setupScript,lefthandStartingInBoundSizeY" type="number" value="0.1" />
-        <label for="LHOME_SIZEZ">Z:</label>
-        <input id="LHOME_SIZEZ" name="setupScript,lefthandStartingInBoundSizeZ" type="number" value="0.1" />   
-        </inputs>
+<!-- Content: --> 
+	 
+   
 
-    <br><br>
-    <name>Right shape:</name>
-        <inputs>
-        <input id="RHOME_SHAPE_SPHERE" name="setupScript,righthandStartingInBoundShape" type="radio" value="Sphere"  checked>
-        <label for="RHOME_SHAPE_SPHERE">Sphere</label> 
-        <input id="RHOME_SHAPE_CUBE" name="setupScript,righthandStartingInBoundShape" type="radio" value="Cube">
-        <label for="RHOME_SHAPE_CUBE">Cube</label>  
-        </inputs>
-        <subname></subname><inputs>
-        <note>If "cube" selected, specify size below: </note> 
-        </inputs>
+	<div class="name-type name">Wrist criteria</div>
+		 
+		<div class="fullrow-type smallspace"></div>
+		 
+	<fieldset class="trial-builder-group">
+		<div class="name-type subname">&emsp;Which hand(s)?</div> 
+			 <div class="inputs-type inputs">
+			<input id="setupscript-lefthandstartinginboundflag_false" name="setupScript,lefthandStartingInBoundFlag" type="hidden" value="FALSE">
+			<input id="setupscript-lefthandstartinginboundflag_true" name="setupScript,lefthandStartingInBoundFlag" type="checkbox" value="TRUE">	
+			<label for="setupscript-lefthandstartinginboundflag_true" class="label-after-input">Left</label>	 
+			<input id="setupscript-righthandstartinginboundflag_false" name="setupScript,righthandStartingInBoundFlag" type="hidden" value="FALSE">
+			<input id="setupscript-righthandstartinginboundflag_true" name="setupScript,righthandStartingInBoundFlag" type="checkbox" value="TRUE">	
+			<label for="setupscript-righthandstartinginboundflag_true" class="label-after-input label-end-block">Right</label>	
+			</div>  
+	</fieldset>   
+		<div class="fullrow-type smallspace"></div>  
+	<fieldset class="trial-builder-group">
+		<div class="name-type subname">Home radius [m]:</div>	
+			 <div class="inputs-type inputs">
+			<label for="setupscript-lefthandstartinginboundsizeradius" class="label-before-input label-start-block">Left:</label>
+			<input id="setupscript-lefthandstartinginboundsizeradius" name="setupScript,lefthandStartingInBoundSizeRadius" type="number" step="any" min="0">
+			<label for="setupscript-righthandstartinginboundsizeradius" class="label-before-input">Right:</label>
+			<input id="setupscript-righthandstartinginboundsizeradius" name="setupScript,righthandStartingInBoundSizeRadius" type="number" step="any" min="0">
+			</div>  
+	</fieldset>   
+		<div class="fullrow-type mediumspace"></div>
+		<div class="inputs-type inputsnote"> Criteria for trial start: selected wrists must be within</div>
+		<div class="inputs-type inputsnote"> home sphere of defined radius (or cube - expand below)</div>
 
-    <name>Right cube size[m]</name>
-        <inputs> 
-        <label for="RHOME_SIZEX">X:</label>
-        <input id="RHOME_SIZEX" name="setupScript,righthandStartingInBoundSizeX" type="number" value="0.1" />
-        <label for="RHOME_SIZEY">Y:</label>
-        <input id="RHOME_SIZEY" name="setupScript,righthandStartingInBoundSizeY" type="number" value="0.1" />
-        <label for="RHOME_SIZEZ">Z:</label>
-        <input id="RHOME_SIZEZ" name="setupScript,righthandStartingInBoundSizeZ" type="number" value="0.1" />   
-        </inputs>
 
+	
+<!-- Expandable Home Shape -->
+ 
+<button class="inputs-type expand-button collapsed" type="button" data-target="#expandableHomeShape"><span>
+Expand to change home shape to a cube
+</span></button>
+    <div class="fullrow-type expand-window collapsed" id="expandableHomeShape">  
+	
+
+    <fieldset class="trial-builder-group">
+    <div class="name-type name">Left shape:</div>
+         <div class="inputs-type inputs">
+        <input id="setupscript-lefthandstartinginboundshape_sphere" name="setupScript,lefthandStartingInBoundShape" type="radio" value="Sphere">
+        <label for="setupscript-lefthandstartinginboundshape_sphere" class="label-after-input">Sphere</label> 
+        <input id="setupscript-lefthandstartinginboundshape_cube" name="setupScript,lefthandStartingInBoundShape" type="radio" value="Cube">
+        <label for="setupscript-lefthandstartinginboundshape_cube" class="label-after-input label-end-block">Cube</label>  
+        </div>   
+    <div class="fullrow-type smallspace"></div> 
+    <div class="name-type subname">Left cube size[m]</div>
+         <div class="inputs-type inputs"> 
+        <label for="setupscript-lefthandstartinginboundsizex" class="label-before-input label-start-block">X:</label>
+        <input id="setupscript-lefthandstartinginboundsizex" name="setupScript,lefthandStartingInBoundSizeX" type="number" step="any" min="0">
+        <label for="setupscript-lefthandstartinginboundsizey" class="label-before-input">Y:</label>
+        <input id="setupscript-lefthandstartinginboundsizey" name="setupScript,lefthandStartingInBoundSizeY" type="number" step="any" min="0">
+        <label for="setupscript-lefthandstartinginboundsizez" class="label-before-input">Z:</label>
+        <input id="setupscript-lefthandstartinginboundsizez" name="setupScript,lefthandStartingInBoundSizeZ" type="number" step="any" min="0">   
+        </div>
+</fieldset>  
+	
+    <div class="fullrow-type largespace"></div> 
+<fieldset class="trial-builder-group"> 
+    <div class="name-type name">Right shape:</div>
+         <div class="inputs-type inputs">
+        <input id="setupscript-righthandstartinginboundshape_sphere" name="setupScript,righthandStartingInBoundShape" type="radio" value="Sphere">
+        <label for="setupscript-righthandstartinginboundshape_sphere" class="label-after-input">Sphere</label> 
+        <input id="setupscript-righthandstartinginboundshape_cube" name="setupScript,righthandStartingInBoundShape" type="radio" value="Cube">
+        <label for="setupscript-righthandstartinginboundshape_cube" class="label-after-input label-end-block">Cube</label>  
+        </div>  
+	<div class="fullrow-type smallspace"></div>
+	<div class="name-type subname">Right cube size[m]</div>
+         <div class="inputs-type inputs"> 
+        <label for="setupscript-righthandstartinginboundsizex" class="label-before-input label-start-block">X:</label>
+        <input id="setupscript-righthandstartinginboundsizex" name="setupScript,righthandStartingInBoundSizeX" type="number" step="any" min="0">
+        <label for="setupscript-righthandstartinginboundsizey" class="label-before-input">Y:</label>
+        <input id="setupscript-righthandstartinginboundsizey" name="setupScript,righthandStartingInBoundSizeY" type="number" step="any" min="0">
+        <label for="setupscript-righthandstartinginboundsizez" class="label-before-input">Z:</label>
+        <input id="setupscript-righthandstartinginboundsizez" name="setupScript,righthandStartingInBoundSizeZ" type="number" step="any" min="0">   
+        </div>
+</fieldset>  
+	 
 
     </div>   
     <!-- END of expandable window -->
+	
+	 
+	
+<div class="fullrow-type largespace"></div>
+	<fieldset class="trial-builder-group">
+	<div class="name-type name">Bones criteria</div>
+		 
+		<div class="fullrow-type smallspace"></div>
+		 
+		<div class="name-type subname">&emsp;Which hand(s)?</div> 
+		 <div class="inputs-type inputs">	    	  	    
+		<input id="setupscript-lefthandstartingoutboundflag_false" name="setupScript,lefthandStartingOutBoundFlag" type="hidden" value="FALSE">
+		<input id="setupscript-lefthandstartingoutboundflag_true" name="setupScript,lefthandStartingOutBoundFlag" type="checkbox" value="TRUE">	
+		<label for="setupscript-lefthandstartingoutboundflag_true" class="label-after-input">Left</label>	
+		<input id="setupscript-righthandstartingoutboundflag_false" name="setupScript,righthandStartingOutBoundFlag" type="hidden" value="FALSE">
+		<input id="setupscript-righthandstartingoutboundflag_true" name="setupScript,righthandStartingOutBoundFlag" type="checkbox" value="TRUE">	
+		<label for="setupscript-righthandstartingoutboundflag_true" class="label-after-input label-end-block">Right</label>	  
+		</div>			 
+		<div class="fullrow-type mediumspace"></div>
+		<div class="inputs-type inputsnote"> Criteria for trial start: all bones of selected hands</div>
+		<div class="inputs-type inputsnote"> must meet criteria defined in expandable window below</div> 
+</fieldset>   
 
-    <br>
-    
-
-
-<name title="All hand bones must meet criteria (expand below) to start trial">Bones criteria</name>
-    <inputs></inputs>
-    <subname>Which hand(s)?</subname> 
-    <inputs>	    	  	    
-    <input id="SHOME_L_H" name="setupScript,lefthandStartingOutBoundFlag" type="hidden" value="FALSE">
-    <input id="SHOME_L" name="setupScript,lefthandStartingOutBoundFlag" type="checkbox" value="TRUE" checked>	
-    <label for="SHOME_L">Left</label>	
-    <input id="SHOMEE_R_H" name="setupScript,righthandStartingOutBoundFlag" type="hidden" value="FALSE">
-    <input id="SHOME_R" name="setupScript,righthandStartingOutBoundFlag" type="checkbox" value="TRUE" checked>	
-    <label for="SHOME_R">Right</label>	  
-    </inputs>
-    
-
-<!-- Expandable  expandableHomeSafeguard -->
-<name></name>
-<button class="expand-button"  type="button" onclick="toggleExpandableWindow(this,'expandableHomeSafeguard')">
+<!-- Expandable  expandableHomeSafeguard --> 
+<button class="inputs-type expand-button collapsed" type="button" data-target="#expandableHomeSafeguard"><span>
 Expand to define bone criteria 
-</button>
+</span></button>
 
-    <div class="expwindow" id="expandableHomeSafeguard">  
+    <div class="fullrow-type expand-window collapsed" id="expandableHomeSafeguard">   
+	
 
-    <name>All left hand bones must be: </name>
-        <inputs></inputs>
-        <namenote> <i> (wrt plate start pos.)</i> </namenote>
+    <fieldset class="trial-builder-group">
+    <div class="fullname-type name">Left bones must be: </div>  
+		
+		<div class="fullrow-type mediumspace"></div>
+    	<div class="name-type name">&emsp;&emsp;&emsp;</div>
+         <div class="inputs-type inputs">
+        <input id="setupscript-lefthandstartingoutboundpositionx" name="setupScript,lefthandStartingOutBoundPositionX" type="number" step="any">
+        <label for="setupscript-lefthandstartingoutboundpositionx" class="label-after-input">meters</label>
+        <input id="setupscript-lefthandstartingoutbounddirectionx_left" name="setupScript,lefthandStartingOutBoundDirectionX" type="radio" value="left">
+        <label for="setupscript-lefthandstartingoutbounddirectionx_left" class="label-after-input">left of</label> 
+        <input id="setupscript-lefthandstartingoutbounddirectionx_right" name="setupScript,lefthandStartingOutBoundDirectionX" type="radio" value="right">
+        <label for="setupscript-lefthandstartingoutbounddirectionx_right" class="label-after-input">right of</label>  
+        <input id="setupscript-lefthandstartingoutbounddirectionx_none" name="setupScript,lefthandStartingOutBoundDirectionX" type="radio" value="none">
+        <label for="setupscript-lefthandstartingoutbounddirectionx_none" class="label-after-input label-end-block">none</label> 
+        </div>
         
-        <inputs>
-        <input id="LOFFLIMITS_POS_X" name="setupScript,lefthandStartingOutBoundPositionX" type="number" value="0" />
-        <label for="LOFFLIMITS_POS_X">meters</label>
-        <input id="LOFFLIMITS_XLEFT" name="setupScript,lefthandStartingOutBoundDirectionX" type="radio" value="left" >
-        <label for="LOFFLIMITS_XLEFT">left of</label> 
-        <input id="LOFFLIMITS_XRIGHT" name="setupScript,lefthandStartingOutBoundDirectionX" type="radio" value="right">
-        <label for="LOFFLIMITS_XRIGHT">right of</label>  
-        <input id="LOFFLIMITS_XNONE" name="setupScript,lefthandStartingOutBoundDirectionX" type="radio" value="none"  checked>
-        <label for="LOFFLIMITS_XNONE">none</label> 
-        </inputs>
+		<div class="fullrow-type mediumspace"></div>
         
+         	
+         <div class="inputs-type inputs">
+        <input id="setupscript-lefthandstartingoutboundpositiony" name="setupScript,lefthandStartingOutBoundPositionY" type="number" step="any">
+        <label for="setupscript-lefthandstartingoutboundpositiony" class="label-after-input">meters</label>
+        <input id="setupscript-lefthandstartingoutbounddirectiony_above" name="setupScript,lefthandStartingOutBoundDirectionY" type="radio" value="above">
+        <label for="setupscript-lefthandstartingoutbounddirectiony_above" class="label-after-input">above</label> 
+        <input id="setupscript-lefthandstartingoutbounddirectiony_below" name="setupScript,lefthandStartingOutBoundDirectionY" type="radio" value="below">
+        <label for="setupscript-lefthandstartingoutbounddirectiony_below" class="label-after-input">below</label>  
+        <input id="setupscript-lefthandstartingoutbounddirectiony_none" name="setupScript,lefthandStartingOutBoundDirectionY" type="radio" value="none">
+        <label for="setupscript-lefthandstartingoutbounddirectiony_none" class="label-after-input label-end-block">none</label> 
+        </div>
         
-        <name> </name>	
-        <inputs>
-        <input id="LOFFLIMITS_POS_Y" name="setupScript,lefthandStartingOutBoundPositionY" type="number" value="0.005" />
-        <label for="LOFFLIMITS_POS_Y">meters</label>
-        <input id="LOFFLIMITS_YLEFT" name="setupScript,lefthandStartingOutBoundDirectionY" type="radio" value="above" >
-        <label for="LOFFLIMITS_YLEFT">above</label> 
-        <input id="LOFFLIMITS_YRIGHT" name="setupScript,lefthandStartingOutBoundDirectionY" type="radio" value="below" checked>
-        <label for="LOFFLIMITS_YRIGHT">below</label>  
-        <input id="LOFFLIMITS_YNONE" name="setupScript,lefthandStartingOutBoundDirectionY" type="radio" value="none"  >
-        <label for="LOFFLIMITS_YNONE">none</label> 
-        </inputs>
+		<div class="fullrow-type mediumspace"></div>
         
-        
-        <name> </name>	
-        <inputs>
-        <input id="LOFFLIMITS_POS_Z" name="setupScript,lefthandStartingOutBoundPositionZ" type="number" value="0" />
-        <label for="LOFFLIMITS_POS_Z">meters</label>
-        <input id="LOFFLIMITS_ZLEFT" name="setupScript,lefthandStartingOutBoundDirectionZ" type="radio" value="infront" >
-        <label for="LOFFLIMITS_ZLEFT">in front of</label> 
-        <input id="LOFFLIMITS_ZRIGHT" name="setupScript,lefthandStartingOutBoundDirectionZ" type="radio" value="behind">
-        <label for="LOFFLIMITS_ZRIGHT">behind</label>  
-        <input id="LOFFLIMITS_ZNONE" name="setupScript,lefthandStartingOutBoundDirectionZ" type="radio" value="none"  checked>
-        <label for="LOFFLIMITS_ZNONE">none</label> 
-        </inputs>
-        
-        
-        <name> </name>	
-        <inputs> 
-        <input id="LOFFLIMITS_CH" name="setupScript,lefthandStartingOutBoundMeetAllConditions" type="hidden" value="FALSE">
-        <input id="LOFFLIMITS_C" name="setupScript,lefthandStartingOutBoundMeetAllConditions" type="checkbox" value="TRUE" >	
-        <label for="LOFFLIMITS_C">ALL conditions must be met (versus ANY)</label> 
-        </inputs>
-        <note> </note>  
-
+         	
+         <div class="inputs-type inputs">
+        <input id="setupscript-lefthandstartingoutboundpositionz" name="setupScript,lefthandStartingOutBoundPositionZ" type="number" step="any">
+        <label for="setupscript-lefthandstartingoutboundpositionz" class="label-after-input">meters</label>
+        <input id="setupscript-lefthandstartingoutbounddirectionz_infront" name="setupScript,lefthandStartingOutBoundDirectionZ" type="radio" value="infront">
+        <label for="setupscript-lefthandstartingoutbounddirectionz_infront" class="label-after-input">in front of</label> 
+        <input id="setupscript-lefthandstartingoutbounddirectionz_behind" name="setupScript,lefthandStartingOutBoundDirectionZ" type="radio" value="behind">
+        <label for="setupscript-lefthandstartingoutbounddirectionz_behind" class="label-after-input">behind</label>  
+        <input id="setupscript-lefthandstartingoutbounddirectionz_none" name="setupScript,lefthandStartingOutBoundDirectionZ" type="radio" value="none">
+        <label for="setupscript-lefthandstartingoutbounddirectionz_none" class="label-after-input label-end-block">none</label> 
+        </div>
         
         
-        
-        
-    <name>All right hand bones must be: </name>	
-        <inputs></inputs>
-        <namenote> <i> (wrt plate start pos.)</i> </namenote>	
-        
-        <inputs>
-        <input id="ROFFLIMITS_POS_X" name="setupScript,righthandStartingOutBoundPositionX" type="number" value="0" />
-        <label for="ROFFLIMITS_POS_X">meters</label>
-        <input id="ROFFLIMITS_XLEFT" name="setupScript,righthandStartingOutBoundDirectionX" type="radio" value="left" >
-        <label for="ROFFLIMITS_XLEFT">left of</label> 
-        <input id="ROFFLIMITS_XRIGHT" name="setupScript,righthandStartingOutBoundDirectionX" type="radio" value="right">
-        <label for="ROFFLIMITS_XRIGHT">right of</label>  
-        <input id="ROFFLIMITS_XNONE" name="setupScript,righthandStartingOutBoundDirectionX" type="radio" value="none"  checked>
-        <label for="ROFFLIMITS_XNONE">none</label> 	</inputs>
+		<div class="fullrow-type mediumspace"></div>
+         	
+         <div class="inputs-type inputs"> 
+        <input id="setupscript-lefthandstartingoutboundmeetallconditions_false" name="setupScript,lefthandStartingOutBoundMeetAllConditions" type="hidden" value="FALSE">
+        <input id="setupscript-lefthandstartingoutboundmeetallconditions_true" name="setupScript,lefthandStartingOutBoundMeetAllConditions" type="checkbox" value="TRUE">	
+        <label for="setupscript-lefthandstartingoutboundmeetallconditions_true" class="label-after-input label-end-block">ALL conditions must be met (versus ANY)</label> 
+        </div>
+        <div class="fullrow-type smallspace"></div> 
+</fieldset>  
+	
+    <div class="fullrow-type largespace"></div>  
+<fieldset class="trial-builder-group">      
+    <div class="fullname-type name">Right bones must be: </div>	 
+         
+		<div class="fullrow-type mediumspace"></div>
+         <div class="inputs-type inputs">
+        <input id="setupscript-righthandstartingoutboundpositionx" name="setupScript,righthandStartingOutBoundPositionX" type="number" step="any">
+        <label for="setupscript-righthandstartingoutboundpositionx" class="label-after-input">meters</label>
+        <input id="setupscript-righthandstartingoutbounddirectionx_left" name="setupScript,righthandStartingOutBoundDirectionX" type="radio" value="left">
+        <label for="setupscript-righthandstartingoutbounddirectionx_left" class="label-after-input">left of</label> 
+        <input id="setupscript-righthandstartingoutbounddirectionx_right" name="setupScript,righthandStartingOutBoundDirectionX" type="radio" value="right">
+        <label for="setupscript-righthandstartingoutbounddirectionx_right" class="label-after-input">right of</label>  
+        <input id="setupscript-righthandstartingoutbounddirectionx_none" name="setupScript,righthandStartingOutBoundDirectionX" type="radio" value="none">
+        <label for="setupscript-righthandstartingoutbounddirectionx_none" class="label-after-input label-end-block">none</label> 	</div>
 
 
-        <name> </name>	
-        <inputs>
-        <input id="ROFFLIMITS_POS_Y" name="setupScript,righthandStartingOutBoundPositionY" type="number" value="0.005" />
-        <label for="ROFFLIMITS_POS_Y">meters</label>
-        <input id="ROFFLIMITS_YLEFT" name="setupScript,righthandStartingOutBoundDirectionY" type="radio" value="above" >
-        <label for="ROFFLIMITS_YLEFT">above</label> 
-        <input id="ROFFLIMITS_YRIGHT" name="setupScript,righthandStartingOutBoundDirectionY" type="radio" value="below" checked>
-        <label for="ROFFLIMITS_YRIGHT">below</label>  
-        <input id="ROFFLIMITS_YNONE" name="setupScript,righthandStartingOutBoundDirectionY" type="radio" value="none"  >
-        <label for="ROFFLIMITS_YNONE">none</label>  
-        </inputs>
+		<div class="fullrow-type mediumspace"></div>
+         	
+         <div class="inputs-type inputs">
+        <input id="setupscript-righthandstartingoutboundpositiony" name="setupScript,righthandStartingOutBoundPositionY" type="number" step="any">
+        <label for="setupscript-righthandstartingoutboundpositiony" class="label-after-input">meters</label>
+        <input id="setupscript-righthandstartingoutbounddirectiony_above" name="setupScript,righthandStartingOutBoundDirectionY" type="radio" value="above">
+        <label for="setupscript-righthandstartingoutbounddirectiony_above" class="label-after-input">above</label> 
+        <input id="setupscript-righthandstartingoutbounddirectiony_below" name="setupScript,righthandStartingOutBoundDirectionY" type="radio" value="below">
+        <label for="setupscript-righthandstartingoutbounddirectiony_below" class="label-after-input">below</label>  
+        <input id="setupscript-righthandstartingoutbounddirectiony_none" name="setupScript,righthandStartingOutBoundDirectionY" type="radio" value="none">
+        <label for="setupscript-righthandstartingoutbounddirectiony_none" class="label-after-input label-end-block">none</label>  
+        </div>
 
 
-        <name> </name>	
-        <inputs>
-        <input id="ROFFLIMITS_POS_Z" name="setupScript,righthandStartingOutBoundPositionZ" type="number" value="0" />
-        <label for="ROFFLIMITS_POS_Z">meters</label>
-        <input id="ROFFLIMITS_ZLEFT" name="setupScript,righthandStartingOutBoundDirectionZ" type="radio" value="infront" >
-        <label for="ROFFLIMITS_ZLEFT">in front of</label> 
-        <input id="ROFFLIMITS_ZRIGHT" name="setupScript,righthandStartingOutBoundDirectionZ" type="radio" value="behind">
-        <label for="ROFFLIMITS_ZRIGHT">behind</label>  
-        <input id="ROFFLIMITS_ZNONE" name="setupScript,righthandStartingOutBoundDirectionZ" type="radio" value="none"  checked>
-        <label for="ROFFLIMITS_ZNONE">none</label>   
-        </inputs>
+		<div class="fullrow-type mediumspace"></div>
+         	
+         <div class="inputs-type inputs">
+        <input id="setupscript-righthandstartingoutboundpositionz" name="setupScript,righthandStartingOutBoundPositionZ" type="number" step="any">
+        <label for="setupscript-righthandstartingoutboundpositionz" class="label-after-input">meters</label>
+        <input id="setupscript-righthandstartingoutbounddirectionz_infront" name="setupScript,righthandStartingOutBoundDirectionZ" type="radio" value="infront">
+        <label for="setupscript-righthandstartingoutbounddirectionz_infront" class="label-after-input">in front of</label> 
+        <input id="setupscript-righthandstartingoutbounddirectionz_behind" name="setupScript,righthandStartingOutBoundDirectionZ" type="radio" value="behind">
+        <label for="setupscript-righthandstartingoutbounddirectionz_behind" class="label-after-input">behind</label>  
+        <input id="setupscript-righthandstartingoutbounddirectionz_none" name="setupScript,righthandStartingOutBoundDirectionZ" type="radio" value="none">
+        <label for="setupscript-righthandstartingoutbounddirectionz_none" class="label-after-input label-end-block">none</label>   
+        </div>
 
 
-        <name> </name>	
-        <inputs> 
-        <input id="ROFFLIMITS_CH" name="setupScript,righthandStartingOutBoundMeetAllConditions" type="hidden" value="FALSE">
-        <input id="ROFFLIMITS_C" name="setupScript,righthandStartingOutBoundMeetAllConditions" type="checkbox" value="TRUE" >	
-        <label for="ROFFLIMITS_C">ALL conditions must be met (versus ANY)</label> 
-        </inputs>
+		<div class="fullrow-type mediumspace"></div>
+         	
+         <div class="inputs-type inputs"> 
+        <input id="setupscript-righthandstartingoutboundmeetallconditions_false" name="setupScript,righthandStartingOutBoundMeetAllConditions" type="hidden" value="FALSE">
+        <input id="setupscript-righthandstartingoutboundmeetallconditions_true" name="setupScript,righthandStartingOutBoundMeetAllConditions" type="checkbox" value="TRUE">	
+        <label for="setupscript-righthandstartingoutboundmeetallconditions_true" class="label-after-input label-end-block">ALL conditions must be met (versus ANY)</label> 
+        </div>
+</fieldset> 
+		
+	<div class="fullrow-type largespace"></div>
+	<div class="fullrow-type smallspace"></div>
+	<div class="inputs-type inputsnote">(origin = plate start position)</div>	 
+
+    </div>
+	
+	<!-- END of expandable window -->
 
 
-    </div>  <br><br> <!-- END of expandable window -->
-
-
-    
- 
-<name title="Trial starts when conditions must remain true for Hold time">Hold time [s]</name>   
-    <inputs>
-    <input id="THOME" name="trialScript,stage2_handPositionTime" type="number" value="0.1" /> 
-    <label for="THOME"> </label>
-    </inputs>    
+     
+	
+		<div class="fullrow-type largespace"></div> 
+<fieldset class="trial-builder-group"> 
+	<div class="name-type name">&emsp;&emsp;Hold time [s]</div>   
+		 <div class="inputs-type inputs">
+		<input id="trialscript-stage2_handpositiontime" name="trialScript,stage2_handPositionTime" type="number" step="any" min="0"> 
+		<!-- <label for="trialscript-stage2_handpositiontime" class="label-after-input label-end-block"></label> -->
+		</div>    
+</fieldset>
+	
+	
+	<div class="longnote-type longnotetitle">Phase 2 = Home Position</div>   
+		<div class="longnote-type longnote">&emsp;1) Hands "Home" appears below stand</div>    
+		<div class="longnote-type longnote">&emsp;2) Phase ends after hands are held in home position for defined amount of time</div>
+		<div class="longnote-type longnotesmaller">&emsp;&emsp; (home position center: defined under hands home object)</div>     
+		<div class="longnote-type longnotesmaller">&emsp;&emsp; (home position size/shape: defined by the wrist/bones criteria above)  </div>
+		<div class="longnote-type longnotesmaller">&emsp;&emsp; (amount of time hands must be in home: defined by hold time above)  </div>
+	 
      
 
 
 <!-- End of Content --> 
  
-</inputcolumn> 
-</div>  
-<figurecolumn>
- <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
-</figurecolumn>
+</form> 
+<div class="param-img">
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  > --> 
+</div>
         
-</form>
-</body>
+</body> 
 </html>

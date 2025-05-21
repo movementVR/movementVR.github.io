@@ -1,4 +1,13 @@
- 
+function defInstallPaths() {
+	// Paths Definitions 
+	const installPaths = { 
+		installApkPath: "web/app/movementvr.apk",
+	};
+	return installPaths;
+}
+
+
+
 async function selectDirectory() {
       try {
         // Open the file picker to select a directory
@@ -31,10 +40,7 @@ async function selectDirectory() {
       // Trigger the file input click programmatically
       document.getElementById('fileInput').click();
     }
-/*
-    // Event listener for file input change
-    document.getElementById('fileInput').addEventListener('change', handleFileSelection);
-*/
+ 
     function handleFileSelection(event) {
       const fileInput = event.target;
       const selectedFile = fileInput.files[0];
@@ -61,12 +67,9 @@ async function selectDirectory() {
     }
 function downloadMovementVR_APK() 
 {
-    var link = document.createElement("a");
-    // If you don't know the name or want to use
-    // the webserver default set name = ''
- //   uri="website/files/movementvrapk.apk";
-	uri="https://www.dropbox.com/scl/fi/eyxwr391ackyk4axa0leh/movementvrapk.apk?rlkey=hkrd06nbar05md9gp17qi3pcx&dl=0";
-    link.setAttribute('download', 'movementvrapk.apk');
+    var link = document.createElement("a"); 
+	uri=defInstallPaths().installApkPath;
+    link.setAttribute('download', 'movementvr.apk');
     link.href = uri;
     document.body.appendChild(link);
     link.click();

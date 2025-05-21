@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MovementVR – Builder Guide</title>
+  <link rel="stylesheet" href="/web/general/general.css">
+  <link rel="stylesheet" href="/web/general/page.css">
+</head>
+<body>
+  <div id="mainpage-parent" class="mainpage-parent general-parent">
+    <div id="mainpage-content" class="mainpage-content page-content">
+
+      <div class="section-header">MovementVR Builder</div>
+      <div class="section-content">
+
+        <!-- ▸ Overview ----------------------------------------------------- -->
+        <div class="section-panel-header">Overview</div>
+        <div class="section-panel">
+          <p>Overview </p>
+          <p>The MovementVR Builder is the graphical interface for designing your VR motor learning experiment. You can customize most aspects of the task:</p>
+          <p>•	Lifting task parameters: the hands’ home position and conditions to start the trial, the plate’s starting position, the target position and success/failure criteria, workspace boundaries… </p>
+          <p>•	Motor learning features: magnitude and schedule of the gain perturbation for adaptation, and feedback visuals, sounds, and effects for reinforcement learning.</p>
+          <p>•	Game objects properties: Customize appearance and physics properties (size, color, animations, friction…) of bird, plate, target, and other game elements.  </p>
+          <p>•	Hand Tracking & Data Recording: select unimanual or bimanual task, choose which kinematics to record…  </p>
+          <p>You can choose whether each parameter is constant or if it varies across trials and phases in the experiment. Both options can be designed using our GUIs or by uploading values from a .csv file. </p>
+        </div>
+
+        <!-- ▸ Getting Started --------------------------------------------- -->
+        <div class="section-panel-header">Getting started</div>
+        <div class="section-panel">
+          <p>Getting started </p>
+          <p>To begin designing your experiment, click on the Builder tab in the top navigation menu. This will open the Main Builder Interface, your central workspace for defining the parameters of your MovementVR task.</p>
+          <p>The Main Builder Interface displays a grid of interactive elements — including game objects, task components, trial phases, and quick access buttons — each of which leads to specific configuration options. </p>
+          <p>You can click on any element or button in the Main Builder grid to edit its associated parameters. This opens a Static Builder window — your first point of contact for configuring both constant and trial-varying parameters.</p>
+          <p>For constant parameters, this window provides a straightforward form-like interface where you can directly enter or select values.</p>
+          <p>For trial-varying parameters, each parameter group includes a gear icon next to its label. Click the gear to indicate that the parameter should vary across trials. You’ll then be prompted to choose how to define those values:</p>
+          <p>• Load from a .csv file, or</p>
+          <p>• Generate using the Trial Builder interface.</p>
+          <p>Based on your selection, the appropriate interface will open — allowing you to define how the parameter changes across trials and phases in your experiment.  These options are described in more detail in subsequent sections.</p>
+        </div>
+
+        <!-- ▸ Main Builder page ------------------------------------------- -->
+        <div class="section-panel-header">Main Builder page</div>
+        <div class="section-panel">
+          <p>Main Builder page</p>
+          <p>The interface for the Main Builder page is organized as a grid, where: </p>
+          <p>•	Each row corresponds to a different game object or task component.</p>
+          <p>•	Each column represents a sequential “phase” within a trial.</p>
+          <p>•	Each cell in the grid indicates whether a given object is present or active during a specific trial phase. Colored horizontal bars span across the relevant phases for each object.</p>
+        </div>
+
+        <!-- ▸ Game Objects and Task Components ---------------------------- -->
+        <div class="section-panel-header">Game Objects and Task Components (Rows)</div>
+        <div class="section-panel">
+          <p>Game Objects and Task Components (Rows) </p>
+          <p>The left side of the grid lists the main elements involved in the task:</p>
+          <p>•	Reinforcement – Objects and effects that deliver success or failure feedback.</p>
+          <p>•	Bird – A virtual, animated bird that is perched on the target.</p>
+          <p>•	Target – The goal object to reach; includes both functional and visual targets.</p>
+          <p>•	Plate – The object participants lift as part of the motor task.</p>
+          <p>•	Hand Home – The home position for the participant’s hand(s) and criteria to start the trial</p>
+          <p>•	Hands & Perturbation – Hand tracking and recording, and adaptation perturbation</p>
+          <p>•	Workspace – Defines spatial boundaries for valid plate movement.</p>
+          <p>Clicking on a row lets you edit the properties associated with that game object or task component. </p>
+        </div>
+
+        <!-- ▸ Trial Phases ------------------------------------------------- -->
+        <div class="section-panel-header">Trial Phases (Columns)</div>
+        <div class="section-panel">
+          <p>Trial Phases (Columns)</p>
+          <p>The top of the grid shows the Trial Sequence, with columns representing distinct phases that occur in order during each trial:</p>
+          <p>1.	Intertrial – Pause between trials (also called the intertrial interval).</p>
+          <p>2.	Home Position – Participant returns hands to the designated start position.</p>
+          <p>3.	Plate Contact – Plate appears; system waits for participant to contact it.</p>
+          <p>4.	Plate Lift – Participant lifts the plate toward the target.</p>
+          <p>5.	Feedback – Visual or auditory feedback is given after lift completion.</p>
+          <p>6.	Break – Optional rest phase shown on selected trials.</p>
+          <p>Click on the “Edit Transitions” button to configure when and how phases change during a trial (e.g., timing, success/failure conditions, etc.). Click on the “Edit Instructions” button to customize participant messages shown during phases.</p>
+        </div>
+
+        <!-- ▸ Quick Links -------------------------------------------------- -->
+        <div class="section-panel-header">Quick Links</div>
+        <div class="section-panel">
+          <p>Quick Links  </p>
+          <p>In addition to the primary grid, we provide Quick Links buttons that open commonly used parameter sets grouped by experimental topic:</p>
+          <p>•	Reaching Task:  home & starting position, target position and success criteria...</p>
+          <p>•	Motor Adaptation: perturbation magnitude and schedule</p>
+          <p>•	Reinforcement: feedback visuals/sounds/effects to convey success or failure</p>
+          <p>•	Paradigm: overall paradigm start & end (messages/delays), trial number display, paradigm phases...</p>
+          <p>•	Kinematics: hand tracking and data recording options</p>
+          <p>Click here to open the Main Builder  Guide.</p>
+        </div>
+
+        <!-- ▸ Setting constant parameters --------------------------------- -->
+        <div class="section-panel-header">Setting constant parameters using the Static Builder</div>
+        <div class="section-panel">
+          <p>Setting constant parameters using the Static Builder </p>
+          <p>Constant parameters can be set using the Static Builder GUI - a form-like interface with input fields, where you can directly type or click-to-select the desired value for each parameter. To locate a parameter, simply click on the relevant game object or task component on the Main Builder page to open the relevant Static Builder window. Here, parameters are further organized into tabs, and inline info icons explain each parameter in detail (including how to define its value correctly). Click here to open the Static Builder Guide. </p>
+        </div>
+
+        <!-- ▸ Setting a parameter as trial-varying ------------------------ -->
+        <div class="section-panel-header">Setting a parameter as “trial-varying”</div>
+        <div class="section-panel">
+          <p>Setting a parameter as “trial-varying”</p>
+          <p>To set a parameter as “trial-varying”:</p>
+          <p>1.	Click on the relevant game object or task component in the Main Builder to open its Static Builder tab.</p>
+          <p>2.	Find the parameter you want to vary, and click the gear icon next to it.</p>
+          <p>3.	This opens an “Advanced Settings” window</p>
+          <p>4.	Select the checkbox(es) for the parameter(s) that you wish to set as “trial-varying”</p>
+          <p>5.	Choose

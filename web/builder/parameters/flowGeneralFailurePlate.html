@@ -3,80 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Falls Failure Criteria  </title>
+    <title></title>
 </head>
 <body>
-<form class="tabcontent">      
-<div class="form-control">         
-<inputcolumn>
+<form class="param-form">
         
-<!-- Content: --> 
-<!--
-    
-<name>Failure criteria for plate position that apply across the whole trial</name>    
-    <note>(Trial fails if plate exits allowed region at any point)</note> 
-      		
-<name>Workspace region relative to plate home</name> -->
-    
-<name>Shape & Size:</name>
-    <inputs>
-    <input id="WORKSPACE_SHAPE_SPHERE" name="setupScript,taskWorkspaceBoundShape" type="radio" value="Sphere"  checked>
-    <label for="WORKSPACE_SHAPE_SPHERE">Sphere</label>  
-        <label for="WORKSPACE_RADIUS">of radius [m]:</label>
-        <input id="WORKSPACE_RADIUS" name="setupScript,taskWorkspaceBoundSizeRadius" type="number" value="0.3" />
-    </inputs>
-    <namenote>(centered around plate starting position)</namenote> 
-    <inputs>
-    <input id="WORKSPACE_SHAPE_CUBE" name="setupScript,taskWorkspaceBoundShape" type="radio" value="Cube">
-    <label for="WORKSPACE_SHAPE_CUBE">Cube of size[m]: </label>  
-         <label for="WORKSPACE_SIZEX">X:</label>
-        <input id="WORKSPACE_SIZEX" name="setupScript,taskWorkspaceBoundSizeX" type="number" value="0.3" />
-        <label for="WORKSPACE_SIZEY">Y:</label>
-        <input id="WORKSPACE_SIZEY" name="setupScript,taskWorkspaceBoundSizeY" type="number" value="0.3" />
-        <label for="WORKSPACE_SIZEZ">Z:</label>
-        <input id="WORKSPACE_SIZEZ" name="setupScript,taskWorkspaceBoundSizeZ" type="number" value="0.3" />   
-    </inputs>
- 
- 
-    
+<!-- Content: -->  
+     
+	
 
-
-<br><br>
-<name> Additional bounds [m]</name>
-    <inputs> 
-    <label for="GAMEAREA_L">Left:</label>
-    <input id="GAMEAREA_L" name="setupScript,gameBoundLocalPositionLeft" type="number" value="0.5" />
-    <label for="GAMEAREA_R">Right:</label>
-    <input id="GAMEAREA_R" name="setupScript,gameBoundLocalPositionRight" type="number" value="0.5" />
-    </inputs>
-    <namenote>(wrt plate starting position)</namenote> 
-    <inputs> 
-    <label for="GAMEAREA_F">Front:</label>
-    <input id="GAMEAREA_F" name="setupScript,gameBoundLocalPositionFront" type="number" value="0.5" />
-    <label for="GAMEAREA_B">Back:</label>
-    <input id="GAMEAREA_B" name="setupScript,gameBoundLocalPositionBack" type="number" value="0.5" />
-    </inputs>
-    <namenote> </namenote>
-    <inputs> 
-    <label for="GAMEAREA_U">Top:</label>
-    <input id="GAMEAREA_U" name="setupScript,gameBoundLocalPositionTop" type="number" value="0.8" />
-    <label for="GAMEAREA_D">Bottom:</label>
-    <input id="GAMEAREA_D" name="setupScript,gameBoundLocalPositionBottom" type="number" value="1" />
-    <input id="GAMEAREA_GH" name="setupScript,gameBoundBottomIsGround" type="hidden" value="FALSE">
-    <input id="GAMEAREA_G" name="setupScript,gameBoundBottomIsGround" type="checkbox" value="TRUE" checked>	
-    <label for="GAMEAREA_G">Match bottom to ground </label>	 
-    </inputs> 
-
+<fieldset class="trial-builder-group">
+<div class="name-type name">Shape & Size:</div>
+     <div class="inputs-type inputs">
+    <input id="setupscript-taskworkspaceboundshape_sphere" name="setupScript,taskWorkspaceBoundShape" type="radio" value="Sphere">
+    <label for="setupscript-taskworkspaceboundshape_sphere" class="label-after-input">Sphere</label>  
+        <label for="setupscript-taskworkspaceboundsizeradius" class="label-before-input">of radius [m]:</label>
+        <input id="setupscript-taskworkspaceboundsizeradius" name="setupScript,taskWorkspaceBoundSizeRadius" type="number" step="any" min="0">
+    </div>
+    <div class="name-type namenote">(wrt plate starting position)&emsp;</div> 
+     <div class="inputs-type inputs">
+    	<input id="setupscript-taskworkspaceboundshape_cube" name="setupScript,taskWorkspaceBoundShape" type="radio" value="Cube">
+    	<label for="setupscript-taskworkspaceboundshape_cube" class="label-after-input">Cube of size[m]: </label>  
+	</div><div class="inputs-type inputs">
+         <label for="setupscript-taskworkspaceboundsizex" class="label-before-input">X:</label>
+        <input id="setupscript-taskworkspaceboundsizex" name="setupScript,taskWorkspaceBoundSizeX" type="number" step="any" min="0">
+        <label for="setupscript-taskworkspaceboundsizey" class="label-before-input">Y:</label>
+        <input id="setupscript-taskworkspaceboundsizey" name="setupScript,taskWorkspaceBoundSizeY" type="number" step="any" min="0">
+        <label for="setupscript-taskworkspaceboundsizez" class="label-before-input">Z:</label>
+        <input id="setupscript-taskworkspaceboundsizez" name="setupScript,taskWorkspaceBoundSizeZ" type="number" step="any" min="0">   
+    </div> 
+</fieldset>  
+	
+<div class="fullrow-type largespace"></div>
+<fieldset class="trial-builder-group">
+<div class="name-type name"> Additional bounds [m]</div>
+     <div class="inputs-type inputs"> 
+    <label for="setupscript-gameboundlocalpositionleft" class="label-before-input label-start-block">Left:</label>
+    <input id="setupscript-gameboundlocalpositionleft" name="setupScript,gameBoundLocalPositionLeft" type="number" step="any" min="0">
+    <label for="setupscript-gameboundlocalpositionright" class="label-before-input">Right:</label>
+    <input id="setupscript-gameboundlocalpositionright" name="setupScript,gameBoundLocalPositionRight" type="number" step="any" min="0">
+    </div>
+    <div class="name-type namenote">(wrt plate starting position)&emsp;</div> 
+     <div class="inputs-type inputs"> 
+    <label for="setupscript-gameboundlocalpositionfront" class="label-before-input label-start-block">Front:</label>
+    <input id="setupscript-gameboundlocalpositionfront" name="setupScript,gameBoundLocalPositionFront" type="number" step="any" min="0">
+    <label for="setupscript-gameboundlocalpositionback" class="label-before-input">Back:</label>
+    <input id="setupscript-gameboundlocalpositionback" name="setupScript,gameBoundLocalPositionBack" type="number" step="any" min="0">
+    </div>
+    <div class="name-type namenote"> </div>
+     <div class="inputs-type inputs"> 
+		<label for="setupscript-gameboundlocalpositiontop" class="label-before-input label-start-block">Top:</label>
+		<input id="setupscript-gameboundlocalpositiontop" name="setupScript,gameBoundLocalPositionTop" type="number" step="any" min="0">
+		<label for="setupscript-gameboundlocalpositionbottom" class="label-before-input">Bottom:</label>
+		<input id="setupscript-gameboundlocalpositionbottom" name="setupScript,gameBoundLocalPositionBottom" type="number" step="any" min="0">
+    </div> <div class="inputs-type inputs"> 
+		<input id="setupscript-gameboundbottomisground_false" name="setupScript,gameBoundBottomIsGround" type="hidden" value="FALSE">
+    	<input id="setupscript-gameboundbottomisground_true" name="setupScript,gameBoundBottomIsGround" type="checkbox" value="TRUE">	
+    	<label for="setupscript-gameboundbottomisground_true" class="label-after-input label-end-block">Match bottom to ground </label>	 
+    </div> 
+</fieldset>
+	 		
+	<div class="longnote-type longnotetitle">Allowed workspace for plate:</div>   	
+		<div class="longnote-type longnote">Trial fails if plate exits allowed region at any point in the trial</div>
+		<div class="longnote-type longnotesmaller">(note that there is redundancy in the parameters above,</div>
+		<div class="longnote-type longnotesmaller"> this is to allow for different ways to define workspace;</div>
+		<div class="longnote-type longnotesmaller"> set what you do not want to use to very large values)</div>
+	
+	  
  
 <!-- End of Content --> 
  
-</inputcolumn> 
-</div>  
-<figurecolumn>
-    <img src="web/img/parameters/workspaceCriteria.png" style="width:100%;">
- <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
-</figurecolumn>
+</form> 
+<div class="param-img">
+    <img src="web/img/parameters/workspaceCriteria.png" >
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  > --> 
+</div>
         
-</form>
-</body>
+</body> 
 </html>

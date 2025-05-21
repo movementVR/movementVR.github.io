@@ -1,0 +1,271 @@
+:root {
+	--accent-darker-color: #187171;
+	--accent-color: #1b7e7e;
+	--negative-color: #bf0404;
+	--text-color: #222;
+	--bg-light: #f9f9f9;
+	--link-color: #1a6fb4;
+}
+
+body { 
+	margin: 0;
+	padding: 0;  
+}
+
+.mainpage-parent {
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 2rem 1.5rem;
+}
+
+/* ----------------------------------------------- */
+/* -------------- Top Before Sections ------------ */
+/* ----------------------------------------------- */
+/* Top Row Text */
+.mainpage-parent .mainpage-top-row { 
+	color: var(--accent-color);
+	padding: 0.5rem;
+	text-align: center; 
+	font-size: 1.5rem;
+	line-height: 1.6;
+}
+
+
+/*  On‑this‑page navigation */
+.mainpage-parent .on-this-page { 
+	background: var(--bg-light);
+	border-left: 3px solid var(--accent-color);
+	padding: 0.5rem 1.5rem 0.8rem 1.5rem; 
+	font-size: 0.95rem;
+	line-height: 1.2;
+	box-shadow: 2px 2px 3px rgba(0, 50, 50, .18);
+	border-radius: 5px;
+	max-width: 30%;
+}
+.mainpage-parent .on-this-page h2 {
+	font-size: 1.1rem;
+	margin: 0 0 .5rem;
+	color: var(--accent-darker-color);
+	letter-spacing: .4px;
+}
+.mainpage-parent .on-this-page ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.mainpage-parent .on-this-page li + li {
+	margin-top: .4rem;
+}
+.mainpage-parent .on-this-page a {
+	text-decoration: none;
+	color: var(--link-color);
+}
+.mainpage-parent .on-this-page a:hover {
+	text-decoration: underline;
+}
+
+
+
+/* ----------------------------------------------- */
+/* ------------ Content with Sections ------------ */
+/* ----------------------------------------------- */
+
+.mainpage-parent .mainpage-content {	
+	line-height: 1.6;
+} 
+
+.mainpage-parent .mainpage-content .section-header {
+	font-size: 1.6rem;
+	font-weight: bold;
+	margin: 2.5rem 0 1rem;
+	border-bottom: 2px solid var(--accent-color);
+	padding-bottom: 0.5rem;
+}
+
+.mainpage-parent .mainpage-content .section-content {
+	margin-bottom: 2rem;
+} 
+ 
+.mainpage-parent .mainpage-content .section-content .section-panel-header {
+	font-size: 1.3rem;
+	font-weight: bold;   
+	color: var(--accent-darker-color);
+	font-family: Georgia;  
+	letter-spacing: 0.5px; /* Slight spacing between characters for clarity */
+	text-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.1);  /* Soft shadow for depth */ 
+}
+
+.mainpage-parent .mainpage-content .section-content .section-panel {
+	
+}
+
+.mainpage-parent .mainpage-content .section-content .section-panel .section-panel-title {  
+	font-weight: 500; 
+	font-style: italic;
+	color: var(--accent-color);    font-size: large; 
+    text-shadow: 1px 1px 2px rgba(0, 90, 90, 0.2);
+}
+
+
+
+/* ----------------------------------------------- */
+/* --------------------- Lists ------------------- */
+/* ----------------------------------------------- */
+/* Short items lists */
+.list-shortitems li::marker {
+	color: var(--accent-color);
+} 
+
+/* Long items lists */
+.mainpage-parent .mainpage-content .section-content .list-longitems {
+	list-style: none; /* remove default bullets */
+	padding-left: 1.2em; /* add space for custom bullet */
+}
+
+.mainpage-parent .mainpage-content .section-content .list-longitems li::before {
+	content: "➤"; /* custom bullet */
+	position: absolute;
+	margin-left: -1.2em;
+	color: var(--accent-color, #1b7e7e); /* picks color for bullet */
+}
+
+.mainpage-parent .mainpage-content .section-content .list-longitems li {
+	position: relative;
+	margin-bottom: 1.2em; /* space between points */
+	line-height: 1.4; /* line spacing within each point */
+}
+
+.mainpage-parent .mainpage-content .section-content .list-longitems li p,
+.mainpage-parent .mainpage-content .section-content .list-longitems li strong {
+	margin: 0; /* prevent extra spacing from tags */
+}
+
+
+ol.list-lessindent,
+ul.list-lessindent {   /* list */ 
+	padding-left: 1.5rem;  
+}
+
+
+/* ----------------------------------------------- */
+/* ------------- Shared Image Styles  ------------ */
+/* ----------------------------------------------- */
+ 
+.mainpage-parent .mainpage-content .section-content .image-row{
+	display: flex;			/* put the four images on one line        */
+	justify-content: space-between;	/* spread any leftover width equally    */ 
+	gap: 1.5rem;			/*  space *between* the cards  */	
+	align-items: center; /* vertical center */
+} 
+
+.mainpage-parent .mainpage-content .section-content .image-row .inline-img { 
+	flex: 1 1 0;			/* each image gets an equal share of row */
+	min-width: 0;			/* prevents flex “overflow” weirdness    */
+
+	width: 100%;			/* fill the width it’s given by flexbox  */
+	height: auto;			/* let height scale from the width       */
+
+	object-fit: contain;		/* shrink proportionally without crop    */
+	transition: transform 0.2s ease; 
+}
+
+
+.mainpage-parent .mainpage-content .section-content .image-row .inline-img:hover {
+	transform: scale(1.05);
+}
+
+
+
+.mainpage-parent .mainpage-content .section-content .image-row .inline-text {
+	flex: 1 1 300px;			/* take the remaining width */
+} 
+
+
+/* Features Cards   */ 
+.features-grid { 
+}
+
+.features-grid .feature-card-img {
+	max-height: 50vh;		/* never taller than half the viewport   */ 
+} 
+
+
+ /*  “Why MovementVR?” side-by-side layout for image */
+.why-row {					/* wrapper around image + text */ 
+	align-items: center;	
+}
+
+.why-row .why-img { 
+	max-width: 50%; 
+} 
+ 
+
+ /* “What is MovementVR?” side-by-side layout for image */
+.what-row {					/* wrapper around image + text */ 
+	align-items: center;	
+}
+
+.what-row .what-img { 
+	max-width: 50%; 
+} 
+
+
+/* ----------------------------------------------- */
+/* --------------- General Styles  --------------- */
+/* ----------------------------------------------- */
+.justify { /* paragraph */
+  text-align: justify;      /* spreads the words to reach both edges */
+  text-justify: inter-word; /* preferred algorithm (works in most modern browsers) */
+}
+.center {
+  text-align: center;   /* horizontally centers each line */
+}
+
+strong {
+	color: var(--accent-color);			
+}
+
+/* Custom emphasis class for highlighted quotes */
+strong.emphasis { 
+	font-family: Georgia; 
+	font-weight: bolder;
+	letter-spacing: 0.5px; /* Slight spacing between characters for clarity */
+	text-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.1);  /* Soft shadow for depth */ 
+	color: var(--accent-color);
+}
+
+strong.negative {  
+	font-weight: 500; 
+	font-style: italic;
+	color: var(--negative-color);
+}
+
+
+a {  /* link */
+	color: var(--link-color); 
+}
+
+a.img-link {  /* link */
+	display: contents; 
+}
+
+
+a.button {
+	display: inline-block;
+	padding: 0.75rem 1.25rem; 
+	color: white;
+	text-decoration: none;
+	border-radius: 5px;
+	margin: 0.5rem 0;
+	background-color: var(--var-col-brightcyan);
+	font-weight: bolder;
+	font-size:large;
+} 
+ 
+.temp-hidden {
+	display: none;
+}
+
+
+
+

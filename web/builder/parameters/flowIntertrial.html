@@ -3,31 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Intertrial  </title>
+    <title></title>
 </head>
 <body>
-<form class="tabcontent">      
-<div class="form-control">         
-<inputcolumn>
+<form class="param-form">
         
 <!-- Content: --> 
  
  
-      
-<name title='Time delay between trials'>Intertrial interval [s]:</name>
-    <input id="INTERTRIAL_TIME" name="trialScript,stage1_baseDelay" type="number" value="0.35" />
- 
+     
+	
+		  	 
+<fieldset class="trial-builder-group">  	 
+	<div class="name-type name">Intertrial interval [s]:</div>
+		 <div class="inputs-type inputs">	  
+		<input id="trialscript-stage1_basedelay" name="trialScript,stage1_baseDelay" type="number" step="any" min="0">
+		</div>	
+</fieldset>   
+	
+	
+
+	<div class="longnote-type longnotetitle">Phase 1 = Intertrial interval</div>   
+		<div class="longnote-type longnote">&emsp;&#8594; Intertrial "wait period" (no plate, no hand home) </div>    
+		<div class="longnote-type longnote">&emsp;&#8594; Phase ends after set time interval </div>  
         
     
  
 <!-- End of Content --> 
  
-</inputcolumn> 
-</div>  
-<figurecolumn>
- <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
-</figurecolumn>
+</form> 
+<div class="param-img">
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  > --> 
+</div>
         
-</form>
-</body>
+</body> 
 </html>

@@ -3,36 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Paradigm Start  </title>
+    <title></title>
 </head>
 <body>
-<form class="tabcontent">      
-<div class="form-control">         
-<inputcolumn>
+<form class="param-form">
         
 <!-- Content: --> 
  
- 
-<name>Start delay [s]:</name>
-    <inputs>
-    <label for="STARTMSG_TIME"></label>
-    <input id="STARTMSG_TIME" name="startScript,experimentStartTimeDelay" type="number" value="5" />
-    </inputs>  
+  
+	
 
-    <note>Time delay at the very start of paradigm</note>
-    <note>This allows participant to position themselves before recording "initial headset position"</note>
-    
-    
+	<fieldset class="trial-builder-group">
+	<div class="name-type name">Start delay [s]:</div>
+		 <div class="inputs-type inputs">
+		<!-- <label for="startscript-experimentstarttimedelay" class="label-before-input label-start-block"></label> -->
+		<input id="startscript-experimentstarttimedelay" name="startScript,experimentStartTimeDelay" type="number" step="any" min="0">
+		</div>  
+</fieldset> 
+
+
+ 	<div class="longnote-type longnotetitle">Time delay at the very start of paradigm:</div>   	
+		<div class="longnote-type longnote">At the end of this delay, "initial headset position" is recorded and paradigm starts</div>
+		<div class="longnote-type longnote"> This allows participant to position themselves before recording "initial headset position"</div>
+		 
+
     
  
 <!-- End of Content --> 
  
-</inputcolumn> 
-</div>  
-<figurecolumn>
- <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
-</figurecolumn>
+</form> 
+<div class="param-img">
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  > --> 
+</div>
         
-</form>
-</body>
+</body> 
 </html>

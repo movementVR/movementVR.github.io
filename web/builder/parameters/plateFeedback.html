@@ -3,54 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Plate feedback  </title>
+    <title></title>
 </head>
 <body>
-<form class="tabcontent">      
-<div class="form-control">         
-<inputcolumn>
+<form class="param-form">
         
 <!-- Content: --> 
  
  
+	
+		 
+<fieldset class="trial-builder-group"> 
+	<div class="name-type name">Success color:</div>
+		 <div class="inputs-type inputs">
+		<input type="color" id="plateandgrapescript-plategrapecolorsuccess_picker" class="picker-color helper-input">
+		<label for="plateandgrapescript-plategrapecolorsuccessr" class="label-before-input hidden-color hidden-label">R:</label>
+		<input id="plateandgrapescript-plategrapecolorsuccessr" name="plateAndGrapeScript,plateGrapeColorSuccessR" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+		<label for="plateandgrapescript-plategrapecolorsuccessg" class="label-before-input hidden-color hidden-label">G:</label>
+		<input id="plateandgrapescript-plategrapecolorsuccessg" name="plateAndGrapeScript,plateGrapeColorSuccessG" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+		<label for="plateandgrapescript-plategrapecolorsuccessb" class="label-before-input hidden-color hidden-label">B:</label>
+		<input id="plateandgrapescript-plategrapecolorsuccessb" name="plateAndGrapeScript,plateGrapeColorSuccessB" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+		<label for="plateandgrapescript-plategrapecolorsuccessalpha" class="label-before-input">Alpha:</label>
+		<input id="plateandgrapescript-plategrapecolorsuccessalpha" name="plateAndGrapeScript,plateGrapeColorSuccessAlpha" type="number" step="any" min="0" max="1">
+		</div>  	
+</fieldset> 
+	
+<fieldset class="trial-builder-group"> 
+	<div class="fullrow-type mediumspace"></div> 
+	<div class="name-type name">Failure color:</div>
+		 <div class="inputs-type inputs">
+		<input type="color" id="plateandgrapescript-plategrapecolorunsuccess_picker" class="picker-color helper-input">
+		<label for="plateandgrapescript-plategrapecolorunsuccessr" class="label-before-input hidden-color hidden-label">R:</label>
+		<input id="plateandgrapescript-plategrapecolorunsuccessr" name="plateAndGrapeScript,plateGrapeColorUnsuccessR" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+		<label for="plateandgrapescript-plategrapecolorunsuccessg" class="label-before-input hidden-color hidden-label">G:</label>
+		<input id="plateandgrapescript-plategrapecolorunsuccessg" name="plateAndGrapeScript,plateGrapeColorUnsuccessG" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+		<label for="plateandgrapescript-plategrapecolorunsuccessb" class="label-before-input hidden-color hidden-label">B:</label>
+		<input id="plateandgrapescript-plategrapecolorunsuccessb" name="plateAndGrapeScript,plateGrapeColorUnsuccessB" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+		<label for="plateandgrapescript-plategrapecolorunsuccessalpha" class="label-before-input">Alpha:</label>
+		<input id="plateandgrapescript-plategrapecolorunsuccessalpha" name="plateAndGrapeScript,plateGrapeColorUnsuccessAlpha" type="number" step="any" min="0" max="1">
+		</div>    	
+</fieldset> 
+	  
+	
+	<div class="fullrow-type mediumspace"></div> 
+	<div class="longnote-type longnote">Color of particle effect around plate</div>     
+		<div class="longnote-type longnotesmaller">shown when plate 1) disappars and 2) reappears on next trial</div>     
 
-<name>Success color:</name>
-    <inputs>
-    <label for="EFFECT_COLOR_S_R">R:</label>
-    <input id="EFFECT_COLOR_S_R" name="plateAndGrapeScript,plateGrapeColorSuccessR" type="number" value="0" />
-    <label for="EFFECT_COLOR_S_G">G:</label>
-    <input id="EFFECT_COLOR_S_G" name="plateAndGrapeScript,plateGrapeColorSuccessG" type="number" value="0.75" />
-    <label for="EFFECT_COLOR_S_B">B:</label>
-    <input id="EFFECT_COLOR_S_B" name="plateAndGrapeScript,plateGrapeColorSuccessB" type="number" value="0.4" />
-    <label for="EFFECT_COLOR_S_A">Alpha:</label>
-    <input id="EFFECT_COLOR_S_A" name="plateAndGrapeScript,plateGrapeColorSuccessAlpha" type="number" value="0.5" />
-    </inputs>     
-    
-<name>Failure color:</name>
-    <inputs>
-    <label for="EFFECT_COLOR_U_R">R:</label>
-    <input id="EFFECT_COLOR_U_R" name="plateAndGrapeScript,plateGrapeColorUnsuccessR" type="number" value="1" />
-    <label for="EFFECT_COLOR_U_G">G:</label>
-    <input id="EFFECT_COLOR_U_G" name="plateAndGrapeScript,plateGrapeColorUnsuccessG" type="number" value="0" />
-    <label for="EFFECT_COLOR_U_B">B:</label>
-    <input id="EFFECT_COLOR_U_B" name="plateAndGrapeScript,plateGrapeColorUnsuccessB" type="number" value="0" />
-    <label for="EFFECT_COLOR_U_A">Alpha:</label>
-    <input id="EFFECT_COLOR_U_A" name="plateAndGrapeScript,plateGrapeColorUnsuccessAlpha" type="number" value="0.5" />
-    </inputs>      
- 
-    
-    <br><br> 
-    <note>Particle effect is displayed when plate resets on trial change</note>     
+
  
 <!-- End of Content --> 
  
-</inputcolumn> 
-</div>  
-<figurecolumn>
-    <img src="web/img/parameters/feedbackPlate.png" style="width:50%;">
- <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
-</figurecolumn>
+</form> 
+<div class="param-img">
+    <img src="web/img/parameters/feedbackPlate.png">
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  > --> 
+</div>
         
-</form>
-</body>
+</body> 
 </html>

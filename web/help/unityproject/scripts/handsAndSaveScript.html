@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>handsAndSaveScript.cs Documentation</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			line-height: 1.6;
+			margin: 2rem;
+		}
+		h1, h2, h3 {
+			color: #2a4a6c;
+			margin-top: 2rem;
+		}
+		.code {
+			background-color: #f4f4f4;
+			padding: 0.5rem;
+			border-left: 3px solid #ccc;
+			font-family: monospace;
+			white-space: pre-wrap;
+		}
+		.section {
+			margin-bottom: 2rem;
+		}
+	</style>
+</head>
+<body>
+
+<h1>Documentation: <code>handsAndSaveScript.cs</code></h1>
+
+<div class="section">
+	<h2>1. Overview</h2>
+	<p>
+		The <code>handsAndSaveScript</code> class manages VR hand tracking, headset pose tracking, and detailed per-frame data logging (kinematics and transforms) in motor learning experiments. It monitors whether hands are tracked and whether they are in contact or penetrating other objects (e.g., a plate). It also supports saving kinematic data, perturbation offsets, and collider configurations for further analysis.
+	</p>
+</div>
+
+<div class="section">
+	<h2>2. Functional Blocks</h2>
+
+	<h3>Initialization and Setup</h3>
+	<ul>
+		<li><code>startup()</code>: Prepares all relevant components, sets up what data to save, and creates a timestamped save folder.</li>
+		<li><code>delayedSetup()</code>: Used to re-capture initial headset transform later if needed.</li>
+	</ul>
+
+	<h3>Update Loop</h3>
+	<p>
+		Monitors if the user’s hands are being tracked or are penetrating the plate. If so, sets the plate to be kinematic (non-movable) to prevent unrealistic behavior. Also performs data saving if enabled.
+	</p>
+
+	<h3>Saving Logic</h3>
+	<ul>
+		<li><code>infoSave()</code>: Saves headset initial position and rotation (and optionally other metadata).</li>
+		<li><code>changeTrialStage(int, int)</code>: Records the current trial and stage, encoded as float (e.g., 1.2 = Trial 1, Stage 2).</li>
+	</ul>
+
+	<h3>Hand State & Tracking</h3>
+	<ul>
+		<li><code>updateHandsState()</code>: Updates hand tracking and activity flags.</li>
+		<li><code>isCollisionWithHands(Collider)</code> and <code>isCollisionWithHand(...)</code>: Determine if a given collider belongs to the hand(s).</li>
+	</ul>
+
+	<h3>Collider Configuration</h3>
+	<ul>
+		<li><code>setWristsTriggerColliders()</code>: Updates wrist collider properties based on task-defined triggers.</li>
+	</ul>
+
+	<h3>Virtual Methods for Extension</h3>
+	<ul>
+		<li><code>rigSetup()</code>, <code>leftNotTracking()</code>, <code>additionalFrameSave()</code>, etc.: Empty base methods designed for child-class overrides.</li>
+	</ul>
+</div>
+
+<div class="section">
+	<h2>3. Full Technical Details</h2>
+
+	<h3>Tracked Entities</h3>
+	<div class="code">
+// Transforms
+Transform headsetTransform;
+Transform leftWrist, rightWrist;
+Vector3 leftHandOffset, rightHandOffset;
+
+// Colliders
+Collider[] allCollidersInHands;
+Collider[] allCollidersLeftHand;
+Collider[] allCollidersRightHand;
+Collider[] leftWristCollider = new Collider[2];
+Collider[] rightWristCollider = new Collider[2];
+	</div>
+
+	<h3>State Flags</h3>
+	<div class="code">
+public bool handsNotVisibleOrPenetrating = false;
+public bool rightHandActiveFlag, leftHandActiveFlag;
+protected bool rightHandTrackingFlag, leftHandTrackingFlag;
+bool actualRightHandTrackingFlag, actualLeftHandTrackingFlag;
+	</div>
+
+	<h3>Startup</h3>
+	<div class="code">
+public void startup() {
+	rigSetup();
+	plateAndGrapeScriptVar = transform.Find("PlateAndGrape").GetComponent&lt;plateAndGrapeScript&gt;();
+
+	// Determine whether data should be saved
+	saveBasicData = saveBasicData || savePerturbationOffset || saveBoneTransforms || ...;
+
+	if (saveBasicData) {
+		folderName = Application.persistentDataPath + "/data_" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
+		Directory.CreateDirectory(folderName);
+
+		// Select transforms to save
+		transformsToBeSaved = ...
+	}
+
+	setInitialHeadsetTransform();
+	enabled = true;
+}
+	</div>
+
+	<h3>Data Saving in Update</h3>
+	<div class="code">
+void Update() {
+	// If hand tracking fails, freeze plate
+	if ((actualLeftHandTrackingFlag && leftNotTracking()) || ...) {
+		plateAndGrapeScriptVar.setPlateKinematic(true);
+		handsNotVisibleOrPenetrating = true;
+	} else {
+		if (handsNotVisibleOrPenetrating && !plateAndGrapeScriptVar.getPlatePenetration(...)) {
+			plateAndGrapeScriptVar.setPlateKinematic(false);
+			handsNotVisibleOrPenetrating = false;
+		}
+	}
+
+	// Data logging
+	if (saveBasicData) {
+		string fileName = folderName + "\\frame" + frame++ + DateTime.Now.ToString("_yyyy_MM_dd_HH_mm_ss_FFF") + ".bin";
+		using (BinaryWriter binWriter = new BinaryWriter(File.Open(fileName, FileMode.Create))) {
+			binWriter.Write(trialNumberAndStage);
+			binWriter.Write((float)(DateTime.Now - startTime).TotalSeconds);
+
+			if (savePerturbationOffset) {
+				binWriter.Write(leftHandOffset.x); // etc.
+			}
+
+			foreach (Transform t in transformsToBeSaved) {
+				binWriter.Write(t.position.x); // etc.
+			}
+
+			additionalFrameSave(binWriter);
+		}
+	}
+}
+	</div>
+
+	<h3>Other Public Methods</h3>
+	<div class="code">
+public void updateHandsState() {
+	setHandGameobjectActivity();
+	actualLeftHandTrackingFlag = leftHandTrackingFlag && leftHandActiveFlag;
+	actualRightHandTrackingFlag = rightHandTrackingFlag && rightHandActiveFlag;
+}
+
+public void setInitialHeadsetTransform() {
+	initialHeadsetPosition = headsetTransform.position;
+	initialHeadsetRotation = headsetTransform.forward;
+}
+
+public bool isCollisionWithHands(Collider collider) {
+	return allCollidersInHands.Contains(collider);
+}
+	</div>
+
+	<h3>Wrists Trigger Colliders</h3>
+	<div class="code">
+public void setWristsTriggerColliders(string hand, string triggerType, Collider taskCollider) {
+	Transform wrist = hand == "left" ? leftWrist : rightWrist;
+	int compIndex = colliderNumber(triggerType);
+
+	BoxCollider box = wrist.GetComponents&lt;BoxCollider&gt;()[compIndex];
+	SphereCollider sphere = wrist.GetComponents&lt;SphereCollider&gt;()[compIndex];
+
+	if (taskCollider is SphereCollider) {
+		box.enabled = false;
+		sphere.enabled = true;
+		sphere.radius = ((SphereCollider)taskCollider).radius;
+	} else {
+		box.enabled = true;
+		sphere.enabled = false;
+		box.size = ((BoxCollider)taskCollider).size;
+	}
+
+	if (hand == "left") leftWristCollider[compIndex] = sphere;
+	else rightWristCollider[compIndex] = sphere;
+}
+	</div>
+
+	<h3>Trial Stage & Info Saving</h3>
+	<div class="code">
+public void changeTrialStage(int trial, int stage) {
+	trialNumberAndStage = trial + stage / 10f;
+}
+
+public void infoSave() {
+	if (!saveBasicData) return;
+
+	string fileName = folderName + "\\info" + DateTime.Now.ToString("_yyyy_MM_dd_HH_mm_ss_FFF") + ".bin";
+	using (BinaryWriter binWriter = new BinaryWriter(File.Open(fileName, FileMode.Create))) {
+		binWriter.Write(initialHeadsetPosition.x); // etc.
+		binWriter.Write(initialHeadsetRotation.x); // etc.
+		additionalInfoSave(binWriter);
+	}
+}
+	</div>
+
+	<h3>Virtual (Override-able) Methods</h3>
+	<div class="code">
+protected virtual void rigSetup() {}
+protected virtual bool leftNotTracking() { return false; }
+protected virtual bool rightNotTracking() { return false; }
+protected virtual void additionalFrameSave(BinaryWriter binWriter) {}
+protected virtual void additionalInfoSave(BinaryWriter binWriter) {}
+protected virtual void setHandGameobjectActivity() {}
+public virtual void applyLeftPerturbation(Vector3 offset) {}
+public virtual void applyRightPerturbation(Vector3 offset) {}
+	</div>
+</div>
+
+</body>
+</html>

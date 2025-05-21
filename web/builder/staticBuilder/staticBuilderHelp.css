@@ -1,0 +1,112 @@
+ 
+/***************************** PARADIGM & HELP BUTTONS *******************************************/ 
+
+/* Icons occupy the third column  of param-form grid */
+.builder .content .tabpanel .param-form .icons-type {
+	grid-column: 3 / span 1;  /* col = 3*/
+	position: relative; /* this is for child tooltip to be able to follow parent icon on scrolling */ 
+	display: flex;
+	flex-wrap: nowrap; /* Prevents children elements wrapping */  	 
+	    
+	margin-left: 5px;
+    gap: 3px;
+}
+
+/* ******** Inline Buttons (third column of param-form) ******** */ 
+:root { 
+    --var-icon-size: 16px;
+    --var-icon-gap: 3px;
+}
+
+.builder .content .tabpanel .param-form .icons-type .help-button,
+.builder .content .tabpanel .param-form .icons-type .trials-button { 	
+  	font-family: Verdana, sans-serif; 
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+	
+	width: var(--var-icon-size);
+   	height: var(--var-icon-size);  
+	border: none;
+    border-radius: 2px;  
+    background: gray;  
+	
+    cursor: pointer;  
+}
+.builder .content .tabpanel .param-form .icons-type .help-button:hover,
+.builder .content .tabpanel .param-form .icons-type .trials-button:hover {
+    background: dimgray;  
+}
+.builder .content .tabpanel .param-form .icons-type .help-button.in-use,
+.builder .content .tabpanel .param-form .icons-type .trials-button.in-use{
+    background: teal;  
+}
+.builder .content .tabpanel .param-form .icons-type .help-button.in-use:hover,
+.builder .content .tabpanel .param-form .icons-type .trials-button.in-use:hover{ 
+    background: #007070;  /* darker teal */
+}
+ 
+
+/* ********  Help Popup  ******** */  
+.builder .content .tabpanel .param-form .icons-type .help-popup {	 /* Help Popup Main Container = Bubble */ 
+  	position: absolute;  /* position: absolute; combined with parent position: relative, 
+	  --> does not affect layout but follows parent icon container when scrolling */   	
+	
+	/* Help Popup Left Edge Position = end of the parent + 7px = start of parent + 2*icon width + icon gap + 7px */
+	left: calc( 0% + var(--var-icon-size) + var(--var-icon-size) + var(--var-icon-gap) + 7px );
+	
+	top: 50%; /* Position the top edge of the element in the middle of the parent */
+	transform: translateY(-50%); /* Shift the element by half of its width and height to truly center it */ 
+	
+	min-height: 25px; /* for "arrow" to fit on flat part <- [2*border-radius + arrow border-width] */
+	border-radius: 5px;  /* Adjust this value for more or less rounding */ 	 
+	background-color: teal;    
+} 
+
+.builder .content .tabpanel .param-form .icons-type .help-popup .arrow { /* popup "arrow"  - i.e. triangle towards ? button */ 
+	position: absolute; 
+	top: 50%;
+	transform: translateY(-50%); /* Shift the element by half of its width and height to truly center it */
+	right: 100%; 
+	border-width: 5px;
+	border-style: solid;
+	border-color: transparent teal transparent transparent;  /* colors square divided in 4 triangles (top,right,bottom,left) */
+}  
+ 
+.builder .content .tabpanel .param-form .icons-type .help-popup .help-content { /* Help Popup Container for Text Content */
+	font-size: 11px; 
+	line-height: 1;
+    color: white; 
+  	padding: 3px 5px; /* vertical horizontal */   
+	white-space: normal;         /* allow wrapping at spaces        */
+  	overflow-wrap: break-word;   /* break long words if needed      */
+  	word-break: break-word;      /* older browsers fallback         */
+}
+.builder .content .tabpanel .param-form .icons-type .help-popup .help-content * {
+	line-height: 1;	
+}
+
+.builder .content .tabpanel .param-form .icons-type .help-popup .close-button { /* Help Popup  Close 'x' Button */
+	/* Position: centered on the right-top corner of parent popup, 
+	   with slight manual offset to place it more inside the popup bubble */ 
+	position: absolute; 
+	left: calc(100% - 0.7ch); /* Horizontal position: end of parent - 1/2 width */ 
+	top: calc(0% - 0.7ch + 2px); /* Vertical position: start of parent - 1/2 height + manual offset */
+	width: 1.4ch;  /* width, height, line-height should match */
+	height: 1.4ch;  
+	line-height: 1.5ch;
+	padding-left: 0.2ch;  /* Padding-left: 1/2*(1-width) to center element */	
+	 
+	border-radius: 20px;
+	background-color: #5fadad; /* slighly lighter than the darkteal tooltip bubble background */	
+	color: white;	
+	font-size: 16px;  	
+	font-weight: bold; 	
+	cursor: pointer;   
+}
+.builder .content .tabpanel .param-form .icons-type .help-popup .close-button:hover,
+.builder .content .tabpanel .param-form .icons-type .help-popup .close-button:focus {   
+	background-color: cadetblue; /* slighly darker on hover or focus */
+} 
+ 
+ 

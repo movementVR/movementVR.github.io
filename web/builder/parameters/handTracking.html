@@ -3,67 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Hand Tracking  </title>
+    <title></title>
 </head>
 <body>
-<form class="tabcontent">      
-<div class="form-control">         
-<inputcolumn>
+<form class="param-form">
         
 <!-- Content: --> 
- 
- 
-
-
-      
-<name>System:</name>
-    <inputs>
-    <input id="MULTIPLECHOICE_QUEST" name="setupScript,rigSystem" type="radio" value="Quest" checked>
-    <label for="MULTIPLECHOICE_QUEST">Quest</label> 
-    <input id="MULTIPLECHOICE_LEAP" name="setupScript,rigSystem" type="radio" value="Leap" >
-    <label for="MULTIPLECHOICE_LEAP">Leap</label>		    
-    </inputs>      
-    <note> </note>   
-    <note> </note>  
-    
-<name>Hands used in task:</name>
-    <inputs>	    	  	    
-    <input id="ACTIVE_L_H" name="handsAndSaveScript,leftHandActiveFlag" type="hidden" value="FALSE">
-    <input id="ACTIVE_L" name="handsAndSaveScript,leftHandActiveFlag" type="checkbox" value="TRUE" checked>	
-    <label for="ACTIVE_L">Left</label>	
-    <input id="ACTIVE_R_H" name="handsAndSaveScript,rightHandActiveFlag" type="hidden" value="FALSE">
-    <input id="ACTIVE_R" name="handsAndSaveScript,rightHandActiveFlag" type="checkbox" value="TRUE" checked>	
-    <label for="ACTIVE_R">Right</label>	  
-    </inputs> 
-    <note>Check both for bimanual tasks, check one for unimanual</note>  
-    <note>Unchecked hands are not be visible in VR & cannot interact with objects</note> 
-    <note> </note>  
-    <note> </note>
-    
-<name>Must be visible:</name>
-    <inputs>	    	  	    
-    <input id="TRACKED_L_H" name="handsAndSaveScript,leftHandTrackingFlag" type="hidden" value="FALSE">
-    <input id="TRACKED_L" name="handsAndSaveScript,leftHandTrackingFlag" type="checkbox" value="TRUE" checked>	
-    <label for="TRACKED_L">Left</label>	
-    <input id="TRACKEDE_R_H" name="handsAndSaveScript,rightHandTrackingFlag" type="hidden" value="FALSE">
-    <input id="TRACKED_R" name="handsAndSaveScript,rightHandTrackingFlag" type="checkbox" value="TRUE" checked>	
-    <label for="TRACKED_R">Right</label>	  
-    </inputs> 
-    <note>Plate freezes if selected hands are not tracked by cameras</note>   
- 
-
-    
-    
-    
- 
+  
+	
+<fieldset class="no-trial-builder-group">    
+	<div class="name-type name">System:</div>
+		 <div class="inputs-type inputs">
+		<input id="setupscript-rigsystem_quest" name="setupScript,rigSystem" type="radio" value="Quest">
+		<label for="setupscript-rigsystem_quest" class="label-after-input">Quest</label> 
+		<input id="setupscript-rigsystem_leap" name="setupScript,rigSystem" type="radio" value="Leap">
+		<label for="setupscript-rigsystem_leap" class="label-after-input label-end-block">Leap</label>		    
+		</div>       
+</fieldset>   
+	
+		<div class="fullrow-type largespace"></div>   
+<fieldset class="trial-builder-group">   
+	<div class="name-type name">Hands used in task:</div>
+		 <div class="inputs-type inputs">	    	  	    
+		<input id="handsandsavescript-lefthandactiveflag_false" name="handsAndSaveScript,leftHandActiveFlag" type="hidden" value="FALSE">
+		<input id="handsandsavescript-lefthandactiveflag_true" name="handsAndSaveScript,leftHandActiveFlag" type="checkbox" value="TRUE">	
+		<label for="handsandsavescript-lefthandactiveflag_true" class="label-after-input">Left</label>	
+		<input id="handsandsavescript-righthandactiveflag_false" name="handsAndSaveScript,rightHandActiveFlag" type="hidden" value="FALSE">
+		<input id="handsandsavescript-righthandactiveflag_true" name="handsAndSaveScript,rightHandActiveFlag" type="checkbox" value="TRUE">	
+		<label for="handsandsavescript-righthandactiveflag_true" class="label-after-input label-end-block">Right</label>	  
+		</div> 
+		<div class="fullrow-type smallspace"></div><div class="inputs-type inputsnote">Check both for bimanual tasks, check one for unimanual</div> 
+		<div class="inputs-type inputsnote">Unchecked hands are not be visible in VR</div> 
+		<div class="inputs-type inputsnote">&emsp; & cannot interact with objects</div> 
+</fieldset>   
+	
+		<div class="fullrow-type largespace"></div>   
+<fieldset class="trial-builder-group">   
+	<div class="name-type name">Must be visible:</div>
+		 <div class="inputs-type inputs">	    	  	    
+		<input id="handsandsavescript-lefthandtrackingflag_false" name="handsAndSaveScript,leftHandTrackingFlag" type="hidden" value="FALSE">
+		<input id="handsandsavescript-lefthandtrackingflag_true" name="handsAndSaveScript,leftHandTrackingFlag" type="checkbox" value="TRUE">	
+		<label for="handsandsavescript-lefthandtrackingflag_true" class="label-after-input">Left</label>	
+		<input id="handsandsavescript-righthandtrackingflag_false" name="handsAndSaveScript,rightHandTrackingFlag" type="hidden" value="FALSE">
+		<input id="handsandsavescript-righthandtrackingflag_true" name="handsAndSaveScript,rightHandTrackingFlag" type="checkbox" value="TRUE">	
+		<label for="handsandsavescript-righthandtrackingflag_true" class="label-after-input label-end-block">Right</label>	  
+		</div> 
+		<div class="fullrow-type smallspace"></div><div class="inputs-type inputsnote">Plate freezes if selected hands are not tracked by cameras</div>  
+</fieldset>   
+	 
 <!-- End of Content --> 
  
-</inputcolumn> 
-</div>  
-<figurecolumn>
- <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
-</figurecolumn>
+</form> 
+<div class="param-img">
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  > --> 
+</div>
         
-</form>
-</body>
+</body> 
 </html>

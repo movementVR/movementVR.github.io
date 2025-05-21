@@ -1,0 +1,152 @@
+<!-- EXAMPLE FOR USING THIS
+const targetFrame = staticBuilderWindow.document.getElementById('error'); 
+targetFrame.contentWindow.openModal(
+    'Unsaved changes',
+    'Please save before continuing',
+    'OK', 
+    '', 
+    (response) => handleErrorModalResponse(response)
+);
+function handleErrorModalResponse(response){
+    console.log('THE User clicked:', response);        
+} -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <style>
+        .generic-error-modal{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .error-modal-parent {
+            background-color: #ffe6e6;
+            border-radius: 8px;
+            width: 350px;
+            padding: 15px;
+            position: relative;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .error-modal-parent h2 {
+            margin-top: 0;
+            color: #d8000c;
+        }
+
+        .error-modal-closeBtn {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #d8000c;
+            cursor: pointer;
+        }
+
+        .error-modal-closeBtn:hover {
+            color: #a00000;
+        }
+
+        .error-modal-parent button.modal-error-actionBtn {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #ff4d4d;
+            border: none;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+
+        .error-modal-parent button.modal-error-actionBtn:hover {
+            background-color: #cc0000;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+    
+    
+<body>
+
+ 
+<div id="generic-error-modal" class="generic-error-modal hidden"> 
+    <div class="error-modal-parent">
+        <button class="error-modal-closeBtn" onclick="closeModal()">&times;</button>
+        <h2 id="error-modal-title">Notice</h2>
+        <p id="error-modal-msg">Message goes here.</p>
+        <div id="error-modal-buttons"></div>
+    </div>
+</div>
+
+<script>
+    let popupCallback = null; 
+    function openModal(titleText = null, message, leftButtonText = null, rightButtonText = null, callback = null) {
+        const modal = document.getElementById('generic-error-modal');
+        const modalTitle = document.getElementById('error-modal-title');
+        const modalMsg = document.getElementById('error-modal-msg');
+        const modalButtons = document.getElementById('error-modal-buttons');    
+
+        popupCallback = callback;
+        modalMsg.textContent = message;
+        modalButtons.innerHTML = ''; // Clear old buttons
+
+        if (titleText) {        
+            modalTitle.textContent = titleText; 
+        }
+        
+        if (leftButtonText) { 
+            const leftBtn = document.createElement('button');
+            leftBtn.className = 'modal-error-actionBtn';
+            leftBtn.textContent = leftButtonText;
+            leftBtn.onclick = () => handleUserResponse(leftButtonText);
+            modalButtons.appendChild(leftBtn);
+        }
+
+        if (rightButtonText) { 
+            const rightBtn = document.createElement('button');
+            rightBtn.className = 'modal-error-actionBtn';
+            rightBtn.textContent = rightButtonText;
+            rightBtn.onclick = () => handleUserResponse(rightButtonText);
+            modalButtons.appendChild(rightBtn);
+        }
+        
+        window.frameElement.style.display = "block";
+        modal.classList.remove('hidden');
+    }
+
+    function handleUserResponse(response) {
+        closeModal();
+        if (popupCallback) {
+            popupCallback(response);
+        }
+    }
+
+    function closeModal() {
+        document.getElementById('generic-error-modal').classList.add('hidden'); 
+        window.frameElement.style.display = "none";
+    }
+</script>
+
+</body>
+</html>

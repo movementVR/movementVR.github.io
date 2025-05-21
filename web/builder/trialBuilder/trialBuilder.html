@@ -1,0 +1,261 @@
+ <!DOCTYPE html>
+<html lang="en"> 
+   
+
+<head>
+ 
+</head> 
+
+ <body>	
+    <div class="builder trial"> 
+        
+        <div class="content"> 
+		
+		<!-- L0 (1/1): Overall Container --> 
+		<div id="trial-builder-parentContainer" class="trialbuilder-parentContainer">
+ 
+			<!-- CURRENT MAX WIDTHS (For Builder Popup):
+				 // 1st Col (Names) Max: 240px,  perturbationSmoothing.html
+				 // 2nd Col (Inputs) Max: 382.854px,  flowHome.html
+					//	Tot Width (Col 1+2) Max: 524.479px,  handTracking.html
+				
+				 Use testingParameters.html to check widths  
+				 --> 
+
+			<!-- L1 (2/2): Panels Container --> 			
+			<div id="trial-builder-contentContainer" class="trialbuilderMainContainer"> 
+
+				<!-- L2 (1/2): Left Panel Main Container  --> 
+				<div id="trialbuilder-left-panel" class="trialbuilderPanel blocks-panel">
+
+					<!-- L3 (1/2): Title Container --> 
+					<div class="trialbuilderInputsTitleContainer blocks-panel"> 
+
+						<!-- L4 (1/1): Title Row (Phase Name, Sequence Type dropdown, Probability, "+" button)  --> 
+						<header class="trialbuilderInputsTitleParent panelTitleRow blocks-panel"> 
+
+							<!-- L5 === items (6 Columns)  --> 
+							<!-- item (1/6): col 1. Empty for Item Order  --> 
+							<span class="trialbuilderInputsTitle itemOrder blocks-panel"></span> 
+							 
+
+							<div class="trialbuilderInputsTitleElement headerContainer blocks-panel"><!-- item (2/6): col 2. Phase Title + Dropdown for input type choice (constant, etc...)  --><span class="trialbuilderInputsTitle panelTitle blocks-panel">Phases</span></div>
+						</header>
+
+						<header class="trialbuilderInputsTitleParent listTitleRow blocks-panel"> 
+
+							<!-- L5 === items (6 Columns)  --> 
+							<!-- item (1/6): col 1. Empty for Item Order  --> 
+							<span class="trialbuilderInputsTitle itemOrder blocks-panel"></span> 
+							 
+
+							<span class="trialbuilderInputsTitle itemTrialType blocks-panel">
+								
+
+								
+							<!-- item (2/6): col 2. Phase Title + Dropdown for input type choice (constant, etc...)  --><span class="trialbuilderInputsTitle listLabel blocks-panel">trial type</span><!-- item (4/6): col 4. Add item + button  --></span><div class="trialbuilderInputsTitleElement repeatsContainer blocks-panel"><span class="listLabel"># trials</span><!-- item (5/6)+(6/6): col 5-6. Probability weight title  --></div><div class="trialbuilderInputsTitleElement buttonsContainer blocks-panel"><button class="trialbuilderInputsTitle itemAdd blocks-panel">+ add phase
+							</button><!-- item (5/6)+(6/6): col 5-6. Probability weight title  --></div>
+						</header>
+					</div>
+
+					<!-- L3 (2/2): List Container --> 
+					<ol class="trialbuilderInputsListContainer blocks-panel"> 
+
+						<!-- L4 (*variable number*): List Element Row (*hidden template*) --> 
+						<li class="trialbuilderInputsItemParent blocks-panel template" draggable="true">
+
+							<!-- L5 === items (6 Columns)  --> 
+							<!-- item (1/6): col 1, item order  --> 
+							<span class="trialbuilderInputsItem itemOrder blocks-panel">
+								</span>
+
+							<div class="trialbuilderInputsItemElement borderContainer blocks-panel"><!-- item (2/6): col 2, trial type dropdown  -->
+								<select class="trialbuilderInputsItem itemTrialType blocks-panel"> 
+							<!--	<option value="Baseline Trial">Baseline Trial</option>
+								<option value="Learning Trial">Learning Trial</option>
+								<option value="Washout Trial">Washout Trial</option> -->
+								<option value="add_option">&lt;add new trial type&gt;</option>
+								</select>
+
+										<!-- item (3/6): col 3, repeat text  --> 
+								<span class="trialbuilderInputsItem itemRepeatsText blocks-panel">
+									×</span> 
+
+								<!-- item (4/6): col 4, repeat input  --> 
+								<input class="trialbuilderInputsItem itemRepeats blocks-panel" type="number" min="0" value="0">
+									<!-- item (3/6): col 3, repeat text  --><!-- item (4/6): col 4, repeat input  -->
+							</div>  
+							
+
+							<div class="trialbuilderInputsItemElement buttonsContainer blocks-panel">
+									<!-- item (2/6): col 2, trial type 	dropdown  --><!-- item (3/6): col 3, repeat text  --><!-- item (4/6): col 4, repeat input  --><!-- item (5/6): col 5, delete  -->
+									
+									<span class="trialbuilderInputsItem itemDelete blocks-panel">
+									🗑</span><!-- item (6/6): col 6, drag  -->
+									
+									<span class="trialbuilderInputsItem itemDrag blocks-panel">
+									☰</span>
+							</div>
+							
+							
+						</li>  
+				
+					</ol>
+					
+				</div> <!-- CLOSURES for L2 (1/2): Left Panel Main Container  --> 
+
+
+				<!-- L2 (2/2): Right Panel Main Container  --> 
+				<div id="trialbuilder-right-panel-template" class="trialbuilderPanel inputs-panel template" sequence="constant">
+
+					<!-- L3 (1/2): Title Container -->  
+					<div class="trialbuilderInputsTitleContainer inputs-panel"> 
+
+						<!-- L4 (1/1): Title Row (Phase Name, Sequence Type dropdown, Probability, "+" button)  --> 
+						<header class="trialbuilderInputsTitleParent panelTitleRow inputs-panel"> 
+
+							<!-- L5 === items (6 Columns)  --> 
+							<!-- item (1/6): col 1. Empty for Item Order  --> 
+							<span class="trialbuilderInputsTitle itemOrder inputs-panel"></span> 
+							  
+							 
+
+							<div class="trialbuilderInputsTitleElement headerContainer inputs-panel"><!-- item (2/6): col 2. Phase Title + Dropdown for input type choice (constant, etc...)  -->
+
+								<span class="trialbuilderInputsTitle panelTitle inputs-panel">  template Panel Title </span>
+
+								<span class="trialbuilderInputsTitle dropdownContainer inputs-panel inlinelabel">
+									<label for="SequenceTypeDropdownMenu">Sequence type:</label>
+
+									<select id="SequenceTypeDropdownMenu" class="sequence-type-dropdown"> 
+									<!--	<option value="" class="hidden" disabled="" hidden="" selected=""> - Select Sequence Type - </option>-->
+										<option value="constant">Constant</option>
+										<option value="sequential">Sequential</option>
+										<option value="random">Random Samples</option>
+										<option value="blocked">Blocked Random Samples</option>
+										<option value="linear">Linear Interpolation</option>
+										<option value="uniform">Uniform Random Values</option>
+										<option value="normal">Normal Random Values</option>
+									</select>
+								</span>
+
+							</div>
+						
+						</header>
+
+						<header class="trialbuilderInputsTitleParent listTitleRow inputs-panel"> 
+
+							<!-- L5 === items (6 Columns)  --> 
+							<!-- item (1/6): col 1. Empty for Item Order  --> 
+							<span class="trialbuilderInputsTitle itemOrder inputs-panel"></span> 
+							  
+							 
+
+							<div class="trialbuilderInputsTitleElement borderContainer inputs-panel">
+								<span class="trialbuilderInputsTitle itemInheritedInputs inputs-panel">
+
+
+
+								<!-- item (2/6): col 2. Phase Title + Dropdown for input type choice (constant, etc...)  -->
+								<span class="trialbuilderInputsTitle listTitle inputs-panel">Sequence Values </span><!-- item (4/6): col 4. Add item + button  -->
+								<button class="trialbuilderInputsTitle itemAdd inputs-panel">+ add value
+								</button>
+								</span>
+							</div>
+							
+							<div class="trialbuilderInputsTitleElement probabilityContainer inputs-panel">
+								<!-- item (5/6)+(6/6): col 5-6. Probability weight title  -->
+								<span class="listLabel">probability weight</span>
+							</div>
+						</header>
+						
+					</div>
+
+
+					
+					
+					
+					<!-- L3 (2/2): List Container -->  
+					<ol class="trialbuilderInputsListContainer inputs-panel"> 
+
+						<!-- L4 (*variable number*): List Element Row (*hidden template*) -->   	 		
+						<li class="trialbuilderInputsItemParent inputs-panel template" draggable="true">
+
+							<!-- L5 === items (6 Columns)  -->  
+							<!-- item (1/6): Col 1, Item Order  --> 
+							<span class="trialbuilderInputsItem itemOrder inputs-panel"></span>
+
+							<div class="trialbuilderInputsItemElement borderContainer inputs-panel">
+								
+								<!-- item (2/6): Parameter input group from builder -->
+								<div class="trialbuilderInputsItem itemInheritedInputs inputs-panel">
+
+									<!-- L6 (1/1): Outer Container [* will indicate builder classes]  --> 
+									<div class="outer-container tabpanel">
+
+										<!-- L7 (1/1): *param-form  --> 
+										<form class="param-form">
+
+											<!-- L8 (1/1): Inner Container  --> 
+											<div class="inner-container">
+											
+											
+											</div> 
+											
+										</form>
+										
+									</div> <!-- Closure of Parameter Input item - of OuterContainer L5 (1/6)  -->				  			
+								</div><!-- item (2/6)  -->
+								
+								
+								<span class="trialbuilderInputsItem itemDelete inputs-panel">
+									🗑
+								</span><!-- item (4/6): Drag button  -->
+
+								<span class="trialbuilderInputsItem itemDrag inputs-panel">
+									☰
+								</span>
+								
+							</div>  
+							 
+										
+
+						
+							<div class="trialbuilderInputsItemElement probabilityContainer inputs-panel">
+								
+								<!-- item (5/6): Probability input  -->
+								
+								<input class="trialbuilderInputsItem itemProbability inputs-panel" type="number" value="1">
+								
+								<!-- item (6/6): Probability "/N" label  -->
+								
+								<span class="trialbuilderInputsItem itemProbabilityText inputs-panel">
+								</span>
+							
+							</div>
+						
+						</li>				
+ 
+					
+					
+					</ol>				
+				</div> <!-- CLOSURES for L2 (2/2): Right Panel Main Container  -->  
+
+			</div> <!-- CLOSURE for L1 (1/2): Main Content Container -->  
+		
+    	</div> <!-- CLOSURE FOR L0 (1/1): Overall Container -->  		
+
+	
+	
+
+
+
+
+
+
+</div></div>
+</body>
+		
+</html>
+
+  <!--  &nbsp; such as &thinsp;, &ensp;,and &emsp;.-->

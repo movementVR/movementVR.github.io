@@ -1,22 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GUI</title> 
-</head>
-<body>  
-		 
-<h2>Welcome to VR Motor Learning!!!</h2> 
-<h3> Get started using the tabs above:</h3> 
-<h4> &emsp;&emsp;1) <i>Install app</i>: <expl>download & install the app on your VR headset</expl></h4> 
-<h4> &emsp;&emsp;2) <i>Design paradigm</i>: <expl>design your paradigm using our GUI</expl> </h4>
-<h4> &emsp;&emsp;3) <i>Export data</i>: <expl>export the data your collected in your experiment</expl> </h4>
-<br><br>
-<h3> Project overview: </h3>
-<h5>&emsp;&emsp;Poster presented at SfN 2023 (EE18, Monday PM)</h5>
+	<meta charset="UTF-8">
+	<title>MovementVR – Overview</title> 
+   <!-- <link rel="stylesheet" href="/web/general/general.css"> 
+    <link rel="stylesheet" href="/web/general/page.css"> -->
+ 	
 
-	<img src="web/img/poster.png"  style="width:100%">
-    
+<!--
+
+About	Mission, research background, publications, origin story, explanation of the problem/task
+Resources	Help guides, API docs, tutorials, user support, dataset downloads
+Help	FAQs, troubleshooting, contact/support info-->
+
+
+</head>
+<body>
+
+	<div id="mainpage-parent" class="mainpage-parent general-parent"> 
+		
+		<div class="mainpage-top-row">
+			<p class="center"><strong>MovementVR is a platform to create motor control and learning experiments in immersive Virtual Reality without any coding.</strong></p>
+		</div>
+				
+		
+		<div id="mainpage-content" class="mainpage-content page-content">
+
+			<!-- 0. Image Cards -->
+			<div class="section-content"> 
+				<div class="image-row features-grid">
+					<img src="/web/img/features/features_card_VR.png" alt="Standalone VR" class="feature-card-img inline-img clickable" onclick="document.getElementById('about_Button').click();" title="Click to see all Features of MovementVR">
+					<img src="/web/img/features/features_card_realistic.png" alt="Realistic Task" class="feature-card-img inline-img clickable" class="feature-card-img inline-img" onclick="document.getElementById('about_Button').click();" title="Click to see all Features of MovementVR">
+					<img src="/web/img/features/features_card_learning.png" alt="Motor Learning" class="feature-card-img inline-img clickable" class="feature-card-img inline-img" onclick="document.getElementById('about_Button').click();" title="Click to see all Features of MovementVR">
+					<img src="/web/img/features/features_card_GUI.png" alt="GUI-Based Design" class="feature-card-img inline-img clickable" class="feature-card-img inline-img" onclick="document.getElementById('about_Button').click();" title="Click to see all Features of MovementVR">
+				</div>
+			</div>
+			
+			
+			
+			<!-- 1. WHY / FEATURES -------------------------------------------------- -->
+			<div class="section-header">Why MovementVR?</div>
+			<div class="section-content"> 
+				
+				<div class="image-row why-row">
+		
+					<img src="/web/img/features/ecologic_validity.png" alt="Ecological Validity" class="why-img inline-img clickable" class="feature-card-img inline-img" onclick="document.getElementById('about_Button').click();" title="Click to see all Features of MovementVR">
+
+					<div class="why-side-text inline-text">
+						<!-- Text Paragraph -->
+						<p class="justify">We have all heard the goal: <strong class="emphasis">“Make experiments more like the real world”</strong>. So why is there still a gap between lab studies and how people move in daily life? </p> 
+					</div>					
+				</div>
+									
+				<div>
+					<!-- Text Paragraph --> 
+					<p class="justify">After weeks of wrestling with libraries, rebuilding models, and rewriting code just to get  virtual hands working,  we hit an inevitable truth: <strong class="emphasis">building natural, immersive motor tasks is hard, slow, and resource-costly</strong>.</p>
+					<p class="justify">
+						That is why we created <strong class="emphasis">MovementVR: open source, coding-free, and designed to make realistic motor tasks easy to build and customize</strong>. Do not worry — you can still dive into the code and Unity project to tweak it or completely reinvent it — however you like.</p>
+				</div>
+			</div>
+ 
+			<!-- 2. WHAT IS  -------------------------------------------------- -->
+			<div class="section-header">What is MovementVR?</div>
+			<div class="section-content"> 
+				 
+				<div class="image-row what-row">
+		
+
+					<div class="what-side-text inline-text">
+						<!-- Text Paragraph -->
+						<p class="justify"><strong class="emphasis">MovementVR is a standalone solution for motor learning experiments in VR.</strong>. It includes a ready-to-use VR app with a naturalistic motor task, plus tools to customize the task and experiment and process the recorded data.</p> 
+						<p class="justify"><strong class="emphasis">Feed the bird in the VR app:</strong> lift a plate of grapes up to a target with a bird perched on it. You use your own hands — tracked in real time and fully articulated in VR — to grasp and move the plate just as you would in real life.</p>
+						<p class="justify"><strong class="emphasis">Build your own Feed the Bird experiment</strong> using the code-free Builder GUI: define task parameters, adaptation and feedback rules, trial sequences and experimental phases, and more. After the experiment, use our Analyzer tools to <strong class="emphasis">process the automatically-recorded hand kinematic data.</strong></p>
+					</div>	
+					
+					
+					<img src="/web/img/features/vr_task_illustration.png" alt="VR Task" class="what-img inline-img" class="feature-card-img inline-img clickable" onclick="document.getElementById('about_Button').click();" title="Click to see all Features of MovementVR">
+				</div> 
+			</div>
+			
+			<!-- 2. GETTING STARTED --------------------------------------- -->
+			<div class="section-header">Getting Started</div>
+			<div class="section-content">
+				<ol class="list-lessindent">
+					<li>Design your experiment using <strong class="emphasis">MovementVR Builder</strong></li>
+					<li>Deploy and run your customized <strong class="emphasis">MovementVR Application</strong> in your VR headset</li>
+					<li>Analyze your results with the help of our <strong class="emphasis">MovementVR Analyzer</strong></li>
+				</ol>
+				<p>Click the "Learn" tab and Read our Guide!<!--<a href="/web/help/help.html">Read our Online Guide</a> --><!--or <a href="#">Download PDF Manual</a>-->
+				</p>
+			</div>
+
+			<!-- 3. CITATION ---------------------------------------------- -->
+			<div class="section-header">Citation</div>
+			<div class="section-content"> 
+				<p>Rossi, C., Varghese, R., &amp; Bastian, A. J. (2025). <em>MovementVR: An open‑source tool for the study of motor control and learning in virtual reality</em>. <a href="https://arxiv.org/abs/2504.21696" target="_blank">arXiv:2504.21696</a></p>
+			</div>
+
+		</div><!-- mainpage-content -->
+
+	</div><!-- mainpage-parent -->  
+	 
+	
+	
 </body>
 </html>
+
+
+

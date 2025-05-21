@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>taskWorkspaceScript.cs Documentation</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			line-height: 1.6;
+			margin: 2rem;
+		}
+		h1, h2, h3 {
+			color: #2a4a6c;
+			margin-top: 2rem;
+		}
+		.code {
+			background-color: #f4f4f4;
+			padding: 0.5rem;
+			border-left: 3px solid #ccc;
+			font-family: monospace;
+			white-space: pre-wrap;
+		}
+		.section {
+			margin-bottom: 2rem;
+		}
+	</style>
+</head>
+<body>
+
+<h1>Documentation: <code>taskWorkspaceScript.cs</code></h1>
+
+<div class="section">
+	<h2>1. Overview</h2>
+	<p>
+		The <code>taskWorkspaceScript</code> monitors whether the plate leaves the designated task workspace area without entering the target. It is responsible for triggering a specific failure state (<code>-5</code>) when the participant reaches outside bounds but fails to make contact with the target. This supports spatial constraint enforcement during a trial.
+	</p>
+</div>
+
+<div class="section">
+	<h2>2. Functional Blocks</h2>
+
+	<h3>Initialization</h3>
+	<ul>
+		<li><code>startup()</code> retrieves references to the plate trigger, <code>targetScript</code>, and <code>trialScript</code> from the scene hierarchy.</li>
+	</ul>
+
+	<h3>Trigger Monitoring</h3>
+	<ul>
+		<li><code>OnTriggerExit()</code> detects if the plate leaves the workspace without having successfully entered the target.</li>
+		<li>If triggered, it invokes a stage transition (<code>-5</code>) and sets the target mesh to unsuccessful state.</li>
+	</ul>
+
+</div>
+
+<div class="section">
+	<h2>3. Full Technical Details</h2>
+
+	<h3>Class Fields</h3>
+	<div class="code">
+Collider plateTrigger;
+targetScript targetScriptVar;
+trialScript trialScriptVar;
+	</div>
+
+	<h3>startup()</h3>
+	<div class="code">
+public void startup() {
+	plateTrigger = transform.Find("/Task/PlateAndGrape/Plate/plateTrigger").GetComponent&lt;Collider&gt;();
+	targetScriptVar = transform.Find("/Task/Triggers/Target").GetComponent&lt;targetScript&gt;();
+	trialScriptVar = transform.Find("/Task").GetComponent&lt;trialScript&gt;();
+}
+	</div>
+
+	<h3>OnTriggerExit()</h3>
+	<div class="code">
+private void OnTriggerExit(Collider other) {
+	if (isActiveAndEnabled && !targetScriptVar.plateInTarget && other == plateTrigger) {
+		trialScriptVar.trialStageTrigger(-5); // failed: reached out of bounds without hitting target
+		targetScriptVar.setMeshSuccess(false);
+	}
+}
+	</div>
+
+</div>
+
+</body>
+</html>

@@ -3,77 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>   </title>
+    <title></title>
 </head>
 <body>
-<form class="tabcontent">      
-<div class="form-control">         
-<inputcolumn>
+<form class="param-form">
         
 <!-- Content: --> 
- 
- 
-     
-<name> Number of trials:</name><inputs></inputs>
-    
-<subname>Baseline:</subname>
-    <inputs>
-    <input id="NT_BL" name="trialScript,paradigmBaseline" type="number" value="30" />
-    <label for="NT_BL"> (no perturbation) </label>
-    </inputs> 
-    
-<subname>Gradual adaptation:</subname>
-    <inputs>
-    <input id="NT_AG" name="trialScript,paradigmGradual" type="number" value="60" />
-    <label for="NT_AG"> (perturbation increases linearly from 0 to "Magnitude") </label>
-    </inputs> 
-    <subname></subname><inputs>
-    <note> set "gradual portion = 0" for abrupt schedule paradigms. </note>
-    </inputs>
-    
-<subname>Adaptation plateau:</subname>
-    <inputs>
-    <input id="NT_AP" name="trialScript,paradigmFullPerturbation" type="number" value="60" />
-    <label for="NT_AP"> (perturbation equals value specified in "Magnitude" tab) </label>
-    </inputs> 
-    
-<subname>Washout:</subname>
-    <inputs>
-    <input id="NT_AP" name="trialScript,paradigmWashout" type="number" value="60" />
-    <label for="NT_AP"> (no perturbation) </label>
-    </inputs> 	
- 
+   
+<fieldset class="no-trial-builder-group help-builder-group">    
+	<div class="name-type name"> Number of trials:</div> 
 
-<name>Manual override:</name>
-    <inputs>	    	  	    
-    <input id="NTOH" name="trialScript,paradigmManual" type="hidden" value="FALSE">
-    <input id="NTO" name="trialScript,paradigmManual" type="checkbox" value="TRUE">	
-    <label for="NTO">Use "trials.csv" input for perturbation schedule</label>	 
-    </inputs> 
-    
-    <longnotetitle>You can provide trial-by-trial gain perturbation values using a .csv file.</longnotetitle>   
-    <longnote>Name of file: trials.csv</longnote>
-    <longnote> Fill as follows:</longnote>
-    <longnotesmaller>First column = trialScript</longnotesmaller>
-    <longnotesmaller> Second column = leftHandGainY (or desired hand and direction)</longnotesmaller>   
-    <longnotesmaller> From 3rd to last column = value of gain on each trial"</longnotesmaller>   
-    <longnotesmaller> (i.e., 3rd column -> trial 1, 2nd column -> trial 2, etc...)</longnotesmaller>  
-    <longnote> Check the "override" box above to use the trials.csv file</longnote>    
+	<div class="fullrow-type smallspace"></div> 
 
+	<div class="name-type subname">Baseline:</div>
+		 <div class="inputs-type inputs">
+		<input id="gainscript-paradigmbaseline" name="gainScript,paradigmBaseline" type="number" step="any" min="0">
+		<label for="gainscript-paradigmbaseline" class="label-after-input label-end-block"> (no perturbation) </label>
+		</div> 
+
+	<div class="fullrow-type smallspace"></div> 
+
+	<div class="name-type subname">Gradual adaptation:</div>
+		 <div class="inputs-type inputs">
+		<input id="gainscript-paradigmgradual" name="gainScript,paradigmGradual" type="number" step="any" min="0">
+		<label for="gainscript-paradigmgradual" class="label-after-input label-end-block"> (perturbation increases linearly from 0 to "Magnitude") </label>
+		</div>  
+		<div class="fullrow-type smallspace"></div><div class="inputs-type inputsnote"> Set "gradual adaptation = 0" for abrupt schedule paradigms. </div>
+	 
+
+	<div class="fullrow-type mediumspace"></div>
+	 
+
+	<div class="name-type subname">Adaptation plateau:</div>
+		 <div class="inputs-type inputs">
+		<input id="gainscript-paradigmfullperturbation" name="gainScript,paradigmFullPerturbation" type="number" step="any" min="0">
+		<label for="gainscript-paradigmfullperturbation" class="label-after-input label-end-block"> (perturbation equals value specified in "Magnitude" tab) </label>
+		</div> 
+
+	<div class="fullrow-type smallspace"></div> 
+
+	<div class="name-type subname">Washout:</div>
+		 <div class="inputs-type inputs">
+		<input id="gainscript-paradigmwashout" name="gainScript,paradigmWashout" type="number" step="any" min="0">
+		<label for="gainscript-paradigmwashout" class="label-after-input label-end-block"> (no perturbation) </label>
+		</div> 	   
+	   
+</fieldset>  
+	 
+	<div class="fullrow-type largespace"></div>
+	<div class="longnote-type longnote">This tab defines perturbation&nbsp;<b><u>Schedule</u></b>&nbsp;& next tab will define&nbsp;<b><u>Magnitude</u></b></div> 
+		<div class="longnote-type longnotetitle">How to define the &nbsp;<b><u>Gain Pertubation Schedule</u></b>:</div> 
+		<div class="longnote-type longnote">Option 1: Use this tab (Paradigm Tab) to define a standard adaptation paradigm</div>
+		<div class="longnote-type longnote">&emsp;The gain will be:</div>
+		<div class="longnote-type longnotesmaller">&emsp;• zero in baseline (no perturbation) </div> 
+		<div class="longnote-type longnotesmaller">&emsp;• gradually ramp up in gradual adaptation </div>
+		<div class="longnote-type longnotesmaller">&emsp;• max - equal to total perturbation - at adaptation plateau </div>
+		<div class="longnote-type longnotesmaller">&emsp;• zero in washout (no perturbation) </div>  
+		<div class="longnote-type longnote">Option 2: Click the gear icon on the next tab to customize gain trial-by-trial</div> 
+		<div class="longnote-type longnotesmaller">&emsp;(choosing Option 2 would overwrite the values defined here)</div>   
+   
+	
  
-    
-    
  
 <!-- End of Content --> 
  
-</inputcolumn> 
-</div>  
-<figurecolumn>
+</form> 
+<div class="param-img">
     
-    <img src="web/img/parameters/adaptParadigm.png"  style="width:100%">
- <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
-</figurecolumn>
+    <img src="web/img/parameters/adaptParadigm.png"  >
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  > --> 
+</div>
         
-</form>
-</body>
+</body> 
 </html>

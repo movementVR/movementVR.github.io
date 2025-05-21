@@ -1,0 +1,17 @@
+{
+	"path": "/web/help/",
+	"scripts": {  
+		"entry":[ 
+		],
+		"main":[  
+		]
+	},
+    "css": {  
+	},
+    "html": {
+		"main":[
+        	"help.html"
+    	]
+	}
+}
+ 

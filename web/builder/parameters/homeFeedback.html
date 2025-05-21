@@ -3,61 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>   </title>
+    <title></title>
 </head>
 <body>
-<form class="tabcontent">      
-<div class="form-control">         
-<inputcolumn>
+<form class="param-form">
         
 <!-- Content: --> 
- 
- <!--
-<name> Hand home color, with feedback on whether hands are in home position or not </name> <inputs></inputs>-->
-   
-<name title="Hand home mesh color, with feedback on whether hands are in home position or not">Mesh color:</name> 
-    <inputs></inputs>
-<subname title="Mesh color when hands are in home position">Hands in home:</subname>
-    <inputs>
-    <label for="HANDTARGET_COLOR_S_R">R:</label>
-    <input id="HANDTARGET_COLOR_S_R" name="setupScript,handStartingBoundMeshColorSuccessR" type="number" value="0" />
-    <label for="HANDTARGET_COLOR_S_G">G:</label>
-    <input id="HANDTARGET_COLOR_S_G" name="setupScript,handStartingBoundMeshColorSuccessG" type="number" value="0.75" />
-    <label for="HANDTARGET_COLOR_S_B">B:</label>
-    <input id="HANDTARGET_COLOR_S_B" name="setupScript,handStartingBoundMeshColorSuccessB" type="number" value="0.4" />
-    <label for="HANDTARGET_COLOR_S_A">Alpha:</label>
-    <input id="HANDTARGET_COLOR_S_A" name="setupScript,handStartingBoundMeshColorSuccessAlpha" type="number" value="0.3" />
-    </inputs>    
-    
-<subname title="Mesh color when hands are not in home position">Hand not in home:</subname>
-    <inputs>
-    <label for="HANDTARGET_COLOR_U_R">R:</label>
-    <input id="HANDTARGET_COLOR_U_R" name="setupScript,handStartingBoundMeshColorUnsuccessR" type="number" value="1" />
-    <label for="HANDTARGET_COLOR_U_G">G:</label>
-    <input id="HANDTARGET_COLOR_U_G" name="setupScript,handStartingBoundMeshColorUnsuccessG" type="number" value="0" />
-    <label for="HANDTARGET_COLOR_U_B">B:</label>
-    <input id="HANDTARGET_COLOR_U_B" name="setupScript,handStartingBoundMeshColorUnsuccessB" type="number" value="0" />
-    <label for="HANDTARGET_COLOR_U_A">Alpha:</label>
-    <input id="HANDTARGET_COLOR_U_A" name="setupScript,handStartingBoundMeshColorUnsuccessAlpha" type="number" value="0.3" />
-    </inputs>    
-    
-<subname>Coupled?</subname><inputs> 
-    <input id="HANDTARGET_COLOR_CH" name="setupScript,handStartingBoundMeshColorHandsCoupled" type="radio" value="FALSE"  checked >
-    <label for="HANDTARGET_COLOR_CH">No (respective hand in home)</label> 
-    <input id="HANDTARGET_COLOR_C" name="setupScript,handStartingBoundMeshColorHandsCoupled" type="radio" value="TRUE"   >
-    <label for="HANDTARGET_COLOR_C">Yes (both hands in homes)</label> 
-    </inputs>
-    
-    
+  
+	
+		   
+<fieldset class="trial-builder-group">   
+	<div class="name-type name">Mesh color:</div> 
+
+	<div class="fullrow-type smallspace"></div>
+
+	<div class="name-type subname">Hands in home:</div>
+		 <div class="inputs-type inputs">
+	  	<input type="color" id="setupscript-handstartingboundmeshcolorsuccess_picker" class="picker-color helper-input">
+		<label for="setupscript-handstartingboundmeshcolorsuccessr" class="label-before-input hidden-color hidden-label">R:</label>
+		<input id="setupscript-handstartingboundmeshcolorsuccessr" name="setupScript,handStartingBoundMeshColorSuccessR" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+		<label for="setupscript-handstartingboundmeshcolorsuccessg" class="label-before-input hidden-color hidden-label">G:</label>
+		<input id="setupscript-handstartingboundmeshcolorsuccessg" name="setupScript,handStartingBoundMeshColorSuccessG" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+		<label for="setupscript-handstartingboundmeshcolorsuccessb" class="label-before-input hidden-color hidden-label">B:</label>
+		<input id="setupscript-handstartingboundmeshcolorsuccessb" name="setupScript,handStartingBoundMeshColorSuccessB" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+		<label for="setupscript-handstartingboundmeshcolorsuccessalpha" class="label-before-input">Alpha:</label>
+		<input id="setupscript-handstartingboundmeshcolorsuccessalpha" name="setupScript,handStartingBoundMeshColorSuccessAlpha" type="number" step="any" min="0" max="1">
+		</div>    
+
+	<div class="fullrow-type smallspace"></div>    
+
+	<div class="name-type subname">Hand not in home:</div>
+		 <div class="inputs-type inputs">	
+		<input type="color" id="setupscript-handstartingboundmeshcolorunsuccess_picker" class="picker-color helper-input">
+		<label for="setupscript-handstartingboundmeshcolorunsuccessr" class="label-before-input hidden-color hidden-label">R:</label>
+		<input id="setupscript-handstartingboundmeshcolorunsuccessr" name="setupScript,handStartingBoundMeshColorUnsuccessR" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+		<label for="setupscript-handstartingboundmeshcolorunsuccessg" class="label-before-input hidden-color hidden-label">G:</label>
+		<input id="setupscript-handstartingboundmeshcolorunsuccessg" name="setupScript,handStartingBoundMeshColorUnsuccessG" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+		<label for="setupscript-handstartingboundmeshcolorunsuccessb" class="label-before-input hidden-color hidden-label">B:</label>
+		<input id="setupscript-handstartingboundmeshcolorunsuccessb" name="setupScript,handStartingBoundMeshColorUnsuccessB" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+		<label for="setupscript-handstartingboundmeshcolorunsuccessalpha" class="label-before-input">Alpha:</label>
+		<input id="setupscript-handstartingboundmeshcolorunsuccessalpha" name="setupScript,handStartingBoundMeshColorUnsuccessAlpha" type="number" step="any" min="0" max="1">
+		</div>    
+
+	<div class="fullrow-type largespace"></div>    
+
+	<div class="name-type subname">Coupled?</div> <div class="inputs-type inputs"> 
+		<input id="setupscript-handstartingboundmeshcolorhandscoupled_false" name="setupScript,handStartingBoundMeshColorHandsCoupled" type="radio" value="FALSE">
+		<label for="setupscript-handstartingboundmeshcolorhandscoupled_false" class="label-after-input">No (respective hand in home)</label> 
+		</div> <div class="inputs-type inputs"> 
+		<input id="setupscript-handstartingboundmeshcolorhandscoupled_true" name="setupScript,handStartingBoundMeshColorHandsCoupled" type="radio" value="TRUE">
+		<label for="setupscript-handstartingboundmeshcolorhandscoupled_true" class="label-after-input label-end-block">Yes (both hands in homes)</label> 
+		</div>
+</fieldset>
+	
+	<div class="fullrow-type largespace"></div>    
+		<div class="fullname-type namenote">&emsp;(Color of home mesh changes immediately to signal</div>
+		<div class="fullname-type namenote">&emsp; whether hand(s) are meeting home position criteria)</div>
+
+
  
 <!-- End of Content --> 
  
-</inputcolumn> 
-</div>  
-<figurecolumn>
- <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
-</figurecolumn>
+</form> 
+<div class="param-img">
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  > --> 
+</div>
         
-</form>
-</body>
+</body> 
 </html>

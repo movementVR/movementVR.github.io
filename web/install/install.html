@@ -1,30 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
-   
+	<meta charset="UTF-8">
+	<title>MovementVR Application</title>
 </head>
-<body>  
-<!--
-<script src="generalScript.js"></script>
-<script src="trialDesignScript.js"></script>-->
+<body>
 
- 
-<h3>Download</h3> 
-<h4>Download the .apk installer for MovementVR using the button below: </h4>
-<h5>Note: this is a beta pre-release version. We expect to release the final version of the app
-on the Meta store by end of 2024. </h5> 
-<h3><button onclick="downloadMovementVR_APK()"  >Download APK</button></h3>
- <br><br>
-<h3>Install</h3> 
-<h4>Install the app on your VR headset following the instructions for your model.</h4> 
-    <h5>Step-by-step instructions for Meta Quest 2 and other Meta/Oculus HMD:</h5>
-    <h5><a href="https://developer.oculus.com/documentation/unity/ts-odh/" target="_blank">
-        https://developer.oculus.com/documentation/unity/ts-odh/ 
-    </a></h5> 
+	<div id="mainpage-parent" class="mainpage-parent general-parent">
 
-    </body>
+		<!-- On‑this‑page box -->
+		<nav class="on-this-page" aria-label="On this page">
+			<h2>Contents</h2>
+			<ul>
+                <li><a href="#">Placeholder</a></li> 
+                <li><a href="#">Placeholder</a></li> 
+			</ul>
+		</nav>
+
+		<!-- Content area -->
+		<div id="mainpage-content" class="mainpage-content page-content">
+
+			<h1>MovementVR Application</h1>
+
+	<div id="download" class="section-header">Download MovementVR</div>
+<div class="section-content">
+
+	<div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+		<div style="flex: 1; min-width: 300px;">
+			<div class="features-panel-header section-panel-header">Meta Quest</div>
+			<p>Install the APK version on your Meta Quest headset:</p>
+			<a href="web/app/movementvr.apk" class="button">Download APK</a>
+			<p class="temp-hidden"><small>Version 1.2.3 • Updated May 2025</small></p>
+			<p>Learn how to install, run the app, and export your data:</p>
+			<a href="web/help/helpinstall.html"  onclick="openPopup(event, this.href, 0.7)" class="button">Setup Guide</a>
+		</div>
+
+		<div style="flex: 1; min-width: 300px;" class="temp-hidden">
+			<div class="features-panel-header section-panel-header">Rift + Leap Motion</div>
+			<p>Install the Windows executable for PC VR setups:</p>
+			<a href="https://github.com/yourrepo/releases/latest" class="button">Download EXE</a>
+			<p><small>Version 1.2.3 • Updated May 2025</small></p>
+			<a href="/install-rift.html" class="button">Rift Setup Guide</a>
+			<p><small>This guide includes how to install, run the app, and export your data.</small></p>
+		</div>
+	</div>
+
+</div>
+
+<div id="video" class="section-header">Demo Video</div>
+			<div class="section-content">
+		<p>Watch a short demo of MovementVR in action:</p>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/5mmTTaB2d3I?si=Lt-yAKUhvwIgqM2W" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+	</div>
+
+			<div id="requirements" class="section-header temp-hidden"  >Requirements</div>
+			<div class="section-content temp-hidden">
+		<h3>Meta Quest</h3>
+		<ul>
+			<li>Quest 2, 3, or Pro with Developer Mode enabled</li>
+			<li>PC with SideQuest installed</li>
+			<li>USB cable for installation</li>
+		</ul>
+		<h3>Rift + Leap Motion</h3>
+		<ul>
+			<li>Windows 10/11 PC</li>
+			<li>Oculus Rift / Rift S</li>
+			<li>Leap Motion Controller with Orion software</li>
+		</ul>
+	</div>
+
+			<div id="support" class="section-header">Support</div>
+			<div class="section-content">
+		<p>If you need help, feel free to reach out: <a href="mailto:movementvr.team@gmail.com">movementvr.team@gmail.com</a></p>
+	</div>
+
+			<div id="changelog" class="section-header temp-hidden">Changelog</div>
+			<div class="section-content temp-hidden">
+		<p>View the full release notes:</p>
+		<a href="https://github.com/yourrepo/releases" class="button">View Release History</a>
+	</div>
+
+		</div><!-- mainpage-content -->
+	</div><!-- mainpage-parent -->
+</body>
 </html>
- 

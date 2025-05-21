@@ -3,57 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Plate Object  </title>
+    <title></title>
 </head>
 <body>
-<form class="tabcontent">      
-<div class="form-control">         
-<inputcolumn>
+<form class="param-form">
         
 <!-- Content: --> 
- 
-
-<name>Size [m]:</name>
-    <inputs>
-    <label for="PLATE_SCALE_X">X:</label>
-    <input id="PLATE_SCALE_X" name="setupScript,plateSizeX" type="number" value="0.25" />
-    <label for="PLATE_SCALE_Y">Y:</label>
-    <input id="PLATE_SCALE_Y" name="setupScript,plateSizeY" type="number" value="0.02" />
-    <label for="PLATE_SCALE_Z">Z:</label>
-    <input id="PLATE_SCALE_Z" name="setupScript,plateSizeZ" type="number" value="0.25" />
-    </inputs>         
-    
   
-<name>Physics:</name>
-    <inputs></inputs>
-    <subname>Mass[kg]:</subname>  
-    <inputs> <input id="PLATE_MASS" name="setupScript,plateMass" type="number" value="1" /></inputs>
-    <subname>Drag:</subname>  
-    <inputs> 
-    <label for="PLATE_DRAG">Linear:</label>
-    <input id="PLATE_DRAG" name="setupScript,plateDrag" type="number" value="0" />
-    <label for="PLATE_ADRAG">Angular:</label>
-    <input id="PLATE_ADRAG" name="setupScript,plateAngularDrag" type="number" value="0.05" />
-    </inputs>  
-    <subname>Friction w/ hands:</subname>
-    <inputs>
-    <label for="PLATE_FRICTIOND">Dynamic:</label>
-    <input id="PLATE_FRICTIOND" name="setupScript,frictionPlateHandsDynamic" type="number" value="0.6" />
-    <label for="PLATE_FRICTIONS">Static:</label>
-    <input id="PLATE_FRICTIONS" name="setupScript,frictionPlateHandsStatic" type="number" value="0.6" />
-    </inputs> 
-
+	
+		 
+<fieldset class="trial-builder-group"> 
+	<div class="name-type name">Size [m]:</div>
+		 <div class="inputs-type inputs">
+		<label for="setupscript-platesizex" class="label-before-input label-start-block">X:</label>
+		<input id="setupscript-platesizex" name="setupScript,plateSizeX" type="number" step="any" min="0">
+		<label for="setupscript-platesizey" class="label-before-input">Y:</label>
+		<input id="setupscript-platesizey" name="setupScript,plateSizeY" type="number" step="any" min="0">
+		<label for="setupscript-platesizez" class="label-before-input">Z:</label>
+		<input id="setupscript-platesizez" name="setupScript,plateSizeZ" type="number" step="any" min="0">
+		</div>     	
+</fieldset> 
+	
+		<div class="fullrow-type largespace"></div> 
+<fieldset class="trial-builder-group"> 
+	<div class="name-type name">Physics:</div>
+		 
+		<div class="fullrow-type smallspace"></div>
+		 
+		<div class="name-type subname">Mass [kg]:</div>  
+		 <div class="inputs-type inputs"> <input id="setupscript-platemass" name="setupScript,plateMass" type="number" step="any" min="0"></div>
+		<div class="fullrow-type smallspace"></div>
+		<div class="name-type subname">Drag:</div>  
+		 <div class="inputs-type inputs"> 
+		<label for="setupscript-platedrag" class="label-before-input label-start-block">Linear:</label>
+		<input id="setupscript-platedrag" name="setupScript,plateDrag" type="number" step="any" min="0">
+		<label for="setupscript-plateangulardrag" class="label-before-input">Angular:</label>
+		<input id="setupscript-plateangulardrag" name="setupScript,plateAngularDrag" type="number" step="any" min="0">
+		</div>  
+		<div class="fullrow-type smallspace"></div>  
+		<div class="name-type subname">Friction w/ hands:</div>
+		 <div class="inputs-type inputs">
+		<label for="setupscript-frictionplatehandsdynamic" class="label-before-input label-start-block">Dynamic:</label>
+		<input id="setupscript-frictionplatehandsdynamic" name="setupScript,frictionPlateHandsDynamic" type="number" step="any" min="0">
+		<label for="setupscript-frictionplatehandsstatic" class="label-before-input">Static:</label>
+		<input id="setupscript-frictionplatehandsstatic" name="setupScript,frictionPlateHandsStatic" type="number" step="any" min="0">
+		</div> 	
+</fieldset> 
+	 
 
     
  
 <!-- End of Content --> 
  
-</inputcolumn> 
-</div>  
-<figurecolumn>
- <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
-</figurecolumn>
+</form> 
+<div class="param-img">
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  > --> 
+</div>
         
-</form>
-</body>
+</body> 
 </html>

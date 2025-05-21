@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>plateAndGrapeScript.cs Documentation</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			line-height: 1.6;
+			margin: 2rem;
+		}
+		h1, h2, h3 {
+			color: #2a4a6c;
+			margin-top: 2rem;
+		}
+		.code {
+			background-color: #f4f4f4;
+			padding: 0.5rem;
+			border-left: 3px solid #ccc;
+			font-family: monospace;
+			white-space: pre-wrap;
+		}
+		.section {
+			margin-bottom: 2rem;
+		}
+	</style>
+</head>
+<body>
+
+<h1>Documentation: <code>plateAndGrapeScript.cs</code></h1>
+
+<div class="section">
+	<h2>1. Overview</h2>
+	<p>
+		The <code>plateAndGrapeScript</code> class manages the visual, physical, and feedback behavior of the plate and grape objects during each trial. It handles trial stage transitions (e.g., setup, interaction, and deactivation), resets transforms, controls feedback particle effects, and toggles the physical state of the objects based on collision or tracking conditions.
+	</p>
+</div>
+
+<div class="section">
+	<h2>2. Functional Blocks</h2>
+
+	<h3>Initialization</h3>
+	<ul>
+		<li><code>startup()</code>: Finds key child objects (plate, grape), gets component references, and prepares internal state.</li>
+		<li><code>storeInitialPlateTransform()</code>: Stores initial position and rotation of plate and grape for future reset.</li>
+	</ul>
+
+	<h3>Trial Stage Handling</h3>
+	<ul>
+		<li><code>changeTrialStage()</code>: Responds to trial stages to reset, activate, disable, or provide feedback through particle effects.</li>
+	</ul>
+
+	<h3>Physics and Effects</h3>
+	<ul>
+		<li><code>resetAndActivate()</code>: Repositions and activates plate or grape with cleared velocity.</li>
+		<li><code>setPlateKinematic()</code>: Freezes or unfreezes movement of plate and grape using rigidbody constraints.</li>
+		<li><code>getPlatePenetration()</code>: Detects collisions between the plate and tracked hand colliders using Unity's <code>ComputePenetration()</code>.</li>
+	</ul>
+
+	<h3>Particle Effects</h3>
+	<ul>
+		<li><code>playEffect()</code>: Configures and plays the feedback particle effect based on trial outcome.</li>
+		<li><code>getEffectColor()</code>: Selects color for the particle effect based on success or failure.</li>
+	</ul>
+
+</div>
+
+<div class="section">
+	<h2>3. Full Technical Details</h2>
+
+	<h3>Internal Fields</h3>
+	<div class="code">
+// Transforms
+Vector3 plateStartingPosition;
+Quaternion plateStartingRotation;
+Vector3 grapeStartingPosition;
+Quaternion grapeStartingRotation;
+
+// Feedback color (success and failure)
+float plateGrapeColorSuccessR, plateGrapeColorSuccessG, plateGrapeColorSuccessB, plateGrapeColorSuccessAlpha;
+float plateGrapeColorUnsuccessR, plateGrapeColorUnsuccessG, plateGrapeColorUnsuccessB, plateGrapeColorUnsuccessAlpha;
+
+// Trial state
+bool trialSuccess = true;
+
+// Components
+ParticleSystem particle;
+plateScript plateScriptVar;
+GameObject plate, grape;
+	</div>
+
+	<h3>startup()</h3>
+	<div class="code">
+public void startup() {
+	particle = GetComponent&lt;ParticleSystem&gt;();
+	plateScriptVar = GetComponentInChildren&lt;plateScript&gt;(true);
+	plate = transform.Find("Plate").gameObject;
+	grape = transform.Find("Grape").gameObject;
+}
+	</div>
+
+	<h3>changeTrialStage()</h3>
+	<div class="code">
+public void changeTrialStage(int stage, float info) {
+	switch (stage) {
+		case 5: // End of reach
+			trialSuccess = info > 0;
+			playEffect();
+			grape.SetActive(false);
+			plate.SetActive(false);
+			break;
+
+		case 3: // Before reach begins
+			resetAndActivate(plate, plateStartingPosition, plateStartingRotation);
+			resetAndActivate(grape, grapeStartingPosition, grapeStartingRotation);
+			playEffect();
+			plateScriptVar.waitingForHandContactFlag = true;
+			break;
+
+		case 4: // Reach has begun
+			plateScriptVar.waitingForHandContactFlag = false;
+			break;
+	}
+}
+	</div>
+
+	<h3>resetAndActivate()</h3>
+	<div class="code">
+void resetAndActivate(GameObject obj, Vector3 pos, Quaternion rot) {
+	Rigidbody rb = obj.GetComponent&lt;Rigidbody&gt;();
+	rb.velocity = Vector3.zero;
+	rb.angularVelocity = Vector3.zero;
+	obj.transform.localPosition = pos;
+	obj.transform.rotation = rot;
+	obj.SetActive(true);
+}
+	</div>
+
+	<h3>playEffect() and getEffectColor()</h3>
+	<div class="code">
+void playEffect() {
+	var shape = particle.shape;
+	shape.position = plate.transform.localPosition;
+
+	var main = particle.main;
+	main.startColor = getEffectColor();
+
+	particle.Play();
+}
+
+Color getEffectColor() {
+	return trialSuccess
+		? new Color(plateGrapeColorSuccessR, plateGrapeColorSuccessG, plateGrapeColorSuccessB, plateGrapeColorSuccessAlpha)
+		: new Color(plateGrapeColorUnsuccessR, plateGrapeColorUnsuccessG, plateGrapeColorUnsuccessB, plateGrapeColorUnsuccessAlpha);
+}
+	</div>
+
+	<h3>storeInitialPlateTransform()</h3>
+	<div class="code">
+public void storeInitialPlateTransform() {
+	plateStartingPosition = plate.transform.localPosition;
+	plateStartingRotation = plate.transform.rotation;
+	grapeStartingPosition = grape.transform.localPosition;
+	grapeStartingRotation = grape.transform.rotation;
+}
+	</div>
+
+	<h3>setPlateKinematic()</h3>
+	<div class="code">
+public void setPlateKinematic(bool kineFlag) {
+	Rigidbody plateRb = plate.GetComponent&lt;Rigidbody&gt;();
+	Rigidbody grapeRb = grape.GetComponent&lt;Rigidbody&gt;();
+	if (kineFlag) {
+		plateRb.constraints = RigidbodyConstraints.FreezeAll;
+		grapeRb.constraints = RigidbodyConstraints.FreezeAll;
+	} else {
+		plateRb.constraints = RigidbodyConstraints.None;
+		grapeRb.constraints = RigidbodyConstraints.None;
+	}
+}
+	</div>
+
+	<h3>getPlatePenetration()</h3>
+	<div class="code">
+public bool getPlatePenetration(Collider[] inputObjectColliders) {
+	Collider[] plateColliders = plate.GetComponentsInChildren&lt;Collider&gt;();
+	foreach (Collider plateCollider in plateColliders) {
+		if (!plateCollider.isTrigger) {
+			foreach (Collider inputCollider in inputObjectColliders) {
+				if (Physics.ComputePenetration(
+					plateCollider, plateCollider.transform.position, plateCollider.transform.rotation,
+					inputCollider, inputCollider.transform.position, inputCollider.transform.rotation,
+					out Vector3 direction, out float distance)) {
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
+	</div>
+
+</div>
+
+</body>
+</html>

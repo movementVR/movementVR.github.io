@@ -3,80 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Grape  </title>
+    <title></title>
 </head>
 <body>
-<form class="tabcontent">      
-<div class="form-control">         
-<inputcolumn>
+<form class="param-form">
         
 <!-- Content: --> 
+  
+	
+		 
+<fieldset class="trial-builder-group"> 
+	<div class="name-type name">Position [m]:</div>
+		 <div class="inputs-type inputs">
+		<label for="setupscript-grapelocalpositionx" class="label-before-input label-start-block">X:</label>
+		<input id="setupscript-grapelocalpositionx" name="setupScript,grapeLocalPositionX" type="number" step="any">
+		<label for="setupscript-grapelocalpositiony" class="label-before-input">Y:</label>
+		<input id="setupscript-grapelocalpositiony" name="setupScript,grapeLocalPositionY" type="number" step="any">
+		<label for="setupscript-grapelocalpositionz" class="label-before-input">Z:</label>
+		<input id="setupscript-grapelocalpositionz" name="setupScript,grapeLocalPositionZ" type="number" step="any">
+		</div> 
+		<div class="name-type namenote">(wrt plate center)&emsp;</div>
+		 <div class="inputs-type inputs">
+		<input id="setupscript-grapelocalpositiony_auto_false" name="setupScript,grapeLocalPositionY_Auto" type="hidden" value="FALSE">
+		<input id="setupscript-grapelocalpositiony_auto_true" name="setupScript,grapeLocalPositionY_Auto" type="checkbox" value="TRUE">
+		<label for="setupscript-grapelocalpositiony_auto_true" class="label-after-input label-end-block">Set Y automatically (grape rests on plate)</label>	
+		</div>	
+</fieldset> 
+	
+		<div class="fullrow-type largespace"></div> 
+<fieldset class="trial-builder-group"> 
+	<div class="name-type name">Size [m]:</div>
+		 <div class="inputs-type inputs">
+		<label for="setupscript-grapesizex" class="label-before-input label-start-block">X:</label>
+		<input id="setupscript-grapesizex" name="setupScript,grapeSizeX" type="number" step="any" min="0">
+		<label for="setupscript-grapesizey" class="label-before-input">Y:</label>
+		<input id="setupscript-grapesizey" name="setupScript,grapeSizeY" type="number" step="any" min="0">
+		<label for="setupscript-grapesizez" class="label-before-input">Z:</label>
+		<input id="setupscript-grapesizez" name="setupScript,grapeSizeZ" type="number" step="any" min="0">
+		</div>   	
+</fieldset> 
+	
+		<div class="fullrow-type largespace"></div> 
+<fieldset class="trial-builder-group"> 
+	<div class="name-type name">Physics:</div>
+		 
+		<div class="fullrow-type smallspace"></div>
+		 
+		<div class="name-type subname">Mass [kg]:</div>  
+		 <div class="inputs-type inputs"> <input id="setupscript-grapemass" name="setupScript,grapeMass" type="number" step="any" min="0"></div>
+		<div class="fullrow-type smallspace"></div>
+		<div class="name-type subname">Drag:</div>  
+		 <div class="inputs-type inputs">          
+		<label for="setupscript-grapedrag" class="label-before-input label-start-block">Linear:</label>
+		<input id="setupscript-grapedrag" name="setupScript,grapeDrag" type="number" step="any" min="0">
+		<label for="setupscript-grapeangulardrag" class="label-before-input">Angular:</label>
+		<input id="setupscript-grapeangulardrag" name="setupScript,grapeAngularDrag" type="number" step="any" min="0">
+		</div>  
+		<div class="fullrow-type smallspace"></div>  
+		<div class="name-type subname">Friction w/ plate:</div>
+		 <div class="inputs-type inputs">        
+		<label for="setupscript-frictionplategrapedynamic" class="label-before-input label-start-block">Dynamic:</label>
+		<input id="setupscript-frictionplategrapedynamic" name="setupScript,frictionPlateGrapeDynamic" type="number" step="any" min="0">
+		<label for="setupscript-frictionplategrapestatic" class="label-before-input">Static:</label>
+		<input id="setupscript-frictionplategrapestatic" name="setupScript,frictionPlateGrapeStatic" type="number" step="any" min="0">
+		</div>  
+		<div class="fullrow-type smallspace"></div>  
+		<div class="name-type subname">Manipulation:</div>
+		 <div class="inputs-type inputs">  
+		<input id="grapescript-grapealwaysignorehands_false" name="grapeScript,grapeAlwaysIgnoreHands" type="hidden" value="FALSE">
+		<input id="grapescript-grapealwaysignorehands_true" name="grapeScript,grapeAlwaysIgnoreHands" type="checkbox" value="TRUE">
+		<label for="grapescript-grapealwaysignorehands_true" class="label-after-input label-end-block">Not allowed (ignore hands)</label>	
+		</div>    	
+</fieldset> 
+	 		
  
- 
-      
-<name>Position [m]:</name>
-    <inputs>
-    <label for="GRAPE_OFFSET_X">X:</label>
-    <input id="GRAPE_OFFSET_X" name="setupScript,grapeLocalPositionX" type="number" value="0" />
-    <label for="GRAPE_OFFSET_Y">Y:</label>
-    <input id="GRAPE_OFFSET_Y" name="setupScript,grapeLocalPositionY" type="number" value="0.05" />
-    <label for="GRAPE_OFFSET_Z">Z:</label>
-    <input id="GRAPE_OFFSET_Z" name="setupScript,grapeLocalPositionZ" type="number" value="0" />
-    </inputs> 
-    <namenote> (wrt plate center)</namenote>
-    <inputs>
-    <input id="GRAPE_OFFSETYAUTO_H" name="setupScript,grapeLocalPositionY_Auto" type="hidden" value="FALSE">
-    <input id="GRAPE_OFFSETYAUTO" name="setupScript,grapeLocalPositionY_Auto" type="checkbox" value="TRUE" checked >
-    <label for="GRAPE_OFFSETYAUTO">Set Y automatically (grape rests on plate)</label>	
-    </inputs>
-    
-<name>Size [m]:</name>
-    <inputs>
-    <label for="GRAPE_SCALE_X">X:</label>
-    <input id="GRAPE_SCALE_X" name="setupScript,grapeSizeX" type="number" value="0.1" />
-    <label for="GRAPE_SCALE_Y">Y:</label>
-    <input id="GRAPE_SCALE_Y" name="setupScript,grapeSizeY" type="number" value="0.08" />
-    <label for="GRAPE_SCALE_Z">Z:</label>
-    <input id="GRAPE_SCALE_Z" name="setupScript,grapeSizeZ" type="number" value="0.08" />
-    </inputs>   
-    
-    
-<name>Physics:</name>
-    <inputs></inputs>
-    <subname>Mass[kg]:</subname>  
-    <inputs> <input id="GRAPE_MASS" name="setupScript,grapeMass" type="number" value="1" /></inputs>
-    <subname>Drag:</subname>  
-    <inputs>          
-    <label for="GRAPE_DRAG">Linear:</label>
-    <input id="GRAPE_DRAG" name="setupScript,grapeDrag" type="number" value="0" />
-    <label for="GRAPE_ADRAG">Angular:</label>
-    <input id="GRAPE_ADRAG" name="setupScript,grapeAngularDrag" type="number" value="0.05" />
-    </inputs>  
-    <subname>Friction w/ plate:</subname>
-    <inputs>        
-    <label for="GRAPE_FRICTIOND">Dynamic:</label>
-    <input id="GRAPE_FRICTIOND" name="setupScript,frictionPlateGrapeDynamic" type="number" value="0.3" />
-    <label for="GRAPE_FRICTIONS">Static:</label>
-    <input id="GRAPE_FRICTIONS" name="setupScript,frictionPlateGrapeStatic" type="number" value="0.3" />
-    </inputs>  
-    <subname>Manipulation:</subname>
-    <inputs>  
-    <input id="GRAPE_HANDS_IGNORE_H" name="grapeScript,grapeAlwaysIgnoreHands" type="hidden" value="FALSE">
-    <input id="GRAPE_HANDS_IGNORE" name="grapeScript,grapeAlwaysIgnoreHands" type="checkbox" value="TRUE" >
-    <label for="GRAPE_HANDS_IGNORE">Not allowed (ignore hands)</label>	
-    </inputs>    			
- 
-
-
  
 <!-- End of Content --> 
  
-</inputcolumn> 
-</div>  
-<figurecolumn>
- <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
-</figurecolumn>
+</form> 
+<div class="param-img">
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  > --> 
+</div>
         
-</form>
-</body>
+</body> 
 </html>

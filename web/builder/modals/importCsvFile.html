@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	 
+	<link rel="stylesheet" href="/web/general/general.css"> 
+	<link rel="stylesheet" href="/web/builder/sharedUtils/builderFormUtils.css">
+
+	<style>
+		
+		
+/* -------- action modals  -------- */
+
+  
+
+		
+        .import-csv-modal *{            
+            transition: opacity 0.5s ease, max-height 0.5s ease;
+
+			font-family: Arial, sans-serif;
+			line-height: 0.75;  
+			margin: 0;
+			padding: 0;    
+			box-sizing: border-box;    
+        }
+        .import-csv-modal .disabled { 
+            opacity:.45;  
+            cursor: not-allowed;
+        }
+
+        .import-csv-modal  .hidden-panel{ /* hides panels using max-height to allow transition */
+            max-height: 0 !important;           
+            opacity: 0 !important;
+        } 
+        
+        .import-csv-modal  .hidden-panel *{ /* hides panels using max-height to allow transition */
+            display: none !important;   
+        } 
+        .import-csv-modal  .activate-panel{
+            animation: highlightPanel 2s ease-out;
+        }
+
+        @keyframes highlightPanel {
+            0% { box-shadow: 0 0 0px rgba(0, 150, 150, 0); }
+            50% { box-shadow: 0 0 30px rgba(0, 150, 150, 0.8); }
+            100% { box-shadow: 0 0 0px rgba(0, 150, 150, 0); }
+        }
+
+
+        .import-csv-modal  .hidden{ /* 'hidden' class hides elements that are not templates (e.g. panels or options not in use) */
+            display: none !important;
+        } 
+
+
+        /* OVERALL ARCHITECTURE - PARENT to PANEL */
+        .import-csv-modal  .content.modal-parent{ 
+            width:  85%;
+            height: 85%; 
+            padding: 0px;
+        }
+
+
+        .import-csv-modal .content.modal-parent .x-close  {  
+             color:white;
+        }
+        .import-csv-modal .content.modal-parent .x-close:hover{ 
+            color:#ddebe9;
+        }
+
+        .import-csv-modal .content.modal-parent .modal-panel{
+/*            padding-bottom: 10px;  */
+            height: 100%; 
+        }
+
+        .import-csv-modal .content.modal-parent .modal-panel .panel-title{
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 0px;
+        }
+
+        .import-csv-modal .content.modal-parent .modal-panel .panel-scroll{ 
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            height: 100%; 
+            padding-bottom: 15px;
+        }
+
+
+        .import-csv-modal .content.modal-parent .modal-panel .panel-content{ 
+            gap: 15px;
+            padding-left: 20px;
+            padding-right: 20px;
+        /*    padding: 20px;   */
+            margin-bottom: 10px;
+        }
+
+
+        /* CONTENT: INPUT ROWS WITHIN THE PANEL  */
+        .import-csv-modal .content.modal-parent .modal-panel .input-row{ 
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding-top: 15px;
+        }
+        .import-csv-modal .content.modal-parent .modal-panel .input-row:nth-of-type(n+2){ 
+            border-top: 1px dashed #c7e3df;
+          /*  padding-top: 15px;*/
+        }
+
+
+        .import-csv-modal .content.modal-parent .modal-panel .input-row p,
+        .import-csv-modal .content.modal-parent .modal-panel .input-row label{  
+            font-size: 14px; 
+            text-align: left;
+            line-height: 2; 
+        }   
+		 .import-csv-modal .content.modal-parent .modal-panel .input-row label.reduced-line-height{   
+            line-height: 1.2; 
+        } 
+        .import-csv-modal .content.modal-parent .modal-panel .input-row p.section-title
+        { 
+            font-size: 16px;
+            font-size: 16px;
+            line-height: 1px;  
+        }    
+
+        .import-csv-modal .content.modal-parent .modal-panel .input-row .import-warning {
+            font-size: 12px;
+            line-height: 1;
+            font-style: italic;
+            color: red;
+            margin: 0px 20px 5px 20px; 
+            white-space: pre-wrap;  
+        }
+
+        .import-csv-modal .content.modal-parent .modal-panel .input-row .inputbubble{
+            display: flex;
+            align-self: stretch;
+            background: #ddebe9;
+            width: auto;
+            margin: 0px 20px;
+            flex-direction: column;
+            border-radius: 10px; 
+            padding: 5px 10px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            position:relative; 
+        }
+
+        .import-csv-modal .content.modal-parent .modal-panel .input-row .inputbubble .file-input{ 
+            width:360px;  
+        } 
+        .import-csv-modal .content.modal-parent .modal-panel .input-row .inputbubble .import-action-container{ 
+            position: absolute; 
+            right: 50px;  /* aligned to right border with 50px space */
+            top: 50%;   /* top + transform properties -> vertical alignment = center */
+            transform: translateY(-50%);
+        }  
+            
+        /* ACTION BUTTONS (BOTTOM ROW) */
+        .import-csv-modal .content.modal-parent .modal-panel .action-buttons{ 
+            display:flex;   
+			gap: 50px;		
+			margin-left: 50px;
+			margin-right: 50px;	
+			margin-top: auto;  /* pushes row down  */
+        }
+		
+        .import-csv-modal .content.modal-parent .modal-panel .action-buttons .action-button{ 
+            width:80px; 
+            padding:7px 12px; 
+            font-size:14px; 
+            border-radius:3px; 
+            cursor:pointer; 
+            transition:background-color .3s;  
+        }
+		
+        .import-csv-modal .content.modal-parent .modal-panel .action-buttons .action-button.help-button{   
+			margin: 0px;
+			margin-right: auto;
+        }
+        .import-csv-modal .content.modal-parent .modal-panel .action-buttons .action-button.ok-button{ 
+            font-weight:bold; 
+            color:white; 
+            background:var(--var-col-darkercyan); 
+            border:none; 
+        }
+        .import-csv-modal .content.modal-parent .modal-panel .action-buttons .action-button.ok-button:hover{ 
+            background:var(--var-col-mediumcyan); 
+        }
+
+        .import-csv-modal .content.modal-parent .modal-panel .action-buttons .action-button.cancel-button{  
+            border-width:1px; 
+        }
+        .import-csv-modal .content.modal-parent .modal-panel .action-buttons .action-button.cancel-button:hover{ 
+            background:#e5e5e5; 
+        }
+        
+	</style>
+</head>
+
+<body>
+	<!-- ROOT -->
+	<div class="builder general-modal action-modal import-csv-modal">
+		<div class="content modal-parent">
+			<button class="x-close" >×</button>
+
+			<div class="modal-panel">
+				<h2 class="panel-title">Import Parameters from CSV</h2>
+
+				<div class="panel-scroll">
+					<div class="panel-content">
+
+						<!-- STEP 1  -->
+						<div class="input-row import-panel">
+							<p class="section-title"><strong>Step 1: Upload File</strong></p>
+							<p>Select the .csv file containing your parameter values.</p>
+ 
+                            	<div class="inputbubble">
+								<div>
+									<input type="file" id="csvInputFile" class="file-input" accept=".csv">
+                                    <span class="import-action-container"> 
+                                        <button type="button" class="import-button">Load File</button>
+                                        <span class="import-info hidden">Loaded!</span>
+                                    </span>
+								</div>
+							</div>
+				            <p class="import-warning hidden"></p>
+						</div>
+
+						<!-- STEP 2   -->
+						<div class="input-row select-panel disabled">
+							<p class="section-title"><strong>Step 2: Select Parameters</strong></p>
+							<p>Which parameters do you want to import?</p>
+
+							<div class="inputbubble">
+								<div>
+									<input type="radio" id="importSelected" name="importScope" value="selected" checked>
+									<label for="importSelected" class="reduced-line-height"><strong>Selected parameters only</strong> (<span id="importScope_selected_paramName"></span>)</label>
+								</div>
+								<div>
+									<input type="radio" id="importAll" name="importScope" value="all">
+									<label for="importAll"><strong>All parameters in file</strong> (<span id="importScope_all_paramCount">0</span> found)</label>
+								</div>
+							</div>
+						</div>
+
+						<!-- STEP 3   -->
+						<div class="input-row constant-panel hidden-panel">
+							<p class="section-title"><strong>Step 3: Review Method for Constant Parameters</strong></p>
+							<p>The file contains constant (single-value) parameters. How do you want to handle these?</p>
+
+							<div class="inputbubble">
+								<div>
+									<input type="radio" id="keepFile" name="constantHandling" value="keep-file" checked>
+									<label for="keepFile"><strong>Keep Method as “File”</strong> (show read‑only values in Static Builder)</label>
+								</div>
+								<div>
+									<input type="radio" id="toStatic" name="constantHandling" value="to-static">
+									<label for="toStatic"><strong>Convert Method to “Static Builder”</strong> (copy and edit values in Static Builder)</label>
+								</div>
+							</div>
+						</div>
+
+					</div><!-- .panel-content -->
+
+					<!-- ACTION BUTTONS  -->
+					<div class="action-buttons">
+						<button id="help-button" type="button" class="action-button help-button secondary-button">Help</button>
+						<button type="button" class="action-button ok-button disabled">OK</button>
+						<button type="button" class="action-button cancel-button">Cancel</button>
+					</div>
+				</div><!-- .panel-scroll -->
+			</div><!-- .modal-panel -->
+		</div><!-- .content -->
+	</div><!-- .builder.general-modal.import-csv-modal -->
+
+	<script>
+ 
+        
+    // // Variable assignment for HTML elements // //      
+	const modal       = document.querySelector('.import-csv-modal');
+	const xClose      = modal.querySelector('.x-close');
+
+	const selectPanel   = modal.querySelector('.select-panel');
+	const constantPanel = modal.querySelector('.constant-panel');
+        
+	const fileInput   = modal.querySelector('.file-input');
+	const importBtn   = modal.querySelector('.import-button');
+	const importInfo    = modal.querySelector('.import-info');
+	const importWarning = modal.querySelector('.import-warning');
+        
+	const importScope_selected_paramName  = modal.querySelector('#importScope_selected_paramName');
+	const importScope_all_paramCountEl  = modal.querySelector('#importScope_all_paramCount');
+
+	const okBtn     = modal.querySelector('.ok-button');
+	const cancelBtn = modal.querySelector('.cancel-button');
+        
+ 
+    // // Initialization of variables used across functions // //   
+	let popupCallback      = null;
+	let popupValidation    = null; 
+	let validationOutput   = { 
+                errorMessage: "",
+                selectedParametersList: "",
+                parameterCount: 0,
+                selectedConstant: false,
+                anyConstant: false
+        }; 
+    let selectedScope;
+    let fileSource;
+         
+    
+    // // Code to setup event listeners // //   
+    // Step 1 Import Panel Events
+	fileInput.addEventListener('click', resetLoaded);
+	importBtn.addEventListener('click', clickImportButton);
+        
+    // Step 2 Select Panel Events
+    const importScopeRadioButtons = document.querySelectorAll('input[type="radio"][name="importScope"]');
+    importScopeRadioButtons.forEach( (radio) => {
+        radio.addEventListener('change', () => updateConstantPanelState(true));
+    });
+        
+    // Window action buttons (close, ok, cancel) Events 
+	xClose.addEventListener('click', () => closeModal('Cancel'));
+	okBtn.addEventListener('click', () => closeModal('OK'));
+	cancelBtn.addEventListener('click', () => closeModal('Cancel'));
+
+	 
+        
+    // // Support functions // //    
+	function openModal(validation=null, callback=null, importCsvGuide){ 
+		popupCallback = callback;
+		popupValidation = validation;
+		resetLoaded();
+        
+		// Sets Help
+        const helpButton = document.getElementById('help-button');
+        helpButton.onclick = () => helpButtonClick(importCsvGuide); 
+		
+        //  Opens Window
+        window.frameElement.style.display = "block"; 
+        modal.classList.remove('hidden');
+	}
+        
+        
+	function closeModal(buttonClicked){     
+        
+        // computes "constantAsStaticBuilder" flag from radio buttons: "keep-file"->FALSE, or "to-static"->TRUE
+        const constantAsStaticBuilder = 
+              document.querySelector('input[name="constantHandling"]:checked').value == "to-static";
+        
+        // calls popupCallback function to either load parameters or cancel source selection 
+        popupCallback(buttonClicked, fileSource, selectedScope, constantAsStaticBuilder);  
+        
+        // Closes window
+        modal.classList.add('hidden'); 
+        window.frameElement.style.display = "none";
+        
+    }
+		
+		
+	function helpButtonClick(importCsvGuide){
+		if (importCsvGuide){
+			importCsvGuide.contentWindow.openModal(); 	
+		}    
+	}
+
+        
+
+        
+    async function clickImportButton() {
+		if (!fileInput.files.length){ 
+            alert('Please select a .csv file first.'); 
+            return; 
+        }
+        
+        fileSource = fileInput.files[0]; // File Object
+        
+        validationOutput = await popupValidation(fileSource); // Runs Validation 
+        
+        if (validationOutput.errorMessage) { // Error / invalid file   
+            
+            // Show error message 
+            importWarning.textContent = validationOutput.errorMessage;
+            importWarning.classList.remove('hidden');
+            
+            // (Note - Everything was reset upon file change - panels/ok button disabled...)
+            
+        } else {  // Everything is valid   
+            
+            //  Step 1 Panel (import panel): Hides error message & shows "Loaded!" 
+            importWarning.classList.add('hidden');
+            importInfo.classList.remove('hidden');
+            importInfo.textContent='Loaded!';
+            importBtn.classList.add('hidden'); // "load" button replaced by "Loaded!" string
+            
+            // Change State of next panels and OK button
+            // -> Step 2 Panel (select panel): enables  
+            // -> Step 3 Panel (constant panel): depends (function decides based on Panel 1-2)  
+            // -> Ok Button: enables
+            changeStates(true);
+            
+            // Step 2 Panel (select panel): displays parsed values for Selected and # Param 
+            importScope_selected_paramName.textContent = validationOutput.selectedParametersList;
+            importScope_all_paramCountEl.textContent = validationOutput.parameterCount; 
+ 
+            
+        } 
+		 
+	}   
+        
+    function resetLoaded() {// reset on new window or on file change 
+        // Resets import panel (removes file, "loaded" & error message; shows "load" button)
+		fileInput.value = '';
+		importInfo.classList.add('hidden');
+        importBtn.classList.remove('hidden');
+		importWarning.classList.add('hidden');
+        
+        // Disables next panels and OK button  
+        changeStates(false);         
+	}
+        
+    function changeStates(enableFlag){  
+        
+        // 1) Enables/Disables Step 2 Panel (select panel) & OK Button  
+        selectPanel.classList.toggle('disabled', !enableFlag); 
+        selectPanel.querySelectorAll('input[type="radio"]')
+                   .forEach(el => { el.disabled = !enableFlag });  
+        okBtn.classList.toggle('disabled', !enableFlag); 
+        okBtn.disabled = !enableFlag; 
+        
+        // 2) Adds explanations for disabled Step 2 Panel & OK Button (or reset if enabled) 
+        const selectFileMsg = enableFlag ? "" : "Load a valid file to continue.";
+        selectPanel.title=selectFileMsg;
+        okBtn.title=selectFileMsg;         
+        
+        // 3) Changes State (Visibility) of Step 3 Panel (constant panel) 
+        updateConstantPanelState(false); 
+        
+    }
+
+    function updateConstantPanelState(flagRadioChange){    
+        
+        // value of selected radio button (import Selected or All parameters)
+	    selectedScope = document.querySelector('input[name="importScope"]:checked').value;
+        
+        // Selects correct "constant" flag to use (any constant value among Selected or All parameters)
+        const selectedConstantFlag = !selectPanel.classList.contains('disabled') && 
+            ((selectedScope === 'selected') ? validationOutput.selectedConstant : validationOutput.anyConstant);  
+        
+         // Check if we are transitioning from hidden to visible after Panel 2 radio button change 
+        const hiddenToVisibleFromStep2 = flagRadioChange && selectedConstantFlag &&
+                                            constantPanel.classList.contains('hidden-panel');
+        
+        // Sets constantPanel as active if any of the parameters to be imported are constant 
+		constantPanel.classList.toggle('hidden-panel', !selectedConstantFlag);
+        
+        // if hiddenToVisibleFromStep2 -> scroll down to better show new panel that appeared        
+		constantPanel.classList.remove('activate-panel'); // resets activate-panel class
+        if (hiddenToVisibleFromStep2){
+            const panelScrollContainer = document.querySelector(".panel-scroll");  
+            panelScrollContainer.scrollTo({ top: panelScrollContainer.scrollHeight, behavior: 'smooth' });
+            constantPanel.classList.add('activate-panel'); // animation to bring attention to new panel
+        }
+        
+    }   
+	</script>
+</body>
+</html>

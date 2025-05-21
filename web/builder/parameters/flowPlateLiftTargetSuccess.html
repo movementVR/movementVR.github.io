@@ -3,75 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Plate Lift </title>
+    <title></title>
 </head>
 <body>
-<form class="tabcontent">      
-<div class="form-control">         
-<inputcolumn>
+<form class="param-form">
         
 <!-- Content: --> 
-
-
-<!-- target collider size  -->		
-<name>Target size [m]</name>
-    <inputs> 
-    <label for="TARGETSIZE_X">X:</label>
-    <input id="TARGETSIZE_X" name="setupScript,targetSizeX" type="number" value="0.1" />
-    <label for="TARGETSIZE_Y">Y:</label>
-    <input id="TARGETSIZE_Y" name="setupScript,targetSizeY" type="number" value="0.1" />
-    <label for="TARGETSIZE_Z">Z:</label>
-    <input id="TARGETSIZE_Z" name="setupScript,targetSizeZ" type="number" value="0.1" />   
-    </inputs>
-    <note>&ensp;&ensp;(max distance plate-target center)</note>
-     
-
-
-    
-<!-- max plate tilt for success -->       	
-<name>Max plate tilt [deg]</name>
-    <inputs> 
-    <label for="MAXTILT_X">Pitch:</label>
-    <input id="MAXTILT_X" name="targetScript,maxTiltForSuccessX" type="number" value="180" />
-    <label for="MAXTILT_Y">Yaw:</label>
-    <input id="MAXTILT_Y" name="targetScript,maxTiltForSuccessY" type="number" value="180" />
-    <label for="MAXTILT_Z">Roll:</label>
-    <input id="MAXTILT_Z" name="targetScript,maxTiltForSuccessZ" type="number" value="30" />
-    </inputs> 
-    <note>&ensp;&ensp;&ensp;&ensp;(Pitch=X=front-back; Yaw=Y=flat rotation; Roll=Z=left-right)</note>
-
-  
-<!-- time in target for success -->     
-<name>Hold time [s]</name>
-    <inputs>
-    <label for="TIME_IN_TARGET"></label>
-    <input id="TIME_IN_TARGET" name="targetScript,timeInTargetForSuccess" type="number" value="0.1" />
-    </inputs>
-    
+ 	
+<fieldset class="trial-builder-group">   
+	<!-- target collider size  -->		 
+	<div class="name-type name">Target size [m]</div>
+		 <div class="inputs-type inputs"> 
+		<label for="setupscript-targetsizex" class="label-before-input label-start-block">X:</label>
+		<input id="setupscript-targetsizex" name="setupScript,targetSizeX" type="number" step="any" min="0">
+		<label for="setupscript-targetsizey" class="label-before-input">Y:</label>
+		<input id="setupscript-targetsizey" name="setupScript,targetSizeY" type="number" step="any" min="0">
+		<label for="setupscript-targetsizez" class="label-before-input">Z:</label>
+		<input id="setupscript-targetsizez" name="setupScript,targetSizeZ" type="number" step="any" min="0">   
+		</div>
+		<div class="inputs-type inputsnote">&ensp;&ensp;(max distance plate-target center)</div>
+</fieldset>   
+	
+	<div class="fullrow-type largespace"></div>     
+<fieldset class="trial-builder-group">   
+	<!-- max plate tilt for success -->       	  	
+	<div class="name-type name">Max plate tilt [deg]</div>
+		 <div class="inputs-type inputs"> 
+		<label for="targetscript-maxtiltforsuccessx" class="label-before-input label-start-block">Pitch:</label>
+		<input id="targetscript-maxtiltforsuccessx" name="targetScript,maxTiltForSuccessX" type="number" step="any" min="0">
+		<label for="targetscript-maxtiltforsuccessy" class="label-before-input">Yaw:</label>
+		<input id="targetscript-maxtiltforsuccessy" name="targetScript,maxTiltForSuccessY" type="number" step="any" min="0">
+		<label for="targetscript-maxtiltforsuccessz" class="label-before-input">Roll:</label>
+		<input id="targetscript-maxtiltforsuccessz" name="targetScript,maxTiltForSuccessZ" type="number" step="any" min="0">
+		</div> 
+		<div class="inputs-type inputsnote">(Pitch=X=front-back; Yaw=Y=flat rotation; Roll=Z=left-right)</div>
+</fieldset>   
+	
+	<div class="fullrow-type largespace"></div>  
+<fieldset class="trial-builder-group">   
+	<!-- time in target for success -->        
+	<div class="name-type name">Hold time [s]</div>
+		 <div class="inputs-type inputs">
+		<!-- <label for="targetscript-timeintargetforsuccess" class="label-before-input label-start-block"></label> -->
+		<input id="targetscript-timeintargetforsuccess" name="targetScript,timeInTargetForSuccess" type="number" step="any" min="0">
+		</div>
+</fieldset>   
+	
  
-<!-- success/failure conditions explanation  -->     
-<longnotetitle>Plate lift phase progression:</longnotetitle>
-    <longnote>&emsp;1) "Target reached" when: </longnote>
-    <longnotesmaller>&emsp;&emsp; a) Distance between plate & target centers becomes less than "Target size"</longnotesmaller>
-    <longnote>&emsp;2) "Success" when: </longnote>
-    <longnotesmaller>&emsp;&emsp; a) Distance between plate & target centers remains less than "Target size"</longnotesmaller>
-    <longnotesmaller>&emsp;&emsp; b) Plate tilt remains less than "Max plate tilt"</longnotesmaller>
-    <longnotesmaller>&emsp;&emsp; c) Both conditions a) and b) remain true for "Hold time"</longnotesmaller>
-    <longnote>&emsp;3) "Failure" when: </longnote>
-    <longnotesmaller>&emsp;&emsp; a) Conditions 2a (distance) or 2b (tilt) become false after "Target reached"</longnotesmaller>
-    <longnotesmaller>&emsp;&emsp; b) Plate falls / exists workspace (edit under "workspace")</longnotesmaller>
-    <longnotesmaller>&emsp;&emsp; c) Phase or trial max time limits are reached (edit under "transitions")</longnotesmaller>
- 
-    
+	<!-- success/failure conditions explanation  -->     
+	<div class="longnote-type longnotetitle">Phase 4 = Plate Lift</div>
+		<div class="longnote-type longnote">&emsp;1) Participants are actively lifting plate to target </div>
+		<div class="longnote-type longnote">&emsp;2) "Target reached" when: </div>
+		<div class="longnote-type longnotesmaller">&emsp;&emsp; a) Distance between plate & target centers becomes less than "Target size"</div>
+		<div class="longnote-type longnote">&emsp;3) "Success" when: </div>
+		<div class="longnote-type longnotesmaller">&emsp;&emsp; a) Distance between plate & target centers remains less than "Target size"</div>
+		<div class="longnote-type longnotesmaller">&emsp;&emsp; b) Plate tilt remains less than "Max plate tilt"</div>
+		<div class="longnote-type longnotesmaller">&emsp;&emsp; c) Both conditions a) and b) remain true for "Hold time"</div>
+		<div class="longnote-type longnote">&emsp;4) "Failure" when: </div>
+		<div class="longnote-type longnotesmaller">&emsp;&emsp; a) Conditions 2a (distance) or 2b (tilt) become false after "Target reached"</div>
+		<div class="longnote-type longnotesmaller">&emsp;&emsp; b) Plate falls / exists workspace (edit under "workspace")</div>
+		<div class="longnote-type longnotesmaller">&emsp;&emsp; c) Phase or trial max time limits are reached (edit under "transitions")</div>
+		<div class="longnote-type longnote">&emsp;5) Phase ends when Success (3) or Failure (4) occurs </div>
+
+
 <!-- End of Content --> 
  
-</inputcolumn> 
-</div>  
-<figurecolumn>
-    <img src="web/img/parameters/successCriteria.png" style="width:100%;">
- <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
-</figurecolumn>
+</form> 
+<div class="param-img">
+    <img src="web/img/parameters/successCriteria.png" >
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  > --> 
+</div>
         
-</form>
-</body>
+</body> 
 </html>

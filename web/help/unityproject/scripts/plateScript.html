@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>plateScript.cs Documentation</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			line-height: 1.6;
+			margin: 2rem;
+		}
+		h1, h2, h3 {
+			color: #2a4a6c;
+			margin-top: 2rem;
+		}
+		.code {
+			background-color: #f4f4f4;
+			padding: 0.5rem;
+			border-left: 3px solid #ccc;
+			font-family: monospace;
+			white-space: pre-wrap;
+		}
+		.section {
+			margin-bottom: 2rem;
+		}
+	</style>
+</head>
+<body>
+
+<h1>Documentation: <code>plateScript.cs</code></h1>
+
+<div class="section">
+	<h2>1. Overview</h2>
+	<p>
+		The <code>plateScript</code> class manages the logic tied to the VR plate used in a motor learning trial. It monitors tilt angle for success criteria and handles key collision events. This includes detecting contact from the hand to start the reaching phase and triggering a failure if the plate collides with the game area boundary.
+	</p>
+</div>
+
+<div class="section">
+	<h2>2. Functional Blocks</h2>
+
+	<h3>Initialization</h3>
+	<ul>
+		<li><code>startup()</code> connects the script to the parent <code>trialScript</code> and <code>handsAndSaveScript</code> components.</li>
+	</ul>
+
+	<h3>Plate Tilt Evaluation</h3>
+	<ul>
+		<li><code>plateTooTilted()</code> checks if the plate's tilt along any axis exceeds allowable thresholds for success.</li>
+	</ul>
+
+	<h3>Collision Logic</h3>
+	<ul>
+		<li><code>OnCollisionEnter()</code> detects the first contact with the hand (to progress the trial) and collisions with boundaries (to trigger failure).</li>
+	</ul>
+
+</div>
+
+<div class="section">
+	<h2>3. Full Technical Details</h2>
+
+	<h3>Class Variables</h3>
+	<div class="code">
+public bool waitingForHandContactFlag;
+
+trialScript trialScriptVar;
+handsAndSaveScript handsAndSaveScriptVar;
+	</div>
+
+	<h3>Start & Initialization</h3>
+	<div class="code">
+void Start() {
+	// Unused
+}
+
+public void startup() {
+	trialScriptVar = GetComponentInParent&lt;trialScript&gt;();
+	handsAndSaveScriptVar = GetComponentInParent&lt;handsAndSaveScript&gt;();
+}
+	</div>
+
+	<h3>plateTooTilted()</h3>
+	<div class="code">
+public bool plateTooTilted(float maxTiltForSuccessX, float maxTiltForSuccessY, float maxTiltForSuccessZ) {
+	float plateAngleX = transform.parent.localEulerAngles.x;
+	if (plateAngleX > 180) plateAngleX -= 360;
+
+	float plateAngleY = transform.parent.localEulerAngles.y;
+	if (plateAngleY > 180) plateAngleY -= 360;
+
+	float plateAngleZ = transform.parent.localEulerAngles.z;
+	if (plateAngleZ > 180) plateAngleZ -= 360;
+
+	return (Mathf.Abs(plateAngleX) > maxTiltForSuccessX ||
+	        Mathf.Abs(plateAngleY) > maxTiltForSuccessY ||
+	        Mathf.Abs(plateAngleZ) > maxTiltForSuccessZ);
+}
+	</div>
+
+	<h3>OnCollisionEnter()</h3>
+	<div class="code">
+void OnCollisionEnter(Collision collision) {
+	if (waitingForHandContactFlag && handsAndSaveScriptVar.isCollisionWithHands(collision.collider)) {
+		trialScriptVar.trialStageTrigger(2); // Hand contacted plate
+	}
+	else if (collision.transform.parent.name == "GameareaBoundary") {
+		trialScriptVar.trialStageTrigger(-3); // Failure: plate left bounds
+	}
+}
+	</div>
+
+</div>
+
+</body>
+</html>

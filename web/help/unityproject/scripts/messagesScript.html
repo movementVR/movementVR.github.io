@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>messagesScript.cs Documentation</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			line-height: 1.6;
+			margin: 2rem;
+		}
+		h1, h2, h3 {
+			color: #2a4a6c;
+			margin-top: 2rem;
+		}
+		.code {
+			background-color: #f4f4f4;
+			padding: 0.5rem;
+			border-left: 3px solid #ccc;
+			font-family: monospace;
+			white-space: pre-wrap;
+		}
+		.section {
+			margin-bottom: 2rem;
+		}
+	</style>
+</head>
+<body>
+
+<h1>Documentation: <code>messagesScript.cs</code></h1>
+
+<div class="section">
+	<h2>1. Overview</h2>
+	<p>
+		<code>messagesScript</code> manages on-screen instructional and feedback messages shown to the user during a trial in a VR motor learning task. These include messages for stages like origin, contact, lift, and end-of-trial feedback (e.g., success or various types of failure). The class allows toggling messages by trial stage and dynamically updates trial numbers.
+	</p>
+</div>
+
+<div class="section">
+	<h2>2. Functional Blocks</h2>
+
+	<h3>Text and Display Control</h3>
+	<ul>
+		<li>Stores text content for all messages as private string fields.</li>
+		<li>Flags for whether each stage should display a message.</li>
+		<li>Controls message visibility through <code>messageDisplay()</code>, using reflection to access the relevant text field.</li>
+	</ul>
+
+	<h3>Trial Stage Transitions</h3>
+	<ul>
+		<li><code>changeTrialStage()</code> determines which messages to show or hide at each stage (1 to 6).</li>
+		<li>Uses the <code>info</code> argument to differentiate between trial failure reasons and end-of-paradigm conditions.</li>
+	</ul>
+
+	<h3>Integration with Trial Script</h3>
+	<ul>
+		<li>References <code>trialScript</code> and uses <code>trialStageTrigger()</code> to progress when messages are skipped or complete.</li>
+	</ul>
+</div>
+
+<div class="section">
+	<h2>3. Full Technical Details</h2>
+
+	<h3>Class Variables</h3>
+	<div class="code">
+// Message text (private)
+string endText, originText, startText, trialNumberText, trialNumberBaseText;
+string breakText, successText, fail1Text, fail2Text, fail3Text, fail4Text, fail5Text;
+string baseText, contactText, liftText;
+
+// Flags for message visibility at each stage
+bool stage1_displayMessageFlag, stage2_displayMessageFlag, stage3_displayMessageFlag;
+bool stage4_displayMessageFlag, stage5_displayMessageFlag, stage6_displayMessageFlag;
+
+// Internal state
+string feedbackMessage = "success";
+trialScript trialScriptVar;
+bool trialNumberAuto;
+	</div>
+
+	<h3>Start()</h3>
+	<div class="code">
+void Start() {
+	trialScriptVar = transform.GetComponentInParent&lt;trialScript&gt;();
+}
+	</div>
+
+	<h3>messageDisplay()</h3>
+	<div class="code">
+public void messageDisplay(string msg, bool state) {
+	if (state) {
+		transform.Find(msg + "/text").GetComponent&lt;TMPro.TextMeshPro&gt;().text =
+			(string)GetType().GetField(msg + "Text", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(this);
+	}
+	transform.Find(msg).gameObject.SetActive(state);
+}
+	</div>
+
+	<h3>changeTrialStage()</h3>
+	<div class="code">
+public void changeTrialStage(int stage, float info) {
+	switch (stage) {
+		case 1:
+			messageDisplay("break", false);
+			if (stage1_displayMessageFlag) messageDisplay("base", true);
+			if (info != -1) {
+				trialNumberText = trialNumberAuto ? trialNumberBaseText + info.ToString() : trialNumberBaseText;
+				messageDisplay("trialNumber", true);
+			} else {
+				messageDisplay("end", true);
+			}
+			break;
+
+		case 2:
+			if (stage1_displayMessageFlag) messageDisplay("base", false);
+			if (stage2_displayMessageFlag) messageDisplay("origin", true);
+			break;
+
+		case 3:
+			if (stage2_displayMessageFlag) messageDisplay("origin", false);
+			if (stage3_displayMessageFlag) messageDisplay("contact", true);
+			break;
+
+		case 4:
+			if (stage3_displayMessageFlag) messageDisplay("contact", false);
+			if (stage4_displayMessageFlag) messageDisplay("lift", true);
+			break;
+
+		case 5:
+			if (stage4_displayMessageFlag) messageDisplay("lift", false);
+			if (stage5_displayMessageFlag) {
+				feedbackMessage = (info < 0) ? "fail" + (-info).ToString() : "success";
+				string text = (string)GetType().GetField(feedbackMessage + "Text", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(this);
+				if (!string.IsNullOrEmpty(text)) {
+					messageDisplay(feedbackMessage, true);
+				} else {
+					trialScriptVar.trialStageTrigger(3); // Skip feedback display
+				}
+			}
+			break;
+
+		case 6:
+			if (stage5_displayMessageFlag) messageDisplay(feedbackMessage, false);
+			if (stage6_displayMessageFlag && info > 0) messageDisplay("break", true);
+			break;
+	}
+}
+	</div>
+
+</div>
+
+</body>
+</html>

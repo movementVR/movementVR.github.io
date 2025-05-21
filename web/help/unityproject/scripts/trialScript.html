@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>trialScript.cs Documentation</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      line-height: 1.6;
+      margin: 2rem;
+    }
+    h1, h2, h3 {
+      color: #2a4a6c;
+      margin-top: 2rem;
+    }
+    .code {
+      background-color: #f4f4f4;
+      padding: 0.5rem;
+      border-left: 3px solid #ccc;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Documentation: <code>trialScript.cs</code></h1>
+
+<div class="section">
+  <h2>1. Overview</h2>
+  <p>
+    The <code>trialScript</code> class is the central trial manager for MovementVR. It coordinates stage-based trial progression, gain perturbations, target bird behavior, and success/failure detection. It integrates inputs from multiple subsystems (hands, plate, workspace, messages, etc.) and governs experiment flow across trials and phases.
+  </p>
+</div>
+
+<div class="section">
+  <h2>2. Functional Blocks</h2>
+
+  <h3>Trial Initialization</h3>
+  <ul>
+    <li><code>Start()</code>: Loads references to all key components and initializes gain logic and bird display.</li>
+    <li><code>autoGain()</code>: Computes gains per trial based on experimental paradigm (baseline, gradual, full perturbation, washout).</li>
+  </ul>
+
+  <h3>Stage Progression (Update)</h3>
+  <ul>
+    <li><code>Update()</code>: Advances the trial through stages 1 to 6 based on time, user interaction, or task state.</li>
+    <li>Each stage transition is handled via dedicated <code>toStageN()</code> methods.</li>
+  </ul>
+
+  <h3>Gain Control</h3>
+  <ul>
+    <li><code>updateGain()</code>: Smoothly transitions hand gain values over time when triggered.</li>
+    <li><code>applyPerturbation()</code>: Applies gain offsets to hand position in real time based on origin and gain vector.</li>
+    <li><code>computeGainOrigin()</code>: Determines the coordinate origin for gain computations based on various criteria (fixed position, home, contact).</li>
+  </ul>
+
+  <h3>Trial Lifecycle and Feedback</h3>
+  <ul>
+    <li><code>nextTrial()</code>: Advances to next trial, updates parameters, and refreshes the experiment state.</li>
+    <li><code>changeBirdAtTarget()</code>: Selects and spawns a bird based on species logic and user-defined trial criteria.</li>
+  </ul>
+
+  <h3>Interfaces</h3>
+  <ul>
+    <li><code>trialStageTrigger()</code>: External trigger to signal when the task should advance stage (e.g., after contact or collision).</li>
+    <li><code>updateGainOrigin()</code>: Coroutine to interpolate gain origin smoothly over time.</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>3. Full Technical Details</h2>
+
+  <h3>Key Concepts</h3>
+  <ul>
+    <li><strong>Trial Stages:</strong> Trial execution is split into 6 stages, each with a specific logic path (base delay, hand repositioning, lift, result, break).</li>
+    <li><strong>Gain Application:</strong> Per-trial and within-trial spatial perturbations are applied to the hand using a vector gain multiplier from a configurable origin.</li>
+    <li><strong>Bird Display:</strong> Birds act as animated visual feedback at the target, and their appearance can change based on trial outcomes or phases.</li>
+  </ul>
+
+  <h3>Data Structures</h3>
+  <div class="code">
+// Gain configuration
+float[] leftHandGainXA, leftHandGainYA, leftHandGainZA;
+float[] rightHandGainXA, rightHandGainYA, rightHandGainZA;
+Vector3 leftHandGain, rightHandGain;
+Vector3 gainOriginLeft, gainOriginRight;
+
+// Trial and stage state
+int trial, trialStage, nextStageTrigger;
+DateTime stageStartTime, trialStartTime;
+
+// Component references
+handsAndSaveScript handsAndSaveScriptVar;
+plateAndGrapeScript plateAndGrapeScriptVar;
+plateScript plateScriptVar;
+setupScript setupScriptVar;
+messagesScript messagesScriptVar;
+targetBirdScript targetBirdScriptVar;
+targetScript targetScriptVar;
+taskWorkspaceScript taskWorkspaceScriptVar;
+  </div>
+
+  <h3>Core Functions</h3>
+  <div class="code">
+void Update() {
+  switch (trialStage) {
+    case 1: toStage2(); break;
+    case 2: toStage3(); toStage5(stage2_maxTime, trial_maxTime, 0); break;
+    case 3: toStage4(); toStage5(stage3_maxTime, trial_maxTime, 0); break;
+    case 4: toStage5(stage4_maxTime, trial_maxTime, nextStageTrigger); break;
+    case 5: toStage6(); break;
+    case 6: toStage1(); break;
+  }
+  applyPerturbation();
+}
+  </div>
+
+  <h3>Gain Origin Computation</h3>
+  <div class="code">
+void computeGainOrigin(string caller) {
+  // Evaluates trial and within-trial conditions to store hand positions
+  // Aggregates origin values using mean, median, or first-element rules
+  // Interpolates gainOriginLeft and gainOriginRight over time
+}
+  </div>
+
+  <h3>Bird Switching</h3>
+  <div class="code">
+void changeBirdAtTarget(bool initial) {
+  // Disables previous bird
+  // Selects new bird object by mode (random, ordered, list)
+  // Sets animation parameters
+  // Enables the new bird
+}
+  </div>
+</div>
+
+</body>
+</html>

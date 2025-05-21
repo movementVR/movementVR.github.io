@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>leapHandsAndSaveScript.cs Documentation</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			line-height: 1.6;
+			margin: 2rem;
+		}
+		h1, h2, h3 {
+			color: #2a4a6c;
+			margin-top: 2rem;
+		}
+		.code {
+			background-color: #f4f4f4;
+			padding: 0.5rem;
+			border-left: 3px solid #ccc;
+			font-family: monospace;
+			white-space: pre-wrap;
+		}
+		.section {
+			margin-bottom: 2rem;
+		}
+	</style>
+</head>
+<body>
+
+<h1>Documentation: <code>leapHandsAndSaveScript.cs</code></h1>
+
+<div class="section">
+	<h2>1. Overview</h2>
+	<p>
+		<code>leapHandsAndSaveScript</code> extends <code>handsAndSaveScript</code> to support Leap Motion-specific hand tracking and recording. It connects Unity hand models and colliders with Leap’s rigging and runtime control, tracks their transform and state, and saves relevant bone and collider data during runtime for analysis. It also applies gain perturbation offsets to hands and fingers in real time.
+	</p>
+</div>
+
+<div class="section">
+	<h2>2. Functional Blocks</h2>
+
+	<h3>Leap Rig Setup</h3>
+	<ul>
+		<li>Finds Leap Motion head and hand model transforms.</li>
+		<li>Initializes references to both mesh (visual) and rigid (physics) hands and fingers.</li>
+		<li>Populates collider arrays for transform and shape recording.</li>
+	</ul>
+
+	<h3>Tracking and Activation</h3>
+	<ul>
+		<li><code>leftNotTracking()</code> / <code>rightNotTracking()</code>: Returns whether the mesh hand is inactive.</li>
+		<li><code>setHandGameobjectActivity()</code>: Enables or disables Leap hand groups depending on active flags.</li>
+	</ul>
+
+	<h3>Data Logging Extensions</h3>
+	<ul>
+		<li><code>additionalFrameSave()</code>: Saves additional data about hand collider shapes (capsules and boxes).</li>
+		<li><code>additionalInfoSave()</code>: Reserved for saving extra metadata (empty by default).</li>
+	</ul>
+
+	<h3>Perturbation Application</h3>
+	<ul>
+		<li><code>applyLeftPerturbation()</code> and <code>applyRightPerturbation()</code>: Apply gain offsets to the entire hand and all five fingers for both visual and physical models.</li>
+	</ul>
+
+</div>
+
+<div class="section">
+	<h2>3. Full Technical Details</h2>
+
+	<h3>Leap References</h3>
+	<div class="code">
+// Hand parent container
+Transform handsParentObject;
+
+// Left hand (visual + collider)
+Leap.Unity.RiggedHand leftHandMeshScript;
+Leap.Unity.RiggedFinger[] leftFingersMeshScripts;
+Leap.Unity.RigidHand leftHandColliderScript;
+Leap.Unity.RigidFinger[] leftFingersColliderScripts;
+
+// Right hand (visual + collider)
+Leap.Unity.RiggedHand rightHandMeshScript;
+Leap.Unity.RiggedFinger[] rightFingersMeshScripts;
+Leap.Unity.RigidHand rightHandColliderScript;
+Leap.Unity.RigidFinger[] rightFingersColliderScripts;
+	</div>
+
+	<h3>rigSetup()</h3>
+	<div class="code">
+protected override void rigSetup() {
+	Debug.Log("AABBleap");
+
+	headsetTransform = transform.Find("/LeapMotion/HeadsetCamera");
+	handsParentObject = transform.Find("/LeapMotion/HandModels");
+
+	// Left hand
+	leftHandMeshScript = handsParentObject.Find("LeftHandMesh").GetComponent&lt;Leap.Unity.RiggedHand&gt;();
+	leftFingersMeshScripts = handsParentObject.Find("LeftHandMesh").GetComponentsInChildren&lt;Leap.Unity.RiggedFinger&gt;(true);
+	leftHandColliderScript = handsParentObject.Find("LeftHandRigidBody").GetComponent&lt;Leap.Unity.RigidHand&gt;();
+	leftFingersColliderScripts = handsParentObject.Find("LeftHandRigidBody").GetComponentsInChildren&lt;Leap.Unity.RigidFinger&gt;(true);
+
+	// Right hand
+	rightHandMeshScript = handsParentObject.Find("RightHandMesh").GetComponent&lt;Leap.Unity.RiggedHand&gt;();
+	rightFingersMeshScripts = handsParentObject.Find("RightHandMesh").GetComponentsInChildren&lt;Leap.Unity.RiggedFinger&gt;(true);
+	rightHandColliderScript = handsParentObject.Find("RightHandRigidBody").GetComponent&lt;Leap.Unity.RigidHand&gt;();
+	rightFingersColliderScripts = handsParentObject.Find("RightHandRigidBody").GetComponentsInChildren&lt;Leap.Unity.RigidFinger&gt;(true);
+
+	// Wrists
+	leftWrist = handsParentObject.Find("LeftHandRigidBody/wrist");
+	rightWrist = handsParentObject.Find("RightHandRigidBody/wrist");
+
+	// All hand colliders
+	allCollidersInHands = handsParentObject.GetComponentsInChildren&lt;Collider&gt;(true);
+}
+	</div>
+
+	<h3>Hand Tracking Checks</h3>
+	<div class="code">
+protected override bool leftNotTracking() {
+	return !leftHandMeshScript.isActiveAndEnabled;
+}
+protected override bool rightNotTracking() {
+	return !rightHandMeshScript.isActiveAndEnabled;
+}
+	</div>
+
+	<h3>setHandGameobjectActivity()</h3>
+	<div class="code">
+protected override void setHandGameobjectActivity() {
+	var manager = handsParentObject.GetComponent&lt;Leap.Unity.HandModelManager&gt;();
+	if (leftHandActiveFlag) {
+		manager.EnableGroup("LeftMesh");
+		manager.EnableGroup("LeftRigid");
+	} else {
+		manager.DisableGroup("LeftMesh");
+		manager.DisableGroup("LeftRigid");
+	}
+
+	if (rightHandActiveFlag) {
+		manager.EnableGroup("RightMesh");
+		manager.EnableGroup("RightRigid");
+	} else {
+		manager.DisableGroup("RightMesh");
+		manager.DisableGroup("RightRigid");
+	}
+}
+	</div>
+
+	<h3>additionalFrameSave()</h3>
+	<div class="code">
+protected override void additionalFrameSave(BinaryWriter binWriter) {
+	if (saveBoneColliderShapes) {
+		foreach (Collider c in allCollidersInHands) {
+			if (c is CapsuleCollider cap) {
+				binWriter.Write(1.0f); // capsule
+				binWriter.Write(cap.center.x);
+				binWriter.Write(cap.center.y);
+				binWriter.Write(cap.center.z);
+				binWriter.Write(cap.height);
+				binWriter.Write(cap.radius);
+				binWriter.Write((float)cap.direction);
+			} else if (c is BoxCollider box) {
+				binWriter.Write(2.0f); // box
+				binWriter.Write(box.center.x);
+				binWriter.Write(box.center.y);
+				binWriter.Write(box.center.z);
+				binWriter.Write(box.size.x);
+				binWriter.Write(box.size.y);
+				binWriter.Write(box.size.z);
+			}
+		}
+	}
+}
+	</div>
+
+	<h3>additionalInfoSave()</h3>
+	<div class="code">
+protected override void additionalInfoSave(BinaryWriter binWriter) {
+	// Reserved for extension
+}
+	</div>
+
+	<h3>applyLeftPerturbation()</h3>
+	<div class="code">
+public override void applyLeftPerturbation(Vector3 offset) {
+	leftHandOffset = offset;
+	leftHandMeshScript.perturbationOffset = offset;
+	leftHandColliderScript.perturbationOffset = offset;
+	for (int i = 0; i < 5; i++) {
+		leftFingersMeshScripts[i].perturbationOffset = offset;
+		leftFingersColliderScripts[i].perturbationOffset = offset;
+	}
+}
+	</div>
+
+	<h3>applyRightPerturbation()</h3>
+	<div class="code">
+public override void applyRightPerturbation(Vector3 offset) {
+	rightHandOffset = offset;
+	rightHandMeshScript.perturbationOffset = offset;
+	rightHandColliderScript.perturbationOffset = offset;
+	for (int i = 0; i < 5; i++) {
+		rightFingersMeshScripts[i].perturbationOffset = offset;
+		rightFingersColliderScripts[i].perturbationOffset = offset;
+	}
+}
+	</div>
+
+</div>
+
+</body>
+</html>

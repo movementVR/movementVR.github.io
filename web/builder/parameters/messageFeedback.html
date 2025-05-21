@@ -3,518 +3,964 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Feedback  </title>
+    <title></title>
 </head>
 <body>
-<form class="tabcontent">      
-<div class="form-control">         
-<inputcolumn>
+<form class="param-form">
         
 <!-- Content: --> 
+  
+	
+		   
+<fieldset class="trial-builder-group">   
+	<div class="name-type name">Show?</div> 
+		 <div class="inputs-type inputs">
+		<input id="messagesscript-stage5_displaymessageflag_false" name="messagesScript,stage5_displayMessageFlag" type="hidden" value="FALSE">
+		<input id="messagesscript-stage5_displaymessageflag_true" name="messagesScript,stage5_displayMessageFlag" type="checkbox" value="TRUE">	
+		<label for="messagesscript-stage5_displaymessageflag_true" class="label-after-input label-end-block">Yes</label>	 
+		</div>   
+</fieldset>   
+	
+		<div class="fullrow-type largespace"></div>   
+<fieldset class="trial-builder-group">   
+	<div class="name-type name">Success:</div>   
+		 <div class="inputs-type inputs">      
+		<!-- <label for="messagesscript-successtext" class="label-before-input label-start-block"></label> -->
+		<textarea id="messagesscript-successtext" name="messagesScript,successText"></textarea>
+		</div>      
+</fieldset>   
+	
+		<div class="fullrow-type largespace"></div>   
+	<div class="name-type name">Failure:</div>   
+		 
+		<div class="fullrow-type smallspace"></div>   
+		 
+<fieldset class="trial-builder-group">   
+		<div class="name-type subname"> Plate too tilted:</div>
+			 <div class="inputs-type inputs">      
+			<!-- <label for="messagesscript-fail1text" class="label-before-input label-start-block"></label> -->
+			<textarea id="messagesscript-fail1text" name="messagesScript,fail1Text"></textarea>
+			</div>       
+</fieldset>   
+
+		<div class="fullrow-type smallspace"></div>       
+
+<fieldset class="trial-builder-group">   
+		<div class="name-type subname">Plate exited target:</div>
+			 <div class="inputs-type inputs">      
+			<!-- <label for="messagesscript-fail2text" class="label-before-input label-start-block"></label> -->
+			<textarea id="messagesscript-fail2text" name="messagesScript,fail2Text"></textarea>
+			</div>            
+</fieldset>      
+
+		<div class="fullrow-type smallspace"></div>           
+
+<fieldset class="trial-builder-group">   
+		<div class="name-type subname">Plate fell:</div>
+			 <div class="inputs-type inputs">      
+			<!-- <label for="messagesscript-fail3text" class="label-before-input label-start-block"></label> -->
+			<textarea id="messagesscript-fail3text" name="messagesScript,fail3Text"></textarea>
+			</div>        
+</fieldset>        
+
+		<div class="fullrow-type smallspace"></div>         
+
+<fieldset class="trial-builder-group">   
+		<div class="name-type subname">Time limit reached:</div>
+			 <div class="inputs-type inputs">      
+			<!-- <label for="messagesscript-fail4text" class="label-before-input label-start-block"></label> -->
+			<textarea id="messagesscript-fail4text" name="messagesScript,fail4Text"></textarea>
+			</div>      
+</fieldset>   
+
+		<div class="fullrow-type smallspace"></div>  
+
+<fieldset class="trial-builder-group">   
+		<div class="name-type subname">Workspace exited:</div>   
+			 <div class="inputs-type inputs">      
+			<!-- <label for="messagesscript-fail5text" class="label-before-input label-start-block"></label> -->
+			<textarea id="messagesscript-fail5text" name="messagesScript,fail5Text"></textarea>
+			</div>   
+</fieldset>   
+	 
+ 
+	
+	
+<!-- Expandable Messages Main Section -->
+	
+<div class="fullrow-type mediumspace"></div>  
+<div class="fullrow-type largespace"></div>  
+<div class="fullname-type name">Expand appearance of bubbles & texts:</div>   
+
+
+
+<!-- Expandable "success" Message Section -->
+	
+<div class="fullrow-type mediumspace"></div>   
+	<div class="name-type name">Success:</div>   
+	 
+
+	<div class="inputs-type">	
+		
+		<button class="expand-button collapsed" type="button" data-target="#expandable-successMessageBubble" data-collapse="#expandable-successMessageText"><span>
+		bubble
+		</span></button>	
+		
+		<button class="expand-button collapsed" type="button" data-target="#expandable-successMessageText" data-collapse="#expandable-successMessageBubble"><span>
+		text
+		</span></button>
+	</div>
  
 
-<name>Display message?</name> 
-    <inputs>
-    <input id="OMH" name="messagesScript,stage5_displayMessageFlag" type="hidden" value="FALSE">
-    <input id="OM" name="messagesScript,stage5_displayMessageFlag" type="checkbox" value="TRUE" checked>	
-    <label for="OM">Yes</label>	 
-    </inputs>       
-       
-<name>Success:</name>   
-    <inputs>      
-    <label for="SUCC"></label>
-    <textarea id="SUCC" name="messagesScript,successText" rows="1" cols="50">success!</textarea>
-    </inputs>         	 
-
-<name>Failure:</name>   
-    <inputs></inputs>
-    <subname> Plate too tilted:</subname>
-        <inputs>      
-        <label for="FAIL1"></label>
-        <textarea id="FAIL1" name="messagesScript,fail1Text" rows="1" cols="50">too tilted</textarea>
-        </inputs>       
-    
-    <subname>Plate exited target:</subname>
-        <inputs>      
-        <label for="FAIL2"></label>
-        <textarea id="FAIL2" name="messagesScript,fail2Text" rows="1" cols="50">target overshot</textarea>
-        </inputs>           
-
-    <subname>Plate fell:</subname>
-        <inputs>      
-        <label for="FAIL3"></label>
-        <textarea id="FAIL3" name="messagesScript,fail3Text" rows="1" cols="50">plate fell</textarea>
-        </inputs>         
-
-    <subname>Time limit reached:</subname>
-        <inputs>      
-        <label for="FAIL4"></label>
-        <textarea id="FAIL4" name="messagesScript,fail4Text" rows="1" cols="50">too slow</textarea>
-        </inputs>  
-
-    <subname>Workspace exited:</subname>   
-        <inputs>      
-        <label for="FAIL5"></label>
-        <textarea id="FAIL5" name="messagesScript,fail5Text" rows="1" cols="50">plate fell</textarea>
-        </inputs>   
+	<!-- Expandable Message Bubble -->
+	
+	<div class="fullrow-type expand-window collapsed" id="expandable-successMessageBubble"> 
 
 
+		<fieldset class="trial-builder-group">     
+				<div class="name-type name">Position [m]: </div>
+				 <div class="inputs-type inputs">
+				<label for="setupscript-successmessagepositionx" class="label-before-input label-start-block">X:</label>
+				<input id="setupscript-successmessagepositionx" name="setupScript,successMessagePositionX" type="number" step="any">
+				<label for="setupscript-successmessagepositiony" class="label-before-input">Y:</label>
+				<input id="setupscript-successmessagepositiony" name="setupScript,successMessagePositionY" type="number" step="any">
+				<label for="setupscript-successmessagepositionz" class="label-before-input">Z:</label>
+				<input id="setupscript-successmessagepositionz" name="setupScript,successMessagePositionZ" type="number" step="any">
+				</div>  
+		</fieldset>	
+
+				<div class="fullrow-type mediumspace"></div>   
+		<fieldset class="trial-builder-group">     
+				<div class="name-type name">Orientation [deg]: </div>
+				<div class="inputs-type inputs">
+					<input id="setupscript-successmessagebackgroundrotationz" name="setupScript,successMessageBackgroundRotationZ" type="number" step="any">  
+				</div> 
+		</fieldset>
+
+				<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group"> 
+				<div class="name-type name">Size [m]:</div>
+				 <div class="inputs-type inputs">
+				<label for="setupscript-successmessagesizex" class="label-before-input label-start-block">Width:</label>
+				<input id="setupscript-successmessagesizex" name="setupScript,successMessageSizeX" type="number" step="any" min="0">
+				<label for="setupscript-successmessagesizey" class="label-before-input">Height:</label>
+				<input id="setupscript-successmessagesizey" name="setupScript,successMessageSizeY" type="number" step="any" min="0">
+				</div>   
+		</fieldset>
+
+				<div class="fullrow-type mediumspace"></div>
+		<fieldset class="trial-builder-group">    
+				<div class="name-type name">Shape:</div> 
+			<div class="inputs-type inputs">              
+				<input id="setupscript-successmessagetype_cartoon" name="setupScript,successMessageType" type="radio" value="cartoon">
+				<label for="setupscript-successmessagetype_cartoon" class="label-after-input">Cartoon</label> 
+				<input id="setupscript-successmessagetype_rectangle" name="setupScript,successMessageType" type="radio" value="rectangle">
+				<label for="setupscript-successmessagetype_rectangle" class="label-after-input">Rectangle</label>                 
+				<input id="setupscript-successmessagetype_none" name="setupScript,successMessageType" type="radio" value="none">
+				<label for="setupscript-successmessagetype_none" class="label-after-input">None</label> 
+			</div> 
+		</fieldset>
+
+				<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group">     
+				<div class="name-type name">Color:</div> 			
+				 <div class="inputs-type inputs">  
+				<input type="color" id="setupscript-successmessagebackgroundcolor_picker" class="picker-color helper-input">
+				<label for="setupscript-successmessagebackgroundcolorr" class="label-before-input hidden-color hidden-label">R:</label>
+				<input id="setupscript-successmessagebackgroundcolorr" name="setupScript,successMessageBackgroundColorR" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-successmessagebackgroundcolorg" class="label-before-input hidden-color hidden-label">G:</label>
+				<input id="setupscript-successmessagebackgroundcolorg" name="setupScript,successMessageBackgroundColorG" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-successmessagebackgroundcolorb" class="label-before-input hidden-color hidden-label">B:</label>
+				<input id="setupscript-successmessagebackgroundcolorb" name="setupScript,successMessageBackgroundColorB" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-successmessagebackgroundcoloralpha" class="label-before-input">Alpha:</label>
+				<input id="setupscript-successmessagebackgroundcoloralpha" name="setupScript,successMessageBackgroundColorAlpha" type="number" step="any" min="0" max="1">
+				</div>   	
+		</fieldset>
+
+	</div> 
+	
+	<!-- END of expandable window - Bubble -->
 
 
-<!-- Expandable Feedback Message Position -->
+	<!-- Expandable Message Text --> 
 
-<button class="expand-button"  type="button" onclick="toggleExpandableWindow(this,'expandableOutcomeMessagePositions')">
-Expand message appearance
-</button>
+	<div class="fullrow-type expand-window collapsed" id="expandable-successMessageText">  
 
-    <div class="expwindow" id="expandableOutcomeMessagePositions"> 
+		<fieldset class="trial-builder-group">  
+				<div class="name-type name">Position [m]:</div>  
+				<div class="inputs-type inputs">
+				<label for="setupscript-successmessagetextoffsetx" class="label-before-input label-start-block">X:</label>
+				<input id="setupscript-successmessagetextoffsetx" name="setupScript,successMessageTextOffsetX" type="number" step="any">
+				<label for="setupscript-successmessagetextoffsety" class="label-before-input">Y:</label>
+				<input id="setupscript-successmessagetextoffsety" name="setupScript,successMessageTextOffsetY" type="number" step="any">
+				</div>	
+		</fieldset>   
 
-    <name> Success: </name> <inputs></inputs>	   
+					<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group"> 
+				<div class="name-type name">Orientation [deg]:</div>   
+				<div class="inputs-type inputs"> 
+				<input id="setupscript-successmessagetextrotationz" name="setupScript,successMessageTextRotationZ" type="number" step="any">
+				</div>	
+		</fieldset>   
 
-        <subname>Position [m] </subname>
-            <inputs>
-            <label for="MSGSUCC_POS_X">X:</label>
-            <input id="MSGSUCC_POS_X" name="setupScript,successMessagePositionX" type="number" value="0.4" />
-            <label for="MSGSUCC_POS_Y">Y:</label>
-            <input id="MSGSUCC_POS_Y" name="setupScript,successMessagePositionY" type="number" value="0.3" />
-            <label for="MSGSUCC_POS_Z">Z:</label>
-            <input id="MSGSUCC_POS_Z" name="setupScript,successMessagePositionZ" type="number" value="0.6" />
-            </inputs>  	   
+					<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group">   
+				<div class="name-type name">Font size:</div>  
+				 <div class="inputs-type inputs"> 
+				<input id="setupscript-successmessagefontsize" name="setupScript,successMessageFontSize" type="number" step="any" min="0"> 
+				</div>   
+		</fieldset>   
 
-        <subname>Size </subname>
-            <inputs>
-            <label for="MSGSUCC_POS_X">Width [m]:</label>
-            <input id="MSGSUCC_POS_X" name="setupScript,successMessageSizeX" type="number" value="0.55" />
-            <label for="MSGSUCC_POS_Y">Height [m]:</label>
-            <input id="MSGSUCC_POS_Y" name="setupScript,successMessageSizeY" type="number" value="0.4" />
-            <label for="MSGSUCC_POS_Z">Font:</label>
-            <input id="MSGSUCC_POS_Z" name="setupScript,successMessageFontSize" type="number" value="1" />
-            </inputs>  
+					<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group">   
+				<div class="name-type name">Color:</div> 	
+				<div class="inputs-type inputs"> 
+				<input type="color" id="setupscript-successmessagetextcolor_picker" class="picker-color helper-input">
+				<label for="setupscript-successmessagetextcolorr" class="label-before-input hidden-color hidden-label">R:</label>
+				<input id="setupscript-successmessagetextcolorr" name="setupScript,successMessageTextColorR" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-successmessagetextcolorg" class="label-before-input hidden-color hidden-label">G:</label>
+				<input id="setupscript-successmessagetextcolorg" name="setupScript,successMessageTextColorG" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-successmessagetextcolorb" class="label-before-input hidden-color hidden-label">B:</label>
+				<input id="setupscript-successmessagetextcolorb" name="setupScript,successMessageTextColorB" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-successmessagetextcoloralpha" class="label-before-input">Alpha:</label>
+				<input id="setupscript-successmessagetextcoloralpha" name="setupScript,successMessageTextColorAlpha" type="number" step="any" min="0" max="1">
+				</div>  
+		</fieldset>   
 
 
-        <subname>Background shape </subname>
-            <inputs>                
-            <input id="MSGSUCC_TYPE_B" name="setupScript,successMessageType" type="radio" value="cartoon"  checked >
-            <label for="MSGSUCC_TYPE_B">Cartoon</label> 
-            <input id="MSGSUCC_TYPE_B2" name="setupScript,successMessageType" type="radio" value="rectangle" >
-            <label for="MSGSUCC_TYPE_B2">Rectangle</label>                 
-            <input id="MSGSUCC_TYPE_B0" name="setupScript,successMessageType" type="radio" value="none" >
-            <label for="MSGSUCC_TYPE_B0">None</label>                 
-            <label for="MSGSUCC_ROT_B">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rotation [deg]:</label>
-            <input id="MSGSUCC_ROT_B" name="setupScript,successMessageBackgroundRotationZ" type="number" value="0" />   			
-            </inputs>  
+	</div> 
+	
+	<!-- END of expandable window - Text -->
+	
+<!-- END of Expandable "success" Message Section -->
+	 
+			
+			
+			 
+		
+	<!-- Inter-section with "Fail" Main Title -->
+		<div class="fullrow-type mediumspace"></div>      
+		<div class="name-type name">Failure:</div>  
+	<!-- END of Inter-section -->
+		  
+		 
+<!-- Expandable "fail1" Message Section -->
+	 
+	<div class="name-type subname"> Plate too tilted:</div> 
+	
 
-        <subname>Background color </subname>
-            <inputs>
-            <label for="MSGSUCC_COLOR_B_R">R:</label>
-            <input id="MSGSUCC_COLOR_B_R" name="setupScript,successMessageBackgroundColorR" type="number" value="0" />
-            <label for="MSGSUCC_COLOR_B_G">G:</label>
-            <input id="MSGSUCC_COLOR_B_G" name="setupScript,successMessageBackgroundColorG" type="number" value="0.6" />
-            <label for="MSGSUCC_COLOR_B_B">B:</label>
-            <input id="MSGSUCC_COLOR_B_B" name="setupScript,successMessageBackgroundColorB" type="number" value="0" />
-            <label for="MSGSUCC_COLOR_B_A">Alpha:</label>
-            <input id="MSGSUCC_COLOR_B_A" name="setupScript,successMessageBackgroundColorAlpha" type="number" value="1" />
-            </inputs>   
-
-        <subname>Text color </subname>
-            <inputs>
-            <label for="MSGSUCC_COLOR_T_R">R:</label>
-            <input id="MSGSUCC_COLOR_T_R" name="setupScript,successMessageTextColorR" type="number" value="1" />
-            <label for="MSGSUCC_COLOR_T_G">G:</label>
-            <input id="MSGSUCC_COLOR_T_G" name="setupScript,successMessageTextColorG" type="number" value="1" />
-            <label for="MSGSUCC_COLOR_T_B">B:</label>
-            <input id="MSGSUCC_COLOR_T_B" name="setupScript,successMessageTextColorB" type="number" value="1" />
-            <label for="MSGSUCC_COLOR_T_A">Alpha:</label>
-            <input id="MSGSUCC_COLOR_T_A" name="setupScript,successMessageTextColorAlpha" type="number" value="1" />
-            </inputs>    
-
-        <subname>Text offset </subname>
-            <inputs>
-            <label for="MSGSUCC_TOFF_X">X [m]:</label>
-            <input id="MSGSUCC_TOFF_X" name="setupScript,successMessageTextOffsetX" type="number" value="0.03" />
-            <label for="MSGSUCC_TOFF_Y">Y [m]:</label>
-            <input id="MSGSUCC_TOFF_Y" name="setupScript,successMessageTextOffsetY" type="number" value="0.015" />
-            <label for="MSGSUCC_TOFF_R">Rotation [deg]:</label>
-            <input id="MSGSUCC_TOFF_R" name="setupScript,successMessageTextRotationZ" type="number" value="15" />
-            </inputs>  
-
+	<div class="inputs-type">	
+		
+		<button class="expand-button collapsed" type="button" data-target="#expandable-fail1MessageBubble" data-collapse="#expandable-fail1MessageText"><span>
+		bubble
+		</span></button>	
+		
+		<button class="expand-button collapsed" type="button" data-target="#expandable-fail1MessageText" data-collapse="#expandable-fail1MessageBubble"><span>
+		text
+		</span></button>
+	</div>
  
 
-        
-        
-        <br><br>
-    <name> Failure </name> <inputs></inputs>	   
-        
-    <name>Plate too tilted: </name> <inputs></inputs>	   
-        
-        <subname>Position [m] </subname>
-            <inputs>
-            <label for="MSGFAIL1_POS_X">X:</label>
-            <input id="MSGFAIL1_POS_X" name="setupScript,fail1MessagePositionX" type="number" value="0.4" />
-            <label for="MSGFAIL1_POS_Y">Y:</label>
-            <input id="MSGFAIL1_POS_Y" name="setupScript,fail1MessagePositionY" type="number" value="0.3" />
-            <label for="MSGFAIL1_POS_Z">Z:</label>
-            <input id="MSGFAIL1_POS_Z" name="setupScript,fail1MessagePositionZ" type="number" value="0.6" />
-            </inputs>  	   
-        
-        <subname>Size </subname>
-            <inputs>
-            <label for="MSGFAIL1_POS_X">Width [m]:</label>
-            <input id="MSGFAIL1_POS_X" name="setupScript,fail1MessageSizeX" type="number" value="0.55" />
-            <label for="MSGFAIL1_POS_Y">Height [m]:</label>
-            <input id="MSGFAIL1_POS_Y" name="setupScript,fail1MessageSizeY" type="number" value="0.4" />
-            <label for="MSGFAIL1_POS_Z">Font:</label>
-            <input id="MSGFAIL1_POS_Z" name="setupScript,fail1MessageFontSize" type="number" value="1" />
-            </inputs>  
+	<!-- Expandable Message Bubble -->
+	
+	<div class="fullrow-type expand-window collapsed" id="expandable-fail1MessageBubble"> 
 
 
-        <subname>Background shape </subname>
-            <inputs>                
-            <input id="MSGFAIL1_TYPE_B" name="setupScript,fail1MessageType" type="radio" value="cartoon"  checked >
-            <label for="MSGFAIL1_TYPE_B">Cartoon</label> 
-            <input id="MSGFAIL1_TYPE_B2" name="setupScript,fail1MessageType" type="radio" value="rectangle" >
-            <label for="MSGFAIL1_TYPE_B2">Rectangle</label>                        
-            <input id="MSGFAIL1_TYPE_B0" name="setupScript,fail1MessageType" type="radio" value="none" >
-            <label for="MSGFAIL1_TYPE_B0">None</label>          
-            <label for="MSGFAIL1_ROT_B">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rotation [deg]:</label>
-            <input id="MSGFAIL1_ROT_B" name="setupScript,fail1MessageBackgroundRotationZ" type="number" value="0" />   			
-            </inputs>  
+		<fieldset class="trial-builder-group">     
+				<div class="name-type name">Position [m]: </div>
+				 <div class="inputs-type inputs">
+				<label for="setupscript-fail1messagepositionx" class="label-before-input label-start-block">X:</label>
+				<input id="setupscript-fail1messagepositionx" name="setupScript,fail1MessagePositionX" type="number" step="any">
+				<label for="setupscript-fail1messagepositiony" class="label-before-input">Y:</label>
+				<input id="setupscript-fail1messagepositiony" name="setupScript,fail1MessagePositionY" type="number" step="any">
+				<label for="setupscript-fail1messagepositionz" class="label-before-input">Z:</label>
+				<input id="setupscript-fail1messagepositionz" name="setupScript,fail1MessagePositionZ" type="number" step="any">
+				</div>  
+		</fieldset>	
 
-        <subname>Background color </subname>
-            <inputs>
-            <label for="MSGFAIL1_COLOR_B_R">R:</label>
-            <input id="MSGFAIL1_COLOR_B_R" name="setupScript,fail1MessageBackgroundColorR" type="number" value="0.7" />
-            <label for="MSGFAIL1_COLOR_B_G">G:</label>
-            <input id="MSGFAIL1_COLOR_B_G" name="setupScript,fail1MessageBackgroundColorG" type="number" value="0" />
-            <label for="MSGFAIL1_COLOR_B_B">B:</label>
-            <input id="MSGFAIL1_COLOR_B_B" name="setupScript,fail1MessageBackgroundColorB" type="number" value="0" />
-            <label for="MSGFAIL1_COLOR_B_A">Alpha:</label>
-            <input id="MSGFAIL1_COLOR_B_A" name="setupScript,fail1MessageBackgroundColorAlpha" type="number" value="1" />
-            </inputs>   
+				<div class="fullrow-type mediumspace"></div>   
+		<fieldset class="trial-builder-group">     
+				<div class="name-type name">Orientation [deg]: </div>
+				<div class="inputs-type inputs">
+					<input id="setupscript-fail1messagebackgroundrotationz" name="setupScript,fail1MessageBackgroundRotationZ" type="number" step="any">  
+				</div> 
+		</fieldset>
 
-        <subname>Text color </subname>
-            <inputs>
-            <label for="MSGFAIL1_COLOR_T_R">R:</label>
-            <input id="MSGFAIL1_COLOR_T_R" name="setupScript,fail1MessageTextColorR" type="number" value="1" />
-            <label for="MSGFAIL1_COLOR_T_G">G:</label>
-            <input id="MSGFAIL1_COLOR_T_G" name="setupScript,fail1MessageTextColorG" type="number" value="1" />
-            <label for="MSGFAIL1_COLOR_T_B">B:</label>
-            <input id="MSGFAIL1_COLOR_T_B" name="setupScript,fail1MessageTextColorB" type="number" value="1" />
-            <label for="MSGFAIL1_COLOR_T_A">Alpha:</label>
-            <input id="MSGFAIL1_COLOR_T_A" name="setupScript,fail1MessageTextColorAlpha" type="number" value="1" />
-            </inputs>    
+				<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group"> 
+				<div class="name-type name">Size [m]:</div>
+				 <div class="inputs-type inputs">
+				<label for="setupscript-fail1messagesizex" class="label-before-input label-start-block">Width:</label>
+				<input id="setupscript-fail1messagesizex" name="setupScript,fail1MessageSizeX" type="number" step="any" min="0">
+				<label for="setupscript-fail1messagesizey" class="label-before-input">Height:</label>
+				<input id="setupscript-fail1messagesizey" name="setupScript,fail1MessageSizeY" type="number" step="any" min="0">
+				</div>   
+		</fieldset>
 
-        <subname>Text offset </subname>
-            <inputs>
-            <label for="MSGFAIL1_TOFF_X">X [m]:</label>
-            <input id="MSGFAIL1_TOFF_X" name="setupScript,fail1MessageTextOffsetX" type="number" value="0.03" />
-            <label for="MSGFAIL1_TOFF_Y">Y [m]:</label>
-            <input id="MSGFAIL1_TOFF_Y" name="setupScript,fail1MessageTextOffsetY" type="number" value="0.015" />
-            <label for="MSGFAIL1_TOFF_R">Rotation [deg]:</label>
-            <input id="MSGFAIL1_TOFF_R" name="setupScript,fail1MessageTextRotationZ" type="number" value="15" />
-            </inputs>  
+				<div class="fullrow-type mediumspace"></div>
+		<fieldset class="trial-builder-group">    
+				<div class="name-type name">Shape:</div> 
+			<div class="inputs-type inputs">              
+				<input id="setupscript-fail1messagetype_cartoon" name="setupScript,fail1MessageType" type="radio" value="cartoon">
+				<label for="setupscript-fail1messagetype_cartoon" class="label-after-input">Cartoon</label> 
+				<input id="setupscript-fail1messagetype_rectangle" name="setupScript,fail1MessageType" type="radio" value="rectangle">
+				<label for="setupscript-fail1messagetype_rectangle" class="label-after-input">Rectangle</label>                 
+				<input id="setupscript-fail1messagetype_none" name="setupScript,fail1MessageType" type="radio" value="none">
+				<label for="setupscript-fail1messagetype_none" class="label-after-input">None</label> 
+			</div> 
+		</fieldset>
+
+				<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group">     
+				<div class="name-type name">Color:</div> 			
+				 <div class="inputs-type inputs">  
+				<input type="color" id="setupscript-fail1messagebackgroundcolor_picker" class="picker-color helper-input">
+				<label for="setupscript-fail1messagebackgroundcolorr" class="label-before-input hidden-color hidden-label">R:</label>
+				<input id="setupscript-fail1messagebackgroundcolorr" name="setupScript,fail1MessageBackgroundColorR" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail1messagebackgroundcolorg" class="label-before-input hidden-color hidden-label">G:</label>
+				<input id="setupscript-fail1messagebackgroundcolorg" name="setupScript,fail1MessageBackgroundColorG" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail1messagebackgroundcolorb" class="label-before-input hidden-color hidden-label">B:</label>
+				<input id="setupscript-fail1messagebackgroundcolorb" name="setupScript,fail1MessageBackgroundColorB" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail1messagebackgroundcoloralpha" class="label-before-input">Alpha:</label>
+				<input id="setupscript-fail1messagebackgroundcoloralpha" name="setupScript,fail1MessageBackgroundColorAlpha" type="number" step="any" min="0" max="1">
+				</div>   	
+		</fieldset>
+
+	</div> 
+	
+	<!-- END of expandable window - Bubble -->
+
+
+	<!-- Expandable Message Text --> 
+
+	<div class="fullrow-type expand-window collapsed" id="expandable-fail1MessageText">  
+
+		<fieldset class="trial-builder-group">  
+				<div class="name-type name">Position [m]:</div>  
+				<div class="inputs-type inputs">
+				<label for="setupscript-fail1messagetextoffsetx" class="label-before-input label-start-block">X:</label>
+				<input id="setupscript-fail1messagetextoffsetx" name="setupScript,fail1MessageTextOffsetX" type="number" step="any">
+				<label for="setupscript-fail1messagetextoffsety" class="label-before-input">Y:</label>
+				<input id="setupscript-fail1messagetextoffsety" name="setupScript,fail1MessageTextOffsetY" type="number" step="any">
+				</div>	
+		</fieldset>   
+
+					<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group"> 
+				<div class="name-type name">Orientation [deg]:</div>   
+				<div class="inputs-type inputs"> 
+				<input id="setupscript-fail1messagetextrotationz" name="setupScript,fail1MessageTextRotationZ" type="number" step="any">
+				</div>	
+		</fieldset>   
+
+					<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group">   
+				<div class="name-type name">Font size:</div>  
+				 <div class="inputs-type inputs"> 
+				<input id="setupscript-fail1messagefontsize" name="setupScript,fail1MessageFontSize" type="number" step="any" min="0"> 
+				</div>   
+		</fieldset>   
+
+					<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group">   
+				<div class="name-type name">Color:</div> 	
+				<div class="inputs-type inputs"> 
+				<input type="color" id="setupscript-fail1messagetextcolor_picker" class="picker-color helper-input">
+				<label for="setupscript-fail1messagetextcolorr" class="label-before-input hidden-color hidden-label">R:</label>
+				<input id="setupscript-fail1messagetextcolorr" name="setupScript,fail1MessageTextColorR" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail1messagetextcolorg" class="label-before-input hidden-color hidden-label">G:</label>
+				<input id="setupscript-fail1messagetextcolorg" name="setupScript,fail1MessageTextColorG" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail1messagetextcolorb" class="label-before-input hidden-color hidden-label">B:</label>
+				<input id="setupscript-fail1messagetextcolorb" name="setupScript,fail1MessageTextColorB" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail1messagetextcoloralpha" class="label-before-input">Alpha:</label>
+				<input id="setupscript-fail1messagetextcoloralpha" name="setupScript,fail1MessageTextColorAlpha" type="number" step="any" min="0" max="1">
+				</div>  
+		</fieldset>   
+
+
+	</div> 
+	
+	<!-- END of expandable window - Text -->
+	
+<!-- END of Expandable "fail1" Message Section -->
+		  
+		 
+<!-- Expandable "fail2" Message Section -->
+	
+	<div class="name-type subname"> Plate exited target:</div> 
+	
+
+	<div class="inputs-type">	
+		
+		<button class="expand-button collapsed" type="button" data-target="#expandable-fail2MessageBubble" data-collapse="#expandable-fail2MessageText"><span>
+		bubble
+		</span></button>	
+		
+		<button class="expand-button collapsed" type="button" data-target="#expandable-fail2MessageText" data-collapse="#expandable-fail2MessageBubble"><span>
+		text
+		</span></button>
+	</div>
  
 
-
-    <name>Plate exited target: </name> <inputs></inputs>	   
-    
-        <subname>Position [m] </subname>
-            <inputs>
-            <label for="MSGFAIL2_POS_X">X:</label>
-            <input id="MSGFAIL2_POS_X" name="setupScript,fail2MessagePositionX" type="number" value="0.4" />
-            <label for="MSGFAIL2_POS_Y">Y:</label>
-            <input id="MSGFAIL2_POS_Y" name="setupScript,fail2MessagePositionY" type="number" value="0.3" />
-            <label for="MSGFAIL2_POS_Z">Z:</label>
-            <input id="MSGFAIL2_POS_Z" name="setupScript,fail2MessagePositionZ" type="number" value="0.6" />
-            </inputs>  	
-        
-        <subname>Size </subname>
-            <inputs>
-            <label for="MSGFAIL2_POS_X">Width [m]:</label>
-            <input id="MSGFAIL2_POS_X" name="setupScript,fail2MessageSizeX" type="number" value="0.55" />
-            <label for="MSGFAIL2_POS_Y">Height [m]:</label>
-            <input id="MSGFAIL2_POS_Y" name="setupScript,fail2MessageSizeY" type="number" value="0.4" />
-            <label for="MSGFAIL2_POS_Z">Font:</label>
-            <input id="MSGFAIL2_POS_Z" name="setupScript,fail2MessageFontSize" type="number" value="0.7" />
-            </inputs>  
+	<!-- Expandable Message Bubble -->
+	
+	<div class="fullrow-type expand-window collapsed" id="expandable-fail2MessageBubble"> 
 
 
-        <subname>Background shape </subname>
-            <inputs>                
-            <input id="MSGFAIL2_TYPE_B" name="setupScript,fail2MessageType" type="radio" value="cartoon"  checked >
-            <label for="MSGFAIL2_TYPE_B">Cartoon</label> 
-            <input id="MSGFAIL2_TYPE_B2" name="setupScript,fail2MessageType" type="radio" value="rectangle" >
-            <label for="MSGFAIL2_TYPE_B2">Rectangle</label>                          
-            <input id="MSGFAIL2_TYPE_B0" name="setupScript,fail2MessageType" type="radio" value="none" >
-            <label for="MSGFAIL2_TYPE_B0">None</label>        
-            <label for="MSGFAIL2_ROT_B">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rotation [deg]:</label>
-            <input id="MSGFAIL2_ROT_B" name="setupScript,fail2MessageBackgroundRotationZ" type="number" value="0" />   			
-            </inputs>  
+		<fieldset class="trial-builder-group">     
+				<div class="name-type name">Position [m]: </div>
+				 <div class="inputs-type inputs">
+				<label for="setupscript-fail2messagepositionx" class="label-before-input label-start-block">X:</label>
+				<input id="setupscript-fail2messagepositionx" name="setupScript,fail2MessagePositionX" type="number" step="any">
+				<label for="setupscript-fail2messagepositiony" class="label-before-input">Y:</label>
+				<input id="setupscript-fail2messagepositiony" name="setupScript,fail2MessagePositionY" type="number" step="any">
+				<label for="setupscript-fail2messagepositionz" class="label-before-input">Z:</label>
+				<input id="setupscript-fail2messagepositionz" name="setupScript,fail2MessagePositionZ" type="number" step="any">
+				</div>  
+		</fieldset>	
 
-        <subname>Background color </subname>
-            <inputs>
-            <label for="MSGFAIL2_COLOR_B_R">R:</label>
-            <input id="MSGFAIL2_COLOR_B_R" name="setupScript,fail2MessageBackgroundColorR" type="number" value="0.7" />
-            <label for="MSGFAIL2_COLOR_B_G">G:</label>
-            <input id="MSGFAIL2_COLOR_B_G" name="setupScript,fail2MessageBackgroundColorG" type="number" value="0" />
-            <label for="MSGFAIL2_COLOR_B_B">B:</label>
-            <input id="MSGFAIL2_COLOR_B_B" name="setupScript,fail2MessageBackgroundColorB" type="number" value="0" />
-            <label for="MSGFAIL2_COLOR_B_A">Alpha:</label>
-            <input id="MSGFAIL2_COLOR_B_A" name="setupScript,fail2MessageBackgroundColorAlpha" type="number" value="1" />
-            </inputs>   
+				<div class="fullrow-type mediumspace"></div>   
+		<fieldset class="trial-builder-group">     
+				<div class="name-type name">Orientation [deg]: </div>
+				<div class="inputs-type inputs">
+					<input id="setupscript-fail2messagebackgroundrotationz" name="setupScript,fail2MessageBackgroundRotationZ" type="number" step="any">  
+				</div> 
+		</fieldset>
 
-        <subname>Text color </subname>
-            <inputs>
-            <label for="MSGFAIL2_COLOR_T_R">R:</label>
-            <input id="MSGFAIL2_COLOR_T_R" name="setupScript,fail2MessageTextColorR" type="number" value="1" />
-            <label for="MSGFAIL2_COLOR_T_G">G:</label>
-            <input id="MSGFAIL2_COLOR_T_G" name="setupScript,fail2MessageTextColorG" type="number" value="1" />
-            <label for="MSGFAIL2_COLOR_T_B">B:</label>
-            <input id="MSGFAIL2_COLOR_T_B" name="setupScript,fail2MessageTextColorB" type="number" value="1" />
-            <label for="MSGFAIL2_COLOR_T_A">Alpha:</label>
-            <input id="MSGFAIL2_COLOR_T_A" name="setupScript,fail2MessageTextColorAlpha" type="number" value="1" />
-            </inputs>    
+				<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group"> 
+				<div class="name-type name">Size [m]:</div>
+				 <div class="inputs-type inputs">
+				<label for="setupscript-fail2messagesizex" class="label-before-input label-start-block">Width:</label>
+				<input id="setupscript-fail2messagesizex" name="setupScript,fail2MessageSizeX" type="number" step="any" min="0">
+				<label for="setupscript-fail2messagesizey" class="label-before-input">Height:</label>
+				<input id="setupscript-fail2messagesizey" name="setupScript,fail2MessageSizeY" type="number" step="any" min="0">
+				</div>   
+		</fieldset>
 
-        <subname>Text offset </subname>
-            <inputs>
-            <label for="MSGFAIL2_TOFF_X">X [m]:</label>
-            <input id="MSGFAIL2_TOFF_X" name="setupScript,fail2MessageTextOffsetX" type="number" value="0.03" />
-            <label for="MSGFAIL2_TOFF_Y">Y [m]:</label>
-            <input id="MSGFAIL2_TOFF_Y" name="setupScript,fail2MessageTextOffsetY" type="number" value="0.015" />
-            <label for="MSGFAIL2_TOFF_R">Rotation [deg]:</label>
-            <input id="MSGFAIL2_TOFF_R" name="setupScript,fail2MessageTextRotationZ" type="number" value="15" />
-            </inputs>  
+				<div class="fullrow-type mediumspace"></div>
+		<fieldset class="trial-builder-group">    
+				<div class="name-type name">Shape:</div> 
+			<div class="inputs-type inputs">              
+				<input id="setupscript-fail2messagetype_cartoon" name="setupScript,fail2MessageType" type="radio" value="cartoon">
+				<label for="setupscript-fail2messagetype_cartoon" class="label-after-input">Cartoon</label> 
+				<input id="setupscript-fail2messagetype_rectangle" name="setupScript,fail2MessageType" type="radio" value="rectangle">
+				<label for="setupscript-fail2messagetype_rectangle" class="label-after-input">Rectangle</label>                 
+				<input id="setupscript-fail2messagetype_none" name="setupScript,fail2MessageType" type="radio" value="none">
+				<label for="setupscript-fail2messagetype_none" class="label-after-input">None</label> 
+			</div> 
+		</fieldset>
+
+				<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group">     
+				<div class="name-type name">Color:</div> 			
+				 <div class="inputs-type inputs">  
+				<input type="color" id="setupscript-fail2messagebackgroundcolor_picker" class="picker-color helper-input">
+				<label for="setupscript-fail2messagebackgroundcolorr" class="label-before-input hidden-color hidden-label">R:</label>
+				<input id="setupscript-fail2messagebackgroundcolorr" name="setupScript,fail2MessageBackgroundColorR" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail2messagebackgroundcolorg" class="label-before-input hidden-color hidden-label">G:</label>
+				<input id="setupscript-fail2messagebackgroundcolorg" name="setupScript,fail2MessageBackgroundColorG" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail2messagebackgroundcolorb" class="label-before-input hidden-color hidden-label">B:</label>
+				<input id="setupscript-fail2messagebackgroundcolorb" name="setupScript,fail2MessageBackgroundColorB" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail2messagebackgroundcoloralpha" class="label-before-input">Alpha:</label>
+				<input id="setupscript-fail2messagebackgroundcoloralpha" name="setupScript,fail2MessageBackgroundColorAlpha" type="number" step="any" min="0" max="1">
+				</div>   	
+		</fieldset>
+
+	</div> 
+	
+	<!-- END of expandable window - Bubble -->
+
+
+	<!-- Expandable Message Text --> 
+
+	<div class="fullrow-type expand-window collapsed" id="expandable-fail2MessageText">  
+
+		<fieldset class="trial-builder-group">  
+				<div class="name-type name">Position [m]:</div>  
+				<div class="inputs-type inputs">
+				<label for="setupscript-fail2messagetextoffsetx" class="label-before-input label-start-block">X:</label>
+				<input id="setupscript-fail2messagetextoffsetx" name="setupScript,fail2MessageTextOffsetX" type="number" step="any">
+				<label for="setupscript-fail2messagetextoffsety" class="label-before-input">Y:</label>
+				<input id="setupscript-fail2messagetextoffsety" name="setupScript,fail2MessageTextOffsetY" type="number" step="any">
+				</div>	
+		</fieldset>   
+
+					<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group"> 
+				<div class="name-type name">Orientation [deg]:</div>   
+				<div class="inputs-type inputs"> 
+				<input id="setupscript-fail2messagetextrotationz" name="setupScript,fail2MessageTextRotationZ" type="number" step="any">
+				</div>	
+		</fieldset>   
+
+					<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group">   
+				<div class="name-type name">Font size:</div>  
+				 <div class="inputs-type inputs"> 
+				<input id="setupscript-fail2messagefontsize" name="setupScript,fail2MessageFontSize" type="number" step="any" min="0"> 
+				</div>   
+		</fieldset>   
+
+					<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group">   
+				<div class="name-type name">Color:</div> 	
+				<div class="inputs-type inputs"> 
+				<input type="color" id="setupscript-fail2messagetextcolor_picker" class="picker-color helper-input">
+				<label for="setupscript-fail2messagetextcolorr" class="label-before-input hidden-color hidden-label">R:</label>
+				<input id="setupscript-fail2messagetextcolorr" name="setupScript,fail2MessageTextColorR" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail2messagetextcolorg" class="label-before-input hidden-color hidden-label">G:</label>
+				<input id="setupscript-fail2messagetextcolorg" name="setupScript,fail2MessageTextColorG" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail2messagetextcolorb" class="label-before-input hidden-color hidden-label">B:</label>
+				<input id="setupscript-fail2messagetextcolorb" name="setupScript,fail2MessageTextColorB" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail2messagetextcoloralpha" class="label-before-input">Alpha:</label>
+				<input id="setupscript-fail2messagetextcoloralpha" name="setupScript,fail2MessageTextColorAlpha" type="number" step="any" min="0" max="1">
+				</div>  
+		</fieldset>   
+
+
+	</div> 
+	
+	<!-- END of expandable window - Text -->
+	
+<!-- END of Expandable "fail2" Message Section -->
+		  
+		 
+<!-- Expandable "fail3" Message Section -->
+	
+  
+	<div class="name-type subname"> Plate fell:</div> 
+	
+
+	<div class="inputs-type">	
+		
+		<button class="expand-button collapsed" type="button" data-target="#expandable-fail3MessageBubble" data-collapse="#expandable-fail3MessageText"><span>
+		bubble
+		</span></button>	
+		
+		<button class="expand-button collapsed" type="button" data-target="#expandable-fail3MessageText" data-collapse="#expandable-fail3MessageBubble"><span>
+		text
+		</span></button>
+	</div>
  
 
+	<!-- Expandable Message Bubble -->
+	
+	<div class="fullrow-type expand-window collapsed" id="expandable-fail3MessageBubble"> 
 
 
-    <name>Plate fell: </name> <inputs></inputs>	   
-    
-        <subname>Position [m] </subname>
-            <inputs>
-            <label for="MSGFAIL3_POS_X">X:</label>
-            <input id="MSGFAIL3_POS_X" name="setupScript,fail3MessagePositionX" type="number" value="0.4" />
-            <label for="MSGFAIL3_POS_Y">Y:</label>
-            <input id="MSGFAIL3_POS_Y" name="setupScript,fail3MessagePositionY" type="number" value="0.3" />
-            <label for="MSGFAIL3_POS_Z">Z:</label>
-            <input id="MSGFAIL3_POS_Z" name="setupScript,fail3MessagePositionZ" type="number" value="0.6" />
-            </inputs>  
-        
-        <subname>Size </subname>
-            <inputs>
-            <label for="MSGFAIL3_POS_X">Width [m]:</label>
-            <input id="MSGFAIL3_POS_X" name="setupScript,fail3MessageSizeX" type="number" value="0.55" />
-            <label for="MSGFAIL3_POS_Y">Height [m]:</label>
-            <input id="MSGFAIL3_POS_Y" name="setupScript,fail3MessageSizeY" type="number" value="0.4" />
-            <label for="MSGFAIL3_POS_Z">Font:</label>
-            <input id="MSGFAIL3_POS_Z" name="setupScript,fail3MessageFontSize" type="number" value="1" />
-            </inputs>  
+		<fieldset class="trial-builder-group">     
+				<div class="name-type name">Position [m]: </div>
+				 <div class="inputs-type inputs">
+				<label for="setupscript-fail3messagepositionx" class="label-before-input label-start-block">X:</label>
+				<input id="setupscript-fail3messagepositionx" name="setupScript,fail3MessagePositionX" type="number" step="any">
+				<label for="setupscript-fail3messagepositiony" class="label-before-input">Y:</label>
+				<input id="setupscript-fail3messagepositiony" name="setupScript,fail3MessagePositionY" type="number" step="any">
+				<label for="setupscript-fail3messagepositionz" class="label-before-input">Z:</label>
+				<input id="setupscript-fail3messagepositionz" name="setupScript,fail3MessagePositionZ" type="number" step="any">
+				</div>  
+		</fieldset>	
+
+				<div class="fullrow-type mediumspace"></div>   
+		<fieldset class="trial-builder-group">     
+				<div class="name-type name">Orientation [deg]: </div>
+				<div class="inputs-type inputs">
+					<input id="setupscript-fail3messagebackgroundrotationz" name="setupScript,fail3MessageBackgroundRotationZ" type="number" step="any">  
+				</div> 
+		</fieldset>
+
+				<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group"> 
+				<div class="name-type name">Size [m]:</div>
+				 <div class="inputs-type inputs">
+				<label for="setupscript-fail3messagesizex" class="label-before-input label-start-block">Width:</label>
+				<input id="setupscript-fail3messagesizex" name="setupScript,fail3MessageSizeX" type="number" step="any" min="0">
+				<label for="setupscript-fail3messagesizey" class="label-before-input">Height:</label>
+				<input id="setupscript-fail3messagesizey" name="setupScript,fail3MessageSizeY" type="number" step="any" min="0">
+				</div>   
+		</fieldset>
+
+				<div class="fullrow-type mediumspace"></div>
+		<fieldset class="trial-builder-group">    
+				<div class="name-type name">Shape:</div> 
+			<div class="inputs-type inputs">              
+				<input id="setupscript-fail3messagetype_cartoon" name="setupScript,fail3MessageType" type="radio" value="cartoon">
+				<label for="setupscript-fail3messagetype_cartoon" class="label-after-input">Cartoon</label> 
+				<input id="setupscript-fail3messagetype_rectangle" name="setupScript,fail3MessageType" type="radio" value="rectangle">
+				<label for="setupscript-fail3messagetype_rectangle" class="label-after-input">Rectangle</label>                 
+				<input id="setupscript-fail3messagetype_none" name="setupScript,fail3MessageType" type="radio" value="none">
+				<label for="setupscript-fail3messagetype_none" class="label-after-input">None</label> 
+			</div> 
+		</fieldset>
+
+				<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group">     
+				<div class="name-type name">Color:</div> 			
+				 <div class="inputs-type inputs">  
+				<input type="color" id="setupscript-fail3messagebackgroundcolor_picker" class="picker-color helper-input">
+				<label for="setupscript-fail3messagebackgroundcolorr" class="label-before-input hidden-color hidden-label">R:</label>
+				<input id="setupscript-fail3messagebackgroundcolorr" name="setupScript,fail3MessageBackgroundColorR" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail3messagebackgroundcolorg" class="label-before-input hidden-color hidden-label">G:</label>
+				<input id="setupscript-fail3messagebackgroundcolorg" name="setupScript,fail3MessageBackgroundColorG" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail3messagebackgroundcolorb" class="label-before-input hidden-color hidden-label">B:</label>
+				<input id="setupscript-fail3messagebackgroundcolorb" name="setupScript,fail3MessageBackgroundColorB" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail3messagebackgroundcoloralpha" class="label-before-input">Alpha:</label>
+				<input id="setupscript-fail3messagebackgroundcoloralpha" name="setupScript,fail3MessageBackgroundColorAlpha" type="number" step="any" min="0" max="1">
+				</div>   	
+		</fieldset>
+
+	</div> 
+	
+	<!-- END of expandable window - Bubble -->
 
 
-        <subname>Background shape </subname>
-            <inputs>                
-            <input id="MSGFAIL3_TYPE_B" name="setupScript,fail3MessageType" type="radio" value="cartoon"  checked >
-            <label for="MSGFAIL3_TYPE_B">Cartoon</label> 
-            <input id="MSGFAIL3_TYPE_B2" name="setupScript,fail3MessageType" type="radio" value="rectangle" >
-            <label for="MSGFAIL3_TYPE_B2">Rectangle</label>                              
-            <input id="MSGFAIL3_TYPE_B0" name="setupScript,fail3MessageType" type="radio" value="none" >
-            <label for="MSGFAIL3_TYPE_B0">None</label>    
-            <label for="MSGFAIL3_ROT_B">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rotation [deg]:</label>
-            <input id="MSGFAIL3_ROT_B" name="setupScript,fail3MessageBackgroundRotationZ" type="number" value="0" />   			
-            </inputs>  
+	<!-- Expandable Message Text --> 
 
-        <subname>Background color </subname>
-            <inputs>
-            <label for="MSGFAIL3_COLOR_B_R">R:</label>
-            <input id="MSGFAIL3_COLOR_B_R" name="setupScript,fail3MessageBackgroundColorR" type="number" value="0.7" />
-            <label for="MSGFAIL3_COLOR_B_G">G:</label>
-            <input id="MSGFAIL3_COLOR_B_G" name="setupScript,fail3MessageBackgroundColorG" type="number" value="0" />
-            <label for="MSGFAIL3_COLOR_B_B">B:</label>
-            <input id="MSGFAIL3_COLOR_B_B" name="setupScript,fail3MessageBackgroundColorB" type="number" value="0" />
-            <label for="MSGFAIL3_COLOR_B_A">Alpha:</label>
-            <input id="MSGFAIL3_COLOR_B_A" name="setupScript,fail3MessageBackgroundColorAlpha" type="number" value="1" />
-            </inputs>   
+	<div class="fullrow-type expand-window collapsed" id="expandable-fail3MessageText">  
 
-        <subname>Text color </subname>
-            <inputs>
-            <label for="MSGFAIL3_COLOR_T_R">R:</label>
-            <input id="MSGFAIL3_COLOR_T_R" name="setupScript,fail3MessageTextColorR" type="number" value="1" />
-            <label for="MSGFAIL3_COLOR_T_G">G:</label>
-            <input id="MSGFAIL3_COLOR_T_G" name="setupScript,fail3MessageTextColorG" type="number" value="1" />
-            <label for="MSGFAIL3_COLOR_T_B">B:</label>
-            <input id="MSGFAIL3_COLOR_T_B" name="setupScript,fail3MessageTextColorB" type="number" value="1" />
-            <label for="MSGFAIL3_COLOR_T_A">Alpha:</label>
-            <input id="MSGFAIL3_COLOR_T_A" name="setupScript,fail3MessageTextColorAlpha" type="number" value="1" />
-            </inputs>    
+		<fieldset class="trial-builder-group">  
+				<div class="name-type name">Position [m]:</div>  
+				<div class="inputs-type inputs">
+				<label for="setupscript-fail3messagetextoffsetx" class="label-before-input label-start-block">X:</label>
+				<input id="setupscript-fail3messagetextoffsetx" name="setupScript,fail3MessageTextOffsetX" type="number" step="any">
+				<label for="setupscript-fail3messagetextoffsety" class="label-before-input">Y:</label>
+				<input id="setupscript-fail3messagetextoffsety" name="setupScript,fail3MessageTextOffsetY" type="number" step="any">
+				</div>	
+		</fieldset>   
 
-        <subname>Text offset </subname>
-            <inputs>
-            <label for="MSGFAIL3_TOFF_X">X [m]:</label>
-            <input id="MSGFAIL3_TOFF_X" name="setupScript,fail3MessageTextOffsetX" type="number" value="0.03" />
-            <label for="MSGFAIL3_TOFF_Y">Y [m]:</label>
-            <input id="MSGFAIL3_TOFF_Y" name="setupScript,fail3MessageTextOffsetY" type="number" value="0.015" />
-            <label for="MSGFAIL3_TOFF_R">Rotation [deg]:</label>
-            <input id="MSGFAIL3_TOFF_R" name="setupScript,fail3MessageTextRotationZ" type="number" value="15" />
-            </inputs>  
-          
+					<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group"> 
+				<div class="name-type name">Orientation [deg]:</div>   
+				<div class="inputs-type inputs"> 
+				<input id="setupscript-fail3messagetextrotationz" name="setupScript,fail3MessageTextRotationZ" type="number" step="any">
+				</div>	
+		</fieldset>   
 
+					<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group">   
+				<div class="name-type name">Font size:</div>  
+				 <div class="inputs-type inputs"> 
+				<input id="setupscript-fail3messagefontsize" name="setupScript,fail3MessageFontSize" type="number" step="any" min="0"> 
+				</div>   
+		</fieldset>   
+
+					<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group">   
+				<div class="name-type name">Color:</div> 	
+				<div class="inputs-type inputs"> 
+				<input type="color" id="setupscript-fail3messagetextcolor_picker" class="picker-color helper-input">
+				<label for="setupscript-fail3messagetextcolorr" class="label-before-input hidden-color hidden-label">R:</label>
+				<input id="setupscript-fail3messagetextcolorr" name="setupScript,fail3MessageTextColorR" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail3messagetextcolorg" class="label-before-input hidden-color hidden-label">G:</label>
+				<input id="setupscript-fail3messagetextcolorg" name="setupScript,fail3MessageTextColorG" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail3messagetextcolorb" class="label-before-input hidden-color hidden-label">B:</label>
+				<input id="setupscript-fail3messagetextcolorb" name="setupScript,fail3MessageTextColorB" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail3messagetextcoloralpha" class="label-before-input">Alpha:</label>
+				<input id="setupscript-fail3messagetextcoloralpha" name="setupScript,fail3MessageTextColorAlpha" type="number" step="any" min="0" max="1">
+				</div>  
+		</fieldset>   
 
 
-    <name>Time limit reached: </name> <inputs></inputs>	   
-        
-        <subname>Position [m] </subname>
-            <inputs>
-            <label for="MSGFAIL4_POS_X">X:</label>
-            <input id="MSGFAIL4_POS_X" name="setupScript,fail4MessagePositionX" type="number" value="0.4" />
-            <label for="MSGFAIL4_POS_Y">Y:</label>
-            <input id="MSGFAIL4_POS_Y" name="setupScript,fail4MessagePositionY" type="number" value="0.3" />
-            <label for="MSGFAIL4_POS_Z">Z:</label>
-            <input id="MSGFAIL4_POS_Z" name="setupScript,fail4MessagePositionZ" type="number" value="0.6" />
-            </inputs>  	   
-        
-        <subname>Size </subname>
-            <inputs>
-            <label for="MSGFAIL4_POS_X">Width [m]:</label>
-            <input id="MSGFAIL4_POS_X" name="setupScript,fail4MessageSizeX" type="number" value="0.55" />
-            <label for="MSGFAIL4_POS_Y">Height [m]:</label>
-            <input id="MSGFAIL4_POS_Y" name="setupScript,fail4MessageSizeY" type="number" value="0.4" />
-            <label for="MSGFAIL4_POS_Z">Font:</label>
-            <input id="MSGFAIL4_POS_Z" name="setupScript,fail4MessageFontSize" type="number" value="1" />
-            </inputs>  
+	</div> 
+	
+	<!-- END of expandable window - Text -->
+	
+<!-- END of Expandable "fail3" Message Section -->
+		  
+		 
+<!-- Expandable "fail4" Message Section -->
+	
 
+	<div class="name-type subname"> Time limit reached:</div> 
+	
 
-        <subname>Background shape </subname>
-            <inputs>                
-            <input id="MSGFAIL4_TYPE_B" name="setupScript,fail4MessageType" type="radio" value="cartoon"  checked >
-            <label for="MSGFAIL4_TYPE_B">Cartoon</label> 
-            <input id="MSGFAIL4_TYPE_B2" name="setupScript,fail4MessageType" type="radio" value="rectangle" >
-            <label for="MSGFAIL4_TYPE_B2">Rectangle</label>                      
-            <input id="MSGFAIL4_TYPE_B0" name="setupScript,fail4MessageType" type="radio" value="none" >
-            <label for="MSGFAIL4_TYPE_B0">None</label>            
-            <label for="MSGFAIL4_ROT_B">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rotation [deg]:</label>
-            <input id="MSGFAIL4_ROT_B" name="setupScript,fail4MessageBackgroundRotationZ" type="number" value="0" />   			
-            </inputs>  
-
-        <subname>Background color </subname>
-            <inputs>
-            <label for="MSGFAIL4_COLOR_B_R">R:</label>
-            <input id="MSGFAIL4_COLOR_B_R" name="setupScript,fail4MessageBackgroundColorR" type="number" value="0.7" />
-            <label for="MSGFAIL4_COLOR_B_G">G:</label>
-            <input id="MSGFAIL4_COLOR_B_G" name="setupScript,fail4MessageBackgroundColorG" type="number" value="0" />
-            <label for="MSGFAIL4_COLOR_B_B">B:</label>
-            <input id="MSGFAIL4_COLOR_B_B" name="setupScript,fail4MessageBackgroundColorB" type="number" value="0" />
-            <label for="MSGFAIL4_COLOR_B_A">Alpha:</label>
-            <input id="MSGFAIL4_COLOR_B_A" name="setupScript,fail4MessageBackgroundColorAlpha" type="number" value="1" />
-            </inputs>   
-
-        <subname>Text color </subname>
-            <inputs>
-            <label for="MSGFAIL4_COLOR_T_R">R:</label>
-            <input id="MSGFAIL4_COLOR_T_R" name="setupScript,fail4MessageTextColorR" type="number" value="1" />
-            <label for="MSGFAIL4_COLOR_T_G">G:</label>
-            <input id="MSGFAIL4_COLOR_T_G" name="setupScript,fail4MessageTextColorG" type="number" value="1" />
-            <label for="MSGFAIL4_COLOR_T_B">B:</label>
-            <input id="MSGFAIL4_COLOR_T_B" name="setupScript,fail4MessageTextColorB" type="number" value="1" />
-            <label for="MSGFAIL4_COLOR_T_A">Alpha:</label>
-            <input id="MSGFAIL4_COLOR_T_A" name="setupScript,fail4MessageTextColorAlpha" type="number" value="1" />
-            </inputs>    
-
-        <subname>Text offset </subname>
-            <inputs>
-            <label for="MSGFAIL4_TOFF_X">X [m]:</label>
-            <input id="MSGFAIL4_TOFF_X" name="setupScript,fail4MessageTextOffsetX" type="number" value="0.03" />
-            <label for="MSGFAIL4_TOFF_Y">Y [m]:</label>
-            <input id="MSGFAIL4_TOFF_Y" name="setupScript,fail4MessageTextOffsetY" type="number" value="0.015" />
-            <label for="MSGFAIL4_TOFF_R">Rotation [deg]:</label>
-            <input id="MSGFAIL4_TOFF_R" name="setupScript,fail4MessageTextRotationZ" type="number" value="15" />
-            </inputs>  
+	<div class="inputs-type">	
+		
+		<button class="expand-button collapsed" type="button" data-target="#expandable-fail4MessageBubble" data-collapse="#expandable-fail4MessageText"><span>
+		bubble
+		</span></button>	
+		
+		<button class="expand-button collapsed" type="button" data-target="#expandable-fail4MessageText" data-collapse="#expandable-fail4MessageBubble"><span>
+		text
+		</span></button>
+	</div>
  
 
+	<!-- Expandable Message Bubble -->
+	
+	<div class="fullrow-type expand-window collapsed" id="expandable-fail4MessageBubble"> 
 
 
-    <name>Workspace exited: </name> <inputs></inputs>	   
-       
-        <subname>Position [m] </subname>
-            <inputs>
-            <label for="MSGFAIL5_POS_X">X:</label>
-            <input id="MSGFAIL5_POS_X" name="setupScript,fail5MessagePositionX" type="number" value="0.4" />
-            <label for="MSGFAIL5_POS_Y">Y:</label>
-            <input id="MSGFAIL5_POS_Y" name="setupScript,fail5MessagePositionY" type="number" value="0.3" />
-            <label for="MSGFAIL5_POS_Z">Z:</label>
-            <input id="MSGFAIL5_POS_Z" name="setupScript,fail5MessagePositionZ" type="number" value="0.6" />
-            </inputs>  	 
-        
-        <subname>Size </subname>
-            <inputs>
-            <label for="MSGFAIL5_POS_X">Width [m]:</label>
-            <input id="MSGFAIL5_POS_X" name="setupScript,fail5MessageSizeX" type="number" value="0.55" />
-            <label for="MSGFAIL5_POS_Y">Height [m]:</label>
-            <input id="MSGFAIL5_POS_Y" name="setupScript,fail5MessageSizeY" type="number" value="0.4" />
-            <label for="MSGFAIL5_POS_Z">Font:</label>
-            <input id="MSGFAIL5_POS_Z" name="setupScript,fail5MessageFontSize" type="number" value="1" />
-            </inputs>  
+		<fieldset class="trial-builder-group">     
+				<div class="name-type name">Position [m]: </div>
+				 <div class="inputs-type inputs">
+				<label for="setupscript-fail4messagepositionx" class="label-before-input label-start-block">X:</label>
+				<input id="setupscript-fail4messagepositionx" name="setupScript,fail4MessagePositionX" type="number" step="any">
+				<label for="setupscript-fail4messagepositiony" class="label-before-input">Y:</label>
+				<input id="setupscript-fail4messagepositiony" name="setupScript,fail4MessagePositionY" type="number" step="any">
+				<label for="setupscript-fail4messagepositionz" class="label-before-input">Z:</label>
+				<input id="setupscript-fail4messagepositionz" name="setupScript,fail4MessagePositionZ" type="number" step="any">
+				</div>  
+		</fieldset>	
+
+				<div class="fullrow-type mediumspace"></div>   
+		<fieldset class="trial-builder-group">     
+				<div class="name-type name">Orientation [deg]: </div>
+				<div class="inputs-type inputs">
+					<input id="setupscript-fail4messagebackgroundrotationz" name="setupScript,fail4MessageBackgroundRotationZ" type="number" step="any">  
+				</div> 
+		</fieldset>
+
+				<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group"> 
+				<div class="name-type name">Size [m]:</div>
+				 <div class="inputs-type inputs">
+				<label for="setupscript-fail4messagesizex" class="label-before-input label-start-block">Width:</label>
+				<input id="setupscript-fail4messagesizex" name="setupScript,fail4MessageSizeX" type="number" step="any" min="0">
+				<label for="setupscript-fail4messagesizey" class="label-before-input">Height:</label>
+				<input id="setupscript-fail4messagesizey" name="setupScript,fail4MessageSizeY" type="number" step="any" min="0">
+				</div>   
+		</fieldset>
+
+				<div class="fullrow-type mediumspace"></div>
+		<fieldset class="trial-builder-group">    
+				<div class="name-type name">Shape:</div> 
+			<div class="inputs-type inputs">              
+				<input id="setupscript-fail4messagetype_cartoon" name="setupScript,fail4MessageType" type="radio" value="cartoon">
+				<label for="setupscript-fail4messagetype_cartoon" class="label-after-input">Cartoon</label> 
+				<input id="setupscript-fail4messagetype_rectangle" name="setupScript,fail4MessageType" type="radio" value="rectangle">
+				<label for="setupscript-fail4messagetype_rectangle" class="label-after-input">Rectangle</label>                 
+				<input id="setupscript-fail4messagetype_none" name="setupScript,fail4MessageType" type="radio" value="none">
+				<label for="setupscript-fail4messagetype_none" class="label-after-input">None</label> 
+			</div> 
+		</fieldset>
+
+				<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group">     
+				<div class="name-type name">Color:</div> 			
+				 <div class="inputs-type inputs">  
+				<input type="color" id="setupscript-fail4messagebackgroundcolor_picker" class="picker-color helper-input">
+				<label for="setupscript-fail4messagebackgroundcolorr" class="label-before-input hidden-color hidden-label">R:</label>
+				<input id="setupscript-fail4messagebackgroundcolorr" name="setupScript,fail4MessageBackgroundColorR" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail4messagebackgroundcolorg" class="label-before-input hidden-color hidden-label">G:</label>
+				<input id="setupscript-fail4messagebackgroundcolorg" name="setupScript,fail4MessageBackgroundColorG" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail4messagebackgroundcolorb" class="label-before-input hidden-color hidden-label">B:</label>
+				<input id="setupscript-fail4messagebackgroundcolorb" name="setupScript,fail4MessageBackgroundColorB" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail4messagebackgroundcoloralpha" class="label-before-input">Alpha:</label>
+				<input id="setupscript-fail4messagebackgroundcoloralpha" name="setupScript,fail4MessageBackgroundColorAlpha" type="number" step="any" min="0" max="1">
+				</div>   	
+		</fieldset>
+
+	</div> 
+	
+	<!-- END of expandable window - Bubble -->
 
 
-        <subname>Background shape </subname>
-            <inputs>                
-            <input id="MSGFAIL5_TYPE_B" name="setupScript,fail5MessageType" type="radio" value="cartoon"  checked >
-            <label for="MSGFAIL5_TYPE_B">Cartoon</label> 
-            <input id="MSGFAIL5_TYPE_B2" name="setupScript,fail5MessageType" type="radio" value="rectangle" >
-            <label for="MSGFAIL5_TYPE_B2">Rectangle</label>                  
-            <input id="MSGFAIL5_TYPE_B0" name="setupScript,fail5MessageType" type="radio" value="none" >
-            <label for="MSGFAIL5_TYPE_B0">None</label>    
-            <label for="MSGFAIL5_ROT_B">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rotation [deg]:</label>
-            <input id="MSGFAIL5_ROT_B" name="setupScript,fail5MessageBackgroundRotationZ" type="number" value="0" />   			
-            </inputs>  
+	<!-- Expandable Message Text --> 
 
-        <subname>Background color </subname>
-            <inputs>
-            <label for="MSGFAIL5_COLOR_B_R">R:</label>
-            <input id="MSGFAIL5_COLOR_B_R" name="setupScript,fail5MessageBackgroundColorR" type="number" value="0.7" />
-            <label for="MSGFAIL5_COLOR_B_G">G:</label>
-            <input id="MSGFAIL5_COLOR_B_G" name="setupScript,fail5MessageBackgroundColorG" type="number" value="0" />
-            <label for="MSGFAIL5_COLOR_B_B">B:</label>
-            <input id="MSGFAIL5_COLOR_B_B" name="setupScript,fail5MessageBackgroundColorB" type="number" value="0" />
-            <label for="MSGFAIL5_COLOR_B_A">Alpha:</label>
-            <input id="MSGFAIL5_COLOR_B_A" name="setupScript,fail5MessageBackgroundColorAlpha" type="number" value="1" />
-            </inputs>   
+	<div class="fullrow-type expand-window collapsed" id="expandable-fail4MessageText">  
 
-        <subname>Text color </subname>
-            <inputs>
-            <label for="MSGFAIL5_COLOR_T_R">R:</label>
-            <input id="MSGFAIL5_COLOR_T_R" name="setupScript,fail5MessageTextColorR" type="number" value="1" />
-            <label for="MSGFAIL5_COLOR_T_G">G:</label>
-            <input id="MSGFAIL5_COLOR_T_G" name="setupScript,fail5MessageTextColorG" type="number" value="1" />
-            <label for="MSGFAIL5_COLOR_T_B">B:</label>
-            <input id="MSGFAIL5_COLOR_T_B" name="setupScript,fail5MessageTextColorB" type="number" value="1" />
-            <label for="MSGFAIL5_COLOR_T_A">Alpha:</label>
-            <input id="MSGFAIL5_COLOR_T_A" name="setupScript,fail5MessageTextColorAlpha" type="number" value="1" />
-            </inputs>    
+		<fieldset class="trial-builder-group">  
+				<div class="name-type name">Position [m]:</div>  
+				<div class="inputs-type inputs">
+				<label for="setupscript-fail4messagetextoffsetx" class="label-before-input label-start-block">X:</label>
+				<input id="setupscript-fail4messagetextoffsetx" name="setupScript,fail4MessageTextOffsetX" type="number" step="any">
+				<label for="setupscript-fail4messagetextoffsety" class="label-before-input">Y:</label>
+				<input id="setupscript-fail4messagetextoffsety" name="setupScript,fail4MessageTextOffsetY" type="number" step="any">
+				</div>	
+		</fieldset>   
 
-        <subname>Text offset </subname>
-            <inputs>
-            <label for="MSGFAIL5_TOFF_X">X [m]:</label>
-            <input id="MSGFAIL5_TOFF_X" name="setupScript,fail5MessageTextOffsetX" type="number" value="0.03" />
-            <label for="MSGFAIL5_TOFF_Y">Y [m]:</label>
-            <input id="MSGFAIL5_TOFF_Y" name="setupScript,fail5MessageTextOffsetY" type="number" value="0.015" />
-            <label for="MSGFAIL5_TOFF_R">Rotation [deg]:</label>
-            <input id="MSGFAIL5_TOFF_R" name="setupScript,fail5MessageTextRotationZ" type="number" value="15" />
-            </inputs>  
+					<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group"> 
+				<div class="name-type name">Orientation [deg]:</div>   
+				<div class="inputs-type inputs"> 
+				<input id="setupscript-fail4messagetextrotationz" name="setupScript,fail4MessageTextRotationZ" type="number" step="any">
+				</div>	
+		</fieldset>   
 
-    </div> 
-    
-    
-    
+					<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group">   
+				<div class="name-type name">Font size:</div>  
+				 <div class="inputs-type inputs"> 
+				<input id="setupscript-fail4messagefontsize" name="setupScript,fail4MessageFontSize" type="number" step="any" min="0"> 
+				</div>   
+		</fieldset>   
+
+					<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group">   
+				<div class="name-type name">Color:</div> 	
+				<div class="inputs-type inputs"> 
+				<input type="color" id="setupscript-fail4messagetextcolor_picker" class="picker-color helper-input">
+				<label for="setupscript-fail4messagetextcolorr" class="label-before-input hidden-color hidden-label">R:</label>
+				<input id="setupscript-fail4messagetextcolorr" name="setupScript,fail4MessageTextColorR" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail4messagetextcolorg" class="label-before-input hidden-color hidden-label">G:</label>
+				<input id="setupscript-fail4messagetextcolorg" name="setupScript,fail4MessageTextColorG" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail4messagetextcolorb" class="label-before-input hidden-color hidden-label">B:</label>
+				<input id="setupscript-fail4messagetextcolorb" name="setupScript,fail4MessageTextColorB" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail4messagetextcoloralpha" class="label-before-input">Alpha:</label>
+				<input id="setupscript-fail4messagetextcoloralpha" name="setupScript,fail4MessageTextColorAlpha" type="number" step="any" min="0" max="1">
+				</div>  
+		</fieldset>   
+
+
+	</div> 
+	
+	<!-- END of expandable window - Text -->
+	
+<!-- END of Expandable "fail4" Message Section -->
+		  
+		 
+<!-- Expandable "fail5" Message Section -->
+	
+  
+	<div class="name-type subname"> Workspace exited:</div> 
+	
+
+	<div class="inputs-type">	
+		
+		<button class="expand-button collapsed" type="button" data-target="#expandable-fail5MessageBubble" data-collapse="#expandable-fail5MessageText"><span>
+		bubble
+		</span></button>	
+		
+		<button class="expand-button collapsed" type="button" data-target="#expandable-fail5MessageText" data-collapse="#expandable-fail5MessageBubble"><span>
+		text
+		</span></button>
+	</div>
+ 
+
+	<!-- Expandable Message Bubble -->
+	
+	<div class="fullrow-type expand-window collapsed" id="expandable-fail5MessageBubble"> 
+
+
+		<fieldset class="trial-builder-group">     
+				<div class="name-type name">Position [m]: </div>
+				 <div class="inputs-type inputs">
+				<label for="setupscript-fail5messagepositionx" class="label-before-input label-start-block">X:</label>
+				<input id="setupscript-fail5messagepositionx" name="setupScript,fail5MessagePositionX" type="number" step="any">
+				<label for="setupscript-fail5messagepositiony" class="label-before-input">Y:</label>
+				<input id="setupscript-fail5messagepositiony" name="setupScript,fail5MessagePositionY" type="number" step="any">
+				<label for="setupscript-fail5messagepositionz" class="label-before-input">Z:</label>
+				<input id="setupscript-fail5messagepositionz" name="setupScript,fail5MessagePositionZ" type="number" step="any">
+				</div>  
+		</fieldset>	
+
+				<div class="fullrow-type mediumspace"></div>   
+		<fieldset class="trial-builder-group">     
+				<div class="name-type name">Orientation [deg]: </div>
+				<div class="inputs-type inputs">
+					<input id="setupscript-fail5messagebackgroundrotationz" name="setupScript,fail5MessageBackgroundRotationZ" type="number" step="any">  
+				</div> 
+		</fieldset>
+
+				<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group"> 
+				<div class="name-type name">Size [m]:</div>
+				 <div class="inputs-type inputs">
+				<label for="setupscript-fail5messagesizex" class="label-before-input label-start-block">Width:</label>
+				<input id="setupscript-fail5messagesizex" name="setupScript,fail5MessageSizeX" type="number" step="any" min="0">
+				<label for="setupscript-fail5messagesizey" class="label-before-input">Height:</label>
+				<input id="setupscript-fail5messagesizey" name="setupScript,fail5MessageSizeY" type="number" step="any" min="0">
+				</div>   
+		</fieldset>
+
+				<div class="fullrow-type mediumspace"></div>
+		<fieldset class="trial-builder-group">    
+				<div class="name-type name">Shape:</div> 
+			<div class="inputs-type inputs">              
+				<input id="setupscript-fail5messagetype_cartoon" name="setupScript,fail5MessageType" type="radio" value="cartoon">
+				<label for="setupscript-fail5messagetype_cartoon" class="label-after-input">Cartoon</label> 
+				<input id="setupscript-fail5messagetype_rectangle" name="setupScript,fail5MessageType" type="radio" value="rectangle">
+				<label for="setupscript-fail5messagetype_rectangle" class="label-after-input">Rectangle</label>                 
+				<input id="setupscript-fail5messagetype_none" name="setupScript,fail5MessageType" type="radio" value="none">
+				<label for="setupscript-fail5messagetype_none" class="label-after-input">None</label> 
+			</div> 
+		</fieldset>
+
+				<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group">     
+				<div class="name-type name">Color:</div> 			
+				 <div class="inputs-type inputs">  
+				<input type="color" id="setupscript-fail5messagebackgroundcolor_picker" class="picker-color helper-input">
+				<label for="setupscript-fail5messagebackgroundcolorr" class="label-before-input hidden-color hidden-label">R:</label>
+				<input id="setupscript-fail5messagebackgroundcolorr" name="setupScript,fail5MessageBackgroundColorR" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail5messagebackgroundcolorg" class="label-before-input hidden-color hidden-label">G:</label>
+				<input id="setupscript-fail5messagebackgroundcolorg" name="setupScript,fail5MessageBackgroundColorG" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail5messagebackgroundcolorb" class="label-before-input hidden-color hidden-label">B:</label>
+				<input id="setupscript-fail5messagebackgroundcolorb" name="setupScript,fail5MessageBackgroundColorB" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail5messagebackgroundcoloralpha" class="label-before-input">Alpha:</label>
+				<input id="setupscript-fail5messagebackgroundcoloralpha" name="setupScript,fail5MessageBackgroundColorAlpha" type="number" step="any" min="0" max="1">
+				</div>   	
+		</fieldset>
+
+	</div> 
+	
+	<!-- END of expandable window - Bubble -->
+
+
+	<!-- Expandable Message Text --> 
+
+	<div class="fullrow-type expand-window collapsed" id="expandable-fail5MessageText">  
+
+		<fieldset class="trial-builder-group">  
+				<div class="name-type name">Position [m]:</div>  
+				<div class="inputs-type inputs">
+				<label for="setupscript-fail5messagetextoffsetx" class="label-before-input label-start-block">X:</label>
+				<input id="setupscript-fail5messagetextoffsetx" name="setupScript,fail5MessageTextOffsetX" type="number" step="any">
+				<label for="setupscript-fail5messagetextoffsety" class="label-before-input">Y:</label>
+				<input id="setupscript-fail5messagetextoffsety" name="setupScript,fail5MessageTextOffsetY" type="number" step="any">
+				</div>	
+		</fieldset>   
+
+					<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group"> 
+				<div class="name-type name">Orientation [deg]:</div>   
+				<div class="inputs-type inputs"> 
+				<input id="setupscript-fail5messagetextrotationz" name="setupScript,fail5MessageTextRotationZ" type="number" step="any">
+				</div>	
+		</fieldset>   
+
+					<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group">   
+				<div class="name-type name">Font size:</div>  
+				 <div class="inputs-type inputs"> 
+				<input id="setupscript-fail5messagefontsize" name="setupScript,fail5MessageFontSize" type="number" step="any" min="0"> 
+				</div>   
+		</fieldset>   
+
+					<div class="fullrow-type mediumspace"></div>  
+		<fieldset class="trial-builder-group">   
+				<div class="name-type name">Color:</div> 	
+				<div class="inputs-type inputs"> 
+				<input type="color" id="setupscript-fail5messagetextcolor_picker" class="picker-color helper-input">
+				<label for="setupscript-fail5messagetextcolorr" class="label-before-input hidden-color hidden-label">R:</label>
+				<input id="setupscript-fail5messagetextcolorr" name="setupScript,fail5MessageTextColorR" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail5messagetextcolorg" class="label-before-input hidden-color hidden-label">G:</label>
+				<input id="setupscript-fail5messagetextcolorg" name="setupScript,fail5MessageTextColorG" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail5messagetextcolorb" class="label-before-input hidden-color hidden-label">B:</label>
+				<input id="setupscript-fail5messagetextcolorb" name="setupScript,fail5MessageTextColorB" class="hidden-color hidden-input" type="number" step="any" min="0" max="1">
+				<label for="setupscript-fail5messagetextcoloralpha" class="label-before-input">Alpha:</label>
+				<input id="setupscript-fail5messagetextcoloralpha" name="setupScript,fail5MessageTextColorAlpha" type="number" step="any" min="0" max="1">
+				</div>  
+		</fieldset>   
+
+
+	</div> 
+	
+	<!-- END of expandable window - Text -->
+	
+<!-- END of Expandable "fail5" Message Section -->
+
+	
+
  
 <!-- End of Content --> 
  
-</inputcolumn> 
-</div>  
-<figurecolumn>
-    <img src="web/img/parameters/feedbackMsg.png" style="width:100%;">
- <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  style="width:100%"> --> 
-</figurecolumn>
+</form> 
+<div class="param-img">
+ <!-- <img src="trialDesignFiles/figures/paradigmSmall-01.png"  > --> 
+</div>
         
-</form>
-</body>
+</body> 
 </html>

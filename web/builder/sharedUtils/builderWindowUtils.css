@@ -1,0 +1,106 @@
+body { 
+	overflow: hidden; /* Removes scroll bars in popup window */   
+}/* Ensure the body and HTML take the full viewport height */
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.builder {  /* main, full window container */
+	display: contents; 
+}
+
+/* ///////////////////  TITLE   ////////////////////   */ 
+.builder .title{ 
+    display:  inline-flex;  /* Use flexbox layout */ 
+    align-items: center; /* Center items vertically */ 
+    text-align: center;  /* Center items horizontally */ 
+    flex-shrink: 0; /* Prevent shrinking of fixed-height elements */
+   
+    height: 25px;  
+    width: 100%;   
+    padding: 0px; 
+    margin: 0px 0px 1px 0px;   
+	gap: 5px;
+	
+    font-family: Arial, sans-serif;
+    font-size: 16px; 	
+	font-weight: bold; 
+	
+	background-color: white;	 
+}
+.builder .title::before {
+    content: "";
+    display: block;
+    width: 5%;  /* Full width */
+    height: 2px;  /* Line thickness */
+    background-color: var(--var-col-brightcyan);  /* Line color */
+    margin-top: 5px; /* Space between text and line */
+}
+.builder .title::after{
+    content: "";
+    display: block;
+    width: 100%;  /* Full width */
+    height: 2px;  /* Line thickness */
+    background-color: var(--var-col-brightcyan);  /* Line color */
+    margin-top: 5px; /* Space between text and line */ 
+}
+
+
+.builder .title .icon{   
+    height:  90%;  
+    width: auto;    
+}
+.builder .title .main-text{    
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: visible; /* Allows full text to be shown */
+    text-overflow: clip; /* Prevents ellipsis */
+    width: auto; /* Ensures text width adjusts dynamically */
+}
+.builder .title .sub-text{ 
+}
+
+
+ 
+/*   // // //     OK / HELP BUTTON STYLES   // // //    */ 
+/* General Button Container */
+.footer {
+	display: flex;  /* Defines the container as a flexbox, enabling flexible layouts for its child elements. */
+	flex-direction: row;  /* Aligns the children (flex items) in a horizontal row (default is row). */
+	/* align-items: center; */  /* Vertically aligns the flex items to the center of the container. */
+	  /* Horizontally aligns the flex items to the center of the container. */
+	/* flex-shrink: 0; */ /* Prevent shrinking of fixed-height elements */
+	/* flex-wrap: nowrap; */
+	gap: 30px;
+	padding: 20px 50px 15px 50px;
+}
+.footer button{
+	width: 80px;
+	height: 25px;
+	cursor: pointer;
+	/* font-weight: bold; */
+}
+/*  Help Button */
+.footer .help-button {
+    margin-right: auto;
+}
+/*  OK Button */
+.footer .ok-button {background-color: var(--var-col-darkercyan);color: white;font-weight: bold;}
+
+button.ok-button:hover {
+    background-color: #007070;
+} 
+/*  Help Button */
+.footer .cancel-button { 
+}
+/*  Help Button */
+.footer .save-button { 
+}
+
+
+
+
+

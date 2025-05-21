@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>targetScript.cs Documentation</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			line-height: 1.6;
+			margin: 2rem;
+		}
+		h1, h2, h3 {
+			color: #2a4a6c;
+			margin-top: 2rem;
+		}
+		.code {
+			background-color: #f4f4f4;
+			padding: 0.5rem;
+			border-left: 3px solid #ccc;
+			font-family: monospace;
+			white-space: pre-wrap;
+		}
+		.section {
+			margin-bottom: 2rem;
+		}
+	</style>
+</head>
+<body>
+
+<h1>Documentation: <code>targetScript.cs</code></h1>
+
+<div class="section">
+	<h2>1. Overview</h2>
+	<p>
+		The <code>targetScript</code> handles logic for determining whether the plate has been successfully placed within the target area in MovementVR. It monitors collision timing, tilt limits, and visual feedback to trigger success or failure based on task criteria. This script is critical to trial validation and feedback control.
+	</p>
+</div>
+
+<div class="section">
+	<h2>2. Functional Blocks</h2>
+
+	<h3>Setup</h3>
+	<ul>
+		<li><code>startup()</code>: Retrieves references to the trial controller, plate script, and plate trigger collider.</li>
+	</ul>
+
+	<h3>Collision Detection</h3>
+	<ul>
+		<li><code>OnTriggerEnter()</code>: Called when the plate enters the target; stores entry time and activates success color.</li>
+		<li><code>OnTriggerStay()</code>: If enough time has passed and the plate is stable, triggers success. If tilted too much, triggers failure.</li>
+		<li><code>OnTriggerExit()</code>: Triggers failure if the plate leaves the target prematurely.</li>
+	</ul>
+
+	<h3>Visual Feedback</h3>
+	<ul>
+		<li><code>setMeshSuccess()</code>: Changes mesh color based on success or failure.</li>
+		<li><code>resetTarget()</code>: Resets the mesh state and internal flags before a new trial.</li>
+	</ul>
+
+</div>
+
+<div class="section">
+	<h2>3. Full Technical Details</h2>
+
+	<h3>Fields</h3>
+	<div class="code">
+// References
+trialScript trialScriptVar;
+plateScript plateScriptVar;
+Collider plateTrigger;
+MeshRenderer targetMesh;
+
+// Timing
+System.DateTime collisionTime;
+float timeInTargetForSuccess;
+
+// Tilt thresholds
+float maxTiltForSuccessX;
+float maxTiltForSuccessY;
+float maxTiltForSuccessZ;
+
+// Colors
+float targetMeshColorSuccessR, targetMeshColorSuccessG, targetMeshColorSuccessB, targetMeshColorSuccessAlpha;
+float targetMeshColorUnsuccessR, targetMeshColorUnsuccessG, targetMeshColorUnsuccessB, targetMeshColorUnsuccessAlpha;
+
+// State
+public bool plateInTarget;
+	</div>
+
+	<h3>startup()</h3>
+	<div class="code">
+public void startup() {
+	trialScriptVar = transform.Find("/Task").GetComponent&lt;trialScript&gt;();
+	plateScriptVar = transform.Find("/Task/PlateAndGrape/Plate").GetComponent&lt;plateScript&gt;();
+	plateTrigger = transform.Find("/Task/PlateAndGrape/Plate/plateTrigger").GetComponent&lt;Collider&gt;();
+}
+	</div>
+
+	<h3>OnTriggerEnter()</h3>
+	<div class="code">
+private void OnTriggerEnter(Collider other) {
+	if (other == plateTrigger) {
+		collisionTime = System.DateTime.Now;
+		setMeshSuccess(true);
+		plateInTarget = true;
+	}
+}
+	</div>
+
+	<h3>OnTriggerStay()</h3>
+	<div class="code">
+private void OnTriggerStay(Collider other) {
+	if (other == plateTrigger) {
+		if ((System.DateTime.Now - collisionTime).TotalSeconds > timeInTargetForSuccess) {
+			trialScriptVar.trialStageTrigger(1); // success
+		} else if (plateScriptVar.plateTooTilted(maxTiltForSuccessX, maxTiltForSuccessY, maxTiltForSuccessZ)) {
+			trialScriptVar.trialStageTrigger(-1); // fail: tilt
+			setMeshSuccess(false);
+		}
+	}
+}
+	</div>
+
+	<h3>OnTriggerExit()</h3>
+	<div class="code">
+private void OnTriggerExit(Collider other) {
+	if (other == plateTrigger) {
+		trialScriptVar.trialStageTrigger(-2); // fail: left target
+		setMeshSuccess(false);
+	}
+}
+	</div>
+
+	<h3>Visual Feedback Methods</h3>
+	<div class="code">
+public void setMeshSuccess(bool success) {
+	Color c = success ?
+		new Color(targetMeshColorSuccessR, targetMeshColorSuccessG, targetMeshColorSuccessB, targetMeshColorSuccessAlpha) :
+		new Color(targetMeshColorUnsuccessR, targetMeshColorUnsuccessG, targetMeshColorUnsuccessB, targetMeshColorUnsuccessAlpha);
+	targetMesh.material.color = c;
+}
+
+public void resetTarget() {
+	targetMesh = GetComponentInChildren&lt;MeshRenderer&gt;();
+	setMeshSuccess(false);
+	plateInTarget = false;
+}
+	</div>
+
+</div>
+
+</body>
+</html>

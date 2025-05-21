@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>setupScript.cs Documentation</title>
+  <style>
+    body { font-family: sans-serif; line-height: 1.6; margin: 2em; }
+    .section { margin-bottom: 2em; }
+    .section h2 { border-bottom: 2px solid #ccc; padding-bottom: 0.3em; }
+    .var-block { margin: 1em 0; }
+    .var-block h3 { margin-bottom: 0.2em; }
+    code { background: #f4f4f4; padding: 0.2em 0.4em; border-radius: 4px; }
+    .comment { font-style: italic; color: #666; }
+    ul { margin-top: 0.5em; }
+  </style>
+</head>
+<body>
+  <h1>Documentation: <code>setupScript.cs</code></h1>
+
+  <div class="section">
+    <h2>Overview</h2>
+    <p>
+      The <code>setupScript</code> class handles all configuration and initialization of the experimental environment.
+      It reads trial-independent inputs, sets up the physical layout (e.g., plate, workspace, target), defines interaction rules
+      (e.g., starting bounds, gain reset regions), and updates trial-dependent features each trial.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Main Responsibilities</h2>
+    <ul>
+      <li>Configure starting positions for hands and plate</li>
+      <li>Initialize plate, grape, and target properties</li>
+      <li>Manage workspace and game boundaries</li>
+      <li>Configure triggers for gain updates and trial progression</li>
+      <li>Set up and update messages shown during the experiment</li>
+      <li>Set up visuals and colliders for all bounds and game elements</li>
+      <li>Store experiment-wide parameters</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Inputs from File</h2>
+    <p>These fields define the configurable experiment parameters, including spatial bounds, shapes, materials, visual settings, and message behavior.</p>
+    <ul>
+      <li><strong>Plate/Grape/Target</strong>: position, size, mass, drag, colliders</li>
+      <li><strong>Workspace and Boundaries</strong>: shape (cube/sphere), sizes, and auto-alignment options</li>
+      <li><strong>Hand starting bounds</strong>: "inside" and "outside" bounds, shape and trigger settings</li>
+      <li><strong>Gain reset bounds</strong>: conditions for adaptation update trigger</li>
+      <li><strong>Target mesh and success region</strong>: size/position/shape + automated options</li>
+      <li><strong>Target birds</strong>: species-specific scale and position</li>
+      <li><strong>Trial messages</strong>: per-state font, position, color, type, and rotation</li>
+      <li><strong>Audio</strong>: success/fail bird sounds and background levels</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Initialization Functions</h2>
+    <div class="var-block">
+      <h3><code>void Start()</code></h3>
+      <p class="comment">Empty default Start; setup happens in <code>startup()</code>.</p>
+    </div>
+
+    <div class="var-block">
+      <h3><code>void startup()</code></h3>
+      <p class="comment">Loads files and enables script logic.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>updateObjectProperties()</h2>
+    <p>
+      This is the main method that applies configuration during initialization and optionally each trial.
+      It sets transforms, physics materials, visuals, and links collider-trigger logic.
+    </p>
+    <ul>
+      <li><strong>initialSetup</strong>: called once at startup</li>
+      <li><strong>delayedSetup</strong>: optional, post-headset calibration</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Visual and Message Handling</h2>
+    <p>
+      The script configures a number of on-screen messages displayed during different trial stages:
+      <code>start</code>, <code>end</code>, <code>success</code>, <code>fail1-fail5</code>, <code>break</code>, <code>base</code>, <code>lift</code>, <code>contact</code>, etc.
+    </p>
+    <ul>
+      <li>Each has font size, color, background color, position, offset, rotation, and type (cartoon, rectangle)</li>
+      <li>Text uses <code>TextMeshPro</code></li>
+      <li>Colors and positions are defined relative to headset origin</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Hand Bounds & Gain Triggers</h2>
+    <p>
+      Configures the collider volumes for hand position triggers, both for showing the plate and resetting gain.
+      These include both <strong>inside-of</strong> and <strong>outside-of</strong> bounds, and can auto-align to plate or be manually specified.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Target Configuration</h2>
+    <p>
+      Target and perch configuration includes collider size, mesh shape/size, perch position, and visual mesh logic.
+      Target mesh size can be computed dynamically (e.g., <code>platePlusTarget</code>) or entered manually.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Bird Configuration</h2>
+    <p>
+      Applies scale and position to each individual bird prefab used in the experiment.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Friction Settings</h2>
+    <p>
+      Applies friction coefficients (static/dynamic) for plate–hand and plate–grape contact, including physics material behavior.
+    </p>
+  </div>
+	
+	<div class="section-panel">
+  <div class="section-panel-header">Setup Script</div>
+  <p>This script is responsible for configuring and updating various parameters used throughout the MovementVR experiment. It manages initial setup, trial-by-trial updates, workspace configuration, and the positioning of key elements like the plate, grape, hands, and target birds.</p>
+
+  <div class="subsection">
+    <h4>Configuration from Files</h4>
+    <ul class="list-long">
+      <li><strong class="emphasis">default.csv:</strong> Loads default parameter values for the experiment using reflection on the class hierarchy.</li>
+      <li><strong class="emphasis">parameters.csv:</strong> Loads general experiment parameters with error-handling and debugging.</li>
+      <li><strong class="emphasis">trials.csv:</strong> Loads trial-by-trial parameter variations and flags which components (plate, target, etc.) need updates per trial.</li>
+    </ul>
+  </div>
+
+  <div class="subsection">
+    <h4>Audio Setup</h4>
+    <p>Loads audio files for success and failure feedback using UnityWebRequest. The expected filenames are <code>successSound.wav</code> and <code>failSound.wav</code> in the persistent data path.</p>
+  </div>
+
+  <div class="subsection">
+    <h4>Object Update Flags</h4>
+    <p>Function <code>setTrialFlags</code> marks which game objects (e.g., plate, grape, friction, messages, bounds) need updating based on variables found in the trial csv. These flags optimize per-trial update performance.</p>
+  </div>
+
+  <div class="subsection">
+    <h4>Workspace Boundaries</h4>
+    <p>The <code>setOutsideOfBound</code> method configures inside/outside triggers for hand positioning or gain reset. It adjusts colliders dynamically based on shape (cube/sphere), position, direction, and trial flags.</p>
+  </div>
+
+  <div class="subsection">
+    <h4>Public Query Methods</h4>
+    <ul class="list-shortitems">
+      <li><strong class="emphasis">getTargetBirdPosition</strong> – Returns the 3D position for the target bird.</li>
+      <li><strong class="emphasis">getTargetBirdRotation</strong> – Returns the target bird's orientation as a quaternion.</li>
+    </ul>
+  </div>
+</div>
+
+
+</body>
+</html>

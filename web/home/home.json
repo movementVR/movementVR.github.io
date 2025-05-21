@@ -1,13 +1,12 @@
 {
-    "path": "/web/home/",
-    "html":[
-        "home.html"
-    ],
-    "js":[
-    ],
-    "css":[
-    ],
-    "json":[
-        "home.json"
-    ]
+	"path": "/web/home/",
+	"scripts": {  
+	}, 
+    "html": {
+		"main":[
+        	"home.html"
+    	]
+	}
 }
+
+ 
