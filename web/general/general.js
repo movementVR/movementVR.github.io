@@ -1,21 +1,23 @@
 
 // // // FUNCTIONS TO ATTACH SCRIPTS AND STYLES TO WINDOWS // // // 
 // Function to attach JS, CSS, HTML files from JSON to a target window
-async function includeFilesFromJson(argsArray,targetWindow = window) { 
+async function includeFilesFromJson(argsArray,targetWindow = window, groupTypeInclude, groupTypeExclude) {
+	// Note: groupTypeInclude, groupTypeExclude overridden by individual 
+	// args.typeInclude, args.typeExclude if these are present
+	
 	//console.log('jsonWrapper In');
-	//console.log(argsArray);
+	//console.log(argsArray); 
 	
 	pendingEntryScripts=[];
 	// loads everything except the entry scripts 
-	for (const args of argsArray) { 
-		const selection = args.selection || "main";
-		const htmlContainer = args.htmlContainer || targetWindow.document.body;
-		const jsonPath = args.jsonPath; // required
-
-		//console.log('outerentry'); 
+	for (const args of argsArray) {   
+		 
+		const {jsonPath, selection, htmlContainer,
+			   typeInclude = groupTypeInclude, typeExclude = groupTypeExclude} = args; 
+		
 		// Await the full processing of each JSON file.   
-		await includeFromJson(jsonPath, targetWindow, selection, htmlContainer,pendingEntryScripts); 
-		//console.log('outerexit');
+		await includeFromJson(jsonPath, targetWindow, selection,
+							  htmlContainer,pendingEntryScripts,typeInclude,typeExclude);  
 	}
  
 	// Once all calls are complete, load all collected entry scripts.
@@ -25,103 +27,88 @@ async function includeFilesFromJson(argsArray,targetWindow = window) {
 	
 	//console.log('jsonWrapper Out'); 
 	
-	
-	async function includeFromJson(jsonPath, targetWindow = window, selection = "main", 
+ 
+	async function includeFromJson(jsonPath, targetWindow = window, selection = "", 
 										 htmlContainer = targetWindow.document.body,
-										 pendingEntryScripts) { 
-		//console.log('jsonin');   
-		//console.log(jsonPath)
+										 pendingEntryScripts,
+								   		 typeInclude = ["all"], typeExclude = []) { 
+ 
 		const response = await fetch(jsonPath);  // extract data from json file
 		const data = await response.json();
 		const filePath = data.path; // Containing folder
+		 
         
+		// stores path reference to container
+		htmlContainer.setAttribute('data-path', filePath);
         
-        
-
-		// // //  Loads body content (HTML files) // // // 
-		// gets array of selected + global html content
-		const selectedContents = collectSelectedFiles(data.html,[selection,'global']);  
-
-		// Load HTML files based on selection
-		for (const file of selectedContents) {	 
-			// Calls loadHTML to load html content (and waits for it to finish before continuing) 
-			await loadHTML(filePath + file, htmlContainer, true); 
-		}   
-
-  
-
 		
-		// // //  Loads scripts (JS files) // // //
-		// Loads scripts only for "main" call (primary call in main window) // // //
-		// (Handles scripting centrally, not directly in popups + Avoids reloading for secondary calls)
-		if (selection == "main") {  
-			// gets array of entry scripts, or set variable to [] if there is no such definition in json 
-			const entryScripts = collectSelectedFiles(data.scripts,['entry']);
-			// Load scripts except the entry scripts
-			for (const [category, files] of Object.entries(data.scripts)) { 
-				for (const file of files) {					
-					if (!entryScripts.includes(file)) { // Check if file is NOT in entryScripts array 
-						// console.log('Loading Script '+ file);
-						await includeScript(filePath + file, targetWindow); 
-					} 
-				} 
+		// Lookup Table: "type string" -> script to run 
+		const loaders = {
+			html:            file => loadHTML(filePath + file, htmlContainer, true),
+			scopedScripts:   file => includeScript(filePath + file, targetWindow),
+			externalScripts: file => includeScript(file,                targetWindow),
+			css:             file => includeStyle(filePath + file, targetWindow),
+			externalCss:     file => includeStyle(file,            targetWindow),
+			modals: async fileObj => {   // iFrame modals  
+				const iframe = await loadHTMLFrame(filePath + fileObj.file, fileObj.id, targetWindow);
+				if (fileObj.selection) {
+					await includeFromJson(jsonPath, iframe.contentWindow,fileObj.selection);
+				}
 			}
-			// Store all entry scripts to load last  
-			for (const entry of entryScripts) {  
-				pendingEntryScripts.push({ url: filePath + entry, targetWindow });
-			} 
-		} 
-		// Scoped scripts / libraries are loaded to target popup window  
-		const selectedScopedScripts = collectSelectedFiles(data.scopedScripts,[selection,'global']); 
-		for (const file of selectedScopedScripts) {  
-			includeScript(filePath + file, targetWindow);
-		}   
+		};
 		
-		// External scripts / libraries are loaded to target popup window  
-		const selectedExternalScripts = collectSelectedFiles(data.externalScripts,[selection,'global']); 
-		for (const file of selectedExternalScripts) {  
-			includeScript(file, targetWindow);
-		}   
-
-		
-
-		// // //  Loads styles (CSS files) // // // 
-		// gets array of selected + global css styles with parsed $include 
-		const selectedStyles = collectSelectedFiles(data.css,[selection,'global']);
-		// Load CSS files based on selection
-		for (const file of selectedStyles) { 
-			//console.log('Loading Style '+ file);
-			includeStyle(filePath + file, targetWindow);
-		}   
-		
-		// External CSS
-		const selectedExternalStyles = collectSelectedFiles(data.externalCss,[selection,'global']); 
-		for (const file of selectedExternalStyles) {  
-			includeStyle(file, targetWindow);
-		}   
-        
-        
-		
-        // // //  Gets References to iFrames body content (HTML files) // // // 
-		// gets array of selected + global html content
-		const selectedFrames = collectSelectedFiles(data.modals,[selection,'global']);   
-        // Load html to iFrame files based on selection
-		for (const fileObj of selectedFrames) {   
-            const iframeElement = await loadHTMLFrame(filePath + fileObj.file, fileObj.id, targetWindow); 
-			
-			// Loads JSON to frame
-			const iframeWindow = iframeElement.contentWindow; 
-			if (fileObj.selection) {			   
-				await includeFromJson(jsonPath, iframeWindow, fileObj.selection);  
-			} 
-			
-		} 
-		//console.log('jsonout'); 
+		// Loads all file types 
+		await loadCategory('html',            selection);
+		await loadCategory('scopedScripts',   selection);
+		await loadCategory('externalScripts', selection);
+		await loadCategory('css',             selection);
+		await loadCategory('externalCss',     selection);
+		await loadCategory('modals',          selection); 
+		await loadCategoryScript(); 
+ 
 		
 		
 		
 		//////////////////// HELPER FUNCTIONS ////////////////////		
-
+		// Generic Wrapper for Loading everything but "scripts" //
+		async function loadCategory(key, selection) {			
+			if ( typeInclude.includes(key) || 
+				(typeInclude.includes("all") && !typeExclude.includes(key)) ){				
+				const files = collectSelectedFiles(data[key], [selection, 'global']);
+				for (const f of files) await loaders[key](f);
+			}
+		}
+		
+		// // // Wrapper for loading "scripts" (JS files) // // //
+		// - Loads all scripts for "main" and not others
+		// - Leaves "entry" scripts for last 
+		async function loadCategoryScript(){
+			if ( typeInclude.includes('scripts') || 
+				(typeInclude.includes("all") && !typeExclude.includes('scripts')) ){	
+				// Loads scripts only for "main" call (primary call in main window) // // //
+				// (Handles scripting centrally, not directly in popups + Avoids reloading for secondary calls)
+				if (selection == "main") {  
+					// gets array of entry scripts, or set variable to [] if there is no such definition in json 
+					const entryScripts = collectSelectedFiles(data.scripts,['entry']);
+					// Load scripts except the entry scripts
+					for (const [category, files] of Object.entries(data.scripts)) { 
+						for (const file of files) {					
+							if (!entryScripts.includes(file)) { // Check if file is NOT in entryScripts array 
+								// console.log('Loading Script '+ file);
+								await includeScript(filePath + file, targetWindow); 
+							} 
+						} 
+					}
+					// Store all entry scripts to load last  
+					for (const entry of entryScripts) {  
+						pendingEntryScripts.push({ url: filePath + entry, targetWindow });
+					} 
+				} 
+			}
+		}
+		
+		
+  
 		// Helper Function to Return List of Files included in selection + global + $include references //
 		function collectSelectedFiles(data,selections,result = []){  
             if(data){ 
@@ -208,25 +195,43 @@ async function includeFilesFromJson(argsArray,targetWindow = window) {
 // // // FUNCTION TO POPULATE CONTAINERS WITH HTML CONTENT FROM FILES // // // 
 // loads html body content from file and loads it onto container 
 // How to pass a function to loadHTML:
-//		loadHTML(folderName + htmlFileName, targetContainer, addFlag).then(()=>{});  
+//		loadHTML(...).then(()=>{});  
 //      or, if the caller function is async: await loadHTML(...)
-function loadHTML(fileSource, targetContainer = window.document.body, addFlag = false) {  
+// Input parameters: 
+//		fileSource = path of the file to load (folderName + htmlFileName), 
+//		targetContainer = container in the new page where you want to load the html content,
+//		addFlag = true if you want to add content to container, false if you wanna replace content,
+//		dataSourceValue = if you only want to load specific content from the file - that contained in a container with attribute data-source="${dataSourceValue}"	
+function loadHTML(fileSource, targetContainer = window.document.body, addFlag = false, dataSourceValue = '') {  
+	
 	return new Promise((resolve) => { // 'return' occurs on 'resolve' below (after loading completed) 
 		// Load + parse HTML file -> add HTML content to container
 		loadFile(fileSource).then(html => {
 			const parser = new DOMParser();
-			const parsedHtml = parser.parseFromString(html, 'text/html');
-			const parsedHtmlBody = parsedHtml.body.innerHTML;
+			const parsedHtml = parser.parseFromString(html, 'text/html'); 			
+			
+			// Parses either entire file, or that in container specified by dataSourceValue
+			let parsedHtmlContent;
+			if (dataSourceValue) {
+				const subsection = parsedHtml.querySelector(`[data-source="${dataSourceValue}"]`);
+				parsedHtmlContent = subsection ? subsection.innerHTML : ''; 
+			} else {
+				parsedHtmlContent = parsedHtml.body.innerHTML;
+			} 
+			
+			// Adds or replaces HTML content in new file
 			if (addFlag) { // adds to current body HTML
-				targetContainer.insertAdjacentHTML('beforeend', parsedHtmlBody); 
+				targetContainer.insertAdjacentHTML('beforeend', parsedHtmlContent); 
 			} else { // replaces innerHTML
-				targetContainer.innerHTML = parsedHtmlBody;
-			}   
-			resolve(); // Waits for HTML to load & initFunction to run (unless async)
+				targetContainer.innerHTML = parsedHtmlContent;
+			}
+			
+			resolve(); // Waits for HTML to continue
+			
 		}); 
 	});
 } 
-		
+
 
 
 
@@ -266,7 +271,7 @@ async function loadFile(source) {
 // 			 // positionUnits = "%", "px" -> position from top-left corner of screen
 // 			 // positionUnits = "+%", "+px" -> position from center of screen
 function createWindow({width, height, sizeUnits = "%",
-                      left = 0, top = 0, positionUnits = "%"}) {  
+                      left = 0, top = 0, positionUnits = "%", htmlFile = ''}) {  
 
     // Reference dimensions: get the dimensions of the screen
     const screenWidth = window.screen.width;
@@ -285,7 +290,7 @@ function createWindow({width, height, sizeUnits = "%",
     const windowTop = getMeasure(top, positionUnits, screenHeight, windowTopCentered);
 
     // Open the window with the calculated size and position	 
-	const newWindow = window.open('', '_blank', `
+	const newWindow = window.open(htmlFile, '_blank', `
 		width=${windowWidth},height=${windowHeight},
 		left=${windowLeft},top=${windowTop}
 	`);   
@@ -334,11 +339,7 @@ function createWindow({width, height, sizeUnits = "%",
 	} 
 	
 }
-	
-// // // GENERAL SETUP FUNCTIONS // // // 
-function generalSetup(){
-     setupCloneWithListeners();
-}
+	 
 
 // // // INTERFACE GET FUNCTIONS // // // 
 // Function gets the value of a css property as originally defined in the css file
@@ -358,45 +359,7 @@ function getOriginalStyle(selector, property) {
     return null;
 }
 
-
-// // // SUPPORT FOR CLONING WITH EVENT LISTENERS  // // // 
-// back support for cloning with event listeners
-//  Wrap addEventListener to keep a registry on each element
-function setupCloneWithListeners() { 
-    const origAdd = EventTarget.prototype.addEventListener;
-    EventTarget.prototype.addEventListener = function (type, fn, opts) {
-        this._clonedListeners ??= [];
-        this._clonedListeners.push({ type, fn, opts });
-        origAdd.call(this, type, fn, opts);
-    };
-} 
-        
-        
-//  Deep-clone and re-attach the recorded listeners
-function cloneWithListeners(source) {
-    const clone = source.cloneNode(true);
-
-    // Breadth-first walk over both trees in parallel
-    const q = [[source, clone]];
-    while (q.length) {
-        const [orig, copy] = q.shift();
-
-        // Copy listeners that were registered through our wrapper
-        if (orig._clonedListeners) {
-            orig._clonedListeners.forEach(({ type, fn, opts }) =>
-                copy.addEventListener(type, fn, opts)
-            );
-        }
-
-        // Enqueue child pairs
-        const origKids = orig.children;
-        const copyKids = copy.children;
-        for (let i = 0; i < origKids.length; i++) {
-            q.push([origKids[i], copyKids[i]]);
-        }
-    }
-    return clone;
-}
+ 
 
 ///// DEBUGGING FUNCTIONS ////
 	
@@ -405,7 +368,7 @@ function simulateDelayWindow(ms, targetWindow){
 		targetWindow.document.readyState='loading';
 	});
 }
-function simulateDelay(ms,loopFun= () => {}){
+function simulateDelay0(ms,loopFun= () => {}){
 	let start = new Date().getTime();
 	let end = start;
 	while (end < start + ms) {
@@ -414,6 +377,19 @@ function simulateDelay(ms,loopFun= () => {}){
 	} 
 }
 		
+/*Sample use
+console.log('modals in');
+await simulateDelay(5000);		
+console.log('modals  del');*/
+async function simulateDelay(ms) {
+	console.log('Before wait');
+	await sleep(ms); // Wait 
+	console.log('After wait');
+	function sleep(ms) {
+		return new Promise(resolve => setTimeout(resolve, ms));
+	}
+}
+
 		
 		
 		

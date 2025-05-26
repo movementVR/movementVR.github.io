@@ -39,39 +39,31 @@
 		  </p>
 			<p>
 			  Help on the different buttons and interfaces will be provided as you go along. You can also open the different guides here: 
-			  <a href="guideStaticBuilder.html" onclick="window.open('guideStaticBuilder.html', '_blank', 'popup=yes,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes'); return false;">Static Builder Guide</a>, 
-			  <a href="guideBuilderInputSource.html" onclick="window.open('guideBuilderInputSource.html', '_blank', 'popup=yes,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes'); return false;">Input Source Popup</a>, 
-			  <a href="guideTrialBuilder.html" onclick="window.open('guideTrialBuilder.html', '_blank', 'popup=yes,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes'); return false;">Trial Builder Guide</a>, and 
-			  <a href="guideImportCsvFile.html" onclick="window.open('guideImportCsvFile.html', '_blank', 'popup=yes,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes'); return false;">CSV File Import Guide</a>. 
+ 			  <a href="" class="help-modal-link" data-modalref="#guideBuilderStatic">Static Builder Guide</a>,  
+ 			  <a href="" class="help-modal-link" data-modalref="#guideBuilderSource">Input Source Popup</a>,  
+ 			  <a href="" class="help-modal-link" data-modalref="#guideBuilderTrial">Trial Builder Guide</a>,  
+ 			  <a href="" class="help-modal-link" data-modalref="#guideBuilderFile">CSV File Import Guide</a>.
 			</p> 
 		</div> 
 		  
 		  
-		<!-- - - - - - - - - - - 2. Trial Sequence   - - - - - - - - - - --->
-		<div class="section-header accordion-header" onclick="toggleStickyHeader(this)"> 2. Trial Sequence </div>
+		<!-- - - - - - - - - - - 2. Trial Flow   - - - - - - - - - - --->
+		<div class="section-header accordion-header" onclick="toggleStickyHeader(this)"> 2. Trial Flow </div>
 		<div class="section-content accordion-content"> 
 		  <p>
-			The top row of the interface shows the <strong>Trial Sequence</strong> — a set of labeled columns representing the different "phases" of a single trial: 
+			The top row of the interface shows the <strong>Trial Flow</strong> — a set of labeled columns representing the different "phases" of a single trial: 
 		  </p>
 		  <ol>
 			<li><strong>intertrial</strong>: pause between trials (also called intertrial interval)</li>
-			<li><strong>home position</strong>: participant moves hands to start location</li>
-			<li><strong>plate contact</strong>: plate has appeared - waiting for participant to make contact with the plate and begin lifting it</li>
-			<li><strong>plate lift</strong>: participant is lifting the plate </li>
+			<li><strong>return home</strong>: participant moves hands to start location</li>
+			<li><strong>start lift</strong>: plate has appeared - waiting for participant to make contact with the plate and begin lifting it</li>
+			<li><strong>execute lift</strong>: participant is lifting the plate </li>
 			<li><strong>feedback</strong>: plate lift has ended (target reached, plate fell or else) - visual or auditory feedback about success, error, or movement is given</li>
 			<li><strong>break</strong>: optional resting break between selected trials</li>
-		  </ol> 
+		  </ol>			 
 		  <p>
-			Use the buttons to the right to edit parameters related to Trial Sequence:
-		  </p>
-			<ul>
-			<li>
-			  Use <strong>Edit Transitions</strong> to configure when and how phases change during a trial (e.g., timing, success/failure conditions, etc.).
-			</li>
-			<li>
-			  Use <strong>Edit Instructions</strong> to customize participant messages shown during phases.
-			</li> 
-		  </ul>
+			Click <strong>Trial Flow</strong> or any <strong>phase name</strong> at the top of grid to configure when and how phases change during a trial (e.g., timing, success/failure conditions, etc.).
+		  </p>	 
 		</div>
 
 		<!-- - - - - - - - - - - 3. Game Objects  - - - - - - - - - - --->
@@ -81,13 +73,13 @@
 			The left column of the interface shows the main game objects and task components:
 		  </p>
 		  <ul>
-			<li><strong>Reinforcement</strong>: Objects/effects related to success/failure feedback</li>
+			<li><strong>Feedback</strong>: Objects/effects related to success/failure feedback</li>
 			<li><strong>Bird</strong>: Virtual bird object that moves and lands on the target</li>
 			<li><strong>Target</strong>: The target for the participant to reach (functional + visual representation)</li>
 			<li><strong>Plate</strong>: The object the user lifts as part of the motor task</li>
 			<li><strong>Hand Home</strong>: Settings for the hand's starting (home) position</li>
-			<li><strong>Hands & Perturbation</strong>: Hand tracking and adaptation perturbation</li>
-			<li><strong>Workspace</strong>: Spatial boundaries defining the allowed environment for the plate</li>
+			<li><strong>Hands & Gain</strong>: Hand tracking and adaptation perturbation</li>
+			<li><strong>Text Prompts</strong>: Instructions or other prompts shown to participants at different phases.</li>
 		  </ul>
 		   
 		  <p> 
@@ -121,11 +113,11 @@
 		  </p>
 		  <ul>
 			<li>
-				<strong>Download</strong>: After completing your configuration, click <strong>Download</strong> to export all parameter values to a <code>.csv</code> file used at runtime on the headset - see "Run Experiment" for instructions.		 
+				<strong>Download</strong>: After completing your configuration, click <strong>Download</strong> to export all parameter values to a <code>.csv</code> file used at runtime on the headset.		 
 			</li>
 			<li>
 			  <strong>Upload Parameters</strong>:  Load all parameters from a <code>.csv</code> file. CSV upload is described in this guide:
-			  	<a href="guideImportCsvFile.html" onclick="window.open('guideImportCsvFile.html', '_blank', 'popup=yes,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes'); return false;">CSV File Import Guide</a>. 
+ 			    <a href="" class="help-modal-link" data-modalref="#guideBuilderFile">CSV File Import Guide</a>. 
 				However, the <strong>Upload Parameters</strong> button on the main page uploads ALL parameters defined in the file, and loads any constant values into the Static Builder for editing (in constrast to the gear icon described in the guide where you can choose) 
 			</li>
 			<li>

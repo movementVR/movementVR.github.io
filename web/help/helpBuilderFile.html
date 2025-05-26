@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Builder Help Guide - File Import</title>
+	<link rel="stylesheet" href="/web/general/general.css">
+	<link rel="stylesheet" href="/web/general/page.css"> 
+	<script src="/web/general/general.js"></script>			
+	<script src="/web/general/page.js"></script>	
+	<script defer>document.addEventListener('DOMContentLoaded', function() {setupPage();});</script>
+	
+	
+</head>
+<body>
+	 
+	
+<div id="mainpage-parent" class="mainpage-parent general-parent">
+	
+	  <nav class="on-this-page levels-three" aria-label="On this page">
+            <h2>Contents</h2>
+            <ul>
+                <li><a href="#">Placeholder</a></li> 
+                <li><a href="#">Placeholder</a></li> 
+            </ul>
+        </nav>
+	
+	<div id="mainpage-content" class="mainpage-content page-content">
+
+
+		<div class="section-header">Builder Guide</div>
+		<section class="section-content justify"> 
+		
+			<div class="section-panel-header">File Import</div>
+			
+ <!---------------------- CONTENT ------------------------>			
+<article class="section-panel" data-source="helpBuilderFile">		 
+    
+	
+	<p>Trial‑varying parameters can also be defined by uploading a <strong class="emphasis">.csv file</strong> containing trial‑by‑trial values. This method is ideal if you prefer to create your parameter values externally — using your own scripts, spreadsheets, or other tools.</p>
+	<p>There are two ways to upload values from .csv file: </p>
+	<ul>
+	  <li>
+		<strong class="emphasis">Via ⚙ gear icon</strong> (in Static Builder):
+		More flexible — you can choose which parameters to import and how to handle constant values during import.
+	  </li>
+	  <li>
+		<strong class="emphasis">Via "Upload Parameters" button</strong> (main Builder page):
+		Faster for full experiments — imports all parameters at once and loads constant values into the Static Builder for later editing.
+	  </li>
+	</ul>
+
+
+	 
+ 	<!---------------------- STEPS GEAR ------------------------>		
+	<details>
+		<summary>Import via ⚙ gear icon</summary> 
+		 <p>To open the <strong class="emphasis">File Import</strong> interface, follow the steps described in <a href="#helpBuilderAdvanced" class="guide-ref">Setting a parameter as “trial‑varying”</a>, selecting <strong class="emphasis">File</strong> as the method. This opens a File Import window specific to the selected parameter(s).</p>
+		<img class="instruction-screenshot largest-max-dim" src="/web/img/helpbuilder/file/fileStartSteps.png" alt="Import File Steps">
+		
+		<p>The interface will guide you through the following steps:</p>
+		<ol class="list-shortitems">
+			<li>
+				<strong class="emphasis">Upload</strong> a .csv file from your computer.
+				<ul>
+					<li>Click <strong class="emphasis">Choose File</strong> to upload your <code>.csv</code> file. 
+					</li>
+					<li>Once uploaded, the filename and a “Loaded!” message confirm that the file has been read.
+					</li>
+				</ul>
+				<img class="instruction-screenshot largest-max-height" src="/web/img/helpbuilder/file/ef5FileimportStep1B.png" alt="Import File Steps">
+			</li>
+			<li>
+				<strong class="emphasis">Select parameters:</strong> if the file contains additional parameters beyond the ones currently selected, choose whether to import all parameters in the file or only the selected ones.
+				<ul>
+					<li><strong class="emphasis">Selected parameters only:</strong> Use this option to import only the specific parameters for which you initiated the File input source. The list of parameters appears next to the radio button.</li>
+					<li><strong class="emphasis">All parameters in file:</strong> This imports all parameters found in the CSV (helpful when loading a pre-made full task configuration).</li>
+			  	</ul>
+				<img class="instruction-screenshot largest-max-height" src="/web/img/helpbuilder/file/ef6FileimportStep2.png" alt="Import File Steps">
+			</li>
+			<li>
+				<strong class="emphasis">Handle constant parameters:</strong> for constant parameters, you may import their values into the <strong class="emphasis">Static Builder</strong> for later editing.
+				 <ul>
+					<li>This selection becomes active if your file includes parameters with a <strong class="emphasis">single constant value</strong> (not trial-by-trial). You can select one of two Methods:
+
+					  <ul>
+						<li><strong class="emphasis">Keep Method as "File"</strong> (default): These values remain read-only and are still shown in Static Builder, but cannot be edited there.</li>
+						<li><strong class="emphasis">Convert Method to "Static Builder"</strong>: The constant value is copied into the Static Builder and becomes editable there.</li>
+					  </ul>
+					</li> 
+				</ul>
+				<img class="instruction-screenshot largest-max-height" src="/web/img/helpbuilder/file/ef6FileimportStep3.png" alt="Import File Steps">
+			</li>
+			<li>
+				<strong class="emphasis">When you are done, click:</strong>
+				<ul>
+					<li><strong class="emphasis">OK</strong> to complete the import and return to the Static Builder interface.<ul class="note-text"><li>The imported parameters will now appear with a "File" tag and be disabled for editing - except for constant parameters if you selected "Convert Method to Static Builder"</li></ul></li>
+					<li><strong class="emphasis">Cancel</strong> to exit without making changes.</li>
+				</ul>
+			</li> 
+			
+		</ol>
+		
+	</details>
+	
+	
+	
+	<!---------------------- STEPS MAIN PAGE BTN ------------------------>
+	<details>
+		<summary>Import via "Upload Parameters" button</summary> 
+		<p>The Upload Parameters button in the main Builder allows you to quickly upload a full set of parameters. This is typically used when importing an entire experiment configuration, after which you can refine specific parameters in the Static Builder.</p>
+		
+		<ol>
+			<li>
+				<strong class="emphasis">Click the "Upload Parameters" button</strong> at the bottom of the main Builder page<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/main/buildermainfooterupload0.png" alt="Footer action button - upload file to builder"> 
+			</li>
+			
+			<li>
+				<strong class="emphasis">Select the file</strong> to load from your computer and click "Open"<img class="instruction-screenshot largest-max-height" src="/web/img/helpbuilder/main/buildermainfooterupload1.png" alt="Footer action button - upload file to builder"> 
+			</li>
+			
+			<li>
+				<strong class="emphasis">All parameter values</strong> that exist in the <code class="larger effect">.csv</code> file are imported to the Builder. The <code class="larger effect">.csv</code> file can contain one or multiple values for each parameter:
+				<ul>
+					<li>
+						Parameters with a single value are interpreted as <strong class="emphasis">constant</strong>:
+						<ul>
+							<li>their value is directly imported in the Static Builder</li>
+							<li>their Input Source is set to <strong class="emphasis">"Static Builder"</strong></li>
+						</ul>
+					</li> 
+					<li>
+						Parameters with multiple values are interpreted as <strong class="emphasis">trial-varying</strong>:
+						<ul>
+							<li>all values are imported and treated as a trial-by-trial sequence of values</li>
+							<li>their Input Source is set to <strong class="emphasis">"File"</strong></li>
+						</ul>
+					</li>
+					<li class="list-asterisks">
+						<i class="smaller">Note: this is the same as importing via ⚙ gear icon with options:</i><ul class="smaller-lineheight"><li><i class="smaller">Step 2)</i> <code>Select Parameters = "All parameters in file"</code></li><li><i class="smaller">Step 3)</i> <code>Handle constant parameters = "Convert Method to Static Builder"</code></li></ul>
+					</li>
+				</ul>	 
+			</li>
+			
+			<li>
+				<strong class="emphasis">A popup window</strong> will inform if this import changed the "input source" for any parameter
+				<img class="instruction-screenshot larger-max-height" src="/web/img/helpbuilder/main/buildermainfooterupload2.png" alt="Footer action button - upload file to builder"> 
+			</li>
+		</ol>
+		
+		 
+		
+	</details>
+	
+	<!----------------------  FORMAT ------------------------>		
+	<details>
+		<summary id="builderHelpSummaryFileFormat">File Format</summary> 
+		 	
+		<p>The .csv file is formatted so that each row is a parameter. The first two columns specify the parameter’s code name, which links it to the corresponding element in the VR app (column 1 is the VR app script and column 2 is the variable name). Columns 3 onward contain the parameter values for each trial.</p>
+
+<pre><code>setupScript , targetLocalPositionX , 0.1 , 0.2 , 0.3 , 0.4 , 0.5
+setupScript , targetLocalPositionY , 0.2
+setupScript , targetLocalPositionZ , 0.5 , 0.1 , 0.5 , 0.1 , 0.5
+...         , ...                  , ...</code></pre>
+
+		<p>If a parameter is constant, simply enter its value in column 3 and leave the remaining columns blank. You can mix constant and trial‑varying parameters within the same file.</p>		 	
+		<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/file/filecsvsample.png" alt="Import File - CSV sample">
+		<p>You can download a CSV file template with all experiment parameters <a href="" data-buttonref="parameterTemplateBuilderButton"> here</a> or from the <a href="" data-buttonref="parameterCatalogBuilderButton">Parameter Catalog</a>:</p>
+		<ol>
+			<li>Open the<strong class="emphasis"> Parameter Catalog </strong>from the main Builder page.</li> 
+			<li>Click <strong class="emphasis">"Download Template"</strong>.</li>
+			
+			<img class="instruction-screenshot largest-max-dim" src="/web/img/helpbuilder/file/parametertemplate.png" alt="Import File - CSV sample">
+			
+			<li>This will download a <strong class="emphasis"> .csv file </strong>with:<ul class="list-longitems smallest-br"><li>A header (row 1) with description of the column contents</li><li>All parameters, one per row (rows 2 to end).<br> Each row includes:<ul><li>Col 1, 2 = parameter codeName (col 1 = scriptName, col 2 = varName)</li><li>Col 3, 4, 5, 6 = empty spaces where you will write your trial-by-trial values (Trial 1, Trial 2, Trial 3, ...)</li><li>Col 7, 8, 9: useful information for defining the parameters (col 7 = current values in Builder, col 8 = allowed values, col 9 = parameter description)</li></ul></li></ul></li>
+			
+			<img class="instruction-screenshot largest-max-dim" src="/web/img/helpbuilder/file/parametertemplatefile.png" alt="Import File - CSV sample">
+			
+			<li>Enter your desired values in columns (3) to (N+2), with N = number of trials (insert more columns as needed)</li>
+			<li>Delete the header row and Col 7, 8, 9 (the ones with descriptions / instructions — marked with <strong class="emphasis">“[Delete]”</strong> in their headers)<ul><li class="list-asterisks negative">forgetting this step may result in errors in the VR App or Builder</li></ul></li>
+		</ol>
+
+				
+	
+	</details>
+	
+	  
+			
+</article> 
+			
+		</section>  
+	</div>
+</div>
+</body>
+</html>
+
+
+ 

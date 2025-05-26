@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Builder Help Guide - Advanced Settings</title>
+	<link rel="stylesheet" href="/web/general/general.css">
+	<link rel="stylesheet" href="/web/general/page.css"> 
+	<script src="/web/general/general.js"></script>			
+	<script src="/web/general/page.js"></script>	
+	<script defer>document.addEventListener('DOMContentLoaded', function() {setupPage();});</script>
+	
+	
+</head>
+<body>
+	 
+	
+<div id="mainpage-parent" class="mainpage-parent general-parent">
+	
+	  <nav class="on-this-page levels-three" aria-label="On this page">
+            <h2>Contents</h2>
+            <ul>
+                <li><a href="#">Placeholder</a></li> 
+                <li><a href="#">Placeholder</a></li> 
+            </ul>
+        </nav>
+	
+	<div id="mainpage-content" class="mainpage-content page-content">
+
+
+		<div class="section-header">Builder Guide</div>
+		<section class="section-content justify"> 
+		
+			<div class="section-panel-header">Advanced Settings</div>
+			
+ <!---------------------- CONTENT ------------------------>			
+<article class="section-panel" data-source="helpBuilderAdvanced">		 
+    
+	<p>You can configure any parameter to vary across trials and phases in your experiment.</p><p>To do so, click the <strong class="emphasis">⚙ gear icon</strong> next to the parameter in the Static Builder interface <a href="#builderHelpSummaryStepsTrialVarying">(details below)</a>. You can import trial-by-trial parameter values from a <strong class="emphasis">.csv file</strong>, or generate sequences or schedules of parameter values using the <strong class="emphasis">Trial Builder</strong> GUI.</p>  
+	
+	<!--<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/trialVarying/staticbuilderTrialVarying.png" alt="Gear to vary parameters across trials">-->
+	 
+ 	<!----------------------  STEPS ------------------------>		
+	<details>
+		<summary id="builderHelpSummaryStepsTrialVarying"> Steps for setting a parameter as “trial‑varying”</summary> 
+	 
+		<p>To set a parameter as <strong class="emphasis">trial‑varying</strong>:</p>
+		<ol class="list-shortitems">
+			<li><strong class="emphasis">Click:</strong> on the relevant game object or task component in the <strong class="emphasis">Main Builder</strong> to open its <strong class="emphasis">Static Builder</strong> tab.<img class="instruction-screenshot largest-max-height" src="/web/img/helpbuilder/staticbuilderNavigation/buildermainTarget.png" alt="locate target in main builder"></li>
+			<li><strong class="emphasis">Find:</strong> the parameter you want to vary, and click the gear icon next to it. <img class="instruction-screenshot" src="/web/img/helpbuilder/trialVarying/trialvaryingFind.png" alt="Gear to vary parameters across trials"></li>
+			<li><strong class="emphasis">Open:</strong> This action opens an <strong class="emphasis">Advanced Settings</strong> window. <img class="instruction-screenshot largest-max-dim" src="/web/img/helpbuilder/trialVarying/trialvaryingWindow.png" alt="Gear to vary parameters across trials"></li>
+			<li><strong class="emphasis">Select:</strong> the checkbox(es) for the parameter(s) that you wish to set as trial‑varying (e.g., just X, or X and Z, etc.).
+			<ul class="note-text smaller-lineheight smallest-br">
+				<li>Most times, you will select the subset of parameters that you want to vary trial-by-trial, and unselect parameters that you want to keep constant. </li>
+				<li>You can also select and configure one trial-varying parameter at a time - this is sometimes needed if you want the parameters to vary independently of each other. See <a href="#builderHelpSummaryExampleTrialVarying">example</a> below.</li> 
+			  </ul>  <img class="instruction-screenshot smaller-max-width" src="/web/img/helpbuilder/trialVarying/trialvaryingWindowS1.png" alt="Gear to vary parameters across trials">  
+			</li>
+			<li><strong class="emphasis">Choose method:</strong> decide how to define the trial‑varying values. You will choose from three available "Input Source" options:
+				<ul>
+					<li><strong class="emphasis">Static Builder</strong> (default): Keep the parameter value constant across all trials. Editing continues in the original Static Builder window.</li>
+					<li><strong class="emphasis">Trial Builder:</strong> Use a graphical interface to define trial-by-trial values. This opens the Trial Builder where you can configure sequences and conditions. Recommended for configuring new experiments.</li>
+					<li><strong class="emphasis">File:</strong> Load values from a CSV file. Recommended when reusing pre-generated parameter sets, or if you prefer coding or the desired behavior is not available in Trial Builder.</li>
+				 </ul>
+				<img class="instruction-screenshot larger-max-height" src="/web/img/helpbuilder/trialVarying/trialvaryingWindowS2.png" alt="Gear to vary parameters across trials">
+			</li>
+			<li><strong class="emphasis">Chosen interface opens:</strong> you will be redirected to the chosen interface (<strong class="emphasis">Trial Builder</strong> or <strong class="emphasis">File Import</strong>) - to edit the selected parameter(s) only
+				<ul class="negative note-text"><li> If you changed the input source method, any values previously defined using a different method will be lost for the selected parameters.  </li></ul>
+			</li>
+			<li><strong class="emphasis">Upon return to Static Builder:</strong> When you define a parameter using advanced options (via the ⚙ gear icon), it is disabled and no longer editable through the Static Builder. To revert back, click the ⚙ icon again and select the Static Builder option.				
+				<ul class="negative note-text"><li>Setting any gain mangitude parameter with Trial Builder or File also disables the Perturbation Schedule parameters in Static Builder (i.e. the ones defining the number of trials in baseline, adaptation... used to automatically vary gain across trials)
+					<img class="instruction-screenshot larger-max-height" src="/web/img/helpbuilder/trialVarying/ef7FileimportPost.png" alt="Gear to vary parameters across trials"></li></ul>
+			</li>
+		</ol> 
+ 
+	</details>
+		
+ 	<!----------------------   ------------------------>		
+	<details>
+		<summary id="builderHelpSummaryExampleTrialVarying">Example: vary Target Position across trials</summary>  
+		<p>
+			<strong class="emphasis">Sample case scenario:</strong>You are editing the position of a target object.
+		</p>
+		<p> 
+			You want the target to:
+		</p> 
+		<ul>
+			<li>appear at <strong class="emphasis">different heights</strong> across trials</li>
+			<li>appear at <strong class="emphasis">different lateral positions</strong> across trials</li>
+			<li>always remain at the <strong class="emphasis">same depth</strong>, 0.5 meters in front of the participant</li>
+		</ul>
+			
+		<p> 
+			To start, you do these steps in the <strong class="emphasis">Static Builder</strong>:
+		</p> 
+		<ul>	 
+			<li> set <strong class="emphasis">Z</strong> (depth / position in front) = 0.5 meters in the Static builder</li>
+			<li>click on the gear icon for the parameter group, which contains <strong class="emphasis">X</strong> (lateral position), <strong class="emphasis">Y</strong> (height), and <strong class="emphasis">Z</strong> (depth / position in front)</li>
+		</ul>
+		
+		<strong class="emphasis"><u>Three examples for how you proceed next</u></strong> 
+		<ul class="list-longitems">
+			<li>
+				<strong class="emphasis">Example 1:</strong> You want to define <strong class="emphasis">X</strong> & <strong class="emphasis">Y</strong> together using Trial Builder — for example, by randomly drawing <strong class="emphasis">X–Y position pairs</strong> from a predefined list:
+				<ol class="smallest-br">
+				<li><strong class="emphasis">Step 1</strong>: select checkboxes for <strong class="emphasis">X</strong> and <strong class="emphasis">Y</strong>, and unselect <strong class="emphasis">Z</strong> </li>
+				<li><strong class="emphasis">Step 2</strong>: choose <em>Trial Builder</em> to configure X and Y together.</li>
+				</ol>
+			</li>
+
+			<li>
+			  	<strong class="emphasis">Example 2:</strong> You want to define <strong class="emphasis">X</strong> & <strong class="emphasis">Y</strong> separately using Trial Builder — for example, by randomly drawing <strong class="emphasis">X</strong> and <strong class="emphasis">Y</strong> independently from separate lists:			 
+				<ol class="smallest-br">
+				<li><strong class="emphasis">Step 1 for X</strong>: select checkbox for <strong class="emphasis">X</strong>, and unselect <strong class="emphasis">Y</strong> and <strong class="emphasis">Z</strong> </li>
+				<li><strong class="emphasis">Step 2 for X</strong>: choose <em>Trial Builder</em> to configure X.</li>
+				<li><strong class="emphasis">Re-open this popup</strong>: re-click the gear icon for this parameter group (from the Static Builder)</li>
+				<li><strong class="emphasis">Step 1 for Y</strong>: select checkbox for <strong class="emphasis">Y</strong>, and unselect <strong class="emphasis">X</strong> and <strong class="emphasis">Z</strong> </li>
+				<li><strong class="emphasis">Step 2 for Y</strong>: choose <em>Trial Builder</em> to configure Y.</li>
+				</ol>
+			</li>
+
+			<li>
+			  	<strong class="emphasis">Example 3:</strong> You want to define <strong class="emphasis">X</strong> using Trial Builder & <strong class="emphasis">X</strong> using File:  
+				<ol class="smallest-br">
+				<li><strong class="emphasis">Step 1 for X</strong>: select checkbox for <strong class="emphasis">X</strong>, and unselect <strong class="emphasis">Y</strong> and <strong class="emphasis">Z</strong> </li>
+				<li><strong class="emphasis">Step 2 for X</strong>: choose <em>Trial Builder</em> to configure X.</li>
+				<li><strong class="emphasis">Re-open this popup</strong>: re-click the gear icon for this parameter group (from the Static Builder)</li>
+				<li><strong class="emphasis">Step 1 for Y</strong>: select checkbox for <strong class="emphasis">Y</strong>, and unselect <strong class="emphasis">X</strong> and <strong class="emphasis">Z</strong> </li>
+				<li><strong class="emphasis">Step 2 for Y</strong>: choose <em>File</em> to upload Y values from .csv file.</li>
+				</ol>
+			</li>
+ 
+		</ul>
+	</details>
+
+ 	 <p></p>
+			
+</article> 
+			
+		</section>  
+	</div>
+</div>
+</body>
+</html>
+
+ 
+

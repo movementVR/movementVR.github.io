@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MovementVR Help Guide</title>
+	<link rel="stylesheet" href="/web/general/general.css">
+	<link rel="stylesheet" href="/web/general/page.css">  
+	<script src="/web/general/general.js"></script>			
+	<script src="/web/general/page.js"></script>	
+	<script defer>document.addEventListener('DOMContentLoaded', function() {setupPage();});</script>
+</head>
+<body>
+<div id="mainpage-parent" class="mainpage-parent general-parent">
+	
+	  <nav class="on-this-page levels-three" aria-label="On this page">
+            <h2>Contents</h2>
+            <ul>
+                <li><a href="#">Placeholder</a></li> 
+                <li><a href="#">Placeholder</a></li> 
+            </ul>
+        </nav>
+	
+	<div id="mainpage-content" class="mainpage-content page-content">
+
+	 
+
+
+
+
+<!-------------- Analyzer -------------->
+		<div class="section-header">Analyzer</div>
+		<div class="section-content justify" data-source="helpAnalyzer">
+			<p>Use the <strong class="emphasis">MovementVR Analyzer</strong> to convert and examine data collected in the VR app.</p>
+
+			<div class="section-panel-header">Export & Conversion</div>
+			<ul class="section-panel list-shortitems">
+				<li>Connect the headset to a PC and extract the <code>.bin</code> data files from internal memory.</li>
+				<li>Upload the <code>.bin</code> files to the Analyzer interface.</li>
+				<li>Click "Export" to convert them into standard <code>.csv</code> files.</li>
+			</ul>
+
+			<div class="section-panel-header">CSV Structure</div>
+			<ul class="section-panel list-shortitems">
+				<li><strong class="emphasis">Columns:</strong> Time, hand positions (per joint), object positions, trial phase markers, success/failure, etc.</li>
+				<li><strong class="emphasis">Rows:</strong> Each row represents a frame (i.e., one time point during the task).</li>
+			</ul>
+
+			<div class="section-panel-header">MATLAB Analysis</div>
+			<ul class="section-panel list-shortitems">
+				<li><strong class="emphasis">Download MATLAB package:</strong> Zip file with scripts and example data provided on the Analyzer page.</li>
+				<li><strong class="emphasis">Pipeline:</strong> Load converted CSV &rarr; Extract trial boundaries &rarr; Compute metrics like success rate and trajectory deviations.</li>
+				<li><strong class="emphasis">Example scripts:</strong> Illustrative code provided for trial-by-trial plotting, computing adaptation curves, and visualizing hand trajectories.</li>
+			</ul>
+			
+		</div> 
+		
+		
+	</div>
+</div>
+</body>
+</html>

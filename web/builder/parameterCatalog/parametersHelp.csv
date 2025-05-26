@@ -1,0 +1,562 @@
+setupScript,targetLocalPositionX,0,Position of the target center relative to the plate starting position,x: lateral (+right),,successCriteria
+setupScript,targetLocalPositionY,0.3,,y: vertical (+up),,successCriteria
+setupScript,targetLocalPositionZ,0,,z: depth (+forward). A value of (0; 0; 0) would place the target at the center of the plate at its appearance (plate's starting position is defined under 'Plate'),,successCriteria
+setupScript,targetSizeX,0.1,Max distance between the center of target and the center of plate for the trial to be successful,(x: lateral,,successCriteria
+setupScript,targetSizeY,0.1,,y: vertical,,successCriteria
+setupScript,targetSizeZ,0.1,,z: depth),,successCriteria
+targetScript,maxTiltForSuccessX,180,Max tilt of the plate (while in target region) for the trial to be successful.,(x: pitch / forward-backward tilt,,successCriteria
+targetScript,maxTiltForSuccessY,180,,y: yaw / flat rotation,,successCriteria
+targetScript,maxTiltForSuccessZ,30,,z: roll / left-right tilt),,successCriteria
+targetScript,timeInTargetForSuccess,0.1,Amount of time the plate must remain within the target region and within allowed tilt limits for the trial to be considered successful.,,,successCriteria
+targetScript,targetMeshColorSuccessAlpha,0.5,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,targetColor
+targetScript,targetMeshColorSuccessB,0.4,,,,targetColor
+targetScript,targetMeshColorSuccessG,0.75,,,,targetColor
+targetScript,targetMeshColorSuccessR,0,Target mesh color while success criteria are being met ,(color changes online after initial target contact),,targetColor
+targetScript,targetMeshColorUnsuccessAlpha,0.5,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,targetColor
+targetScript,targetMeshColorUnsuccessB,0,,,,targetColor
+targetScript,targetMeshColorUnsuccessG,0,,,,targetColor
+targetScript,targetMeshColorUnsuccessR,1,Target mesh color while success criteria are not being met ,(color changes online after initial target contact),,targetColor
+setupScript,targetMeshPositionOffsetX,0,Position offset of the Target's Visible Mesh (the shape you see) relative to its Functional Center (which determines success),x: lateral (+right),,targetMesh
+setupScript,targetMeshPositionOffsetY,0,,y: vertical (+up),,targetMesh
+setupScript,targetMeshPositionOffsetZ,0,,z: depth (+forward). A value of (0; 0; 0) aligns the visual representation with the actual target center; other values apply a visual offset.,,targetMesh
+setupScript,targetMeshShape,Cube,Shape of the visual representation of the target (what shape will people see at the target?)  ,plate'  or 'plate+grape' will show a shaded representation of the plate or plate+grape game objects (use in conjuction to these size options below to match size of game objects) ,,targetMesh
+setupScript,targetMeshSizeAuto,platePlusTarget,Size of the Target's Visible Mesh (the shape you see).,Radio 1-2: mesh size = range of acceptable positions for plate center / entire plate. Radio 3-4: mesh size matches game objects. Note that the intuitive explanations in the labels are for offset=0;0;0.,,targetMesh
+setupScript,targetMeshSizeX,0.2,,Radio 5 = x: lateral width,,targetMesh
+setupScript,targetMeshSizeY,0.005,,y: height,,targetMesh
+setupScript,targetMeshSizeZ,0.2,,z: depth.  ,,targetMesh
+setupScript,platePositionX,0,Initial Position of the plate on the stand - relative to the 'initial headset position' (measured at the start of the experiment after the initial delay),x: lateral (+right),,plateRelated
+setupScript,platePositionY,-0.3,,y: vertical (+up),,plateRelated
+setupScript,platePositionZ,0.5,,z: depth (+forward). A value of (0; 0; 0) would make the plate appear on the headset initial position - most likely y will be negative (plate starts below headset) and z will be positive (plate starts in front of headset).,,plateRelated
+setupScript,plateSizeX,0.25,Size of the Plate,x: lateral width (max=at rim),,plateRelated
+setupScript,plateSizeY,0.02,,y: height (total=base+rim),,plateRelated
+setupScript,plateSizeZ,0.25,,z: depth (max=at rim). Default plate mesh = 2 stacked cylinders: top  = rim (x and z define the rim diameter; y = 40% of total height); bottom = base (x and z = 68% of defined values; y = 60% of total height). Plate collider = two stacked regular octagonal prisms (corresponding to the two cylinders - each octagon inscribed in the corresponding circular face of the mesh). If x and z differ: both mesh and colliders are stretched and become elliptical/irregular octagons.,,plateRelated
+setupScript,plateAngularDrag,0.05,,,,plateRelated
+setupScript,plateDrag,0,,Linear / Angular Drag: slow down linear and rotational motion,,plateRelated
+setupScript,plateMass,1,Physics properties affect plate behavior during tilting / falling / slipping etc. Values are in SI units.,Mass: matches effects of real world objects mass/weight,,plateRelated
+setupScript,plateStandColorAlpha,0.5,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,plateStandRelated
+setupScript,plateStandColorB,0,,,,plateStandRelated
+setupScript,plateStandColorG,0.2,,,,plateStandRelated
+setupScript,plateStandColorR,0.4,Color of plate stand,(pedestal / table / support holding the plate at its initial position),,plateStandRelated
+setupScript,plateStandSizeX,0.1,Size of the plate stand,(pedestal / table / support holding the plate at its initial position). x: lateral width,,plateStandRelated
+setupScript,plateStandSizeZ,0.1,,z: depth. Note that y: height is set automatically from the initial plate position (that you defined in the 'starting position' tab).,,plateStandRelated
+grapeScript,grapeAlwaysIgnoreHands,FALSE,,Check the 'not allowed' box if you do not want hands to be able to touch / move / interact with grape directly (but only through plate),,grapeRelated
+setupScript,frictionPlateGrapeDynamic,0.3,,Static Friction: how easily the grape starts slipping off the plate (lower = more slippery),,grapeRelated
+setupScript,frictionPlateGrapeStatic,0.3,,Dynamic Friction: how quickly the grape slides off the plate once already moving (lower = faster sliding) ,,grapeRelated
+setupScript,grapeAngularDrag,0.05,,,,grapeRelated
+setupScript,grapeDrag,0,,Linear / Angular Drag: slow down linear and rotational motion,,grapeRelated
+setupScript,grapeLocalPositionX,0,Initial position of the grape bunch relative to the center of the plate,x: lateral (+right),,grapeRelated
+setupScript,grapeLocalPositionY,0.05,,y: vertical (+up),,grapeRelated
+setupScript,grapeLocalPositionY_Auto,TRUE,Check the box to apply the vertical offset needed for the grape to rest on top of the plate.,,,grapeRelated
+setupScript,grapeLocalPositionZ,0,,z: depth (+forward). A value of (0; 0; 0) would align the centers of the grape and plate on appearance.,,grapeRelated
+setupScript,grapeMass,1,Physics properties affect grape behavior during tilting / falling / slipping etc. Values are in SI units.,Mass: matches effects of real world objects mass/weight,,grapeRelated
+setupScript,grapeSizeX,0.1,Size of the grape bunch,x: lateral width (from stem to bottom),,grapeRelated
+setupScript,grapeSizeY,0.08,,y: height (from plate to top of bunch),,grapeRelated
+setupScript,grapeSizeZ,0.08,,z: depth (across the bunch). Defined size corresponds to the parallelepipedal collider.,,grapeRelated
+setupScript,frictionPlateHandsDynamic,0.6,,Static Friction: how easily the plate starts slipping from the hands (lower = more slippery),,plateRelated
+setupScript,frictionPlateHandsStatic,0.6,,Dynamic Friction: how quickly plate slides once already moving (lower = faster sliding) ,,plateRelated
+plateAndGrapeScript,plateGrapeColorSuccessAlpha,0.5,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,plateGrapeFeedbackColor
+plateAndGrapeScript,plateGrapeColorSuccessB,0.4,,,,plateGrapeFeedbackColor
+plateAndGrapeScript,plateGrapeColorSuccessG,0.75,,,,plateGrapeFeedbackColor
+plateAndGrapeScript,plateGrapeColorSuccessR,0,Color of particle effect around plate on trial success,Effect shown when plate disappears (current trial - start of ''feedback phase'') and reappears (next trial - start of ''start lift'' phase).,,plateGrapeFeedbackColor
+plateAndGrapeScript,plateGrapeColorUnsuccessAlpha,0.5,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,plateGrapeFeedbackColor
+plateAndGrapeScript,plateGrapeColorUnsuccessB,0,,,,plateGrapeFeedbackColor
+plateAndGrapeScript,plateGrapeColorUnsuccessG,0,,,,plateGrapeFeedbackColor
+plateAndGrapeScript,plateGrapeColorUnsuccessR,1,Color of particle effect around plate on trial failure,Effect shown when plate disappears (current trial - start of ''feedback phase'') and reappears (next trial - start of ''start lift'' phase).,,plateGrapeFeedbackColor
+gainScript,leftHandGainX,0,Set magnitude of gain perturbation for the left hand;,(Static Builder: this is the gain at adaptation plateau after a gradual ramping of the perturbation as defined in the Schedule tab; Trial Builder or File: this is the trial-by-trial gain value),,gainMagnitude
+gainScript,leftHandGainY,0,X=lateral; Y=vertical; Z=depth ,Gain perturbation applies a scaling factor to visual hand movement based on real hand motion: Visual hand velocity = (1 + gain) * real hand velocity (0% = visual hand moves like the real hand; -100% = visual hand does not move; 100% = visual hand moves twice as fast). Gain is applied relative to the origin defined in 'origin' tab -> Visual hand distance from origin = (1 + gain) * real hand distance from origin. Gain is applied indepdendently to each axis (e.g. applying a -50% gain in Y only slows down vertical movement only).,,gainMagnitude
+gainScript,leftHandGainZ,0,,Gain values are defined per hand/per axis (gain applies symmetrically - positive gain increases the magnitude of movement away from the origin / negative gain compresses it - regardless of the specific direction along axis  - e.g. right vs left),,gainMagnitude
+gainScript,rightHandGainX,0,Set magnitude of gain perturbation for the right hand;,(Static Builder: this is the gain at adaptation plateau after a gradual ramping of the perturbation as defined in the Schedule tab; Trial Builder or File: this is the trial-by-trial gain value),,gainMagnitude
+gainScript,rightHandGainY,-50,X=lateral; Y=vertical; Z=depth ,Gain perturbation applies a scaling factor to visual hand movement based on real hand motion: Visual hand velocity = (1 + gain) * real hand velocity (0% = visual hand moves like the real hand; -100% = visual hand does not move; 100% = visual hand moves twice as fast). Gain is applied relative to the origin defined in 'origin' tab -> Visual hand distance from origin = (1 + gain) * real hand distance from origin. Gain is applied indepdendently to each axis (e.g. applying a -50% gain in Y only slows down vertical movement only),,gainMagnitude
+gainScript,rightHandGainZ,0,,Gain values are defined per hand/per axis (gain applies symmetrically - positive gain increases the magnitude of movement away from the origin / negative gain compresses it - regardless of the specific direction along axis  - e.g. right vs left),,gainMagnitude
+gainScript,gainOriginComputationBetweenTrials,median,Second - combine 'origin' computations across trials. Define whether / how 'origins' are combined:, (often baseline trials are used to compute origin that is then used in adaptation),,gainOriginComputations
+gainScript,gainOriginComputationTrialRangeAuto,TRUE,,(Select Auto Range to automatically compute origin on baseline trials),,gainOriginComputations
+gainScript,gainOriginComputationTrialRangeEnd,30,,,,gainOriginComputations
+gainScript,gainOriginComputationTrialRangeStart,1,,Take mean or median of 'origin' value across specified range of values; OR  do not combine 'origin' across trials but instead smooth trial-to-trial change in origin over specified duration of time ,,gainOriginComputations
+gainScript,gainOriginComputationWithinTrial,homePositionMedian,First - compute 'origin' for each trial. Define within-trial computations:,Hand position when in home: record wrist positions while ''hand in home'' condition is true -> then take the median / mean / first value / last value. Hand position upon plate contact:  record the wrist positions when the hands first touch the plate (at the end of ''start lift'' phase as we transition to ''execute lift'' phase). Predefined position: same coordinate system as hand tracking,,gainOriginComputations
+gainScript,gainOriginTransitionTime,0.1,,,,gainOriginComputations
+gainScript,leftGainOriginFixedPositionX,0,Fixed position for the gain origin - relative to the initial headset position collected at the start of the paradigm.,x: lateral (+right),,gainOriginComputations
+gainScript,leftGainOriginFixedPositionY,0,,y: vertical (+up),,gainOriginComputations
+gainScript,leftGainOriginFixedPositionZ,0,,z: depth (+forward). ,,gainOriginComputations
+gainScript,rightGainOriginFixedPositionX,0,,,,gainOriginComputations
+gainScript,rightGainOriginFixedPositionY,0,,,,gainOriginComputations
+gainScript,rightGainOriginFixedPositionZ,0,,,,gainOriginComputations
+gainScript,paradigmBaseline,30,Automatic schedule for the hand gain - following the standard adaptation paradigm. Define here the N of trials per phase.,You can create a custom gain schedule by going to the next tab (the Gain tab) and then clicking on the gear. Note that doing so will overwrite the schedule created here. ,,gainSchedule
+gainScript,paradigmFullPerturbation,60,,,,gainSchedule
+gainScript,paradigmGradual,60,,If you use this tab - Gain magnitude is as follows: Baseline and washout = 0; gradual schedule = gainPlateauMagnitude * trialInGradual / (totTrialsInGradual - 1); plateau = gainPlateauMagnitude.,,gainSchedule
+gainScript,paradigmWashout,60,,,,gainSchedule
+gainScript,gainTransitionTime,0.1,Apply filter to smooth the effects of  trial-to-trial changes in perturbation gain (avoid artificial jumps in hand position),Set the duration over which the gain value transitions smoothly,,gainSmoothing
+setupScript,handGainResetBoundMatchHandStartingFlag,TRUE,,Define a trigger condition for when the transition begins (default = when both hands are in the home position. Starting the transition when hands are near the origin reduces visual jumps because gain has little effect near the origin). If you select 'other': ALL conditions specified below must be met (up to 4 depending on checked boxes) ,,gainSmoothing
+setupScript,lefthandGainResetInBoundFlag,TRUE,Define a custom trigger region and condition for when gain transition begins - Wrists conditions,Select which hands must be in trigger region.,,gainSmoothing
+setupScript,lefthandGainResetInBoundPositionX,-0.13,Define a custom trigger region for left hand wrist (if selected - left wrist must be in this region for gain to start changing),x: lateral (+right for position),,gainSmoothing
+setupScript,lefthandGainResetInBoundPositionY,-0.1,,y: vertical (+up for position),,gainSmoothing
+setupScript,lefthandGainResetInBoundPositionZ,0,,z: depth (+forward for position). Position is relative to plate starting position (defined in 'Plate'),,gainSmoothing
+setupScript,lefthandGainResetInBoundShape,Sphere,,,,gainSmoothing
+setupScript,lefthandGainResetInBoundSizeRadius,0.1,,,,gainSmoothing
+setupScript,lefthandGainResetInBoundSizeX,0.1,,,,gainSmoothing
+setupScript,lefthandGainResetInBoundSizeY,0.1,,,,gainSmoothing
+setupScript,lefthandGainResetInBoundSizeZ,0.1,,,,gainSmoothing
+setupScript,lefthandGainResetOutBoundDirectionX,none,,,,gainSmoothing
+setupScript,lefthandGainResetOutBoundDirectionY,below,,,,gainSmoothing
+setupScript,lefthandGainResetOutBoundDirectionZ,none,,,,gainSmoothing
+setupScript,lefthandGainResetOutBoundFlag,TRUE,Define a custom bone conditions for when gain transition begins ,Select which hands must have bones meeting the conditions below,,gainSmoothing
+setupScript,lefthandGainResetOutBoundMeetAllConditions,FALSE,,,,gainSmoothing
+setupScript,lefthandGainResetOutBoundPositionX,0,Spatial conditions that must be met by all left hand’s bones. ,Conditions are relative to the plate's starting position (where the plate will appear at trial start).  Check box to require ALL conditions to be met (strict) or leave unchecked if meeting any is sufficient (loose).,,gainSmoothing
+setupScript,lefthandGainResetOutBoundPositionY,0.005,,,,gainSmoothing
+setupScript,lefthandGainResetOutBoundPositionZ,0,,,,gainSmoothing
+setupScript,righthandGainResetInBoundFlag,TRUE,,,,gainSmoothing
+setupScript,righthandGainResetInBoundPositionX,0.13,Define a custom trigger region for right hand wrist (if selected - right wrist must be in this region for gain to start changing),x: lateral (+right for position),,gainSmoothing
+setupScript,righthandGainResetInBoundPositionY,-0.1,,y: vertical (+up for position),,gainSmoothing
+setupScript,righthandGainResetInBoundPositionZ,0,,z: depth (+forward for position). Position is relative to plate starting position (defined in 'Plate'),,gainSmoothing
+setupScript,righthandGainResetInBoundShape,Sphere,,,,gainSmoothing
+setupScript,righthandGainResetInBoundSizeRadius,0.1,,,,gainSmoothing
+setupScript,righthandGainResetInBoundSizeX,0.1,,,,gainSmoothing
+setupScript,righthandGainResetInBoundSizeY,0.1,,,,gainSmoothing
+setupScript,righthandGainResetInBoundSizeZ,0.1,,,,gainSmoothing
+setupScript,righthandGainResetOutBoundDirectionX,none,,,,gainSmoothing
+setupScript,righthandGainResetOutBoundDirectionY,below,,,,gainSmoothing
+setupScript,righthandGainResetOutBoundDirectionZ,none,,,,gainSmoothing
+setupScript,righthandGainResetOutBoundFlag,TRUE,,,,gainSmoothing
+setupScript,righthandGainResetOutBoundMeetAllConditions,FALSE,,,,gainSmoothing
+setupScript,righthandGainResetOutBoundPositionX,0,Spatial conditions that must be met by all right hand’s bones. ,Conditions are relative to the plate's starting position (where the plate will appear at trial start).  Check box to require ALL conditions to be met (strict) or leave unchecked if meeting any is sufficient (loose).,,gainSmoothing
+setupScript,righthandGainResetOutBoundPositionY,0.005,,,,gainSmoothing
+setupScript,righthandGainResetOutBoundPositionZ,0,,,,gainSmoothing
+setupScript,lefthandStartingInBoundFlag,TRUE,Select which hand(s) must have their wrist within the home region to start the trial.,,,handHomeInsideOf
+setupScript,lefthandStartingInBoundPositionX,-0.13,Home Positions for the left and right hands - relative to the plate starting position (defined in 'Plate'),x: lateral (+right),,handHomeInsideOf
+setupScript,lefthandStartingInBoundPositionY,-0.1,,y: vertical (+up),,handHomeInsideOf
+setupScript,lefthandStartingInBoundPositionZ,0,,z: depth (+forward). ,,handHomeInsideOf
+setupScript,lefthandStartingInBoundShape,Sphere,Switch to a cube-shaped home region for the left wrist and specify its size,(region centered around 'home position' defined in 'hand home',,handHomeInsideOf
+setupScript,lefthandStartingInBoundSizeRadius,0.1,Radius of the spherical home region centered around each wrist's 'home position' ,(defined under 'hand home').  Expand below to switch to a cube-shaped region.,,handHomeInsideOf
+setupScript,lefthandStartingInBoundSizeX,0.1,,x: lateral width,,handHomeInsideOf
+setupScript,lefthandStartingInBoundSizeY,0.1,,y: height,,handHomeInsideOf
+setupScript,lefthandStartingInBoundSizeZ,0.1,,z: depth),,handHomeInsideOf
+setupScript,righthandStartingInBoundFlag,TRUE,,,,handHomeInsideOf
+setupScript,righthandStartingInBoundPositionX,0.13,,A value of (0; 0; 0) would set the home position to the center of the plate on appearance / at its initial position. You will likely set x=negative/positive for left/right respectively (start with one hand per side); and y=negative (start with hands below plate).,,handHomeInsideOf
+setupScript,righthandStartingInBoundPositionY,-0.1,,,,handHomeInsideOf
+setupScript,righthandStartingInBoundPositionZ,0,,,,handHomeInsideOf
+setupScript,righthandStartingInBoundShape,Sphere,Switch to a cube-shaped home region for the right wrist and specify its size,(region centered around 'home position' defined in 'hand home',,handHomeInsideOf
+setupScript,righthandStartingInBoundSizeRadius,0.1,,,,handHomeInsideOf
+setupScript,righthandStartingInBoundSizeX,0.1,,x: lateral width,,handHomeInsideOf
+setupScript,righthandStartingInBoundSizeY,0.1,,y: height,,handHomeInsideOf
+setupScript,righthandStartingInBoundSizeZ,0.1,,z: depth),,handHomeInsideOf
+setupScript,handStartingBoundMeshColorHandsCoupled,FALSE,Coupled = both hand meshes share the same color - 'hands in home' color used when BOTH hands meet criteria. Not coupled = each hand mesh has its own color -  'hands in home' color used when THAT hand meets criteria.,,,handHomeMesh
+setupScript,handStartingBoundMeshColorSuccessAlpha,0.3,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible).,,handHomeMesh
+setupScript,handStartingBoundMeshColorSuccessB,0.4,,,,handHomeMesh
+setupScript,handStartingBoundMeshColorSuccessG,0.75,,,,handHomeMesh
+setupScript,handStartingBoundMeshColorSuccessR,0,Color of hand home meshes while hands ARE or ARE NOT meeting 'in home' criteria,(color changes online).,,handHomeMesh
+setupScript,handStartingBoundMeshColorUnsuccessAlpha,0.3,,,,handHomeMesh
+setupScript,handStartingBoundMeshColorUnsuccessB,0,,,,handHomeMesh
+setupScript,handStartingBoundMeshColorUnsuccessG,0,,,,handHomeMesh
+setupScript,handStartingBoundMeshColorUnsuccessR,1,,,,handHomeMesh
+setupScript,lefthandStartingBoundMeshLocalPositionX,0,Position offset of the visible mesh (the shape you see) relative to the actual functional left hand ''Home Position'' (which triggers tria start).,x: lateral (+right),,handHomeMesh
+setupScript,lefthandStartingBoundMeshLocalPositionY,0,,y: vertical (+up),,handHomeMesh
+setupScript,lefthandStartingBoundMeshLocalPositionZ,0,,z: depth (+forward). A value of (0; 0; 0) aligns the visual shape with the actual home position; other values apply a visual offset.,,handHomeMesh
+setupScript,lefthandStartingBoundMeshPositionAuto,TRUE,,,,handHomeMesh
+setupScript,lefthandStartingBoundMeshShape,Hand,Select the visible shape for the left hand's home position (what will people see to guide them to return to home position?)  ,Leave boxes checked to match the mesh position and size to the actual functional home position (except for 'hand' mesh size = standard). Otherwise expand below. ,,handHomeMesh
+setupScript,lefthandStartingBoundMeshSizeAuto,TRUE,,,,handHomeMesh
+setupScript,lefthandStartingBoundMeshSizeX,0.2,Size of the visible mesh (the shape you see) for the left hand ''Home Position'',x: lateral width,,handHomeMesh
+setupScript,lefthandStartingBoundMeshSizeY,0.2,,y: height,,handHomeMesh
+setupScript,lefthandStartingBoundMeshSizeZ,0.2,,z: depth,,handHomeMesh
+setupScript,righthandStartingBoundMeshLocalPositionX,0,Position offset of the visible mesh (the shape you see) relative to the actual functional right hand ''Home Position'' (which triggers tria start).,x: lateral (+right),,handHomeMesh
+setupScript,righthandStartingBoundMeshLocalPositionY,0,,y: vertical (+up),,handHomeMesh
+setupScript,righthandStartingBoundMeshLocalPositionZ,0,,z: depth (+forward). A value of (0; 0; 0) aligns the visual shape with the actual home position; other values apply a visual offset.,,handHomeMesh
+setupScript,righthandStartingBoundMeshPositionAuto,TRUE,,,,handHomeMesh
+setupScript,righthandStartingBoundMeshShape,Hand,Select the visible shape for the right hand's home position (what will people see to guide them to return to home position?)  ,Leave boxes checked to match the mesh position and size to the actual functional home position (except for 'hand' mesh size = standard). Otherwise expand below. ,,handHomeMesh
+setupScript,righthandStartingBoundMeshSizeAuto,TRUE,,,,handHomeMesh
+setupScript,righthandStartingBoundMeshSizeX,0.2,Size of the visible mesh (the shape you see) for the right hand ''Home Position'',x: lateral width,,handHomeMesh
+setupScript,righthandStartingBoundMeshSizeY,0.2,,y: height,,handHomeMesh
+setupScript,righthandStartingBoundMeshSizeZ,0.2,,z: depth,,handHomeMesh
+setupScript,lefthandStartingOutBoundDirectionX,none,,,,handHomeOutsideOf
+setupScript,lefthandStartingOutBoundDirectionY,below,,,,handHomeOutsideOf
+setupScript,lefthandStartingOutBoundDirectionZ,none,,,,handHomeOutsideOf
+setupScript,lefthandStartingOutBoundFlag,TRUE,Select which hand(s) must have their bones meet the criteria defined below. ,Default criteria ensure that hands are outside the region where the plate will appear to prevent collision on appearance. Expand below to customize the criteria.,,handHomeOutsideOf
+setupScript,lefthandStartingOutBoundMeetAllConditions,FALSE,,,,handHomeOutsideOf
+setupScript,lefthandStartingOutBoundPositionX,0,Spatial conditions that must be met by all left hand’s bones. ,Conditions are relative to the plate's starting position (where the plate will appear at trial start).  Check box to require ALL conditions to be met (strict) or leave unchecked if meeting any is sufficient (loose).,,handHomeOutsideOf
+setupScript,lefthandStartingOutBoundPositionY,0.005,,,,handHomeOutsideOf
+setupScript,lefthandStartingOutBoundPositionZ,0,,,,handHomeOutsideOf
+setupScript,righthandStartingOutBoundDirectionX,none,,,,handHomeOutsideOf
+setupScript,righthandStartingOutBoundDirectionY,below,,,,handHomeOutsideOf
+setupScript,righthandStartingOutBoundDirectionZ,none,,,,handHomeOutsideOf
+setupScript,righthandStartingOutBoundFlag,TRUE,,,,handHomeOutsideOf
+setupScript,righthandStartingOutBoundMeetAllConditions,FALSE,,,,handHomeOutsideOf
+setupScript,righthandStartingOutBoundPositionX,0,Spatial conditions that must be met by all right hand’s bones. ,Conditions are relative to the plate's starting position (where the plate will appear at trial start).  Check box to require ALL conditions to be met (strict) or leave unchecked if meeting any is sufficient (loose).,,handHomeOutsideOf
+setupScript,righthandStartingOutBoundPositionY,0.005,,,,handHomeOutsideOf
+setupScript,righthandStartingOutBoundPositionZ,0,,,,handHomeOutsideOf
+startScript,experimentStartTimeDelay,5,Time delay at the very start of the experiment ,(allows participant to position themselves; after the delay the participant's 'initial headset position' is recorded and paradigm starts),,(experimentStartTimeDelay )
+trialScript,stage1_baseDelay,0.35,Time between the end of the previous trial - end of feedback or break - and when the hand home position appears,,,(stage1_baseDelay)
+trialScript,stage2_handPositionTime,0.1,Required duration that the conditions above (wrists in home position + bones checks) must be continuously met to start the trial. ,,,(stage2_handPositionTime)
+trialScript,stage5_outcomeMessageDuration,1,Duration of the feedback phase - how long the feedback message is shown,,,(stage5_outcomeMessageDuration)
+trialScript,stage6_breakDuration,30,Duration of the break,,,(stage6_breakDuration)
+trialScript,stage6_breakFlag,FALSE,This checkbox should be used with the gear icon -> Click gear icon to implement a schedule where selected trials are followed by  a break. Takes a break for every trial that this flag is TRUE (regardless of frequency specified above;the frequency variable will dictate break presence for trials where this flag is FALSE) - so checking the box in the Static Builder means taking a break after every trial. ,,,(stage6_breakFlag)
+trialScript,stage6_breakFrequency,20,Automatically takes a break every N trials - with N specified here (using the ''take break on this trial'' checkbox may overwrite this),,,(stage6_breakFrequency)
+trialScript,stage2_maxTime,60,,(''Return Home'' phase = when participants must place hands in home position),,trialTimeLimits
+trialScript,stage3_maxTime,60,,(''Start Lift'' phase = when participants must begin lifting the plate),,trialTimeLimits
+trialScript,stage4_maxTime,60,,(''Execute Lift'' phase = when participants are actively lifting the plate),,trialTimeLimits
+trialScript,trial_maxTime,60,Maximum durations for overall trial or trial phases - after which trial fails,,,trialTimeLimits
+setupScript,backgroundBirdChirpVolume,0.1,,,,birdRelated
+setupScript,backgroundBirdFlyawayVolume,0.1,,,,birdRelated
+setupScript,targetBirdVolume,1,Volume of the chirping sounds the target bird makes for success or failure; and of background bird sounds,(0 to 1). You can also replace success/failure sounds in wav format in the app folder.,,birdRelated
+setupScript,targetPerchPositionOffsetX,0,Position offset of the Target's Perch (for the bird) relative to the target center (target position defined under 'target'),x: lateral (+right),,birdRelated
+setupScript,targetPerchPositionOffsetY,0.05,,y: vertical (+up),,birdRelated
+setupScript,targetPerchPositionOffsetZ,-5,,z: depth (+forward). A value of (0; 0; 0) centers the perch on the target,,birdRelated
+setupScript,targetPerchSizeX,0.295,Size of the Target's Perch (for the bird) ,(x: lateral width,,birdRelated
+setupScript,targetPerchSizeY,0.014,,y: height,,birdRelated
+setupScript,targetPerchSizeZ,0.054,,z: depth),,birdRelated
+setupScript,tgtBirdBluejaySizeX,0.4644,,,,birdRelated
+setupScript,tgtBirdBluejaySizeY,0.2079,,,,birdRelated
+setupScript,tgtBirdBluejaySizeZ,0.2511,,,,birdRelated
+setupScript,tgtBirdCardinalSizeX,0.4644,Size of the Target's Bird by species,(x: lateral width,,birdRelated
+setupScript,tgtBirdCardinalSizeY,0.2079,,y: height,,birdRelated
+setupScript,tgtBirdCardinalSizeZ,0.2511,,z: depth),,birdRelated
+setupScript,tgtBirdChickadeeSizeX,0.3096,,,,birdRelated
+setupScript,tgtBirdChickadeeSizeY,0.1386,,,,birdRelated
+setupScript,tgtBirdChickadeeSizeZ,0.1674,,,,birdRelated
+setupScript,tgtBirdGoldfinchSizeX,0.3096,,,,birdRelated
+setupScript,tgtBirdGoldfinchSizeY,0.1386,,,,birdRelated
+setupScript,tgtBirdGoldfinchSizeZ,0.1674,,,,birdRelated
+setupScript,tgtBirdPositionOffsetX,0,Position offset of the Target's Bird relative to the target center (target position defined under 'target'),x: lateral (+right),,birdRelated
+setupScript,tgtBirdPositionOffsetY,0,,y: vertical (+up),,birdRelated
+setupScript,tgtBirdPositionOffsetYStandOnTargetFlag,TRUE,Check the box to apply the vertical offset needed for the bird to stand / rest on top of the target.,,,birdRelated
+setupScript,tgtBirdPositionOffsetZ,0,,z: depth (+forward). A value of (0; 0; 0) aligns the bird center with the target center.,,birdRelated
+setupScript,tgtBirdRobinSizeX,0.4644,,,,birdRelated
+setupScript,tgtBirdRobinSizeY,0.2079,,,,birdRelated
+setupScript,tgtBirdRobinSizeZ,0.2511,,,,birdRelated
+setupScript,tgtBirdRotationX,0,Rotation of the Target's Bird,x: pitch / forward-backward tilt (positive = clockwise when viewed from right / bird leans back),,birdRelated
+setupScript,tgtBirdRotationY,0,,y: yaw / flat rotation (positive = clockwise from above / bird turns towards its own right),,birdRelated
+setupScript,tgtBirdRotationZ,0,,z: roll / left-right tilt (positive = counterclockwise when viewed from the front / bird leans to its own right),,birdRelated
+setupScript,tgtBirdSparrowSizeX,0.3096,,,,birdRelated
+setupScript,tgtBirdSparrowSizeY,0.1386,,,,birdRelated
+setupScript,tgtBirdSparrowSizeZ,0.1674,,,,birdRelated
+setupScript,tgtBirdsScaleX,1,Apply a scaling factor to all species (multiply these X; Y; Z values with the X; Y; Z sizes defined above to obtain the final bird size),(x: lateral width,,birdRelated
+setupScript,tgtBirdsScaleY,1,,y: height,,birdRelated
+setupScript,tgtBirdsScaleZ,1,,z: depth),,birdRelated
+trialScript,targetBirdAppearanceOffsetX,0,,x: lateral (+right),,birdRelated
+trialScript,targetBirdAppearanceOffsetY,0.5,,y: vertical (+up),,birdRelated
+trialScript,targetBirdAppearanceOffsetZ,1,,z: depth (+forward). ,,birdRelated
+trialScript,targetBirdDepartureOffsetX,0,,x: lateral (+right),,birdRelated
+trialScript,targetBirdDepartureOffsetY,0.5,,y: vertical (+up),,birdRelated
+trialScript,targetBirdDepartureOffsetZ,-1,,z: depth (+forward). ,,birdRelated
+trialScript,targetBirdEntryAnimation,landing,Select how new birds arrive. Appear = instantly materialize at 'final position' with a particle effect. Fly in = appear at an offset position and then fly to 'final position' (offset position is defined relative to the 'final position' - the position of the bird on the target which you set in the Bird 'Apperance' tab),,,birdRelated
+trialScript,targetBirdExitAnimation,takeoff,Select how birds exit. Disappear = instantly vanish with a particle effect. Fly away = bird flies to an offset position and then disappears (offset position is defined relative to its position on the target as set in the Bird 'Apperance' tab),,,birdRelated
+trialScript,targetBirdGroundAnimationMaxDuration,5,,,,birdRelated
+trialScript,targetBirdGroundAnimationMinDuration,2,,Behavior switches every N seconds - N drawn from uniform range between values provided.,,birdRelated
+trialScript,targetBirdMainAnimation,ground,Select bird behavior while on the target. Flying = bird remains in flying pose above the target. Perched animations = bird lands and performs on-ground behaviors:,preening / pecking / ruffling / looking around; chosen at random with equal probability.,,birdRelated
+trialScript,targetBirdSpeciesList,bluejay>cardinal>robin>chickadee,,Custom list: enter bird species (cardinal / bluejay / robin / chickadee / goldfinch / sparrow) separated by > symbols. ,,birdRelated
+trialScript,targetBirdSpeciesMode,random,Select how the next bird species is chosen:,randomly from all species; randomly from custom list; in order from custom list.,,birdRelated
+trialScript,changeBirdAnyCondition,TRUE,Select when to switch the bird at the target: after each trial or only for selected conditions, (success/failure outcomes or breaks - expand below),,changeBirdCondition
+trialScript,changeBirdOnBreak,TRUE,,after breaks,,changeBirdCondition
+trialScript,changeBirdOnFailure1,TRUE,Message shown after Failure due to 'Plate too tilted',after failed trials (with specific reasons for failure),,changeBirdCondition
+trialScript,changeBirdOnFailure2,TRUE,Message shown after Failure due to 'Plate exited target',,,changeBirdCondition
+trialScript,changeBirdOnFailure3,TRUE,Message shown after Failure due to 'Plate fell',,,changeBirdCondition
+trialScript,changeBirdOnFailure4,TRUE,Message shown after Failure due to 'Time limit reached',,,changeBirdCondition
+trialScript,changeBirdOnFailure5,TRUE,Message shown after Failure due to 'Workspace exited',,,changeBirdCondition
+trialScript,changeBirdOnSuccess,TRUE,Select conditions when to switch the bird at the target:,after successful trials,,changeBirdCondition
+trialScript,changeBirdStage,5,Select ''when'' the bird swap should occur., ''Before feedback'' = upon completion of ''execute lift'' phase (as soon as plate disappears because target was reached or plate fell etc). ''After feedback'' =  upon completion of ''feedback'' phase (after feedback has been given and feedback message has been removed and we are ready for the break). ''After break''  = upon completion of ''break'' phase (after break has concluded and we are ready for the next trial).,,changeBirdCondition
+setupScript,taskWorkspaceBoundShape,Sphere,Define the workspace region the plate must remain within throughout the trial - otherwise the trial fails. , (region is centered around 'plate starting position' defined under 'plate'. For cube size,, taskWorkspace
+setupScript,taskWorkspaceBoundSizeRadius,1.5,,,, taskWorkspace
+setupScript,taskWorkspaceBoundSizeX,2,,x: lateral,, taskWorkspace
+setupScript,taskWorkspaceBoundSizeY,2,,y: vertical,, taskWorkspace
+setupScript,taskWorkspaceBoundSizeZ,2,,z: depth),, taskWorkspace
+setupScript,gameBoundBottomIsGround,TRUE,,Check 'Match bottom to ground' to align lower vertical bound with the ground plane.,,gameBoundaries
+setupScript,gameBoundLocalPositionBack,1,,,,gameBoundaries
+setupScript,gameBoundLocalPositionBottom,1,,,,gameBoundaries
+setupScript,gameBoundLocalPositionFront,1,,,,gameBoundaries
+setupScript,gameBoundLocalPositionLeft,1,Additional asymmetric bounds the plate must remain within throughout the trial - otherwise the trial fails, (defined relative to  'plate starting position' defined under 'plate'),,gameBoundaries
+setupScript,gameBoundLocalPositionRight,1,,,,gameBoundaries
+setupScript,gameBoundLocalPositionTop,1,,,,gameBoundaries
+handsAndSaveScript,leftHandActiveFlag,TRUE, and which hands are used in the task.,Select both hands for bimanual tasks or dominant / hand of interest for unimanual tasks. ,,handSettings
+handsAndSaveScript,leftHandTrackingFlag,TRUE,Select which hands MUST be visible and tracked without error for the task to function (plate will freeze if tracking is lost - and unfreeze when tracking resumes),,,handSettings
+handsAndSaveScript,rightHandActiveFlag,TRUE,,Unchecked hands are not tracked / not visible / not functional in the task. ,,handSettings
+handsAndSaveScript,rightHandTrackingFlag,TRUE,,,,handSettings
+setupScript,rigSystem,Quest,Select the hand tracking system (Quest or Leap),,,handSettings
+handsAndSaveScript,saveBasicData,TRUE,Select which data you want to save.,Basic = transforms for plate + grape + headset + left wrist + right wrist.  ,,
+handsAndSaveScript,saveBoneColliderShapes,TRUE,,Bone shapes = save each bone collider's type (1=capsule or 2=box) +  X Y Z position of the collider center + collider size (X Y Z size for box colliders; height + radius + direction for capsule colliders -> direction = code for main axis 0=1 / 1=Y / 2=Z -> height = length along main axis / radius = half-width of other two axes),,
+handsAndSaveScript,saveBoneTransforms,TRUE,,Bone transforms = transforms for each bone in hand,,
+handsAndSaveScript,saveFingertipPosition,TRUE,''Transforms'' save position + orientation using 6 values: X Y Z position of the center of the object + X Y Z forward unit vector in the direction the object is pointing (e.g. vector 0;0;1 points forward along Z+ meaning object faces straight ahead /  -1; 0; 0 is pointing left /   0.71; 0; 0.71 is pointing forward-right etc...),Fingertip positions = X Y Z position of each fingertip,,
+handsAndSaveScript,savePerturbationOffset,TRUE,Data is saved for every frame as a separate .bin file - see manual / Analyzer for exporting instructions.,Perturbation offsets = X Y Z position offsets applied to each wrist (saved per frame because gain perturbation causes offset to increase with distance reached),,
+messagesScript,trialNumberAuto,TRUE,,,,trialCountMessageParameters
+messagesScript,trialNumberBaseText,Trial: ,Message with trial number shown throughout the experiment. Message text = base string (defined in text area input) + trial number (appended if the box is checked). ,Leave 'base string' blank and uncheck box to hide trial number. Click gear icon and uncheck box to provide custom trial numbers.,,trialCountMessageParameters
+setupScript,trialNumberMessageBackgroundColorAlpha,0,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialCountMessageParameters
+setupScript,trialNumberMessageBackgroundColorB,0,,,,trialCountMessageParameters
+setupScript,trialNumberMessageBackgroundColorG,0,,,,trialCountMessageParameters
+setupScript,trialNumberMessageBackgroundColorR,0,Bubble color.,,,trialCountMessageParameters
+setupScript,trialNumberMessageBackgroundRotationZ,0,Bubble rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of text rotation),,trialCountMessageParameters
+setupScript,trialNumberMessageFontSize,0.8,in Unity TextMeshPro units.,Font size = 1 corresponds to text height ~ 0.1 meters (with ascender/descender characters like 'l'/'p'),,trialCountMessageParameters
+setupScript,trialNumberMessagePositionX,-0.5,Bubble position relative to initial headset position.,x: lateral (+right),,trialCountMessageParameters
+setupScript,trialNumberMessagePositionY,0.2,,y: vertical (+up),,trialCountMessageParameters
+setupScript,trialNumberMessagePositionZ,0.8,,z: depth (+forward),,trialCountMessageParameters
+setupScript,trialNumberMessageSizeX,0,Size of the message bubble,,,trialCountMessageParameters
+setupScript,trialNumberMessageSizeY,0,,,,trialCountMessageParameters
+setupScript,trialNumberMessageTextColorAlpha,1,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialCountMessageParameters
+setupScript,trialNumberMessageTextColorB,0,,,,trialCountMessageParameters
+setupScript,trialNumberMessageTextColorG,0,,,,trialCountMessageParameters
+setupScript,trialNumberMessageTextColorR,0,Text color.,,,trialCountMessageParameters
+setupScript,trialNumberMessageTextOffsetX,0,Text position relative to the center of the bubble.,x: lateral (+right),,trialCountMessageParameters
+setupScript,trialNumberMessageTextOffsetY,0,,y: vertical (+up),,trialCountMessageParameters
+setupScript,trialNumberMessageTextRotationZ,0,Text rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of bubble rotation),,trialCountMessageParameters
+setupScript,trialNumberMessageType,none,Shape of the message bubble,(''cartoon'' = cloud-shaped),,trialCountMessageParameters
+messagesScript,endText,The end,Message that will be shown at the End of the experiment ,,,endMessageParameters
+setupScript,endMessageBackgroundColorAlpha,0.3,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,endMessageParameters
+setupScript,endMessageBackgroundColorB,0.3,,,,endMessageParameters
+setupScript,endMessageBackgroundColorG,0.65,,,,endMessageParameters
+setupScript,endMessageBackgroundColorR,0.2,Bubble color.,,,endMessageParameters
+setupScript,endMessageBackgroundRotationZ,0,Bubble rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of text rotation),,endMessageParameters
+setupScript,endMessageFontSize,5,in Unity TextMeshPro units.,Font size = 1 corresponds to text height ~ 0.1 meters (with ascender/descender characters like 'l'/'p'),,endMessageParameters
+setupScript,endMessagePositionX,0,Bubble position relative to initial headset position.,x: lateral (+right),,endMessageParameters
+setupScript,endMessagePositionY,0.2,,y: vertical (+up),,endMessageParameters
+setupScript,endMessagePositionZ,3.5,,z: depth (+forward),,endMessageParameters
+setupScript,endMessageSizeX,10,Size of the message bubble,,,endMessageParameters
+setupScript,endMessageSizeY,5,,,,endMessageParameters
+setupScript,endMessageTextColorAlpha,1,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,endMessageParameters
+setupScript,endMessageTextColorB,0,,,,endMessageParameters
+setupScript,endMessageTextColorG,0,,,,endMessageParameters
+setupScript,endMessageTextColorR,1,Text color.,,,endMessageParameters
+setupScript,endMessageTextOffsetX,0,Text position relative to the center of the bubble.,x: lateral (+right),,endMessageParameters
+setupScript,endMessageTextOffsetY,0,,y: vertical (+up),,endMessageParameters
+setupScript,endMessageTextRotationZ,0,Text rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of bubble rotation),,endMessageParameters
+setupScript,endMessageType,rectangle,Shape of the message bubble,(''cartoon'' = cloud-shaped),,endMessageParameters
+messagesScript,startText,Welcome!(Loading...)!,Message that will be shown at the Start of the experiment ,(at the very beginning - before recording the 'initial headset position'. Edit duration of start delay / message under ''Trial Flow''),,startMessageParameters
+setupScript,startMessageBackgroundColorAlpha,0.3,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,startMessageParameters
+setupScript,startMessageBackgroundColorB,0.3,,,,startMessageParameters
+setupScript,startMessageBackgroundColorG,0.65,,,,startMessageParameters
+setupScript,startMessageBackgroundColorR,0.2,Bubble color.,,,startMessageParameters
+setupScript,startMessageBackgroundRotationZ,0,Bubble rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of text rotation),,startMessageParameters
+setupScript,startMessageFontSize,5,in Unity TextMeshPro units.,Font size = 1 corresponds to text height ~ 0.1 meters (with ascender/descender characters like 'l'/'p'),,startMessageParameters
+setupScript,startMessagePositionX,0,Bubble position relative to initial headset position.,x: lateral (+right),,startMessageParameters
+setupScript,startMessagePositionY,1,,y: vertical (+up),,startMessageParameters
+setupScript,startMessagePositionZ,4,,z: depth (+forward),,startMessageParameters
+setupScript,startMessageSizeX,10,Size of the message bubble,,,startMessageParameters
+setupScript,startMessageSizeY,5,,,,startMessageParameters
+setupScript,startMessageTextColorAlpha,1,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,startMessageParameters
+setupScript,startMessageTextColorB,0,,,,startMessageParameters
+setupScript,startMessageTextColorG,0,,,,startMessageParameters
+setupScript,startMessageTextColorR,1,Text color.,,,startMessageParameters
+setupScript,startMessageTextOffsetX,0,Text position relative to the center of the bubble.,x: lateral (+right),,startMessageParameters
+setupScript,startMessageTextOffsetY,0,,y: vertical (+up),,startMessageParameters
+setupScript,startMessageTextRotationZ,0,Text rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of bubble rotation),,startMessageParameters
+setupScript,startMessageType,rectangle,Shape of the message bubble,(''cartoon'' = cloud-shaped),,startMessageParameters
+messagesScript,baseText,Wait,Message that will be shown during phase ''Intertrial Interval'',(pause between trials),,trialStagesMessages
+messagesScript,breakText,break,Message that will be shown during phase ''Break'',(break / pause after trial ends and feedback is shown. Edit break duration and frequency / occurrence under ''Trial Flow''),,trialStagesMessages
+messagesScript,contactText,Lift the plate,Message that will be shown during phase ''Start Lift'',(plate has appeared and participant should begin lifting it),,trialStagesMessages
+messagesScript,fail1Text,too tilted,Message shown after Failure due to 'Plate too tilted',(plate too tilted upon reaching target; 'max tilt' defined under ''Target''),,trialStagesMessages
+messagesScript,fail2Text,left too soon,Message shown after Failure due to 'Plate exited target',(plate exited target region too soon after reaching it; target position + size + required hold time defined under ''Target''),,trialStagesMessages
+messagesScript,fail3Text,plate fell,Message shown after Failure due to 'Plate fell',(plate fell to the ground or hit the 'Additional bounds' defined under ''Workspace''),,trialStagesMessages
+messagesScript,fail4Text,too slow,Message shown after Failure due to 'Time limit reached',(overall trial or individual trial phases took too long; time limits defined under ''Trial Flow''),,trialStagesMessages
+messagesScript,fail5Text,plate fell,Message shown after Failure due to 'Workspace exited',(plate exited the allowed workspace defined under ''Workspace''),,trialStagesMessages
+messagesScript,liftText,Lift plate to target,Message that will be shown during phase ''Execute Lift'',(participant is actively lifting the plate),,trialStagesMessages
+messagesScript,originText,Position hands in home,Message that will be shown during phase ''Return Home'',(participant places hands in home position to start trial),,trialStagesMessages
+messagesScript,stage1_displayMessageFlag,FALSE,Check box to  display instruction message during phase ''Intertrial Interval'',(pause between trials),,trialStagesMessages
+messagesScript,stage2_displayMessageFlag,TRUE,Check box to  display instruction message during phase ''Return Home '',(participant places hands in home position to start trial),,trialStagesMessages
+messagesScript,stage3_displayMessageFlag,TRUE,Check box to  display instruction message during phase ''Start Lift'',(plate has appeared and participant should begin lifting it),,trialStagesMessages
+messagesScript,stage4_displayMessageFlag,TRUE,Check box to  display instruction message during phase ''Execute Lift'',(participant is actively lifting the plate),,trialStagesMessages
+messagesScript,stage5_displayMessageFlag,TRUE,Check box to  display instruction message during phase ''Feedback'',(trial has ended and feedback is given to the participant),,trialStagesMessages
+messagesScript,stage6_displayMessageFlag,TRUE,Check box to  display instruction message during phase ''Break'',(break / pause after trial ends and feedback is shown. Edit break duration and frequency / occurrence under ''Trial Flow''),,trialStagesMessages
+messagesScript,successText,success!,Message that will be shown after Success,(plate successfully lifted to the target; success criteria are defined under ''Target''),,trialStagesMessages
+setupScript,baseMessageBackgroundColorAlpha,0.3,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,baseMessageBackgroundColorB,0.3,,,,trialStagesMessages
+setupScript,baseMessageBackgroundColorG,0.65,,,,trialStagesMessages
+setupScript,baseMessageBackgroundColorR,0.2,Bubble color.,,,trialStagesMessages
+setupScript,baseMessageBackgroundRotationZ,0,Bubble rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of text rotation),,trialStagesMessages
+setupScript,baseMessageFontSize,5,in Unity TextMeshPro units.,Font size = 1 corresponds to text height ~ 0.1 meters (with ascender/descender characters like 'l'/'p'),,trialStagesMessages
+setupScript,baseMessagePositionX,0,Bubble position relative to initial headset position.,x: lateral (+right),,trialStagesMessages
+setupScript,baseMessagePositionY,0.5,,y: vertical (+up),,trialStagesMessages
+setupScript,baseMessagePositionZ,3.5,,z: depth (+forward),,trialStagesMessages
+setupScript,baseMessageSizeX,10,Size of the message bubble,,,trialStagesMessages
+setupScript,baseMessageSizeY,5,,,,trialStagesMessages
+setupScript,baseMessageTextColorAlpha,1,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,baseMessageTextColorB,0,,,,trialStagesMessages
+setupScript,baseMessageTextColorG,0,,,,trialStagesMessages
+setupScript,baseMessageTextColorR,1,Text color.,,,trialStagesMessages
+setupScript,baseMessageTextOffsetX,0,Text position relative to the center of the bubble.,x: lateral (+right),,trialStagesMessages
+setupScript,baseMessageTextOffsetY,0,,y: vertical (+up),,trialStagesMessages
+setupScript,baseMessageTextRotationZ,0,Text rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of bubble rotation),,trialStagesMessages
+setupScript,baseMessageType,none,Shape of the message bubble,(''cartoon'' = cloud-shaped),,trialStagesMessages
+setupScript,breakMessageBackgroundColorAlpha,1,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,breakMessageBackgroundColorB,0.8,,,,trialStagesMessages
+setupScript,breakMessageBackgroundColorG,0.6,,,,trialStagesMessages
+setupScript,breakMessageBackgroundColorR,0,Bubble color.,,,trialStagesMessages
+setupScript,breakMessageBackgroundRotationZ,0,Bubble rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of text rotation),,trialStagesMessages
+setupScript,breakMessageFontSize,1,in Unity TextMeshPro units.,Font size = 1 corresponds to text height ~ 0.1 meters (with ascender/descender characters like 'l'/'p'),,trialStagesMessages
+setupScript,breakMessagePositionX,0.4,Bubble position relative to initial headset position.,x: lateral (+right),,trialStagesMessages
+setupScript,breakMessagePositionY,0.3,,y: vertical (+up),,trialStagesMessages
+setupScript,breakMessagePositionZ,0.6,,z: depth (+forward),,trialStagesMessages
+setupScript,breakMessageSizeX,0.55,Size of the message bubble,,,trialStagesMessages
+setupScript,breakMessageSizeY,0.4,,,,trialStagesMessages
+setupScript,breakMessageTextColorAlpha,1,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,breakMessageTextColorB,1,,,,trialStagesMessages
+setupScript,breakMessageTextColorG,1,,,,trialStagesMessages
+setupScript,breakMessageTextColorR,1,Text color.,,,trialStagesMessages
+setupScript,breakMessageTextOffsetX,0.03,Text position relative to the center of the bubble.,x: lateral (+right),,trialStagesMessages
+setupScript,breakMessageTextOffsetY,0.015,,y: vertical (+up),,trialStagesMessages
+setupScript,breakMessageTextRotationZ,15,Text rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of bubble rotation),,trialStagesMessages
+setupScript,breakMessageType,cartoon,Shape of the message bubble,(''cartoon'' = cloud-shaped),,trialStagesMessages
+setupScript,contactMessageBackgroundColorAlpha,0.3,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,contactMessageBackgroundColorB,0.3,,,,trialStagesMessages
+setupScript,contactMessageBackgroundColorG,0.65,,,,trialStagesMessages
+setupScript,contactMessageBackgroundColorR,0.2,Bubble color.,,,trialStagesMessages
+setupScript,contactMessageBackgroundRotationZ,0,Bubble rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of text rotation),,trialStagesMessages
+setupScript,contactMessageFontSize,5,in Unity TextMeshPro units.,Font size = 1 corresponds to text height ~ 0.1 meters (with ascender/descender characters like 'l'/'p'),,trialStagesMessages
+setupScript,contactMessagePositionX,0,Bubble position relative to initial headset position.,x: lateral (+right),,trialStagesMessages
+setupScript,contactMessagePositionY,0.5,,y: vertical (+up),,trialStagesMessages
+setupScript,contactMessagePositionZ,3.5,,z: depth (+forward),,trialStagesMessages
+setupScript,contactMessageSizeX,10,Size of the message bubble,,,trialStagesMessages
+setupScript,contactMessageSizeY,5,,,,trialStagesMessages
+setupScript,contactMessageTextColorAlpha,1,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,contactMessageTextColorB,0,,,,trialStagesMessages
+setupScript,contactMessageTextColorG,0,,,,trialStagesMessages
+setupScript,contactMessageTextColorR,1,Text color.,,,trialStagesMessages
+setupScript,contactMessageTextOffsetX,0,Text position relative to the center of the bubble.,x: lateral (+right),,trialStagesMessages
+setupScript,contactMessageTextOffsetY,0,,y: vertical (+up),,trialStagesMessages
+setupScript,contactMessageTextRotationZ,0,Text rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of bubble rotation),,trialStagesMessages
+setupScript,contactMessageType,rectangle,Shape of the message bubble,(''cartoon'' = cloud-shaped),,trialStagesMessages
+setupScript,fail1MessageBackgroundColorAlpha,1,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,fail1MessageBackgroundColorB,0,,,,trialStagesMessages
+setupScript,fail1MessageBackgroundColorG,0,,,,trialStagesMessages
+setupScript,fail1MessageBackgroundColorR,0.7,Bubble color.,,,trialStagesMessages
+setupScript,fail1MessageBackgroundRotationZ,0,Bubble rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of text rotation),,trialStagesMessages
+setupScript,fail1MessageFontSize,1,in Unity TextMeshPro units.,Font size = 1 corresponds to text height ~ 0.1 meters (with ascender/descender characters like 'l'/'p'),,trialStagesMessages
+setupScript,fail1MessagePositionX,0.4,Bubble position relative to initial headset position.,x: lateral (+right),,trialStagesMessages
+setupScript,fail1MessagePositionY,0.3,,y: vertical (+up),,trialStagesMessages
+setupScript,fail1MessagePositionZ,0.6,,z: depth (+forward),,trialStagesMessages
+setupScript,fail1MessageSizeX,0.55,Size of the message bubble,,,trialStagesMessages
+setupScript,fail1MessageSizeY,0.4,,,,trialStagesMessages
+setupScript,fail1MessageTextColorAlpha,1,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,fail1MessageTextColorB,1,,,,trialStagesMessages
+setupScript,fail1MessageTextColorG,1,,,,trialStagesMessages
+setupScript,fail1MessageTextColorR,1,Text color.,,,trialStagesMessages
+setupScript,fail1MessageTextOffsetX,0.03,Text position relative to the center of the bubble.,x: lateral (+right),,trialStagesMessages
+setupScript,fail1MessageTextOffsetY,0.015,,y: vertical (+up),,trialStagesMessages
+setupScript,fail1MessageTextRotationZ,15,Text rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of bubble rotation),,trialStagesMessages
+setupScript,fail1MessageType,cartoon,Shape of the message bubble,(''cartoon'' = cloud-shaped),,trialStagesMessages
+setupScript,fail2MessageBackgroundColorAlpha,1,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,fail2MessageBackgroundColorB,0,,,,trialStagesMessages
+setupScript,fail2MessageBackgroundColorG,0,,,,trialStagesMessages
+setupScript,fail2MessageBackgroundColorR,0.7,Bubble color.,,,trialStagesMessages
+setupScript,fail2MessageBackgroundRotationZ,0,Bubble rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of text rotation),,trialStagesMessages
+setupScript,fail2MessageFontSize,0.7,in Unity TextMeshPro units.,Font size = 1 corresponds to text height ~ 0.1 meters (with ascender/descender characters like 'l'/'p'),,trialStagesMessages
+setupScript,fail2MessagePositionX,0.4,Bubble position relative to initial headset position.,x: lateral (+right),,trialStagesMessages
+setupScript,fail2MessagePositionY,0.3,,y: vertical (+up),,trialStagesMessages
+setupScript,fail2MessagePositionZ,0.6,,z: depth (+forward),,trialStagesMessages
+setupScript,fail2MessageSizeX,0.55,Size of the message bubble,,,trialStagesMessages
+setupScript,fail2MessageSizeY,0.4,,,,trialStagesMessages
+setupScript,fail2MessageTextColorAlpha,1,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,fail2MessageTextColorB,1,,,,trialStagesMessages
+setupScript,fail2MessageTextColorG,1,,,,trialStagesMessages
+setupScript,fail2MessageTextColorR,1,Text color.,,,trialStagesMessages
+setupScript,fail2MessageTextOffsetX,0.03,Text position relative to the center of the bubble.,x: lateral (+right),,trialStagesMessages
+setupScript,fail2MessageTextOffsetY,0.015,,y: vertical (+up),,trialStagesMessages
+setupScript,fail2MessageTextRotationZ,15,Text rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of bubble rotation),,trialStagesMessages
+setupScript,fail2MessageType,cartoon,Shape of the message bubble,(''cartoon'' = cloud-shaped),,trialStagesMessages
+setupScript,fail3MessageBackgroundColorAlpha,1,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,fail3MessageBackgroundColorB,0,,,,trialStagesMessages
+setupScript,fail3MessageBackgroundColorG,0,,,,trialStagesMessages
+setupScript,fail3MessageBackgroundColorR,0.7,Bubble color.,,,trialStagesMessages
+setupScript,fail3MessageBackgroundRotationZ,0,Bubble rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of text rotation),,trialStagesMessages
+setupScript,fail3MessageFontSize,1,in Unity TextMeshPro units.,Font size = 1 corresponds to text height ~ 0.1 meters (with ascender/descender characters like 'l'/'p'),,trialStagesMessages
+setupScript,fail3MessagePositionX,0.4,Bubble position relative to initial headset position.,x: lateral (+right),,trialStagesMessages
+setupScript,fail3MessagePositionY,0.3,,y: vertical (+up),,trialStagesMessages
+setupScript,fail3MessagePositionZ,0.6,,z: depth (+forward),,trialStagesMessages
+setupScript,fail3MessageSizeX,0.55,Size of the message bubble,,,trialStagesMessages
+setupScript,fail3MessageSizeY,0.4,,,,trialStagesMessages
+setupScript,fail3MessageTextColorAlpha,1,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,fail3MessageTextColorB,1,,,,trialStagesMessages
+setupScript,fail3MessageTextColorG,1,,,,trialStagesMessages
+setupScript,fail3MessageTextColorR,1,Text color.,,,trialStagesMessages
+setupScript,fail3MessageTextOffsetX,0.03,Text position relative to the center of the bubble.,x: lateral (+right),,trialStagesMessages
+setupScript,fail3MessageTextOffsetY,0.015,,y: vertical (+up),,trialStagesMessages
+setupScript,fail3MessageTextRotationZ,15,Text rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of bubble rotation),,trialStagesMessages
+setupScript,fail3MessageType,cartoon,Shape of the message bubble,(''cartoon'' = cloud-shaped),,trialStagesMessages
+setupScript,fail4MessageBackgroundColorAlpha,1,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,fail4MessageBackgroundColorB,0,,,,trialStagesMessages
+setupScript,fail4MessageBackgroundColorG,0,,,,trialStagesMessages
+setupScript,fail4MessageBackgroundColorR,0.7,Bubble color.,,,trialStagesMessages
+setupScript,fail4MessageBackgroundRotationZ,0,Bubble rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of text rotation),,trialStagesMessages
+setupScript,fail4MessageFontSize,1,in Unity TextMeshPro units.,Font size = 1 corresponds to text height ~ 0.1 meters (with ascender/descender characters like 'l'/'p'),,trialStagesMessages
+setupScript,fail4MessagePositionX,0.4,Bubble position relative to initial headset position.,x: lateral (+right),,trialStagesMessages
+setupScript,fail4MessagePositionY,0.3,,y: vertical (+up),,trialStagesMessages
+setupScript,fail4MessagePositionZ,0.6,,z: depth (+forward),,trialStagesMessages
+setupScript,fail4MessageSizeX,0.55,Size of the message bubble,,,trialStagesMessages
+setupScript,fail4MessageSizeY,0.4,,,,trialStagesMessages
+setupScript,fail4MessageTextColorAlpha,1,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,fail4MessageTextColorB,1,,,,trialStagesMessages
+setupScript,fail4MessageTextColorG,1,,,,trialStagesMessages
+setupScript,fail4MessageTextColorR,1,Text color.,,,trialStagesMessages
+setupScript,fail4MessageTextOffsetX,0.03,Text position relative to the center of the bubble.,x: lateral (+right),,trialStagesMessages
+setupScript,fail4MessageTextOffsetY,0.015,,y: vertical (+up),,trialStagesMessages
+setupScript,fail4MessageTextRotationZ,15,Text rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of bubble rotation),,trialStagesMessages
+setupScript,fail4MessageType,cartoon,Shape of the message bubble,(''cartoon'' = cloud-shaped),,trialStagesMessages
+setupScript,fail5MessageBackgroundColorAlpha,1,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,fail5MessageBackgroundColorB,0,,,,trialStagesMessages
+setupScript,fail5MessageBackgroundColorG,0,,,,trialStagesMessages
+setupScript,fail5MessageBackgroundColorR,0.7,Bubble color.,,,trialStagesMessages
+setupScript,fail5MessageBackgroundRotationZ,0,Bubble rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of text rotation),,trialStagesMessages
+setupScript,fail5MessageFontSize,1,in Unity TextMeshPro units.,Font size = 1 corresponds to text height ~ 0.1 meters (with ascender/descender characters like 'l'/'p'),,trialStagesMessages
+setupScript,fail5MessagePositionX,0.4,Bubble position relative to initial headset position.,x: lateral (+right),,trialStagesMessages
+setupScript,fail5MessagePositionY,0.3,,y: vertical (+up),,trialStagesMessages
+setupScript,fail5MessagePositionZ,0.6,,z: depth (+forward),,trialStagesMessages
+setupScript,fail5MessageSizeX,0.55,Size of the message bubble,,,trialStagesMessages
+setupScript,fail5MessageSizeY,0.4,,,,trialStagesMessages
+setupScript,fail5MessageTextColorAlpha,1,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,fail5MessageTextColorB,1,,,,trialStagesMessages
+setupScript,fail5MessageTextColorG,1,,,,trialStagesMessages
+setupScript,fail5MessageTextColorR,1,Text color.,,,trialStagesMessages
+setupScript,fail5MessageTextOffsetX,0.03,Text position relative to the center of the bubble.,x: lateral (+right),,trialStagesMessages
+setupScript,fail5MessageTextOffsetY,0.015,,y: vertical (+up),,trialStagesMessages
+setupScript,fail5MessageTextRotationZ,15,Text rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of bubble rotation),,trialStagesMessages
+setupScript,fail5MessageType,cartoon,Shape of the message bubble,(''cartoon'' = cloud-shaped),,trialStagesMessages
+setupScript,liftMessageBackgroundColorAlpha,0.3,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,liftMessageBackgroundColorB,0.3,,,,trialStagesMessages
+setupScript,liftMessageBackgroundColorG,0.65,,,,trialStagesMessages
+setupScript,liftMessageBackgroundColorR,0.2,Bubble color.,,,trialStagesMessages
+setupScript,liftMessageBackgroundRotationZ,0,Bubble rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of text rotation),,trialStagesMessages
+setupScript,liftMessageFontSize,5,in Unity TextMeshPro units.,Font size = 1 corresponds to text height ~ 0.1 meters (with ascender/descender characters like 'l'/'p'),,trialStagesMessages
+setupScript,liftMessagePositionX,0,Bubble position relative to initial headset position.,x: lateral (+right),,trialStagesMessages
+setupScript,liftMessagePositionY,0.5,,y: vertical (+up),,trialStagesMessages
+setupScript,liftMessagePositionZ,3.5,,z: depth (+forward),,trialStagesMessages
+setupScript,liftMessageSizeX,10,Size of the message bubble,,,trialStagesMessages
+setupScript,liftMessageSizeY,5,,,,trialStagesMessages
+setupScript,liftMessageTextColorAlpha,1,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,liftMessageTextColorB,0,,,,trialStagesMessages
+setupScript,liftMessageTextColorG,0,,,,trialStagesMessages
+setupScript,liftMessageTextColorR,1,Text color.,,,trialStagesMessages
+setupScript,liftMessageTextOffsetX,0,Text position relative to the center of the bubble.,x: lateral (+right),,trialStagesMessages
+setupScript,liftMessageTextOffsetY,0,,y: vertical (+up),,trialStagesMessages
+setupScript,liftMessageTextRotationZ,0,Text rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of bubble rotation),,trialStagesMessages
+setupScript,liftMessageType,rectangle,Shape of the message bubble,(''cartoon'' = cloud-shaped),,trialStagesMessages
+setupScript,originMessageBackgroundColorAlpha,0.3,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,originMessageBackgroundColorB,0.3,,,,trialStagesMessages
+setupScript,originMessageBackgroundColorG,0.65,,,,trialStagesMessages
+setupScript,originMessageBackgroundColorR,0.2,Bubble color.,,,trialStagesMessages
+setupScript,originMessageBackgroundRotationZ,0,Bubble rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of text rotation),,trialStagesMessages
+setupScript,originMessageFontSize,5,in Unity TextMeshPro units.,Font size = 1 corresponds to text height ~ 0.1 meters (with ascender/descender characters like 'l'/'p'),,trialStagesMessages
+setupScript,originMessagePositionX,0,Bubble position relative to initial headset position.,x: lateral (+right),,trialStagesMessages
+setupScript,originMessagePositionY,0.2,,y: vertical (+up),,trialStagesMessages
+setupScript,originMessagePositionZ,3.5,,z: depth (+forward),,trialStagesMessages
+setupScript,originMessageSizeX,10,Size of the message bubble,,,trialStagesMessages
+setupScript,originMessageSizeY,5,,,,trialStagesMessages
+setupScript,originMessageTextColorAlpha,1,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,originMessageTextColorB,0,,,,trialStagesMessages
+setupScript,originMessageTextColorG,0,,,,trialStagesMessages
+setupScript,originMessageTextColorR,1,Text color.,,,trialStagesMessages
+setupScript,originMessageTextOffsetX,0,Text position relative to the center of the bubble.,x: lateral (+right),,trialStagesMessages
+setupScript,originMessageTextOffsetY,0,,y: vertical (+up),,trialStagesMessages
+setupScript,originMessageTextRotationZ,0,Text rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of bubble rotation),,trialStagesMessages
+setupScript,originMessageType,rectangle,Shape of the message bubble,(''cartoon'' = cloud-shaped),,trialStagesMessages
+setupScript,successMessageBackgroundColorAlpha,1,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,successMessageBackgroundColorB,0,,,,trialStagesMessages
+setupScript,successMessageBackgroundColorG,0.6,,,,trialStagesMessages
+setupScript,successMessageBackgroundColorR,0,Bubble color.,,,trialStagesMessages
+setupScript,successMessageBackgroundRotationZ,0,Bubble rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of text rotation),,trialStagesMessages
+setupScript,successMessageFontSize,1,in Unity TextMeshPro units.,Font size = 1 corresponds to text height ~ 0.1 meters (with ascender/descender characters like 'l'/'p'),,trialStagesMessages
+setupScript,successMessagePositionX,0.4,Bubble position relative to initial headset position.,x: lateral (+right),,trialStagesMessages
+setupScript,successMessagePositionY,0.3,,y: vertical (+up),,trialStagesMessages
+setupScript,successMessagePositionZ,0.6,,z: depth (+forward),,trialStagesMessages
+setupScript,successMessageSizeX,0.55,Size of the message bubble,,,trialStagesMessages
+setupScript,successMessageSizeY,0.4,,,,trialStagesMessages
+setupScript,successMessageTextColorAlpha,1,Alpha = opacity, (0 to 1; 0 =  invisible to 1 = fully opaque / visible),,trialStagesMessages
+setupScript,successMessageTextColorB,1,,,,trialStagesMessages
+setupScript,successMessageTextColorG,1,,,,trialStagesMessages
+setupScript,successMessageTextColorR,1,Text color.,,,trialStagesMessages
+setupScript,successMessageTextOffsetX,0.03,Text position relative to the center of the bubble.,x: lateral (+right),,trialStagesMessages
+setupScript,successMessageTextOffsetY,0.015,,y: vertical (+up),,trialStagesMessages
+setupScript,successMessageTextRotationZ,15,Text rotation ,(positive = counterclockwise / left tilt; negative = cw / right. Independent of bubble rotation),,trialStagesMessages
+setupScript,successMessageType,cartoon,Shape of the message bubble,(''cartoon'' = cloud-shaped),,trialStagesMessages

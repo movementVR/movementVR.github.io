@@ -113,12 +113,12 @@ function trialbuilderLoadConfigurationLeft(trialBuilderWindow){
 		// Default Left Panel <- Adaptation Phases from Builder (first use of Paradigm Editor)
 		initialListElements = [
 			{   trialType: "Baseline Trial",
-				repeats: builderIOGetParameterValue("trialScript,paradigmBaseline")        },
+				repeats: builderIOGetParameterValue("gainScript,paradigmBaseline")        },
 			{   trialType: "Learning Trial",
-				repeats: String(Number(builderIOGetParameterValue("trialScript,paradigmGradual")) + 
-									Number(builderIOGetParameterValue("trialScript,paradigmFullPerturbation")))  },
+				repeats: String(Number(builderIOGetParameterValue("gainScript,paradigmGradual")) + 
+									Number(builderIOGetParameterValue("gainScript,paradigmFullPerturbation")))  },
 			{   trialType: "Washout Trial",
-				repeats: builderIOGetParameterValue("trialScript,paradigmWashout")   }  
+				repeats: builderIOGetParameterValue("gainScript,paradigmWashout")   }  
 		]; 	 
 	} 
 	return initialListElements;

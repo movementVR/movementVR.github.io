@@ -39,7 +39,8 @@
 	},
     "css": {   
 		"main":[
-			"builder.css"
+			"builder.css",
+			{ "$include": "sharedIO" }
 		],
 		"staticBuilder":[
 			"staticBuilder/staticBuilder.css", 		
@@ -63,7 +64,8 @@
 	},
     "html": {
 		"main":[
-        	"builder.html"
+        	"builder.html",
+			{ "$include": "sharedIO" }
     	],		
 		"staticBuilder":[
         	"staticBuilder/staticBuilder.html"
@@ -128,7 +130,12 @@
 			{"id": "importcsv", "file": "modals/importCsvFile.html"}
 		], 
 		"main": [
-			{"id": "guideBuilder", "file": "modals/guideMainBuilder.html", "selection": "guideUtils"}
+			{"id": "guideBuilder", "file": "modals/guideMainBuilder.html", "selection": "guideUtils"},
+			{"id": "guideBuilderStatic", "file": "modals/guideStaticBuilder.html", "selection": "guideUtils"},
+			{"id": "guideBuilderTrial", "file": "modals/guideTrialBuilder.html", "selection": "guideUtils"},
+			{"id": "guideBuilderSource", "file": "modals/guideBuilderInputSource.html", "selection": "guideUtils"},
+			{"id": "guideBuilderFile", "file": "modals/guideImportCsvFile.html", "selection": "guideUtils"},
+			{"id": "guideBuilderCatalog", "file": "modals/guideParameterCatalog.html", "selection": "guideUtils"}			
 		], 
 		"staticBuilder": [
 			{"id": "guide", "file": "modals/guideStaticBuilder.html", "selection": "guideUtils"},

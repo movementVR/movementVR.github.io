@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Builder Help Guide - Parameter Catalog</title>
+	<link rel="stylesheet" href="/web/general/general.css">
+	<link rel="stylesheet" href="/web/general/page.css"> 
+	<script src="/web/general/general.js"></script>			
+	<script src="/web/general/page.js"></script>	
+	<script defer>document.addEventListener('DOMContentLoaded', function() {setupPage();});</script>
+	
+	
+</head>
+<body>
+	 
+	
+<div id="mainpage-parent" class="mainpage-parent general-parent">
+	
+	  <nav class="on-this-page levels-three" aria-label="On this page">
+            <h2>Contents</h2>
+            <ul>
+                <li><a href="#">Placeholder</a></li> 
+                <li><a href="#">Placeholder</a></li> 
+            </ul>
+        </nav>
+	
+	<div id="mainpage-content" class="mainpage-content page-content">
+
+
+		<div class="section-header">Builder Guide</div>
+		<section class="section-content justify"> 
+		
+			<div class="section-panel-header">Parameter Catalog</div>
+			
+ <!---------------------- CONTENT ------------------------>			
+<article class="section-panel" data-source="helpBuilderCatalog">		 
+    
+	
+	<p>The <strong class="emphasis">Parameter Catalog</strong> provides a searchable reference table listing all parameters available across the Builder interface. It is useful for verifying parameter labels, checking where parameters appear in the UI, and preparing valid CSV files.</p>
+
+	 
+ 	<!---------------------- main ------------------------>	
+	<details>
+		<summary>Overview</summary> 
+		<p>Click <strong class="emphasis">Parameter Catalog</strong> in the <strong class="emphasis">Session Manager</strong> panel of the <strong class="emphasis">Main Builder</strong> page to launch this table.</p>
+		<img class="instruction-screenshot largest-max-height" src="/web/img/helpbuilder/parametercatalog/parametercatalogbtn.png" alt="Parameter Catalog Button">
+		<p>This opens the <strong class="emphasis">Parameter Catalog</strong> as a popup window:</p>
+		<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/parametercatalog/parametercatalog.png" alt="Parameter Catalog">
+	</details>
+	
+	
+ 	<!----------------------  Table Columns ------------------------>	
+	<details>
+		<summary>Table Columns</summary>  
+		  
+		<ul>
+			<li><strong class="emphasis">Code Name:</strong> Internal identifier used in CSV files (<code>scriptName,paramName</code> format).
+			<img class="instruction-screenshot" src="/web/img/helpbuilder/parametercatalog/parametercatalogColCodeName.png" alt="Parameter Catalog Column Code Name"></li>
+			
+			<li>
+				<strong class="emphasis">UI Location:</strong> Builder window and tab where the parameter is edited (e.g., <em>location in main builder grid → tab in static builder</em>).
+				<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/parametercatalog/parametercatalogColLocation.png" alt="Parameter Catalog Column UI Location">
+				<ul>
+					<li>For <strong class="emphasis">View Mode = All Builder Locations</strong>, each location in the Builder is presented on a separate row </li>
+					<img class="instruction-screenshot largest-max-height" src="/web/img/helpbuilder/parametercatalog/parametercatalogColLocation2.png" alt="Parameter Catalog Column UI Location">
+					<li>For <strong class="emphasis">View Mode = Unique Parameters</strong>, different locations are separated by |  and shown in the same row</li>
+					<img class="instruction-screenshot largest-max-height" src="/web/img/helpbuilder/parametercatalog/parametercatalogColLocation3.png" alt="Parameter Catalog Column UI Location">
+				</ul>
+			</li>
+			
+			<li><strong class="emphasis">Display Label:</strong> How the parameter is shown to the user in the Builder interface (e.g., <em>Size [m]: → Width</em>).
+			<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/parametercatalog/parametercatalogColLabel.png" alt="Parameter Catalog Column Display Label"></li>
+			<li><strong class="emphasis">Type:</strong> Input type and any constraints (e.g., <code>number (min=0, max=1)</code> or <code>checkbox (values: TRUE, FALSE)</code>).
+			<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/parametercatalog/parametercatalogColType.png" alt="Parameter Catalog Column Input Type"></li>
+			<li><strong class="emphasis">Description: </strong>Description of the parameter group this parameter is part of. You can click on the description to expand it below the row.<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/parametercatalog/parametercatalogDescript.png" alt="Parameter Catalog Column Input Description"></li>
+		 </ul>		 
+
+	</details>
+	
+	
+ 	<!---------------------- View Modes  ------------------------>	
+	<details>
+		<summary>Table Controls</summary> 
+		 
+		<p><strong class="emphasis small-br"><u>View Modes</u></strong></p>	
+		<p>The toggle buttons above the table control whether duplicate entries are shown:</p>
+		<ul>
+			<li>
+			  <strong class="emphasis">All Builder Locations:</strong> Shows each parameter as many times as it appears in the Builder. This includes duplicates when the same parameter is editable from multiple buttons or links.
+			</li>
+			<li>
+			  <strong class="emphasis">Unique Parameters:</strong> Shows each parameter only once, with all its Builder locations merged into a single line.
+			</li>
+		</ul>
+		<img class="instruction-screenshot largest-max-dim" src="/web/img/helpbuilder/parametercatalog/parametercatalogViewMode.png" alt="Parameter Catalog View Toggle">
+		
+		<p><strong class="emphasis small-br"><u>Search Bar & Sortable Column Headers</u></strong></p>	
+		<p>The <strong class="emphasis">Search Bar</strong> above the table allows you to search text in any of the columns</p>		
+		<p>You can also click on each column header to <strong class="emphasis">sort the list</strong> in ascending/descending order according to that column.</p>
+		<img class="instruction-screenshot largest-max-dim" src="/web/img/helpbuilder/parametercatalog/parametercatalogSearch.png" alt="Parameter Catalog Table Controls Search">
+		
+		<p><strong class="emphasis small-br"><u>Page Navigation</u></strong></p>
+		<p>The <strong class="emphasis">"Show # entries" Dropdown</strong> at the top-right lets you choose how many rows to display at once.</p>
+		<img class="instruction-screenshot largest-max-dim" src="/web/img/helpbuilder/parametercatalog/parametercatalogNEntries.png" alt="Parameter Catalog Table Controls Search">
+		<p>The <strong class="emphasis">Page Navigation Buttons</strong> at the bottom right allow you to move between pages of results.</p>
+		<img class="instruction-screenshot largest-max-dim" src="/web/img/helpbuilder/parametercatalog/parametercatalogNextPage.png" alt="Parameter Catalog Table Controls Search"> 
+		
+		<p><strong class="emphasis small-br"><u>Expandable Text & Resizable Columns</u></strong></p>
+		<p>If a text entry is too long to fit in the visible space, you can view the full content in three ways:</p>
+		<ul>
+			<li>Hover your mouse over the text to <strong class="emphasis">display a tooltip</strong> with the full content.</li>
+			<li>Click the textto expand the row and <strong class="emphasis">show the full text below</strong> the current content.</li>
+			<img class="instruction-screenshot largest-max-dim" src="/web/img/helpbuilder/parametercatalog/parametercatalogExpandText.png" alt="Parameter Catalog Table Controls Search">
+			<li>Drag the column border to <strong class="emphasis">resize the columns</strong> and reveal more text.</li>
+			<img class="instruction-screenshot largest-max-dim" src="/web/img/helpbuilder/parametercatalog/parametercatalogResize.png" alt="Parameter Catalog Table Controls Search">
+		</ul> 
+		 
+	</details>
+	
+	
+ 	<!---------------------- Exporting as CSV  ------------------------>	
+	<details>
+		<summary>Exporting as CSV</summary> 
+		<p>Click the <strong class="emphasis">Download View</strong> button at the bottom-right to export the current view to a <code>.csv</code> file.</p>
+		<p>This file contains the same columns and rows currently shown in the table - the format and number of rows depend on your  "View Mode" Selection (rows show either all locations or unique parameters).
+		<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/parametercatalog/parametercatalogDownload.png" alt="Parameter Catalog Download and File">
+		
+		<p><strong class="emphasis">Note:</strong> There is also a <strong class="emphasis">Download Template</strong> button to download a CSV template for preparing CSV files with parameter values to be imported. See <a href="#builderHelpSummaryFileFormat">File Import → File Format</a> for details.</p>
+	</details>
+	
+	 
+	 
+ 	 
+			
+</article> 
+			
+		</section>  
+	</div>
+</div>
+</body>
+</html>
+ 

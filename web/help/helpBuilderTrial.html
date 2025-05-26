@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Trial Builder Help Guide</title>
+	<link rel="stylesheet" href="/web/general/general.css">
+	<link rel="stylesheet" href="/web/general/page.css"> 
+	<script src="/web/general/general.js"></script>		
+	<script src="/web/general/page.js"></script>	
+	<script defer>document.addEventListener('DOMContentLoaded', function() {setupPage();});</script>
+	
+</head>
+<body>
+	 
+	
+<div id="mainpage-parent" class="mainpage-parent general-parent">
+	
+	  <nav class="on-this-page levels-three" aria-label="On this page">
+            <h2>Contents</h2>
+            <ul>
+                <li><a href="#">Placeholder</a></li> 
+                <li><a href="#">Placeholder</a></li> 
+            </ul>
+        </nav>
+ 
+	<div id="mainpage-content" class="mainpage-content page-content">
+
+
+		<div class="section-header">Builder Guide</div>
+		<section class="section-content justify"> 
+		
+			<div class="section-panel-header">Trial Builder</div>  
+			
+ <!---------------------- CONTENT ------------------------>			
+<article class="section-panel" data-source="helpBuilderTrial">		 
+    
+	<p>The <strong class="emphasis">Trial Builder</strong> helps you generate sequences of parameter values for your trial‑varying parameters in a code‑free way. It supports a range of trial structures and sequence types commonly used in motor control and learning research:</p>
+	<ul class="list-shortitems">
+		<li><strong class="emphasis">Ordered sequences –</strong> apply a list of values in the order you specify</li>
+		<li><strong class="emphasis">Randomized sequences –</strong> shuffle values using simple, weighted, or blocked randomization</li>
+		<li><strong class="emphasis">Linear ramps –</strong> gradually change a parameter from a start to an end value across trials</li>
+		<li><strong class="emphasis">Random distributions –</strong> draw values from a uniform or normal distribution</li>
+	</ul>
+	 
+ 	<!---------------------- STEPS  ------------------------>		
+	<details>
+		<summary>Steps for creating trial-by-trial sequences of values</summary> 
+		
+		<ol>
+			<li>
+				Open the <strong class="emphasis">Trial Builder</strong> for the desired parameters
+				<ul>
+					<li>To open the <strong class="emphasis">Trial Builder</strong>, follow the steps described in <a href="#helpBuilderAdvanced" class="guide-ref">Setting Trial‑Varying Parameters</a>, selecting <strong class="emphasis">Trial Builder</strong> as the method.</li>
+				</ul>
+				<img class="instruction-screenshot largest-max-dim" src="/web/img/helpbuilder/trialBuilder/staticbuilderTrialVaryingTrialBuilder.png" alt="Gear to vary parameters across trials">
+				<ul>
+					<li>This opens a Trial Builder window specific to the selected parameter(s). Here, you will generate a trial-by-trial sequence of parameter values for the parameters selected via the  ⚙ icon (in contrast to the Static Builder, the Trial Builder focuses on a single group of parameters).</li>  
+				</ul>
+				 <img class="instruction-screenshot largest-max-dim" src="/web/img/helpbuilder/trialBuilder/etTrialBuilder0.png" alt="Trial Builder View">
+			</li>
+
+			<li>
+				<strong class="emphasis">Left Panel:</strong> Manage the list of phases and assign trial types.
+				<p>In the Trial Builder, you will first use the <strong class="emphasis">Left Panel</strong> to divide your experiment into multiple phases — such as baseline, learning, and washout:
+				</p>
+				<ol>
+				  <li><strong class="emphasis">Subdivide trials into phases:</strong> Organize your experiment into consecutive blocks of trials, called <em>phases</em>.</li>
+				  <li><strong class="emphasis">Assign a trial type to each phase:</strong> Each phase is associated with a <em>trial type</em> that defines how parameters behave during that phase. Multiple phases can share the same trial type if they require identical behavior.</li>
+				</ol>
+			</li>
+
+			<li>
+				<strong class="emphasis">Right Panel:</strong> Configure trial type settings and parameter value generation.
+				<p>For each phase, you will then choose how the parameter values change trial‑by‑trial by defining the sequence type and values in the <strong class="emphasis">Right Panel</strong>
+				</p>
+				<ol start="3">
+				  <li><strong class="emphasis">Define how parameter values behave in each trial type:</strong> Specify the method used to generate parameter values—whether they follow a fixed sequence, are randomized, ramp up/down, or adhere to a statistical distribution (this is called the <em>sequence type</em>).</li>
+				  <li><strong class="emphasis">Provide the necessary input values:</strong> Enter specific values to control the sequence, such as the list of parameter values, start and end points for ramps, or parameters for statistical distributions.</li>
+				</ol>
+				<img class="instruction-screenshot largest-max-dim" src="/web/img/helpbuilder/trialBuilder/etTrialBuilderLeftRight.png" alt="Trial Builder View">
+			</li> 
+		</ol>  
+	</details>
+	
+	
+	 <!----------- EXAMPLE OF ORGANIZATION  ------------------->		
+	<details>
+		<summary>Example: How do I decide phases and sequence types? </summary> 
+		<p>
+		  This is an example of how we could design a gradual adaptation paradigm. First, we would open the Trial Builder for the desired perturbation magnitude parameter (e.g. Right Gain Y). Then, we would define the Phases and Trial Types as follows: 	
+		</p>	
+
+		 <ol>
+		  <li><strong class="emphasis">Phases:</strong>
+			<ul>
+			  <li>Baseline</li>
+			  <li>Early Adaptation</li>
+			  <li>Adaptation Plateau</li>
+			  <li>Washout</li>
+			</ul>
+		  </li>
+
+		  <li><strong class="emphasis">Trial Types:</strong>
+			<ul>
+			  <li>
+				<strong class="emphasis">no perturbation</strong> <em>(assigned to: Baseline, Washout)</em>
+			  </li>
+			  <li>
+				<strong class="emphasis">gradually increasing</strong> <em>(assigned to: Early Adaptation)</em>
+			  </li>
+			  <li>
+				<strong class="emphasis">full perturbation</strong> <em>(assigned to: Adaptation Plateau)</em>
+			  </li>
+			</ul>
+		  </li>
+
+		  <li><strong class="emphasis">Sequence Types:</strong>
+			<ul>
+			  <li>no perturbation = constant value</li>
+			  <li>gradually increasing = gradual ramp</li>
+			  <li>full perturbation = constant value</li>
+			</ul>
+		  </li>
+
+		  <li><strong class="emphasis">Input Values:</strong>
+			<ul>
+			  <li>
+				<strong class="emphasis">no perturbation:</strong> Constant Value = <em>0%</em>
+			  </li>
+			  <li>
+				<strong class="emphasis">gradually increasing:</strong> Starting Value = <em>0%</em>, Ending Value = <em>100%</em>
+			  </li>
+			  <li>
+				<strong class="emphasis">full perturbation:</strong> Constant Value = <em>100%</em>
+			  </li>
+			</ul>
+		  </li>
+		</ol>
+		
+		
+		
+		<p>Note that this parameter- and phase-specific setup is designed for flexibility:</p>
+		<ul>
+			<li>Different phases in the experiment can use different sequence types. </li>
+			<li>Each parameter can be defined independently, using its own experimental phases and sequence‑type settings.</li>
+		</ul> 
+		<p>For example:</p>
+		<ul>
+			<li>you could set the <strong class="emphasis">perturbation gain</strong> to “Linear Ramp” for the “learning” phase but to “constant” for “baseline” and “washout” phases</li> 
+			<li>at the same time, you could randomize <strong class="emphasis">target position</strong> during “target‑variable” phases but keep it constant during “target‑fixed” phases.</li> 
+			<li>the “target‑fixed” and “target‑variable” phases do not have to match the “baseline”, “learning”, and “washout” phases.</li> 
+		</ul>  
+  	
+  
+	</details>			
+				
+	
+	 <!---------------------- LEFT PANEL  ------------------------>		
+	<details>
+		<summary>Left Panel: Experiment Phases</summary>  	  	
+		  
+		<p>The left panel is where you organize the experiment into phases. It consists of a list of “phases”, where each row in the list represents one “phase”.</p>
+		<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/trialBuilder/etTrialBuilderLeftRow.png" alt="Trial Builder View - Left Panel">
+		<p>Each “phase” (each row) has the following elements:</p>
+		<ul>
+			<li>
+				<strong class="emphasis">Trial Type Dropdown</strong>
+				<p>
+				Each row has a dropdown menu to select the “trial type” for that phase. By default, you see three options: Baseline, Learning, and Washout. Select &lt;add option&gt; in the dropdown to create additional “trial types”.<br>
+				Multiple rows (phases) can share the same trial type if needed. For example, you might have two separate phases that both use the “unperturbed” trial type but occur at different times in the experiment, such as pre and post learning.
+
+					<img class="instruction-screenshot largest-max-height" src="/web/img/helpbuilder/trialBuilder/etTrialBuilderLeftDropdown.png" alt="Trial Builder View Left Panel Dropdown">
+				</p> 
+			</li>
+
+			<li>
+				<strong class="emphasis">Selecting a Phase and Viewing Parameters</strong>
+				<p>
+				Click on a phase row in the left panel to select it. This opens the “Trial Type Settings” panel (right panel) for the “trial type” associated with that phase.
+				Note that there is only one “Trial Type Settings” panel for each “trial type”: if two phases share the same trial type, they both link to the same “Trial Type Settings” panel, and any changes will apply to all phases using that trial type.<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/trialBuilder/etTrialBuilderLeftSelect.png" alt="Trial Builder View Left Panel Select Phase">
+				</p>
+			</li>
+
+			<li>
+				<strong class="emphasis">Number of Trials</strong>
+				<p>
+				Next to the “trial type” dropdown, there is a numeric input field where you set the number of trials in that phase.
+					<img class="instruction-screenshot larger-max-height" src="/web/img/helpbuilder/trialBuilder/etTrialBuilderLeftTrials.png" alt="Trial Builder View Left Panel N Trials">
+				</p>
+			</li>
+
+			<li>
+				<strong class="emphasis">Adding, Removing, and Reordering Phases</strong>
+				<p>The Left Panel UIs has buttons to Add, Remove and Drag-to-reorder the experimental phases. </p>
+				<img class="instruction-screenshot larger-max-height" src="/web/img/helpbuilder/trialBuilder/etTrialBuilderLeftBtn.png" alt="Trial Builder View Left Panel Buttons">
+				<ul>
+					<li>use the + button at the top-right of the left panel to add a new phase row
+					<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/trialbuilderRightAction/trialBuilderRightActionAdd.png" alt="Trial Builder Left Panel Add Button"></li>
+					<li>each row has a delete button (trash icon to the right): click to remove the phase
+					<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/trialbuilderRightAction/trialBuilderRightActionDelete.png" alt="Trial Builder Left Panel Delete Button"></li>
+					<li>click-and-drag a row to move it, reordering the phases
+					<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/trialbuilderRightAction/trialBuilderRightActionDrag.png" alt="Trial Builder Left Panel Drag"></li>
+				</ul>
+			</li>
+			
+		</ul>
+ 
+	</details>
+	
+	 <!---------------------- RIGHT PANEL OVERVIEW ----------------->		
+	<details>
+		<summary>Right Panel: Trial Type Settings</summary>   
+ 
+		<p>
+			The <strong class="emphasis">Trial Type Settings Panel</strong> (right panel) is where you configure the parameter values for each “trial type” selected in the left panel. You only need to configure a “trial type” once, and any phases using that “trial type” will automatically use the same settings.
+		</p>
+		<p>
+			The top row of the panel shows the name of the <strong class="emphasis">Selected “Trial Type”</strong>, and the <strong class="emphasis">Sequence Type Dropdown</strong> (top-right) – which allows you to choose how parameters will change across trials (<a href="#builderHelpSummarySequenceTypeTrial">details below</a>).
+		The main area of the panel consists of a “parameter input” list, containing repeated instances of the “selected parameter group” (each row is one instance; note that it is possible that you may only have a single item in the list).
+			<img class="instruction-screenshot larger-max-height" src="/web/img/helpbuilder/trialBuilder/etTrialBuilderRightTop.png" alt="Trial Builder View Right Panel">
+		</p>
+		<p>
+		Defining trial-by-trial parameter values for the current “trial type” involves two steps:
+		</p>
+		<ol>
+			<li><strong class="emphasis">Select the correct sequence type using the “Sequence Type Dropdown”</strong>. This will modify certain aspects of the “parameter input” list.</li>
+			<li><strong class="emphasis">Fill in the values for each row of the “parameter input” list</strong>, in a way that is appropriate to the selected sequence type. You may need to add / remove / reorder rows as needed.</li>
+		</ol>
+		<p>Expand the regions below for further instructions on each of these steps</p>
+ 
+	</details>
+	
+	 <!---------------------- RIGHT PANEL SEQUENCE ----------------->		
+	<details>
+		<summary  id="builderHelpSummarySequenceTypeTrial">Selecting Sequence Type in the Right Panel</summary>   
+		<p>
+			Each <strong class="emphasis">Phase Panel</strong> features a <strong class="emphasis">“Sequence Type” dropdown</strong> in its title bar (top right). Use this dropdown to select how parameters will vary across trials in this phase.
+		</p> 
+
+		<img class="instruction-screenshot larger-max-height" src="/web/img/helpbuilder/trialBuilder/etTrialBuilderRightSeq.png" alt="Trial Builder View">
+		<p> Each dropdown option offers a different method for generating the trial-by-trial sequence of parameter values:</p>
+		<ul class="list-longitems">
+			<li>
+				<strong class="emphasis"><u>Deterministic options</u> <span class="note-text">(predefined values and order, no randomness)</span></strong>
+				<ul class="smallest-br">
+					<li>
+						<strong class="emphasis">Constant values <code class="larger">(dropdown = "Constant")</code></strong>
+					<p>
+					Parameter values are constant across all trials in this phase. The right panel shows a single row of input fields where you can enter the fixed value for each parameter.
+					</p>
+					<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/trialbuilderRightSequence/trialBuilderRightConstant.png" alt="Trial Builder Right Panel View for Sequence = Constant">
+					</li>
+					<li>
+					<strong class="emphasis">Gradual ramp <code class="larger">(dropdown = "Linear Interpolation")</code></strong>
+					<p>
+					Parameter values change linearly trial-by-trial starting at the start value and ending at the end value you provide. The right panel shows two rows of input fields: one for the start value and one for the end value of each parameter.
+					</p>
+					<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/trialbuilderRightSequence/trialBuilderRightLinear.png" alt="Trial Builder Right Panel View for Sequence = Linear">
+					</li>
+					<li>
+					<strong class="emphasis">Ordered sequence <code class="larger">(dropdown = "Sequential")</code></strong>
+					<p>
+					Parameter values change trial-by-trial according to a predefined list of values, which you define using the right panel.
+					The right panel shows multiple rows of input fields: each row corresponds to a single trial where you can enter the parameter values for that trial. These values are applied sequentially, trial-by-trial, in the order you set.
+					Click “Add Value” at the top-right of the panel to insert new rows. Click-and-drag existing rows to reorder them, or click “Remove” on a row to delete it.
+					</p>
+					<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/trialbuilderRightSequence/trialBuilderRightSequential.png" alt="Trial Builder Right Panel View for Sequence = Sequential">
+					</li> 
+				</ul>
+			</li>
+			
+			<li>
+				<strong class="emphasis"><u>Randomized order options</u> <span class="note-text">(random sampling of predefined values)</span></strong>
+				<ul class="smallest-br"> 
+					<li>
+					<strong class="emphasis">Random sequence <code class="larger">(dropdown = "Random Samples")</code></strong>
+					<p>
+					For each trial, parameter values are drawn with replacement from a list of values that you define using the right panel.
+					The right panel shows multiple rows of input fields: each row represents one potential set of parameter values for one trial. Enter each potential set of parameter values on a separate row.
+					Click “Add Value” at the top-right of the panel to insert new rows. Click-and-drag existing rows to reorder them, or click “Remove” on a row to delete it.
+					The order of entries in the list is irrelevant.
+					On each trial, parameter values are selected at random from your list using probability weights specified to the right of each row. Each weight is 1/1 by default (equal probability); weights are normalized automatically (so do not worry if the shown probability values do not add up to one - they will in the game).
+					Values are drawn with replacement, meaning that the same value may appear multiple times before others are used.
+					</p>
+					<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/trialbuilderRightSequence/trialBuilderRightRandom.png" alt="Trial Builder Right Panel View for Sequence = Random Samples">
+					</li>
+					<li>
+					<strong class="emphasis">Blocked random sequence <code class="larger">(dropdown = "Blocked Random Samples")</code></strong>
+					<p>
+					For each trial, parameter values are drawn without replacement (with block reset) from a list of values that you define using the right panel.
+					The right panel shows multiple rows of input fields: each row represents one potential set of parameter values for one trial. Enter each potential set of parameter values on a separate row.
+					Click “Add Value” at the top-right of the panel to insert new rows. Click-and-drag existing rows to reorder them, or click “Remove” on a row to delete it.
+					The order of entries in the list is irrelevant.
+					On each trial, parameter values are selected at random from your list using equal probability across parameter values that have not yet been drawn.
+					Values are drawn without replacement within each block (block = full list of values): every potential set of parameter values is selected exactly once before any repeats occur; when all values have been used, the block resets (list reshuffles).
+					</p>
+					<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/trialbuilderRightSequence/trialBuilderRightBlocked.png" alt="Trial Builder Right Panel View for Sequence = Random samples drawn in a Blocked manner">
+					</li>
+				</ul>
+			</li>
+					
+					
+			<li>
+				<strong class="emphasis"><u>Random values options</u> <span class="note-text">(values generated from a probability distribution)</span></strong>
+				
+				<ul class="smallest-br">
+					<li>
+					<strong class="emphasis">Uniform Distribution <code class="larger">(dropdown = "Uniform Random Values")</code></strong>
+					<p>
+					Parameter values are randomly generated for each trial based on a uniform distribution. You define the minimum and maximum bounds, and all values within this range have equal probability.
+					The right panel shows two rows of input fields corresponding to these bounds.
+					</p>
+					<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/trialbuilderRightSequence/trialBuilderRightUniform.png" alt="Trial Builder Right Panel View for Sequence = Random values from Uniform Distribution">
+					</li>
+					<li>
+						<strong class="emphasis">Normal Distribution <code class="larger">(dropdown = "Normal Random Values")</code></strong>
+					<p>
+					Parameter values are randomly generated for each trial based on a normal distribution. You define the mean and variance of the distribution.
+					The right panel shows two rows of input fields corresponding to these parameters.
+					</p>
+					<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/trialbuilderRightSequence/trialBuilderRightNormal.png" alt="Trial Builder Right Panel View for Sequence = Random values from Normal Distribution">
+					</li>
+				</ul>
+			</li>
+
+		</ul>
+		 
+	</details>
+
+ 	 
+			
+	 <!---------------------- RIGHT PANEL SEQUENCE ----------------->		
+	<details>
+		<summary>Defining the Parameter Input List in the Right Panel</summary>  
+		
+			<p>
+			The main content of the Right Panel shows the "Sequence Values" - a form-like interface where you can set the value of the parameters. Each row replicates the format of the parameter group as displayed in the Static Builder, and it represents a different quantity depending on the selected Sequence Type:
+			</p>
+		
+			<ol>
+				<li><strong class="emphasis">Constant, Sequential, Random Samples, Blocked Random Samples</strong>: each row represents the value for the parameter(s) for a single trial (each trial will take value from one of the rows)</li>
+				<li><strong class="emphasis">Linear Interpolation</strong>: there are two rows corresponding to the first and last value in the linear ramp (trials will ramp between these values)</li>
+				<li><strong class="emphasis">Uniform Random Values</strong>: there are two rows corresponding to the Lower and Upper limits of the Uniform Distribution</li>
+				<li><strong class="emphasis">Normal Random Values</strong>: there are two rows corresponding to the Mean and Variance of the Normal Distribution</li>
+			</ol> 
+		
+			<p>For Sequence Type = Sequential, Random Samples, or Blocked Random Samples, the Right Panel allows you to Add and Remove rows and Drag to reorder them:</p> 
+			<ol>
+				<li>use the + button at the top-right of the right panel to add a new row with parameter value
+				<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/trialbuilderRightAction/trialBuilderRightActionAdd.png" alt="Trial Builder Right Panel Add Button"></li>
+				<li>each row has a delete button (trash icon to the right): click to remove this row of parameter value
+				<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/trialbuilderRightAction/trialBuilderRightActionDelete.png" alt="Trial Builder Right Panel Delete Button"></li>
+				<li>click-and-drag a row to move it, reordering the sequence of parameter values
+				<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/trialbuilderRightAction/trialBuilderRightActionDrag.png" alt="Trial Builder Right Panel Drag"></li>
+			</ol> 
+		
+	</details>
+	
+	
+	 	 
+			
+	 <!---------------------- EXAMPLE TEXT ----------------->		
+	<details>
+		<summary>Detailed Implementation Example for Gain Visuomotor Adaptation Paradigm</summary>  
+		 
+		<p>
+		  In this example, we are working with a gain visuomotor adaptation paradigm using the parameter <strong class="emphasis">gainY</strong> to control visual perturbation. Here, the visual perturbation slows the appearance of the right hand:
+		</p>
+		<ul>
+		  <li><em>gain = 1</em>: No perturbation (the hand moves normally).</li>
+		  <li><em>gain > 1</em>: The hand appears slower than normal.</li>
+		</ul>
+		<p>
+		  Our experimental design includes:
+		</p>
+		<ul>
+		  <li><strong class="emphasis">20 Baseline (BL) Trials</strong> without perturbation</li>
+		  <li><strong class="emphasis">100 Trials</strong> with gradual introduction of perturbation</li>
+		  <li><strong class="emphasis">50 Trials</strong> at maximum perturbation value (<em>gain = 1.5</em>)</li>
+		  <li><strong class="emphasis">40 Washout Trials</strong> returning to no perturbation</li>
+		</ul>
+		<p>
+		  We can structure the experiment as follows:
+		</p>
+		<ol>
+		  <li>
+			<strong class="emphasis">Phases</strong> (<em>Left Panel</em>):
+			<ul>
+			  <li><strong class="emphasis">Baseline</strong> (20 trials; Trial Type: <em>No Perturbation</em>)</li>
+			  <li><strong class="emphasis">Initial Adaptation</strong> (100 trials; Trial Type: <em>Gradually Increasing</em>)</li>
+			  <li><strong class="emphasis">Adaptation Plateau</strong> (50 trials; Trial Type: <em>Full Perturbation</em>)</li>
+			  <li><strong class="emphasis">Washout</strong> (40 trials; Trial Type: <em>No Perturbation</em>)</li>
+			</ul>
+		  </li>
+		  <li>
+			<strong class="emphasis">Trial Types</strong> (<em>Left Panel</em>):
+			<ul>
+			  <li><strong class="emphasis">No Perturbation:</strong> Used in the Baseline and Washout phases.</li>
+			  <li><strong class="emphasis">Gradually Increasing:</strong> Used in the Initial Adaptation phase.</li>
+			  <li><strong class="emphasis">Full Perturbation:</strong> Used in the Adaptation Plateau phase.</li>
+			</ul>
+		  </li>
+		  <li>
+			<strong class="emphasis">Sequence Type</strong> (<em>Right Panel</em>):
+			<ul>
+			  <li><strong class="emphasis">No Perturbation:</strong> Set as <em>Constant</em> (same value across trials).</li>
+			  <li><strong class="emphasis">Gradually Increasing:</strong> Set as <em>Ramp</em> (linear change from start to end value).</li>
+			  <li><strong class="emphasis">Full Perturbation:</strong> Set as <em>Constant</em> (fixed maximum perturbation value).</li>
+			</ul>
+		  </li>
+		  <li>
+			<strong class="emphasis">Values</strong> (<em>Right Panel</em>):
+			<ul>
+			  <li><strong class="emphasis">No Perturbation:</strong> Constant value of 1.</li>
+			  <li><strong class="emphasis">Gradually Increasing:</strong> Ramp from 1 (start) to 1.5 (end).</li>
+			  <li><strong class="emphasis">Full Perturbation:</strong> Constant value of 1.5.</li>
+			</ul>
+		  </li>
+		</ol>
+		<p> 
+
+
+	</details>
+	
+	
+			
+	 <!---------------------- EXAMPLE IMAGES ----------------->		
+	<details>
+		<summary>A Different Implementation Example via Images</summary> 
+
+		<p>In this example, we will create a Trial Schedule for the Right Hand Y Gain using the <strong class="emphasis">Trial Builder</strong>. Other gain parameters (X, Z, left hand gain) will remain constant and set by the Static Builder. </p>
+		<p>We will implement a schedule with five phases:</p>
+
+		<ul>
+			<li><strong class="emphasis">Baseline</strong> – 30 trials, gain = 0</li>
+			<li><strong class="emphasis">Learning with Gradual Perturbation</strong> – 50 trials, gain ramps linearly from 0 to -50</li>
+			<li><strong class="emphasis">Catch</strong> – 5 trials, gain = 0</li>
+			<li><strong class="emphasis">Plateau of Learning</strong> – 30 trials, gain = -50</li>
+			<li><strong class="emphasis">Washout</strong> – 60 trials, gain = 0</li>
+		</ul>
+
+		<p>As discussed, the first step is to assign the same Trial Type to phases that have the same gain. Here, we will use the following trial types:</p>
+
+		<ul>
+			<li><strong class="emphasis">Baseline Trial</strong>: Any trial where the gain is <code>0</code><br>
+			<em>(includes Baseline, Catch, and Washout phases)</em></li>
+			<li><strong class="emphasis">Learning Trial</strong>: Trials in the gradual perturbation phase<br>
+			<em>(gain ramps from 0 to -50)</em></li>
+			<li><strong class="emphasis">Plateau Trial</strong>: Trials in the plateau phase<br>
+			<em>(gain held constant at -50)</em></li>
+		</ul>
+
+		<p>Hence, we will define the following trial phases in the Trial Builder:</p>
+
+		<ol>
+			<li><strong class="emphasis">Baseline Trial</strong> — 30 trials, gain = 0</li>
+			<li><strong class="emphasis">Learning Trial</strong> — 50 trials, gain ramp from 0 to -50</li>
+			<li><strong class="emphasis">Baseline Trial</strong> — 5 trials (Catch), gain = 0</li>
+			<li><strong class="emphasis">Plateau Trial</strong> — 30 trials, gain = -50</li>
+			<li><strong class="emphasis">Baseline Trial</strong> — 60 trials (Washout), gain = 0</li>
+		</ol>
+		<p>The images and labels below will guide you through the step-by-step implementation for this example. Use the Arrow buttons below the images to go to the next step.</p>
+
+
+		<!-- Carousel A -->
+		<div class="carousel-container">
+			<div class="carousel-controls">
+				<button class="prev-btn">⬅️</button>
+				<div class="carousel-header">...</div> 
+				
+				<button class="next-btn">➡️</button>
+			 </div>
+			<div class="carousel-image-container">
+				<img class="carousel-display" src="" alt="">
+			</div>
+		<!--	<div class="carousel-controls">
+				<button class="prev-btn">&#8592; Previous</button>
+				<button class="next-btn">Next &#8594;</button>
+			</div>-->
+			<!-- Hidden Slides -->  
+			<img class="carousel-slide-img" src="/web/img/helpbuilder/trialbuilderGain/et1buildermain.png" data-caption="Open the Main Builder and click &quot;Hands &amp; Gain&quot; to edit gain parameters" style="display:none;">
+			<img class="carousel-slide-img" src="/web/img/helpbuilder/trialbuilderGain/et2staticbuilderHands.png" data-caption="In the Static Builder that opened, navigate to the Perturbation Magnitude tab, locate Right Hand Gain and click ⚙ to vary across trials" style="display:none;">
+			<img class="carousel-slide-img" src="/web/img/helpbuilder/trialbuilderGain/etBuilderTrialvarying.png" data-caption="This opened advanced settings. In step 1, check the &quot;Y&quot; box to edit Y Gain specifically. In Step 2, choose &quot;Trial Builder&quot; as input method. Click Continue" style="display:none;">
+			<img class="carousel-slide-img" src="/web/img/helpbuilder/trialbuilderGain/etTrialBuilder0.png" data-caption="This opened Trial Builder for gainY – note that this is the only editable parameter" style="display:none;">
+			<img class="carousel-slide-img" src="/web/img/helpbuilder/trialbuilderGain/etTrialBuilder1.png" data-caption="In the left panel, click on the first phase — the one with trial type Baseline Trial — to select it (it may already be selected). This opens the right panel instance for editing the Baseline Trial. Leave the Sequence Type set to Constant, and set the Y Gain parameter value to 0" style="display:none;"> 
+			<img class="carousel-slide-img" src="/web/img/helpbuilder/trialbuilderGain/etTrialBuilder2.png" data-caption="Select &quot;Learning Trial&quot; by clicking on the second phase in the left panel. In the right panel, set the Sequence Type to Linear Interpolation using the dropdown in the panel header" style="display:none;">
+			<img class="carousel-slide-img" src="/web/img/helpbuilder/trialbuilderGain/etTrialBuilder3.png" data-caption="This displays two rows of input fields in the right panel. The first row is the starting value for the gain -> set this to zero. The second row is the final value for the gain -> set this to -50. In the left panel, set the number of trials = 50" style="display:none;">
+			<img class="carousel-slide-img" src="/web/img/helpbuilder/trialbuilderGain/etTrialBuilder4.png" data-caption="In the left panel, click the &quot;add phase&quot; button to add a new phase - which will be our Plateau phase" style="display:none;">
+			<img class="carousel-slide-img" src="/web/img/helpbuilder/trialbuilderGain/etTrialBuilder5.png" data-caption="Click the Trial Type dropdown and select &lt;add new trial type&gt; to create a new trial type" style="display:none;">
+			<img class="carousel-slide-img" src="/web/img/helpbuilder/trialbuilderGain/etTrialBuilder6.png" data-caption="Name the new Trial Type: Plateau Trial. We will use this trial type for phases with constant value of -50 for gain" style="display:none;">
+			<img class="carousel-slide-img" src="/web/img/helpbuilder/trialbuilderGain/etTrialBuilder7.png" data-caption="Drag the Plateau phase row to move it directly after the Learning phase" style="display:none;">
+			<img class="carousel-slide-img" src="/web/img/helpbuilder/trialbuilderGain/etTrialBuilder8.png" data-caption="In the Plateau Trial phase, set the number of trials = 30" style="display:none;">
+			<img class="carousel-slide-img" src="/web/img/helpbuilder/trialbuilderGain/etTrialBuilder9.png" data-caption="Set the trial type for the last phase to Baseline Trial and Number of Trials to 60" style="display:none;">
+			<img class="carousel-slide-img" src="/web/img/helpbuilder/trialbuilderGain/etTrialBuilder10.png" data-caption="Note that this selection automatically applies the settings we defined for Baseline Trial - i.e. Y Gain = 0 - to this phase" style="display:none;">
+			<img class="carousel-slide-img" src="/web/img/helpbuilder/trialbuilderGain/etTrialBuilder11.png" data-caption="Click the &quot;add phase&quot button to add a new phase (Catch phase). Set the trial type to Baseline Trial and number of trials to 5" style="display:none;">
+			<img class="carousel-slide-img" src="/web/img/helpbuilder/trialbuilderGain/etTrialBuilder12.png" data-caption="Drag the Catch phase so it sits between Learning and Plateau in the phase sequence" style="display:none;">
+			<img class="carousel-slide-img" src="/web/img/helpbuilder/trialbuilderGain/etTrialBuilder13.png" data-caption="Setup complete! Click OK to save and return to Static Builder" style="display:none;">
+			<img class="carousel-slide-img" src="/web/img/helpbuilder/trialbuilderGain/etTrialBuilder14.png" data-caption="Back in Static Builder – Right Hand Gain Y is now disabled and labeled as Trial Builder-controlled" style="display:none;">
+			<img class="carousel-slide-img" src="/web/img/helpbuilder/trialbuilderGain/etTrialBuilder15.png" data-caption="Perturbation Schedule parameters in the Static builder - used to automatically vary gain across trials - are disabled if any gain parameter is set with Trial Builder or File" style="display:none;">
+
+
+		</div> 
+	</details>
+	
+	
+</article> 
+			
+		</section> 
+		
+		 
+	</div>
+</div>
+	
+</body>
+</html>
+
+ 

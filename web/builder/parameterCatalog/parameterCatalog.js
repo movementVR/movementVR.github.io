@@ -1,48 +1,51 @@
  
 /*  ─────────── Opens Window  ─────────────────────────────────────────────────── */
-async function openBuilderParameterCatalog (builderPaths) {
-
-	//  open a blank popup + JSON stuff
-	const parameterCatalogWindow = await openBuilderWindow(
-		builderCatalogWindowConfig,		// window config
-		'parameterCatalog',				// JSON selector
-		'parameterCatalog',				// class name
-		{ text : 'Parameter Catalog'}	// title bar text
-	);
-
+async function openBuilderParameterCatalog (builderPaths, flagExportOnly = false) {
+	
+	let parameterCatalogWindow;
+	
+	if (flagExportOnly){
+		parameterCatalogWindow=window;
+	}else{
+		//  open a popup with JSON stuff
+		parameterCatalogWindow = await openBuilderWindow(
+			builderCatalogWindowConfig,		// window config
+			'parameterCatalog',				// JSON selector
+			'parameterCatalog',				// class name
+			{ text : 'Parameter Catalog'}	// title bar text
+		);
+	} 
+	 
 	// setup
-	await setupParameterCatalog(parameterCatalogWindow, builderPaths);
+	await setupParameterCatalog(parameterCatalogWindow, builderPaths, flagExportOnly,
+										  	defBuilderLayout, defBuilderPaths, defBuilderPopupTabs, loadHTML);
 
 
 	/* -------------------- Initializes the popup ---------------------------------- */
  
-	async function setupParameterCatalog (parameterCatalogWindow, builderPaths) {
-
-		/* ──────────────────── Initializes vars ──────────────────────── */
+	async function setupParameterCatalog (parameterCatalogWindow, builderPaths, flagExportOnly,
+										  	defBuilderLayout, defBuilderPaths, defBuilderPopupTabs, loadHTML) { 	
+		 
+		/* ─────────────────── Actual Catalog Creation   ─────────────────── */ 
 		
-		  
-		const $   = parameterCatalogWindow.$;               // jQuery already injected
- 
-		const {
-			defBuilderLayout,
-			defBuilderPaths,
-			defBuilderPopupTabs,
-			loadHTML
-		} = parameterCatalogWindow.opener;
-
-
-		let currentData = [];
-		let currentSelection = "";
-		
-		
-		
-		/* ─────────────────── Actual Catalog Creation & Rendering  ─────────────────── */
 		const fullCatalog   = await preloadBuilderPopupsAndCatalog();
 		const uniqueCatalog = buildUniqueCatalog(fullCatalog);
 
+		if(flagExportOnly){			
+			downloadTemplate(uniqueCatalog);
+			return;
+		} 
+		
+		/* ─────────────────── Actual Catalog Rendering  ─────────────────── */
+		
+		const $   = parameterCatalogWindow.$;               // jQuery already injected
+		let currentData = [];
+		let currentSelection = "";
+		
 		renderParamTable(fullCatalog);
 		currentSelection = 'full';
 		
+		applyVisualizationSettings();
 		
 		
 		/* ─────────────────── Button Listeners  ─────────────────── */
@@ -52,7 +55,8 @@ async function openBuilderParameterCatalog (builderPaths) {
 			rb.addEventListener('change', () => {
 				if (rb.checked){ 
 					currentSelection = rb.value;
-					renderParamTable(rb.value === 'full' ? fullCatalog : uniqueCatalog);
+					renderParamTable(rb.value === 'full' ? fullCatalog : uniqueCatalog); 
+			 		applyVisualizationSettings();
 				}
 			});
 		});
@@ -62,40 +66,28 @@ async function openBuilderParameterCatalog (builderPaths) {
 		const downloadBtn = parameterCatalogWindow.document.querySelector('.save-button');
 		downloadBtn.id='downloadCSV';
 		downloadBtn.title='Download current view as CSV';
-		downloadBtn.textContent='Download as CSV';
+		downloadBtn.textContent='Download View';
 		parameterCatalogWindow.document.addEventListener('click', evt => {
 			if (evt.target.id === 'downloadCSV') {
 				downloadCatalogCSV();
 			}
 		}); 
 		
-		
-		
-		/* ─────────────────── Table Visualization Settings  ─────────────────── */
-
-		// Parameter Description (truncated by default): Expand to show full description on click
-		const table = $( parameterCatalogWindow.document).find('#paramTable').DataTable(); 
-		$( parameterCatalogWindow.document).find('#paramTable tbody').on('click', 'td', function () {
-			const tr = $(this).closest('tr');
-			const row = table.row(tr);
-
-			if (row.child.isShown()) {
-				row.child.hide();
-				tr.removeClass('shown');
-			} else {
-				const fullDescription = row.data().parameterInfo;
-				row.child(`<div style="padding:0.5em 1em;">${fullDescription}</div>`).show();
-				tr.addClass('shown');
+		/* CSV template button */		
+		const templateBtn = parameterCatalogWindow.document.createElement('button');
+		downloadBtn.parentNode.insertBefore(templateBtn, downloadBtn.nextSibling);
+		templateBtn.className = 'save-button'; // match existing button style
+		templateBtn.id='downloadTemplate';
+		templateBtn.title='Download a CSV template to prepare your file to import';
+		templateBtn.textContent='Download Template';
+		parameterCatalogWindow.document.addEventListener('click', evt => {
+			if (evt.target.id === 'downloadTemplate') {
+				downloadTemplate();
 			}
-		});
-
-		// columns resizing
-		$( parameterCatalogWindow.document).find('#paramTable').colResizable({
-			liveDrag: true,
-			resizeMode: 'fit' // or 'overflow' if you want scrollbar instead of squeezing
-		});
-
-
+		}); 
+		
+		
+	
 
 		
 		
@@ -105,10 +97,15 @@ async function openBuilderParameterCatalog (builderPaths) {
 		/* ═══════════════════════════════════════════════════════════════
 		 * 1. Table rendering
 		 * ═════════════════════════════════════════════════════════════ */
-		function renderParamTable (data) {
-			currentData = data; 
+ 
 
-			$( parameterCatalogWindow.document).find('#paramTable').DataTable({
+		function renderParamTable (data) {
+			
+			currentData = data; // selected view -> data 
+			
+			const $tbl = $( parameterCatalogWindow.document).find('#paramTable') 
+			
+			$tbl.DataTable({ // re-creates table
 				destroy : true,
 				data    : data,
 				columns : [
@@ -126,8 +123,11 @@ async function openBuilderParameterCatalog (builderPaths) {
 					$('td:eq(2)', row).attr('title', rowData.displayName);  // 3rd column 
 					$('td:eq(3)', row).attr('title', rowData.typeAndAllowedValues);  // 4th column 
 					$('td:eq(4)', row).attr('title', rowData.parameterInfo);  // 5th column 
-				}
+				},
+				autoWidth : false,      // stops DataTables from re-injecting widths 
 			});
+			 
+
 		}
 
 		
@@ -137,7 +137,7 @@ async function openBuilderParameterCatalog (builderPaths) {
 		 * ═════════════════════════════════════════════════════════════ */  
 		async function preloadBuilderPopupsAndCatalog () {
 
-			const builderConfig          = defBuilderLayout();
+			const builderConfig          = defBuilderLayout(true);
 			const builderPaths           = defBuilderPaths();
 			const builderPopupTabsConfig = defBuilderPopupTabs();
 			const catalog                = [];
@@ -151,9 +151,7 @@ async function openBuilderParameterCatalog (builderPaths) {
 
 			await Promise.all(popupBlocks.map(async blk => {
 				const popupDef  = builderPopupTabsConfig[blk.onclick];
-				const container =  parameterCatalogWindow.document.createElement('div');
-				container.style.display = 'none';
-				 parameterCatalogWindow.document.body.appendChild(container);
+				const container =  parameterCatalogWindow.document.createElement('div'); 
 
 				await Promise.all(Object.entries(popupDef.tabs).map(async ([tabName, file]) => {
 					const path = builderPaths.builderParametersPath(file);
@@ -233,7 +231,7 @@ async function openBuilderParameterCatalog (builderPaths) {
 						parameterInfo
 					});
 				});
-		 
+		  
 		
 				/* ───────── helpers for element type & names ────────────────── */
 				function getElementType (el) {
@@ -297,9 +295,51 @@ async function openBuilderParameterCatalog (builderPaths) {
 		/* ═══════════════════════════════════════════════════════════════
 		 * 4.  CSV Download 
 		 * ═════════════════════════════════════════════════════════════ */ 
-		function downloadCatalogCSV () {
-			const csv = arrayToCSV(currentData);
+
+		function downloadTemplate(templateData){ 
+			const csv = arrayToCSV_Template(templateData);
+			const filename = 'parameterTemplate';
+			actualDownload(csv,filename); 
+			
+			/* ───────── helper ─────────────────────────────────────── */ 
+			function arrayToCSV_Template(arr){
+				const headers = ['scriptName','varName', 'Trial 1', 'Trial 2', 'Trial 3', '...','Current Builder Values [Delete]','Allowed Values [Delete]','Description [Delete]'];
+				const esc = v => '"' + String(v).replace(/"/g, '""') + '"';
+
+				let csvbuild = [headers.join(',')];
+				uniqueCatalog.forEach(row => {
+					const sampleValue = builderSession.parameters[row.codeName];
+					const [scriptName, varName] = row.codeName.split(',');
+					const desc    = row.parameterInfo.replace(/\s+/g, ' ').trim();
+					const allowed = row.typeAndAllowedValues;
+					csvbuild.push(
+						[esc(scriptName), esc(varName), '', '', '', '', esc(sampleValue), esc(allowed),esc(desc)]
+						.join(',')); 
+				});
+				csvbuild = csvbuild.join('\n');
+				return csvbuild;
+			}			
+		}
+
+		function downloadCatalogCSV () { 
+			const csv = arrayToCSV_View(currentData);
 			const filename = 'parameterCatalog' + currentSelection.charAt(0).toUpperCase() + currentSelection.slice(1) + '.csv';
+			actualDownload(csv, filename);
+			 
+
+			/* ───────── helper ─────────────────────────────────────── */
+			function arrayToCSV_View (arr) {
+				const headers = ['codeName','builderLocation','displayName','typeAndAllowedValues','parameterInfo'];
+				const esc     = v => '"' + String(v).replace(/"/g,'""') + '"';
+
+				const dataRows = arr.map(row => headers.map(h => esc(row[h] || '')).join(','));
+				return [headers.join(',')].concat(dataRows).join('\n');
+			}
+			
+		}
+			
+		function actualDownload(csv,filename){
+			
 			const blob = new Blob(["\uFEFF" + csv], { type:'text/csv;charset=utf-8;' });
 			const link =  parameterCatalogWindow.document.createElement('a');
 			link.href      = URL.createObjectURL(blob);
@@ -309,19 +349,47 @@ async function openBuilderParameterCatalog (builderPaths) {
 			link.click();
 			 parameterCatalogWindow.document.body.removeChild(link);
 			URL.revokeObjectURL(link.href);
-			
-			
-
-			/* ───────── helper ─────────────────────────────────────── */
-			function arrayToCSV (arr) {
-				const headers = ['codeName','builderLocation','displayName','typeAndAllowedValues','parameterInfo'];
-				const esc     = v => '"' + String(v).replace(/"/g,'""') + '"';
-
-				const dataRows = arr.map(row => headers.map(h => esc(row[h] || '')).join(','));
-				return [headers.join(',')].concat(dataRows).join('\n');
-			}
-			
 		}
+
+
+
+
+		/* ═══════════════════════════════════════════════════════════════
+		 * 5.  Table Visualization Settings
+		 * ═════════════════════════════════════════════════════════════ */   
+
+		function applyVisualizationSettings(){ 
+			
+			// Parameter Description (truncated by default): Expand to show full description on click
+			const table = $( parameterCatalogWindow.document).find('#paramTable').DataTable(); 
+			$(parameterCatalogWindow.document).find('#paramTable tbody').on('click', 'td', function () {
+				const tr      = $(this).closest('tr');
+				const row     = table.row(tr);
+
+				const rowData = row.data();            
+				if (!rowData) return;                 
+
+				if (row.child.isShown()) {
+					row.child.hide();
+					tr.removeClass('shown');
+				} else {
+					const fullDescription = rowData.parameterInfo;   
+					row.child(`<div class="click-expanded">${fullDescription}</div>`).show();
+					tr.addClass('shown');
+				}
+			}); 
+			 
+			// column resizing
+			$(parameterCatalogWindow.document).find('#paramTable')
+				.colResizable({ disable: true })      //   reset old instance
+				.colResizable({
+					liveDrag: true,
+					resizeMode: 'fit'
+				});
+ 
+		}
+
+
 
 
 	}

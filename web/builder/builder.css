@@ -1,63 +1,311 @@
 
- 
-  /* **********************    MAIN GRID CONTAINER & GENERAL   ********************** */
+  /* **********************    DEFINITIONS !!!!   ********************** */
+:root {
+  	--builderGridCol1Width: 30px; 
+  	--builderGridCol2Width: 180px; 
+	--builderGridColOffsetGameObjects: 2;
+	--builderGridRow1Height: 40px; 
+	--builderGridRow2Height: 35px;
+	--builderGridRowOffsetGameObjects: 2;
+	
+	--builderGridNRows: 0;
+	--builderGridNCol: 0;
+	
+	--builderGridInnerStartRow: calc(var(--builderGridRowOffsetGameObjects) + 1);
+	--builderGridInnerStartCol: calc(var(--builderGridColOffsetGameObjects) + 1);
+	--builderGridNRowsAutoHeight: calc(var(--builderGridNRows) - var(--builderGridRowOffsetGameObjects));
+  	--builderGridNColAutoWidth: calc(var(--builderGridNCol) - var(--builderGridColOffsetGameObjects));
+	
+	--builderGridLineColor: lightgray;
+} 
 
-.builderGrid { /* main builder container  (grid with game objects and trial sequence)   */
-    margin: 0 auto;    /* Center the container horizontally */
-    display: grid;
-    grid-gap: 0px;    /* base gap between elements */
-    height: auto; 
-    width: 1000px;  
-    border: 2px solid lightgray; 
-    align-items: center; /* Center children items vertically */ 
+/* ******************* PANELS &  ELEMENTS GENERAL ***************** */ 
+
+ /* Parent of Main Grid + Quick Links */ 
+.builderMainPanel {
+	margin-top: 30px; 	
+	display: flex; 
+    align-items: flex-start;  
+    /*justify-content: space-evenly;*/
+    justify-content: center;
+    gap: 50px;
+}
+
+.builderMainPanelCol{
+	display: flex;
+	flex-direction: column;   
+}
+
+.builderMainPanelCol.colSidePanels{
+	margin-top: var(--builderGridRow1Height);
+	margin-top: 0;
+	margin-left: 0px;
+	gap: 20px
 }
  
-.builderGrid .element { /* base class for elements in grid */  
+
+.builderPanel {
+	flex: 1;           /* take full height of parent */
+	display: flex;
+	flex-direction: column;  /* or grid, if you use grid inside */
+}
+
+/* Generic Class for Main Grid and Quick Links Panels */ 
+.builderPanel  span.hidden-clone {
+	display: none;
+}
+
+ 
+.builderPanel .element  { /* base class for elements in grid */  
     display: flex; /* Use flexbox layout */       
     align-items: center; /* Center items vertically */
+}
+.builderPanel .element:not(.gameobjectheader) {
 	cursor: pointer;  /* hand mouse */   
 }
  
-
-/* ******************* GRID CLICKABLE OBJECTS ***************** */
-
- /* top row - trial sequence blocks */
-.builderGrid .element.name-block.trial-sequence { 
-    justify-content: center; /* Center items horizontally */ 	  
-    text-align: center;  /* Centers items horizontally (important if new line) */    
-    font-size: 16px;     
-}
-.builderGrid .element.name-block.trial-sequence :hover { 
-    font-weight: bold;   
-    text-decoration: underline;  
-	transform: scaleX(0.97); /* Scales down horizontally so it does not spill over column width */
-    transform-origin: center; /* Ensures scaling happens from the center */
+ 
+.builderPanel .element.name-block  {
+    font-size: 16px;
+    transition: 
+		font-weight 0.2s ease,  
+		text-decoration 0.2s ease,  
+		background-color 0.3s ease, 
+		box-shadow 0.3s ease,
+		color 0.3s ease;
 }
  
-
- /* left column - game objects blocks */
-.builderGrid .element.name-block.game-object{
-    font-size: 16px;
-    justify-content: right; /* Aligns items right horizontally */   
-    text-align: right;  /* Aligns items right horizontally (important if new line) */   
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-   
+/* Generic Class for Main Grid and Quick Links Panels */ 
+.builderPanel  span.hidden-clone {
+	display: none;
 }
-.builderGrid .element.name-block.game-object:hover { 
+
+
+.builderPanel .element.name-block:not(.gameobjectheader):not(.trialsequenceheader) span.visible-el:hover { 
     font-weight: bold;  
     text-decoration: underline;  
 }
+
+
+
+  /* **********************  MAIN GRID SETUP  ********************** */
+ 
+.builderGrid{/* main builder container  (grid with game objects and trial flow)   */ 	
+	display:grid; 
+	
+	grid-template-columns: var(--builderGridCol1Width) var(--builderGridCol2Width) repeat(var(--builderGridNColAutoWidth), 1fr);   
+	
+	grid-template-columns: var(--builderGridCol1Width) auto repeat(var(--builderGridNColAutoWidth), 1fr);   
+	
+  	grid-template-rows: var(--builderGridRow1Height) var(--builderGridRow2Height) repeat(var(--builderGridNRowsAutoHeight), minmax(0, 1fr));
+  	grid-auto-rows: minmax(0, 1fr);
+
+	/* items should fill the cell unless you override locally */
+	align-items:stretch;
+
+    margin: 0 auto;    /* Center the container horizontally */ 
+    gap: 0;    /* base gap between elements */ 
+	line-height:normal; 
+	
+	max-height: 90vh;   /* should not need scroll to access grid */ 
+	min-height: 300px;   /* however never shrink below this */ 
+	 
+ 
+}
+
+/* ******************* GRID SIZES DEFINITIONS - OBJECTS ***************** */ 
+
+ /* top row - trial flow phases - col names */
+.builderGrid .element.name-block.trialsequenceheader { 
+	grid-row: 1;
+	grid-column: var(--builderGridInnerStartCol) / -1;
+}  
+ 
+.builderGrid .element.name-block.trial-sequence { 
+	grid-row: 2;
+} 
+
+ /* left col - game objects - row names */
+.builderGrid .element.name-block.gameobjectheader { 
+	grid-column: 1;
+	grid-row: var(--builderGridInnerStartRow) / -1;
+}  
+.builderGrid .element.name-block.game-object{
+	grid-column: 2;
+} 
+ 
+
+ /* main grid - horizontal cyan bars (game objects in time) */
+.builderGrid .element.bar-block {  
+}  
+.builderGrid .element.bar-block.feedback {
+	grid-column: calc(5 + var(--builderGridColOffsetGameObjects));
+}
+
+.builderGrid .element.bar-block.bird {
+	grid-column: calc(1 + var(--builderGridColOffsetGameObjects)) / span 6;  
+}
+
+.builderGrid .element.bar-block.target {
+	grid-column: calc(1 + var(--builderGridColOffsetGameObjects)) / span 6;
+}
+
+.builderGrid .element.bar-block.plate {
+	grid-column: calc(3 + var(--builderGridColOffsetGameObjects)) / span 2;
+}
+
+.builderGrid .element.bar-block.hand-home {
+	grid-column: calc(2 + var(--builderGridColOffsetGameObjects));
+}
+
+.builderGrid .element.bar-block.hands-perturbation {
+	grid-column: calc(1 + var(--builderGridColOffsetGameObjects)) / span 6;
+}
+
+.builderGrid .element.bar-block.instructions {
+	grid-column: calc(1 + var(--builderGridColOffsetGameObjects)) / span 6;
+}
+
+ 
+
+/* ************************ GRID LINES ELEMENTS ********************** */
+
+/* ------------ APPEARANCE ------------- */
+ 
+ 
+.builderGrid .element.line{ 
+	height: 100%;  
+    cursor: default;  
+	position: relative;  /* (needed for z-index) */ 
+	z-index: -1;    /* Behind clickable objects */ 
+	border: 0; /* Reset other borders */
+}  
+
+ /* Vertical Lines Setup */
+.builderGrid .element.line.vertical { 
+	/* allow automatic "span entire height" using "-1" */
+	align-self:stretch;    
+} 
+
+
+/* ------------ HORIZONTAL ------------- */ 
+ /* Top Border of Header   */
+.builderGrid .element.line.horizontal.h2 {  
+	grid-column: var(--builderGridInnerStartCol) / -1;  /* Col 2 to End */
+	border-top: 2px solid var(--builderGridLineColor); /* solid thick */
+}
+ 
+/* Top Border of Inner Grid */
+.builderGrid .element.line.horizontal.h3 {   
+	grid-column: var(--builderGridColOffsetGameObjects) / -1; /* Full Width */	 
+	border-top: 2px solid var(--builderGridLineColor); /* solid thick */
+} 
+ 
+/* Bottom Border of Inner Grid */
+.builderGrid .element.line.horizontal.hN {   
+	grid-column:  var(--builderGridColOffsetGameObjects) / -1; /* Full Width */	 
+	border-bottom: 2px solid var(--builderGridLineColor); /* solid thick */
+} 
+ 
+/* Inner Grid Separators */
+.builderGrid .element.line.horizontal:not(.h1):not(.h2):not(.hN) {   
+	grid-column:  var(--builderGridColOffsetGameObjects) / -1; /* Full Width */	 
+	border-bottom: 1px dashed var(--builderGridLineColor); /* dashed */
+} 
+
+
+/* ------------ VERTICAL ------------- */ 
+ /* Left Border of Menu Col (Left Col)   */
+.builderGrid .element.line.vertical.v2 {  
+	grid-row:  var(--builderGridInnerStartRow) / -1;    /* Row 2 to End */
+	border-left: 2px solid var(--builderGridLineColor); /* solid thick */
+}
+ 
+/* Left Border of Inner Grid */
+.builderGrid .element.line.vertical.v3 {   
+	grid-row:  var(--builderGridRowOffsetGameObjects) / -1; /* Full Height */	 
+	border-left: 2px solid var(--builderGridLineColor); /* solid thick */
+}  
+
+/* Inner + Right Borders of Inner Grid */
+.builderGrid .element.line.vertical:not(.v1):not(.v2)  {   
+	grid-row:   var(--builderGridRowOffsetGameObjects) / -1; /* Full Height */	 
+	border-right: 2px solid var(--builderGridLineColor); /* solid thick */
+} 
+  
+
+
+ 
+
+
+  /* **********************   TRIAL SEQUENCE PHASE NAMES   ********************** */
+.builderPanel .element.description {   
+    cursor: default;
+}
+.builderGrid .element.description.trial-sequence {   /* "trial sequence" */     
+	margin: 10px 10px;  /* vertical horizontal */
+    justify-content: right; /* Aligns items horizontally */
+    text-align: right;   /* Aligns items horizontally (important if new line) */ 
+    font-size: 14px;
+    font-style: italic;    
+}
+ 
+ /* top row - trial sequence blocks */
+.builderGrid .element.name-block.trial-sequence { 
+    justify-content: center;  
+    text-align: center; 
+    font-size: 16px;     
+    margin: 10px 8px;
+} 
+
+.builderPanel .element.name-block.trial-sequence span.hidden-clone {
+	display: block;
+    font-weight: bold; 
+    visibility: hidden;
+}
+.builderPanel .element.name-block.trial-sequence span.visible-el {
+    position: absolute;
+}
+ 
+
+  /* **********************   GAME OBJECT NAMES & BARS   ********************** */
+
+ 
+ /* left column - game objects blocks */
+.builderGrid .element.name-block.game-object{
+	position: relative;
+    justify-content: right; /* Aligns items right horizontally */   
+    text-align: right;  /* Aligns items right horizontally (important if new line) */   
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    padding: 0px 5px 0px 10px;   /* included in height */
+}
+
 .builderGrid .element.name-block.game-object img{  /* child images: little images next to object names  */
     height: 35px; 
     width: auto;  /* keep ratio */
-    padding: 3px 10px;   /* included in height */
+    padding: 3px 0px;   /* included in height */
+} 
+
+
+
+
+.builderPanel .element.name-block.game-object span.hidden-clone {
+	display: block;
+    font-weight: bold; 
+    visibility: hidden;
+}
+.builderPanel .element.name-block.game-object span.visible-el {
+	white-space: nowrap;
+    position: absolute;
+	right: 60px; 
 } 
 
  /* main grid - horizontal cyan bars (game objects in time) */
 .builderGrid .element.bar-block {   
+	align-self: center;
 	height: 15px; 
-    margin-left: 5px;
-    margin-right: 5px;      
+    margin-left: 10px;
+    margin-right: 10px;      
     border-radius: 10px; 
     background-color:paleturquoise;   
     transition: background-color 0.3s ease; /* Smooth transition for background color */ 
@@ -66,166 +314,235 @@
     background-color:darkturquoise;
 } 
 
+/*---------------------- TRIAL FLOW HEADER -----------------*/
 
-/* ******************* GRID NON-CLICKABLE TITLES / LABELS ***************** */
-
-.builderGrid .element.description {   
-    font-style: italic;    
-    cursor: default;
+.builderGrid .element.name-block.trialsequenceheader {
+    align-items: stretch; 
 }
-
-.builderGrid .element.description.trial-sequence {   /* "trial sequence" */     
-	margin: 10px 10px;  /* vertical horizontal */
-    justify-content: right; /* Aligns items horizontally */
-    text-align: right;   /* Aligns items horizontally (important if new line) */ 
-    font-size: 14px;
+ /* top row - trial sequence phases - col names */
+.builderGrid .element.name-block.trialsequenceheader span.visible-el {
+	position: relative;
+    display: flex; 
+    width: 100%;
+    align-items: center; 
+    white-space: nowrap; 	
+	margin-bottom: 5px;
+	color:var(--accent-darker-color); 
 }
-
-.builderGrid .element.description.quick-links { /* "quick links" */
-    margin: 10px 10px 0px 10px; /* top right bottom left */
-    justify-content: left; /* Aligns items horizontally */
-    text-align: left;   /* Aligns items horizontally (important if new line) */ 
-    font-size: 16px;   
+ .builderGrid .element.name-block.trialsequenceheader span.visible-el .trialsequencetext { 
+    font-weight: bold;
+    background-color: white;
+    margin-right: 5px; 
+    white-space: nowrap;   
 }
+  
 
-
-  /* **********************   GRID BUTTONS   ********************** */
-.builderGrid .element.button{  
-	margin-left: 10px;
-	margin-right: 10px;
-    padding: 2px 1px; 
-    border-radius: 4px;    
-    border: 2px solid #ccc;
-    background-color: #f0f0f0;  
-    font-size: 14px; 	
-    justify-content: center; /* Center items horizontally */ 	  
-    text-align: center;  /* Centers items horizontally (important if new line) */    
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
-}
-
-.builderGrid .element.button.edit-transitions { /* top row "edit transitions" */ 
-	margin-top: 5px;
-	margin-bottom: 1px;
-}
-.builderGrid .element.button.edit-instructions { /* top row "edit instructions" */
-	margin-top: 1px;
-	margin-bottom: 5px; 
-}
-.builderGrid .element.button.quick-links { /* buttons under "quick links" */ 
-}
-
-.builderGrid .element.button:hover {
-    background-color: #e0e0e0;
-    border-color: #999; 
-}
-
-/* ************************ GRID LINES ELEMENTS ********************** */
-.builderGrid .element.line{ 
-	height: 100%;  
-    cursor: default;  
+ .builderGrid .element.name-block.trialsequenceheader span.visible-el .trialsequenceline {
+    background-color: black;
+	background-color:var(--accent-darker-color); 
+    height: 2px;
+    width: 100%;
+    transform: translateY(2.5px);
 } 
-.builderGrid .element.line.dashedHorizontal {  
-    border-bottom: 1px dashed lightgray; /* Dashed line */  
-}  
-.builderGrid .element.line.solidHorizontal {  
-    border-bottom: 2px solid lightgray;  
-}  
-.builderGrid .element.line.solidVertical {  
-    border-right: 2px solid lightgray;  
-} 
+ .builderGrid .element.name-block.trialsequenceheader span.visible-el .trialsequencearrow {
+    transform: translate(-30%, 1px); 
+}
+
+  
+.builderPanel .element.trialsequenceheader * { 
+    transition: font-size 0.2s ease,  font-weight 0.2s ease,  text-decoration 0.2s ease,  background-color 0.3s ease, box-shadow 0.3s ease,color 0.3s ease, height 0.3s ease, transform 0.3s ease;
+}
+.builderPanel .element.trialsequenceheader:hover span.visible-el { 
+	color:var(--accent-darker-color); 
+	font-weight: 900;
+	font-size: larger;
+}
+.builderPanel .element.trialsequenceheader:hover span.visible-el .trialsequenceline{ 
  
+	background-color:var(--accent-darker-color); 
+	height: 4px;
+}
+.builderPanel .element.trialsequenceheader:hover img{ 
+  	transform: scale(1.1);
+}
+    
+    
+
+.builderGrid .element.name-block.trialsequenceheader img{  /* child images: little images next to object names  */
+    height: 35px; 
+    width: auto;  /* keep ratio */   
+	padding: 3px 5px;
+} 
+
+/*---------------------- LEFT COL SIDE HEADER -----------------*/
+
+  
+.builderGrid .element.name-block.gameobjectheader span.visible-el {
+    position: relative;
+    display: flex;
+    height: 100%;
+    white-space: nowrap;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+	color:var(--accent-darker-color); 
+}
+ .builderGrid .element.name-block.gameobjectheader span.visible-el .gameobjecttext { 
+	 position: absolute;
+	 padding:5px;
+     font-weight: bold;
+    background-color: white;
+    white-space: nowrap;
+    transform: rotate(-90deg) translate(-100%, 0);
+    z-index: 1;
+}
+  
+
+ .builderGrid .element.name-block.gameobjectheader span.visible-el .gameobjectline {
+      background-color: black;
+	background-color:var(--accent-darker-color); 
+    width: 2px;
+    height: 100%;
+    transform: translateX(1.5px);
+}  
+
+
+
+ 
+
+
+ 
+
+/* ******************* SIDE BUBBLES ***************** */
+ 
+
+
+.sideBubbles{ 
+	display: flex;
+	flex-direction: column;
+	background: var(--bg-light); 
+	/*background: white;*/
+	border-left: 3px solid var(--accent-color);
+	font-size: 0.95rem;
+	line-height: 1.2;
+	box-shadow: 2px 2px 3px rgba(0, 50, 50, .18);
+	border-radius: 5px;
+	padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+	align-items: flex-start;
+}
+ 
+
+.sideBubbles .element.sideBubblesHeader { /* "quick links" */ 
+    font-size: 16px;   
+    font-weight: bold; 
+    color: white;     
+    background: var(--accent-color);     
+    padding: 0.45rem 0.9rem;            
+	margin: -0.5rem -0.6rem 0.6rem; 
+    border-radius: 5px 5px 0 0;    
+    align-self: stretch;  
+}
+
+
+.sideBubbles .element.sideBubbleLink { /* buttons under "quick links" */
+	position: relative;
+	margin: 0px 0px 10px 15px; /* top right bottom left */ 
+	text-decoration: underline;
+	justify-content: center; /* Center items horizontally */ 
+	transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+	text-decoration: none;
+	color: var(--accent-darker-color);
+	font-weight: 600;    
+	font-size: 15px;
+    line-height: 1.3;
+}
+.sideBubbles .element.sideBubbleLink::before{
+	content:"➤";
+	position: absolute; 
+	font-size: 10px;
+	right: 100%;    
+	margin-right: 5px;  
+}
+
+
+
+.builderPanel .element.sideBubbleLink span.hidden-clone {
+	display: block;
+    font-weight: bold; 
+    visibility: hidden;
+    white-space: nowrap; 
+}
+.builderPanel .element.sideBubbleLink span.visible-el {
+    position: absolute; 
+}
+
+.sideBubbles .element.sideBubbleLink:hover span.visible-el {
+	font-weight: bold;
+	text-decoration: underline; 
+} 
+
+
+
+
 
   /* **********************   BOTTOM ROW BUTTONS    ********************** */
 
 .builderBottomRowContainer { 
-	display: flex;    
-    justify-content: center; /* Center children buttons horizontally */ 	   
+	display: flex;        
     text-align: center; /* Center children buttons horizontally (important if new line) */ 
-    align-items: center;       /* Center children vertically */
-    margin: 15px auto;    /* [vertical, horizontal]: Center the container horizontally */ 
-	padding: 0px 100px;
-	gap: 20px;
-}
-
-.builderBottomRowContainer .buttonMain{  /* Download Button */ 
-	padding: 5px 20px; /* vertical horizontal */    
+    align-items: center;       /* Center children vertically */  
+    justify-content: center; 
+    gap: 35px;
+    line-height: normal;
+    flex-direction: row;
 	
-    border-radius: 4px;  /* Shape specs  */ 
-    background-color:var(--var-col-brightcyan);
-    border:none;	
 	
-	font-size: 16px;  /* Text specs  */ 
-    font-weight: bold; 
-    color:white;
+    padding-top: 30px; 
+    padding-right: 100px; 
+	padding-left: calc(var(--builderGridCol1Width) + var(--builderGridCol2Width)  );
 	
-    cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s; 
-}
-
-.builderBottomRowContainer .buttonMain:hover{
-    background-color: var(--var-col-mediumcyan); 
-} 
-.builderBottomRowContainer .buttonMain.download {     
-}
-
-
-.builderBottomRowContainer .buttonSecondary,
-.builderBottomRowContainer .buttonHelpInfo{   
-	
-    font-size: 14px; 
-    font-weight: normal;
-    text-align: center; 
-	
-    cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s; 
-}
-
-.builderBottomRowContainer .buttonSecondary,
-.builderBottomRowContainer .buttonHelpInfo{    
-	padding: 5px 10px; /* vertical horizontal */      
-    border: 1px solid gray; 
-	border-radius: 3px; 
-	background-color: #f0f0f0
 }
  
-.builderBottomRowContainer .buttonSecondary:hover,
-.builderBottomRowContainer .buttonHelpInfo:hover{   
-    background-color: #e0e0e0;
-    border-color: #999;
-}
-
-.builderBottomRowContainer .buttonSecondary{  
-}
-.builderBottomRowContainer .buttonMain{  
+.builderBottomRowContainer .buttonSecondary,
+.builderBottomRowContainer .buttonMain {
+	display: flex;
+    justify-content: center;
+	
 	width: 130px;
 	height:35px; 
-}
-.builderBottomRowContainer .buttonHelpInfo{
+    border-radius: 4px; 
 	
-}
-.builderBottomRowContainer .buttonSecondary.uploadParam{
-	display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.builderBottomRowContainer .buttonHelpInfo.parameterCatalog{
-	margin-right: auto;
+	font-size: 16px;
+	font-weight: bold;
+	
+    cursor: pointer;	
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s; 
 }
 
-/*
-.builderBottomRowContainer .buttonSecondary.sessionConfig{	 
-	min-width: 155px;  
+
+.builderBottomRowContainer .buttonMain{  /* Download Button */  	
+    background-color:var(--accent-color);
+    border:2px solid var(--accent-color); 
+    color:white;
 } 
-.builderBottomRowContainer .buttonHelpInfo.instructions {    
-	min-width: 80px;  
-}  
-.builderBottomRowContainer .buttonHelpInfo.parameterCatalog {    
-	min-width: 80px;  
-}  
-.builderBottomRowContainer .buttonSecondary.uploadParam { 
-	min-width: 135px; 	  
+.builderBottomRowContainer .buttonSecondary{  	 /* Help Button */ 
+    background-color:white;
+	color: var(--accent-color);
+    border:2px solid var(--accent-color);
 }
-*/
+
 
  
+.builderBottomRowContainer .buttonMain:hover{
+    border-color: var(--var-col-mediumcyan);
+    background-color: var(--var-col-mediumcyan); 
+}   
+ 
+.builderBottomRowContainer .buttonSecondary:hover {   
+    background-color: #f0ffff;
+    border-color: var(--var-col-mediumcyan);
+    color: var(--var-col-mediumcyan); 
+}
+ 
+ 
+

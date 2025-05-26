@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Main Builder Help Guide</title>
+	<link rel="stylesheet" href="/web/general/general.css">
+	<link rel="stylesheet" href="/web/general/page.css"> 
+	<script src="/web/general/general.js"></script>			
+	<script src="/web/general/page.js"></script>	
+	<script defer>document.addEventListener('DOMContentLoaded', function() {setupPage();});</script>
+	
+	
+</head>
+<body>
+	 
+	
+<div id="mainpage-parent" class="mainpage-parent general-parent">
+	
+	  <nav class="on-this-page levels-three" aria-label="On this page">
+            <h2>Contents</h2>
+            <ul>
+                <li><a href="#">Placeholder</a></li> 
+                <li><a href="#">Placeholder</a></li> 
+            </ul>
+        </nav>
+	
+	<div id="mainpage-content" class="mainpage-content page-content">
+
+
+		<div class="section-header">Builder Guide</div>
+		<section class="section-content justify"> 
+		
+			<div class="section-panel-header">Main Builder Interface</div>
+			
+ <!---------------------- CONTENT ------------------------>			
+<article class="section-panel" data-source="helpBuilderMain">		 
+    
+	
+	<p>To start, select the 
+		<img class="inline-icon" src="/web/img/helpbuilder/icon/builder.png"  alt="Builder Tab"> 
+		<strong class="emphasis">Builder tab</strong> in the navigation menu. This will open the Main Builder interface - your starting point for designing tasks in MovementVR.</p>
+	
+
+	 
+ 	<!---------------------- Main Grid ---------------------->	
+	<details>
+		<summary>Main Grid View </summary> 
+		<p>The <strong class="emphasis">Main Builder Interface</strong> provides you with a visual representation of the different task components and game objects, and the rules and conditions that guide trial behavior and transitions. You will click on game objects or buttons labeled with task components to open dedicated interfaces where you can edit their associated parameters. </p> 
+
+	
+		<p>The interface for the <strong class="emphasis">Main Builder page</strong> is organized as a grid, where:</p>
+		<ul class="list-shortitems">
+			<li><strong class="emphasis">Each row:</strong> corresponds to a different game object or task component.</li>
+			<li><strong class="emphasis">Each column:</strong> represents a sequential “phase” within a trial.</li>
+			<li><strong class="emphasis">Each cell:</strong> indicates whether a given object is present or active during a specific trial phase. Colored horizontal bars span across the relevant phases for each object.</li>
+		</ul>
+		
+		<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/main/buildermainAnn.png" alt="Grid layout illustrating rows, columns, and cells">
+	</details>
+	
+	
+ 	<!---------------------- ROWS  ------------------------>	
+	<details>
+		<summary>Game Objects and Task Components (Rows)</summary> 
+		<p>The left side of the grid lists the main elements involved in the task:</p>
+		<ul class="list-shortitems">
+			<li><strong class="emphasis"><img class="inline-icon" src="/web/img/gameobjects/feedback.png"  alt="Feedback"> 
+				Feedback:</strong> Objects and effects that deliver success or failure feedback.</li>
+			<li><strong class="emphasis"><img class="inline-icon" src="/web/img/gameobjects/bird.png"  alt="Bird"> 
+				Bird:</strong> A virtual, animated bird that is perched on the target.</li>
+			<li><strong class="emphasis"><img class="inline-icon" src="/web/img/gameobjects/target.png"  alt="Target"> 
+				Target:</strong> The goal object to reach; includes both functional and visual targets.</li>
+			<li><strong class="emphasis"><img class="inline-icon" src="/web/img/gameobjects/plate.png"  alt="Plate"> 
+				Plate:</strong> The object participants lift as part of the motor task.</li>
+			<li><strong class="emphasis"><img class="inline-icon" src="/web/img/gameobjects/home.png"  alt="Home Mesh"> 
+				Hand Home:</strong> The home position for the participant’s hand(s) and criteria to start the trial</li>
+			<li><strong class="emphasis"><img class="inline-icon" src="/web/img/gameobjects/hands.png"  alt="Hands"> 
+				Hands &amp; Gain:</strong> Hand tracking and recording, and adaptation perturbation</li>
+			<li><strong class="emphasis"><img class="inline-icon" src="/web/img/gameobjects/instructions.png"  alt="Instructions"> 
+				Text Prompts:</strong> Instructions or other prompts shown to participants at different phases.</li>
+		</ul>
+		<p>Clicking on a row lets you edit the properties associated with that game object or task component.</p>
+		 	
+	</details>
+
+	
+ 	<!---------------------- COLS  ------------------------>	
+	<details>
+		<summary>Trial Flow (Columns)</summary> 
+		 <p>The top of the grid shows the <strong class="emphasis">Trial Flow</strong>, with columns representing distinct phases that occur in order during each trial:</p>
+		 
+		<ol class="list-shortitems">
+			<li><strong class="emphasis">Intertrial:</strong> Programmed time interval between two trials (short pause).</li>
+			<li><strong class="emphasis">Return Home:</strong> Participant returns hands to the designated start position.</li>
+			<li><strong class="emphasis">Start Lift:</strong> Plate appears; system waits for participant to make contact with it to start the lift.</li>
+			<li><strong class="emphasis">Execute Lift:</strong> Participant lifts the plate toward the target.</li>
+			<li><strong class="emphasis">Feedback:</strong> Visual or auditory feedback is given after lift completion.</li>
+			<li><strong class="emphasis">Break:</strong> Optional rest phase shown on selected trials.</li>
+		</ol>
+		<p>Click <strong class="emphasis">Trial Flow</strong> or any <strong class="emphasis">phase name</strong> at the top of grid to configure when and how phases change during a trial (e.g., timing, success/failure conditions, etc.).			
+			
+		<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/main/trialsequence.png" alt="Trial Flow"> 
+			
+	</details>
+
+	
+ 	<!----------------------  Quick Links ------------------------>	
+	<details>
+		<summary>Quick Links</summary> 
+		 <p>In addition to the primary grid, we provide <strong class="emphasis">Quick Links</strong> (located to the right of the grid) that open commonly used parameter sets grouped by experimental topic:</p>
+		<ul class="list-shortitems">
+			<li><strong class="emphasis">Reaching Task:</strong> home &amp; starting position, target position and success criteria...</li>
+			<li><strong class="emphasis">Motor Adaptation:</strong> perturbation magnitude and schedule</li>
+			<li><strong class="emphasis">Reinforcement:</strong> feedback visuals/sounds/effects to convey success or failure</li>
+			<li><strong class="emphasis">Paradigm:</strong> overall paradigm start &amp; end (messages/delays), trial number display, paradigm phases...</li>
+			<li><strong class="emphasis">Kinematics:</strong> hand tracking and data recording options</li>
+		</ul>  
+
+		<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/main/quicklinks.png" alt="Quick Links buttons">
+	</details>
+	
+		
+ 	<!----------------------   Session Manager  ------------------------>	
+	<details>
+		<summary>Session Manager</summary> 		
+		<p>The <strong class="emphasis">Session Manager</strong> (located to the right of the grid below Quick Links) provides tools to help you configure and reuse parameter setups in the Builder:</p>
+		<ul>
+			<li><strong class="emphasis">Upload Parameters</strong>: prompts you to upload a <code class="larger effect">.csv</code> file and imports all parameter values in the file to the Builder. See the <a href="#helpBuilderFile">File Import section</a> of this Builder Guide for details.</li>
+			<li><strong class="emphasis">Save / Load Session</strong>: opens options to save your current Builder Session setup for future use, or load a previously saved session to resume or repeat it. Expand <a href="#builderHelpSaveLoadSession">Save / Load Session</a> below for details.</li>
+			<li><strong class="emphasis">Parameter Catalog</strong>: opens a <strong class="emphasis">searchable table</strong> listing all Builder parameters. See <a href="#helpBuilderCatalog">Parameter Catalog section</a> of this Builder Guide for details.</li>
+		</ul>
+		
+		<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/main/buildermainsessionmanager.png" alt="Quick Links buttons">
+	</details>
+		
+
+
+	 	<!----------------------  SAVE LOAD ------------------------>	
+	<details>
+		<summary id="builderHelpSaveLoadSession">Save / Load Session</summary>  
+		<p>Click <strong class="emphasis">Save / Load Session</strong> in the <strong class="emphasis">Session Manager</strong> to store or load the complete <strong class="emphasis">configuration for a Builder session</strong>.</p>
+		<p>The configuration includes:</p>
+		<ul>
+			<li><strong class="emphasis">Parameter Values</strong>: values for all parameters, both constant and trial-by-trial sequences </li>
+			<li><strong class="emphasis">Input Sources</strong>: whether each parameter is set using Static Builder, Trial Builder, or File</li>
+			<li><strong class="emphasis">Trial Builder Configuration</strong>: for all parameters with Input Source = Trial Builder, it stores the complete configuration of the panels.
+				<ul  class="note-text"> <li>
+		  	This differs from the "Parameter Values" described above, as it stores how values are generated (e.g., experimental phases, lists of values, probability distribution parameters, randomization rules...), rather than the actual values drawn or generated.</li><li> This allows you to reuse the same randomization or sequence generation rules while still allowing the actual random values or random order to vary across participants.</li></ul></li>
+		</ul> 
+		<p>The session configuration can be stored in internal memory or exported to <code>.json</code> file (recommended). </p>
+		<p>Loading a configuration replaces all content in the Builder with the stored content.</p>
+		<img class="instruction-screenshot largest-max-dim" src="/web/img/helpbuilder/main/buildermainfootersession.png" alt="Footer action buttons - save builder session"> 	
+	</details>
+	
+ 	<!----------------------   Footer Buttons   ------------------------>	
+	<details>
+		<summary>Download & Help Buttons</summary> 
+		<p>Below the main grid, you can find <strong class="emphasis">Download</strong> and <strong class="emphasis">Help</strong> buttons:</p>
+		<img class="instruction-screenshot largest-max-height" src="/web/img/helpbuilder/main/buildermainfooter.png" alt="Footer action buttons in main builder">
+	  	 	
+		<ul>
+			<li><strong class="emphasis">Download</strong>: after completing your configuration, click <strong class="emphasis">Download</strong> to export all parameter values to a <code class="larger effect">.csv</code> file used at runtime on the headset:				
+				<ul>
+					<li>The .csv file contains both static and trial-varying parameters and is used by the MovementVR application to apply your configured task structure during runtime. </li>
+					<li>It must be transferred to the headset for use - see <a href="#helpInstall">Application</a> for instructions.</li>
+					<li>The format of the file is desribed in the <a href="#builderHelpSummaryFileFormat">File Import → File Format</a></li>
+				</ul>
+			</li>
+			
+			<li><strong class="emphasis">Help</strong>: all Builder windows include a <strong class="emphasis">Help</strong> button at the bottom left. Clicking this button opens a contextual help popup in the current interface with quick tips and explanations of key interface elements. Note that contextual help is less detailed than the full Builder Guide. 
+			</li>
+		</ul> 
+		
+	</details>
+	
+	 	<!----------------------  CATALOG ------------------------>	
+	<details>
+		<summary>How do I locate the parameter I want to edit?</summary> 
+		<p>If you are unsure whether a specific setting can be changed or where to find it in the Builder, use the <strong class="emphasis">Parameter Catalog</strong>. This is a searchable list of every parameter in MovementVR, with information including:</p>
+	
+		<ul class="list-shortitems">
+			<li><strong class="emphasis">Where</strong> to find the parameter in the Builder</li>
+			<li><strong class="emphasis">Description</strong> of what the parameter customizes in the game  </li>
+			<li><strong class="emphasis">Type of value</strong> - number, checkbox...- and notes on coordinate system, units... </li>
+			<li><strong class="emphasis">Internal identifier</strong> that you can use to import the parameter from .csv file</li>
+		</ul>
+		 
+		<p>To access the <a href="" data-buttonref="parameterCatalogBuilderButton"> Parameter Catalog</a>, click <strong class="emphasis">Parameter Catalog</strong> in the <strong class="emphasis">Session Manager</strong> panel of the <strong class="emphasis">Main Builder</strong>. For more information, see <a href="#helpBuilderCatalog">Parameter Catalog Help</a>.</p>
+		<img class="instruction-screenshot largest-max-dim" src="/web/img/helpbuilder/parametercatalog/parametercatalogmain.png" alt="Parameter Catalog"> 	
+	</details>
+	
+	
+			
+ 
+			
+</article> 
+			
+		</section>  
+	</div>
+</div>
+</body>
+</html>
+
+
+
+ 

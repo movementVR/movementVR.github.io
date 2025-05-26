@@ -49,8 +49,7 @@ function setupClickEvents(container) {
 											.querySelector('ol.trialbuilderInputsListContainer'); 
 		// finds the template element 
 		const templateItem = listContainer.querySelector('li.trialbuilderInputsItemParent.template');   
-		const clonedItem = templateItem.cloneNode(true); // creates a clone of the template element
-        // const clonedItem = cloneWithListeners(templateItem); // creates a clone of the template element
+		const clonedItem = templateItem.cloneNode(true); // creates a clone of the template element 
 		clonedItem.classList.remove('template');
 		// adds cloned element to list (at the end but before template)	   
 		listContainer.insertBefore(clonedItem, templateItem);  

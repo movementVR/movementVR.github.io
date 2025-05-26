@@ -306,7 +306,8 @@ async function builderIOParametersFromFile(fileSource, performValidation = true,
 ////////////////////////// EXPORT PARAMETER VALUES TO CSV FILE //////////////////////////////////
 
 // function generates & downloads parameters.csv with parameters values 
-function builderIOParametersToFile( ){ 	  
+function builderIOParametersToFile( ){ 
+	console.log(builderSession);
     
 	 // checks consistency of parameters lengths -> pads parameters if necessary	
 	const paddedParameters = fixLength(builderSession.parameters);  

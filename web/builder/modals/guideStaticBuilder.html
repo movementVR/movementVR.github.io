@@ -10,7 +10,10 @@
 </head>
 	
 <body> 
-
+<!--
+.helpGuide-modal.general-modal {  
+    z-index: 1000;   
+ }-->
 <div id="helpGuide-modal" class="general-modal helpGuide-modal">
   <div id="helpGuide-parent" class="general-parent modal-parent helpGuide-parent">
     <div class="helpGuide-top-bar top-bar">
@@ -43,17 +46,17 @@
 		  <div class="section-header accordion-header" onclick="toggleStickyHeader(this)">2. Accessing the desired parameters</div>
 		  <div class="section-content accordion-content">
 			  <p>
-				The content of each <strong>Static Builder</strong> window depends on what you click. Each object or button in the main MovementVR Builder page opens a different window for editing a unique set of parameters specific to that item:
+				The content of each <strong>Static Builder</strong> window depends on what you click. Each element in the main MovementVR Builder page opens a different window for editing a unique set of parameters specific to that element:
 			  </p> 
 			  <ul>
 				<li>
-				  <strong>Game Objects</strong> buttons<i>(e.g., plate, bird...shown in the main grid)</i>: edit all parameters related to that object, such as appearance, position, and task-relevant behaviors.
+				  <strong>Game Objects</strong> elements<i>(e.g., plate, bird... - names or bars in the main grid)</i>: edit all parameters related to that object, such as appearance, position, and task-relevant behaviors.
 				</li>
 				<li>
-				  <strong>Trial Sequence</strong> buttons <i>(<em>Edit Transitions</em>, <em>Edit Instructions</em> in the top row)</i>: configure how the trial unfolds (e.g. intertrial interval, "home" conditions to start the trial, success/failure criteria...) or participant instructions.
+				  <strong>Trial Flow</strong><i>(main header or individual phase names at the top of the grid)</i>: configure how the trial unfolds (e.g. intertrial interval, "home" conditions to start the trial, success/failure criteria...).
 				</li>
 				<li>
-				  <strong>Quick Links</strong>: shortcuts to frequently used parameters grouped by topic (e.g., adaptation, data collection). These access (and may override) some of the same parameters as object-specific windows.
+				  <strong>Quick Links</strong><i>(panel at the right of the grid)</i>: shortcuts to frequently used parameters grouped by topic (e.g., adaptation, data collection). These access (and may override) some of the same parameters as object-specific windows.
 				</li>
 			  </ul>
 		  </div>

@@ -56,6 +56,7 @@ function openSessionConfiguration(configurationInput = {}, callback=null){
 	/////// FUNCTIONS TO INITIALIZE AND UPDATE WINDOW / LIST ELEMENTS  ////////// 
 	// Modal control functions
 	function openModal() {		
+		console.log(modal);
 		modal.classList.remove('hidden'); 	
 		setupTitle();
 		setupListeners();

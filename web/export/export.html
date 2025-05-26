@@ -18,9 +18,9 @@
 <h3>Export the motion tracking data collected to MovementVR to .csv file: </h3>
 <h4>&rarr; Select individual .bin files or the folder containing the files to export:</h4> 
     <h5>  &emsp;&emsp;   <button style="display:inline-block; float: left; width:120px; height:30px;margin: 20px; " onclick="document.getElementById('LOAD_FILES').click()"><span>Load files</span></button>
-   	<input id="LOAD_FILES" style="margin: 0px; visibility:hidden;" type="file" onchange = 'upload(event)' multiple/>	 
+   	<input id="LOAD_FILES" style="margin: 0px; visibility:hidden;" type="file" onchange = 'exportTabUploadBin(event)' multiple/>	 
 	<button style="margin: 20px; float: left; display:inline-block;width:120px; height:30px;" onclick="document.getElementById('LOAD_FOLDER').click()"><span>Load folder</span></button>
-   	<input id="LOAD_FOLDER" style="margin: 0px; visibility:hidden;"  type="file" webkitdirectory directory  onchange = 'upload(event)' multiple/>
+   	<input id="LOAD_FOLDER" style="margin: 0px; visibility:hidden;"  type="file" webkitdirectory directory  onchange = 'exportTabUploadBin(event)' multiple/>
   </h5> 	 
     <div class="fullrow-type largespace"></div>
   <br>

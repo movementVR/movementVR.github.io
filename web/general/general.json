@@ -1,16 +1,20 @@
 {
 	"path": "/web/general/",
 	"scripts": {   
-		"main":[ 
-			"general.js",
+		"global":[ 
+			"general.js" 
+		],   
+		"main":[  
 			"page.js"
-		] 
+		]  
 	},
     "css": {   
 		"global":[
-        	"general.css",
-        	"page.css"
+        	"general.css"
     	],
+		"main":[
+        	"page.css"
+		],
 		"guide":[
 			"guide.css"		
 		]

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Static Builder Help Guide</title>
+	<link rel="stylesheet" href="/web/general/general.css">
+	<link rel="stylesheet" href="/web/general/page.css"> 	
+	<script src="/web/general/general.js"></script>		
+	<script src="/web/general/page.js"></script>	
+	<script defer>document.addEventListener('DOMContentLoaded', function() {setupPage();});</script>
+	
+	
+</head>
+<body>
+	 
+	
+<div id="mainpage-parent" class="mainpage-parent general-parent">
+	
+	  <nav class="on-this-page levels-three" aria-label="On this page">
+            <h2>Contents</h2>
+            <ul>
+                <li><a href="#">Placeholder</a></li> 
+                <li><a href="#">Placeholder</a></li> 
+            </ul>
+        </nav>
+	
+	<div id="mainpage-content" class="mainpage-content page-content">
+
+
+		<div class="section-header">Builder Guide</div>
+		<section class="section-content justify"> 
+		
+			<div class="section-panel-header">Static Builder</div>
+			
+ <!---------------------- CONTENT ------------------------>			
+<article class="section-panel" data-source="helpBuilderStatic">		 
+    
+	<p>When you can click on any element or button in the <strong class="emphasis">Main Builder Interface</strong>, this opens a <strong class="emphasis">Static Builder window</strong> to edit its associated parameters.</p>
+	 
+ 	<!---------------------- 1. STEPS ------------------------>		
+	<details>
+		<summary>Steps to set a parameter</summary> 
+		<p>In the <strong class="emphasis">Static Builder</strong>, you can set the value of constant parameters (that you do not want to vary across trials). To edit a parameter, follow these steps:</p>
+		<ol>
+			<li>Click on the relevant game object or task component on the <strong class="emphasis">Main Builder</strong> page. If you're unsure where to find it, use the <a href="" data-buttonref="parameterCatalogBuilderButton">Parameter Catalog</a> to search for its location (see <a href="#helpBuilderCatalog">Parameter Catalog help</a>) <img class="instruction-screenshot largest-max-height" src="/web/img/helpbuilder/staticbuilderNavigation/buildermainTarget.png" alt="locate target in main builder"></li>
+			<li>This will open the <strong class="emphasis">Static Builder</strong> window, showing all parameters related to the selected game object or task component. <img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/staticbuilderNavigation/staticbuilderTarget.png" alt="target in static builder"></li>
+			<li>Within the window, parameters are organized into <strong class="emphasis">Tabs</strong>, sorting the parameters by function (e.g., for editing an object appearance, position, feedback effects...). Browse the tabs to locate your desired parameter.<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/staticbuilderNavigation/staticbuilderWindowAndTabs.png" alt="windows and tabs in static builder"><img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/staticbuilderNavigation/staticbuilderTargetTabs.png" alt="target in static builder"></li>
+			<li>Each <strong class="emphasis">Tab</strong> is a form‑like GUI with input fields. <br>
+			<img class="instruction-screenshot largest-max-height smaller-max-width" src="/web/img/helpbuilder/staticbuilderNavigation/staticbuilderTargetCriteria1Form.png" alt="target in static builder">
+			Each row contains a parameter "group" (e.g., an object position in X, Y, Z coordinates).  
+			<img class="instruction-screenshot largest-max-height  smaller-max-width" src="/web/img/helpbuilder/staticbuilderNavigation/staticbuilderTargetCriteria2Group.png" alt="target in static builder">Each row typically shows:
+				<ul>
+				  <li><strong class="emphasis">Name </strong> of parameter group (left column)</li>
+				  <li><strong class="emphasis">Editable input fields</strong> to define parameter values (middle column)</li>
+				  <li><strong class="emphasis">Icons</strong> to access help or advanced options for this parameter group (right column)</li>
+				</ul> 		
+			<img class="instruction-screenshot largest-max-height" src="/web/img/helpbuilder/staticbuilderNavigation/staticbuilderTargetCriteria3Columns.png" alt="target in static builder"></li>
+			<li>Directly type or click‑to‑select the desired value for your parameter in the Editable input fields in the middle column</li>
+		</ol> 	
+	</details>
+
+ 	
+	<!---------------------- 2. ICONS ------------------------>	
+	<details>		
+		<summary>Icons and Expandable sections</summary> 
+		<ul>
+			<li>Click the <strong class="emphasis">? icon</strong> on the right to show the tooltip for your parameter - explaining what the parameter does and how to define its value correctly (e.g. the coordinate system, allowed values, etc...).<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/staticbuilderNavigation/staticbuilderTooltip.png" alt="tooltip for target in static builder"></li>
+			<li>The <strong class="emphasis">Static Builder</strong> is also your first point of contact for configuring trial-varying parameters - this is done by the inline <strong class="emphasis">⚙ icon</strong> on the right (see <a href="#helpBuilderAdvanced" class="guide-ref">guide for setting parameters as “trial‑varying”</a>).<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/staticbuilderNavigation/staticbuilderGear.png" alt="Gear button and advanced settings for target in static builder"></li> 
+			<li>Note that some tabs include <strong class="emphasis">expandable sections</strong> that reveal advanced or rarely used parameters when clicked<img class="instruction-screenshot larger-max-dim" src="/web/img/helpbuilder/staticbuilderNavigation/staticbuilderExpandable.png" alt="Expandable sections in static builder"></li> 
+		</ul>	
+	</details>
+	
+	<!---------------------- 2. FOOTER ------------------------>		
+	<details>
+		<summary>Footer Action Buttons</summary> 
+  		<p><strong class="emphasis">Action buttons</strong> at the bottom of the window apply to all parameters across all tabs within the current Static Builder window:</p> 
+			  <ul>
+				<li><strong class="emphasis">OK:</strong> Saves changes and closes Static Builder window.</li>
+				<li><strong class="emphasis">Cancel / X:</strong> Closes window without saving.</li>
+				<li><strong class="emphasis">Save:</strong> Saves changes but keeps window open to continue editing.</li>
+				<li><strong class="emphasis">Help:</strong> Opens a popup with contextual help.</li>
+			  </ul>
+		 
+		<p>When you finish setting the parameters in the current Static Builder window, click <storng>OK</storng> to save them and return to the main MovementVR Builder interface.</p>
+	 	<img class="instruction-screenshot larger-max-height" src="/web/img/helpbuilder/staticbuilderNavigation/staticbuilderFooter.png" alt="Footer buttons in static builder">
+	</details>
+	
+	 
+			
+</article> 
+			
+		</section>  
+	</div>
+</div>
+</body>
+</html>
+
+ 

@@ -77,10 +77,7 @@ async function openTrialBuilder(htmlContent,groupTitle) {
             // if all inputs are non-numerical, add "non-numerical-only" class to main parent container
             if (allNonNumerical) {
                 container.classList.add('non-numerical-only');
-            } 
-            /*else {                
-                container.classList.remove('non-numerical-only');
-            }*/
+            }  
 
         }
 

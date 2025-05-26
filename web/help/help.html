@@ -4,13 +4,18 @@
 	<meta charset="UTF-8">
 	<title>MovementVR Help Guide</title>
 	<link rel="stylesheet" href="/web/general/general.css">
-	<link rel="stylesheet" href="/web/general/page.css">
-	<link rel="stylesheet" href="/web/install/install.css">
+	<link rel="stylesheet" href="/web/general/page.css">  
+	<script src="/web/general/general.js"></script>			
+	<script src="/web/general/page.js"></script>	
+	<script defer>document.addEventListener('DOMContentLoaded', function() {setupPage();});</script>
+	
+	
 </head>
 <body>
-<div id="mainpage-parent" class="mainpage-parent general-parent">
+	 
+<div id="mainpage-parent" class="mainpage-parent general-parent help-page">
 	
-	  <nav class="on-this-page" aria-label="On this page">
+	  <nav class="on-this-page help-page expandOnScroll levels-three" aria-label="On this page">
             <h2>Contents</h2>
             <ul>
                 <li><a href="#">Placeholder</a></li> 
@@ -18,576 +23,45 @@
             </ul>
         </nav>
 	
-	<div id="mainpage-content" class="mainpage-content page-content">
+	<div id="mainpage-content" class="mainpage-content page-content help-page">
 
 		<!-------------- MovementVR Overview -------------->
 		<div class="section-header">MovementVR</div>
-		<div class="section-content justify">
+		<section class="section-content justify">
 			
-			<p><strong>MovementVR</strong> is a platform designed to make it easy to create and run motor learning experiments in Virtual Reality — no coding required. You can design your experiment using a graphical interface, run it on a standalone VR headset, and process the collected data with provided tools. </p>
+			<p><strong class="emphasis">MovementVR</strong> is a platform designed to make it easy to create and run motor learning experiments in Virtual Reality — no coding required. You can design your experiment using a graphical interface, run it on a standalone VR headset, and process the collected data with provided tools. </p>
 			
-			<p>This guide will walk you through each step: understanding the VR motor task (see <strong>MovementVR Task</strong>), designing your own experiment using the <strong>Builder</strong>, running it in the <strong>VR App</strong>, and processing the data with the <strong>Analyzer</strong>.</p>
+			<p>This guide will walk you through each step: understanding the VR motor task (see <strong class="emphasis">MovementVR Task</strong>), designing your own experiment using the <strong class="emphasis">Builder</strong>, running it in the <strong class="emphasis">VR App</strong>, and processing the data with the <strong class="emphasis">Analyzer</strong>.</p>
 		
-		</div>
+		</section>
 		
-		
+		  
 
 		<!-------------- MovementVR Task -------------->
-		<div class="section-header">Motor Task</div>
-		<div class="section-content justify"> 
-			
-				<p>The tasks designed with MovementVR are lifting tasks. On each trial, participants lift a plate of grapes up to a target with a bird perched on it. Their hands are tracked in real time and rendered as fully articulated virtual hands that interact with objects just like in real life. This allows participants to lift the virtual plate in the same way they would in the real world.</p>
-			<div class="section-panel-header">Task Elements</div>
-			<ul class="section-panel list-shortitems">
-				<li><strong class="emphasis">Plate & Grape:</strong> The object participants lift each trial. Physics-based interaction allows natural grasp and movement. If it tilts or falls, the grape drops.</li>
-				<li><strong class="emphasis">Target:</strong> The goal location for the plate. It can change color to indicate success/failure and includes a visible mesh that defines feedback and trial conditions.</li>
-				<li><strong class="emphasis">Hand Home:</strong> Starting position for each hand, defined by location and a "no-hand" zone to avoid premature interaction.</li>
-				<li><strong class="emphasis">Bird & Perch:</strong> An animated bird sits at the target. Its species, sound, and behavior provide outcome-linked feedback.</li>
-				<li><strong class="emphasis">Feedback Messages:</strong> Cartoons and sounds show success or failure after each trial.</li>
-				<li><strong class="emphasis">Hands:</strong> Real-time tracked, articulated VR hands with 19 bones for natural interaction.</li>
-				<li><strong class="emphasis">Workspace:</strong> The bounded area within which the plate must stay. Exiting ends the trial as a failure.</li>
-				<li><strong class="emphasis">Text & UI:</strong> Instructional messages, trial number, and visual elements support user guidance.</li>
-				<li><strong class="emphasis">Background:</strong> A medieval-style immersive garden and port setting with ambient birds and scenery.</li>
-			</ul>
-
-			<div class="section-panel-header">Trial Phases</div>
-			<ul class="section-panel list-shortitems">
-				<li><strong class="emphasis">Intertrial:</strong> Pause between trials.</li>
-				<li><strong class="emphasis">Home Position:</strong> Hands return to defined start zone.</li>
-				<li><strong class="emphasis">Plate Contact:</strong> User initiates lift by touching the plate.</li>
-				<li><strong class="emphasis">Plate Lift:</strong> Active lifting phase toward the target.</li>
-				<li><strong class="emphasis">Feedback:</strong> Outcome shown via color, animation, or cartoon.</li>
-				<li><strong class="emphasis">Break:</strong> Optional rest between trials.</li>
-			</ul>
-
-			<div class="section-panel-header">Success and Failure Criteria</div>
-			<ul class="section-panel list-shortitems">
-				<li><strong class="emphasis">Success:</strong> Plate center reaches target zone, remains within for required duration, and stays below tilt threshold.</li>
-				<li><strong class="emphasis">Failure:</strong> Plate tilts or leaves zone too soon, falls, exits workspace, or exceeds time limit.</li>
-			</ul>
-
-			<div class="section-panel-header">Motor Learning Applications</div>
-			<ul class="section-panel list-shortitems">
-				<li><strong class="emphasis">Adaptation via Gain Perturbation:</strong> Virtual hand moves with scaled gain relative to real hand. Perturbation ramps up and down by phase.</li>
-				<li><strong class="emphasis">Reinforcement Learning:</strong> Real-time visual feedback plus adaptive animations and sounds tied to success or failure.</li>
-				<li><strong class="emphasis">Custom Feedback:</strong> Target color, bird behavior, and effects can change based on task outcome.</li>
-			</ul>
-
-		</div> 
+		<div class="section-header" id="helpTask">Description of the Motor Task</div>
+		<section class="section-content justify" data-content="helpTask" data-content-sel="helpTask">  
+		</section>
 
 		
 		
 		<!-------------- Builder -------------->
-		<div class="section-header">MovementVR Builder</div>
-		<div class="section-content justify">
-
-			<!-- Overview -->
-			<div class="section-panel-header">Overview</div>
-			<div class="section-panel">
-				<p>The <strong class="emphasis">MovementVR Builder</strong> is the graphical interface for designing your VR motor learning experiment. You can customize most aspects of the task:</p>
-				<ul class="list-longitems">
-					<li><strong class="emphasis">Lifting task parameters:</strong> the hands’ home position and conditions to start the trial, the plate’s starting position, the target position and success/failure criteria, workspace boundaries…</li>
-					<li><strong class="emphasis">Motor learning features:</strong> magnitude and schedule of the gain perturbation for adaptation, and feedback visuals, sounds, and effects for reinforcement learning.</li>
-					<li><strong class="emphasis">Game objects properties:</strong> Customize appearance and physics properties (size, color, animations, friction…) of bird, plate, target, and other game elements.</li>
-					<li><strong class="emphasis">Hand Tracking &amp; Data Recording:</strong> select unimanual or bimanual task, choose which kinematics to record…</li>
-				</ul>
-				<p>You can choose whether each parameter is constant or if it varies across trials and phases in the experiment. Both options can be designed using our GUIs or by uploading values from a .csv file.</p>
-			</div>
-
-			<!-- Getting Started -->
-			<div class="section-panel-header">Getting started</div>
-			<div class="section-panel">
-				<p>To begin designing your experiment, click on the <strong class="emphasis">Builder tab</strong> in the top navigation menu. This will open the <strong class="emphasis">Main Builder Interface</strong>, your central workspace for defining the parameters of your MovementVR task.</p>
-
-				<p>The <strong class="emphasis">Main Builder Interface</strong> displays a grid of interactive elements — including game objects, task components, trial phases, and quick access buttons — each of which leads to specific configuration options. You can click on any element or button in the <strong class="emphasis">Main Builder Interface</strong> to edit its associated parameters. This opens a <strong class="emphasis">Static Builder window</strong> — your first point of contact for configuring both constant and trial-varying parameters.</p>
-
-				<p>For constant parameters, this <strong class="emphasis">Static Builder window</strong> provides a straightforward form‑like interface where you can directly enter or select values. For trial‑varying parameters, each parameter group includes a gear icon next to its label. Click the gear to indicate that the parameter should vary across trials. You’ll then be prompted to choose how to define those values — <strong class="emphasis">Load File</strong> (.csv) with trial-by-trial values or generate values using the <strong class="emphasis">Trial Builder</strong> GUI.</p> 
-
-			</div>
-
-
-
-
-			<!------------ Main Builder Page --------------->
-			<div class="section-panel-header">Main Builder page</div>
-			<div class="section-panel">
-
-				<p>The interface for the <strong class="emphasis">Main Builder page</strong> is organized as a grid, where:</p>
-				<ul class="list-shortitems">
-					<li><strong class="emphasis">Each row:</strong> corresponds to a different game object or task component.</li>
-					<li><strong class="emphasis">Each column:</strong> represents a sequential “phase” within a trial.</li>
-					<li><strong class="emphasis">Each cell:</strong> indicates whether a given object is present or active during a specific trial phase. Colored horizontal bars span across the relevant phases for each object.</li>
-				</ul>
-
-				<div class="section-panel-title">Game Objects and Task Components (Rows)</div>
-				<p>The left side of the grid lists the main elements involved in the task:</p>
-				<ul class="list-shortitems">
-					<li><strong class="emphasis">Reinforcement:</strong> Objects and effects that deliver success or failure feedback.</li>
-					<li><strong class="emphasis">Bird:</strong> A virtual, animated bird that is perched on the target.</li>
-					<li><strong class="emphasis">Target:</strong> The goal object to reach; includes both functional and visual targets.</li>
-					<li><strong class="emphasis">Plate:</strong> The object participants lift as part of the motor task.</li>
-					<li><strong class="emphasis">Hand Home:</strong> The home position for the participant’s hand(s) and criteria to start the trial</li>
-					<li><strong class="emphasis">Hands &amp; Perturbation:</strong> Hand tracking and recording, and adaptation perturbation</li>
-					<li><strong class="emphasis">Workspace:</strong> Defines spatial boundaries for valid plate movement.</li>
-				</ul>
-				<p>Clicking on a row lets you edit the properties associated with that game object or task component.</p>
-
-				<div class="section-panel-title">Trial Phases (Columns)</div>
-				<p>The top of the grid shows the <strong class="emphasis">Trial Sequence</strong>, with columns representing distinct phases that occur in order during each trial:</p>
-				<ol class="list-shortitems">
-					<li><strong class="emphasis">Intertrial:</strong> Pause between trials (also called the intertrial interval).</li>
-					<li><strong class="emphasis">Home Position:</strong> Participant returns hands to the designated start position.</li>
-					<li><strong class="emphasis">Plate Contact:</strong> Plate appears; system waits for participant to contact it.</li>
-					<li><strong class="emphasis">Plate Lift:</strong> Participant lifts the plate toward the target.</li>
-					<li><strong class="emphasis">Feedback:</strong> Visual or auditory feedback is given after lift completion.</li>
-					<li><strong class="emphasis">Break:</strong> Optional rest phase shown on selected trials.</li>
-				</ol>
-				<p>Click on the <strong class="emphasis">Edit Transitions</strong> button to configure when and how phases change during a trial (e.g., timing, success/failure conditions, etc.). Click on the <strong class="emphasis">Edit Instructions</strong> button to customize participant messages shown during phases.</p>
-
-				<div class="section-panel-title">Quick Links</div>
-				<p>In addition to the primary grid, we provide <strong class="emphasis">Quick Links</strong> buttons that open commonly used parameter sets grouped by experimental topic:</p>
-				<ul class="list-shortitems">
-					<li><strong class="emphasis">Reaching Task:</strong> home &amp; starting position, target position and success criteria...</li>
-					<li><strong class="emphasis">Motor Adaptation:</strong> perturbation magnitude and schedule</li>
-					<li><strong class="emphasis">Reinforcement:</strong> feedback visuals/sounds/effects to convey success or failure</li>
-					<li><strong class="emphasis">Paradigm:</strong> overall paradigm start &amp; end (messages/delays), trial number display, paradigm phases...</li>
-					<li><strong class="emphasis">Kinematics:</strong> hand tracking and data recording options</li>
-				</ul>
-
-				<p><a href="#">Click here to open the Main Builder Guide</a></p>
-
-			</div>
-
-
-			<!--------------- Static Builder ------------------>
-			<div class="section-panel-header">Setting constant parameters using the Static Builder</div>
-			<div class="section-panel">
-				<p>Constant parameters can be set using the <strong class="emphasis">Static Builder</strong> GUI&nbsp;— a form‑like interface with input fields, where you can directly type or click‑to‑select the desired value for each parameter. To locate a parameter, simply click on the relevant game object or task component on the <strong class="emphasis">Main Builder page</strong> to open the corresponding <strong class="emphasis">Static Builder window</strong>.</p>
-
-				<p>Inside this window, parameters are further organized into tabs, and inline info icons explain each parameter in detail (including how to define its value correctly).</p>
-
-				<p><a href="#">Click here to open the Static Builder Guide</a></p>
-			</div>
-
-			<!---------------Trial‑Varying ----------------->
-			<div class="section-panel-header">Setting a parameter as “trial‑varying”</div>
-			<div class="section-panel">
-				<p>To set a parameter as <strong class="emphasis">trial‑varying</strong>:</p>
-				<ol class="list-shortitems">
-					<li><strong class="emphasis">Click:</strong> on the relevant game object or task component in the <strong class="emphasis">Main Builder</strong> to open its <strong class="emphasis">Static Builder</strong> tab.</li>
-					<li><strong class="emphasis">Find:</strong> the parameter you want to vary, and click the gear icon next to it.</li>
-					<li><strong class="emphasis">Open:</strong> This action opens an <strong class="emphasis">Advanced Settings</strong> window.</li>
-					<li><strong class="emphasis">Select:</strong> the checkbox(es) for the parameter(s) that you wish to set as trial‑varying.</li>
-					<li><strong class="emphasis">Choose method:</strong> decide how to define the trial‑varying values — <strong class="emphasis">Trial Builder</strong> or <strong class="emphasis">File Import</strong>.</li>
-				</ol>
-				<p>This will open an interface (<strong class="emphasis">Trial Builder</strong> or <strong class="emphasis">File Import</strong>) specific to defining only the selected parameter(s).</p>
-
-				<p><a href="#">Click here to open the Builder Advanced Settings Guide</a></p>
-			</div>
-
-
-
-			<!-------------Trial Builder --------------->
-			<div class="section-panel-header">Defining trial‑varying parameters using the Trial Builder</div>
-			<div class="section-panel">
-				<p>The <strong class="emphasis">Trial Builder</strong> helps you generate sequences of parameter values for your trial‑varying parameters in a code‑free way. It supports a range of trial structures and sequence types commonly used in motor control and learning research.</p>
-
-				<p>To open the <strong class="emphasis">Trial Builder</strong>, follow the steps described in <strong class="emphasis">Setting a parameter as “trial‑varying”</strong>, selecting <strong class="emphasis">Trial Builder</strong> as the method. This opens a Trial Builder window specific to the selected parameter(s).</p>
-
-				<p>In the Trial Builder, you can first divide your experiment into multiple phases — such as baseline, learning, and washout. Then, for each phase, choose how the parameter values change trial‑by‑trial by selecting a sequence type.</p>
-
-				<p><strong class="emphasis">Sequence types include:</strong></p>
-				<ul class="list-shortitems">
-					<li><strong class="emphasis">Ordered sequences –</strong> apply a list of values in the order you specify</li>
-					<li><strong class="emphasis">Randomized sequences –</strong> shuffle values using simple, weighted, or blocked randomization</li>
-					<li><strong class="emphasis">Linear ramps –</strong> gradually change a parameter from a start to an end value across trials</li>
-					<li><strong class="emphasis">Random distributions –</strong> draw values from a uniform or normal distribution</li>
-				</ul>
-
-				<p>Different phases in the experiment can use different sequence types. In addition, each parameter can be defined independently, using its own experimental phases and sequence‑type settings.</p>
-
-				<p>For example, you could set the perturbation gain to <strong class="emphasis">Linear Ramp</strong> for the “learning” phase but to “constant” for “baseline” and “washout” phases. At the same time, you could randomize target position during “target‑variable” phases but keep it constant during “target‑fixed” phases. The “target‑fixed” and “target‑variable” phases do not have to match the “baseline”, “learning”, and “washout” phases.</p>
-
-				<p><a href="#">Click here to open the Trial Builder Guide</a> – providing a step‑by‑step explanation of how to use this interface.</p>
-			</div>
-
-			<!-----------CSV File Import -------------->
-			<div class="section-panel-header">Defining trial‑varying parameters with a .csv file</div>
-			<div class="section-panel">
-				<p>Trial‑varying parameters can also be defined by uploading a <strong class="emphasis">.csv file</strong> containing trial‑by‑trial values. This method is ideal if you prefer to create your parameter values externally — using your own scripts, spreadsheets, or other tools.</p>
-
-				<p>To open the <strong class="emphasis">File Import</strong> interface, follow the steps described in <strong class="emphasis">Setting a parameter as “trial‑varying”</strong>, selecting <strong class="emphasis">File</strong> as the method. This opens a File Import window specific to the selected parameter(s).</p>
-
-				<p>The interface will guide you through the following steps:</p>
-				<ol class="list-shortitems">
-					<li><strong class="emphasis">Upload</strong> a .csv file from your computer.</li>
-					<li><strong class="emphasis">Select parameters:</strong> if the file contains additional parameters beyond the ones currently selected, choose whether to import all parameters in the file or only the selected ones.</li>
-					<li><strong class="emphasis">Handle constant parameters:</strong> for constant parameters, you may import their values into the <strong class="emphasis">Static Builder</strong> for later editing.</li>
-				</ol>
-
-				<p>The .csv file is formatted so that each row is a parameter. The first two columns specify the parameter’s code name, which links it to the corresponding element in the VR app (column 1 is the VR app script and column 2 is the variable name). Columns 3 onward contain the parameter values for each trial.</p>
-
-<pre><code>setupScript , targetLocalPositionX , 0.1 , 0.2 , 0.3 , 0.4 , 0.5
-setupScript , targetLocalPositionY , 0.2
-setupScript , targetLocalPositionZ , 0.5 , 0.1 , 0.5 , 0.1 , 0.5
-...         , ...                  , ...</code></pre>
-
-				<p>If a parameter is constant, simply enter its value in column 3 and leave the remaining columns blank. You can mix constant and trial‑varying parameters within the same file.</p>
-
-				<p>The <strong class="emphasis">Parameter Catalog</strong> (accessible from the <strong class="emphasis">Main Builder</strong> page) provides a complete list of all parameters, including:</p>
-				<ul class="list-shortitems">
-					<li><strong class="emphasis">Code names –</strong> script and parameter name</li>
-					<li><strong class="emphasis">UI location –</strong> where they appear in the Builder</li>
-					<li><strong class="emphasis">Format & input type –</strong> valid values and units</li>
-					<li><strong class="emphasis">Description –</strong> notes on coordinate systems, units, and more</li>
-				</ul>
-			</div>
-
-		</div>
-
-		 
+		<div class="section-header" id="helpBuilderIntro">Designing your Experiment</div>
+		<section class="section-content justify" data-content="helpBuilderIntro" data-content-sel="helpBuilderIntro">  
+		</section> 
 		
 		<!-------------- App -------------->
-		<div class="section-header">VR App</div>
-		<div class="section-content">
-			<ul class="section-panel list-shortitems">
-				<li><strong>Download:</strong> Visit the MovementVR website and download the <code>.apk</code> for your VR headset (e.g., Meta Quest 2).</li>
-				<li><strong>Install:</strong> Transfer the <code>.apk</code> to your device and install using standard sideloading procedures (step-by-step guide provided online).</li>
-				<li><strong>Load experiment:</strong> Move the <code>.csv</code> file created with the Builder into the app folder on the headset.</li>
-				<li><strong>Run the app:</strong> Open the MovementVR app and select your experiment from the list.</li>
-			</ul>
-			
-			
-<h1>MovementVR: Installation &amp; Export Guide</h1>
-<p>This guide walks you through installing the MovementVR app, uploading your configuration, running the app, and exporting recorded data. This assumes you have already created your experimental configuration and have your <code>parameters.csv</code> file ready. If not, please return to the Builder tab.</p>
-	
-	<p><strong>If you’ve already set up Hand Tracking and Developer Mode,</strong> you can jump to <a href="#step1-install-app">Step 1. Install MovementVR App via SideQuest</a>. Otherwise, expand the <strong class="prerequisites">Headset Setup Prerequisites</strong> sections below.</p>
-
-
-<!-- ────────────────────────────────────────────────────────────── -->
-<details class="prerequisites"> 
-	<summary>Headset Setup Prerequisites: Hand Tracking</summary>
-
-	<p>To continue with the MovementVR app setup, your headset <strong>must</strong> have Hand Tracking enabled—this lets you navigate with your hands instead of controllers. You can follow the <a href="https://www.meta.com/help/quest/290147772643252/" target="_blank">official Meta instructions</a> or use the steps below:</p>
-
-	<ol>
-		<li>
-			Wear your headset and open <strong>Quick Settings</strong> by clicking the clock in the bottom-left corner of the universal menu (if the menu isn’t visible, press the Meta/Oculus button on your right controller).
-			<img class="instruction-screenshot" src="/web/img/helphandtracking/quicksettings.png" alt="Quick Settings panel opened inside Quest headset">
-		</li>
-
-		<li>
-			Open <strong>Settings</strong> by clicking the gear icon in the top-right corner of Quick Settings.
-			<img class="instruction-screenshot" src="/web/img/helphandtracking/settings.png" alt="Gear icon for opening Settings from Quick Settings">
-		</li>
-
-		<li>
-			In Settings, click <strong>Movement tracking</strong> (subtitled “Hand Tracking”).
-			<img class="instruction-screenshot larger-max-height" src="/web/img/helphandtracking/handtracking.png" alt="Movement tracking (Hand Tracking) option in Settings menu">
-		</li>
-
-		<li>
-			Toggle <strong>Hand and body tracking</strong> ON, then follow the on-screen prompts to finish setup.
-			<img class="instruction-screenshot" src="/web/img/helphandtracking/handtrackingtoggle.png" alt="Hand and body tracking toggle switched ON">
-		</li>
-	</ol>
-</details>
-	
-<!-- ────────────────────────────────────────────────────────────── -->
-<details class="prerequisites">
-	<summary>Headset Setup Prerequisites: Developer Mode</summary>
-
-	<p>To continue with the MovementVR app setup, your headset <strong>must</strong> have Developer Mode enabled. If it is not enabled — or you are unsure whether it is — there are three easy ways to set it up:</p>
-
-	<h3 class="section-options">Option&nbsp;1 <small>(recommended, especially if you're unsure of Developer Mode status)</small></h3>
-	<p>Simply continue with the rest of the MovementVR setup. When you install SideQuest, the platform will automatically detect whether Developer Mode is enabled. If it is not, SideQuest provides clear step-by-step instructions and videos to guide you through the process.</p>
-	<img class="instruction-screenshot largest-max-height" src="/web/img/helpdevelopermode/SideQuestHelp.png" alt="SideQuest screen that offers automatic Developer-Mode setup guidance">
- 
-	<h3 class="section-options">Option&nbsp;2</h3>
-	<p>Follow the official instructions for setting up your device and enabling Developer Mode, available here:&nbsp;
-		<a href="https://developers.meta.com/horizon/documentation/native/android/mobile-device-setup" target="_blank">
-			https://developers.meta.com/horizon/documentation/native/android/mobile-device-setup
-		</a>
-	</p> 
-	<h3 class="section-options">Option&nbsp;3</h3>
-	<p>The steps below were written in May&nbsp;2025 and may change over time. Search online for “Enable Developer Mode on Meta Quest&nbsp;2” (or your model) for the most up-to-date instructions.</p>
-
-	<ol>
-		<li>
-			Make sure the <strong>Meta Horizon</strong> app is installed on your phone or tablet, and that you remember the login credentials for the Meta account linked to your headset (this is the same app and account used during initial headset setup — it was previously called the Meta Quest or Oculus app).
-		</li>
-
-		<li>
-			Set up a <strong>Meta Developer account</strong> by following the steps at&nbsp;
-			<a href="https://developers.meta.com/horizon/manage/organizations/create/" target="_blank">
-				https://developers.meta.com/horizon/manage/organizations/create/
-			</a>.
-			Log in with the <em>same</em> Meta account used for your headset and Meta app. You may be asked to complete two-factor authentication (common authenticator apps, text message, or credit-card verification all work). Finally, create your “Developer Organization” by choosing a name.
-		</li>
-
-		<li>
-			Enable <strong>Developer Mode</strong> in the Meta Horizon app:<br>
-			Tap&nbsp;
-			<img class="inline-icon" src="/web/img/helpdevelopermode/appMenuIcon.png"            alt="Meta Horizon ‘Menu’ icon"> Menu&nbsp;→
-			<img class="inline-icon" src="/web/img/helpdevelopermode/appDevicesIcon.png"         alt="Meta Horizon ‘Devices’ icon"> Devices&nbsp;→
-			<img class="inline-icon" src="/web/img/helpdevelopermode/appMyDeviceIcon.png"        alt="Icon representing your selected headset"> <strong>(select your headset)</strong>&nbsp;→
-			<img class="inline-icon" src="/web/img/helpdevelopermode/appHeadsetSettingsIcon.png" alt="‘Headset settings’ gear icon"> Headset&nbsp;settings&nbsp;→
-			<img class="inline-icon" src="/web/img/helpdevelopermode/appDeveloperModeIcon.png"   alt="‘Developer Mode’ wrench icon"> Developer&nbsp;Mode&nbsp;→
-			<img class="inline-icon" src="/web/img/helpdevelopermode/appToggleIcon.png"          alt="Toggle switch control"> Toggle&nbsp;<strong>ON</strong>. 
-			<div class="smaller-br"></div> 
-			<img class="instruction-screenshot larger-max-dim" src="/web/img/helpdevelopermode/appInstructionsP1.png" alt="Meta Horizon screenshot showing Developer Mode toggle – page 1"> 
-			<div class="small-br"></div> 
-			<img class="instruction-screenshot" src="/web/img/helpdevelopermode/appInstructionsP2.png" alt="Meta Horizon screenshot confirming Developer Mode enabled – page 2">
-		</li>
-			<br>
-
-		<li>
-			Connect your headset to your computer and put it on. You should be prompted to tap
-			<code class="larger">"Allow USB debugging"</code> — check <em>Always allow from this computer</em> to avoid future prompts. If you don’t see the prompt, unplug → re-plug or restart the headset. See the&nbsp;
-			<a href="https://developers.meta.com/horizon/documentation/native/android/mobile-device-setup" target="_blank">Meta documentation</a>
-			for any additional settings or drivers you may need.
-			<br>
-			<img class="instruction-screenshot larger-max-height" src="/web/img/helpdevelopermode/hmdDebugging.png" alt="In-headset prompt asking to allow USB debugging">
-		</li>
-	</ol>
-</details>
-
- 
-
-<!-- ────────────────────────────────────────────────────────────── -->
-<details id="step1-install-app" open>
-	<summary>Step&nbsp;1. Install MovementVR App via SideQuest</summary>
-	<ol>
-		<li>Download the <strong>MovementVR APK</strong> file:
-		<button onclick="downloadMovementVR_APK()"><span>Download APK</span></button>
-		</li>
-	
-		<li>Download & Install the <strong>SideQuest Desktop App</strong> on your computer:&nbsp;
-			<a href="https://sidequestvr.com/setup-howto" target="_blank">https://sidequestvr.com/setup-howto</a>
-		</li>
-		<li>Open <strong>SideQuest</strong>
-		</li> 
-	
-		<li>
-			Launch the SideQuest <strong>APK Installer</strong> by clicking the icon&nbsp;
-			<img class="inline-icon" src="/web/img/helpinstall/sidequestInstallIcon.png" alt="SideQuest ‘Install APK’ icon">
-			labeled&nbsp;<strong>"Install APK file from folder on computer"</strong> in the top navigation bar.
-			<img class="instruction-screenshot" src="/web/img/helpinstall/sidequestInstallBtn.png" alt="SideQuest Install APK button highlighted">
-		</li>
-
-		<li>
-			When prompted, select the downloaded&nbsp;<code class="larger">MovementVR.apk</code>&nbsp;file.
-			<img class="instruction-screenshot" src="/web/img/helpinstall/movementvrAPK.png" alt="File-dialog with MovementVR.apk selected">
-		</li>
-	</ol>
-</details>
- 
-
-<!-- ────────────────────────────────────────────────────────────── -->
-<details>
-	<summary>Step&nbsp;2. Launch the App Once to Create Folders</summary>
-
-	<ol>
-		<li>
-			Open the <strong>App Manager</strong> by clicking the icon&nbsp;
-			<img class="inline-icon" src="/web/img/helpinstall/downloadedAppsIcon.png" alt="SideQuest ‘Installed Apps’ icon">
-			labeled&nbsp;<strong>"Currently installed apps"</strong> in the top navigation bar.
-			<img class="instruction-screenshot" src="/web/img/helpinstall/sidequestAppsBtn.png" alt="SideQuest Installed Apps panel">
-		</li>
-
-		<li>
-			Locate&nbsp;<code class="larger">com.MovementVR.MovementVR</code> and click the gear icon&nbsp;
-			<img class="inline-icon" src="/web/img/helpinstall/sidequestGearIcon.png" alt="SideQuest gear icon for app options">
-			<img class="instruction-screenshot" src="/web/img/helpinstall/sidequestRunApp.png" alt="SideQuest menu with ‘Run App’ option">
-		</li>
-
-		<li>
-			In the popup, click&nbsp;<strong>"Launch App"</strong>&nbsp;
-			<img class="inline-icon" src="/web/img/helpinstall/sidequestLaunchAppIcon.png" alt="SideQuest ‘Launch App’ icon">
-			<img class="instruction-screenshot smaller-max-height" src="/web/img/helpinstall/sidequestRunAppPopup.png" alt="SideQuest Launch App confirmation popup">
-		</li>
-
-		<li>
-			<strong>Put on the headset</strong> &amp; wait for the app to start.
-			<img class="instruction-screenshot smaller-max-height" src="/web/img/helpinstall/hmdAppStarted.png" alt="MovementVR splash screen inside headset">
-		</li>
-
-		<li>
-			Once it has launched, <strong>quit the app</strong> as you would any other app on the headset.
-			<img class="instruction-screenshot smaller-max-height" src="/web/img/helpinstall/hmdAppQuit.png" alt="In-headset screenshot showing how to quit the app">
-		</li>
-
-		<li>
-			Return to SideQuest and click&nbsp;<strong>"Done"</strong>&nbsp;
-			<img class="inline-icon" src="/web/img/helpinstall/sidequestLaunchAppDoneIcon.png" alt="SideQuest ‘Done’ button icon">
-			to close the popup.
-		</li>
-	</ol>
-
-	<p>This ensures the internal app folder is created.</p>
-</details>
-
-<!-- ────────────────────────────────────────────────────────────── -->
-<details>
-	<summary>Step&nbsp;3. Upload Your <code>parameters.csv</code> File to the App</summary>
-
-	<ol>
-		<li>
-			Open the <strong>File Manager</strong> by clicking the icon&nbsp;
-			<img class="inline-icon" src="/web/img/helpinstall/manageFilesIcon.png" alt="SideQuest ‘Manage Files’ icon">
-			labeled&nbsp;<strong>"Manage files on the headset"</strong> in the top navigation bar.
-			<img class="instruction-screenshot" src="/web/img/helpinstall/sidequestFilesBtn.png" alt="SideQuest File Manager button">
-		</li>
-
-		<li>
-			Navigate to:&nbsp;<code class="larger">Android/data/com.MovementVR.MovementVR/files</code>
-			<img class="instruction-screenshot" src="/web/img/helpinstall/sidequestFileManager.png" alt="SideQuest File Manager view of MovementVR directory">
-		</li>
-
-		<li>
-			Click the&nbsp;<img class="inline-icon" src="/web/img/helpinstall/addFileIcon.png" alt="SideQuest ‘Add File’ plus icon"> button labeled&nbsp;<strong>"Add file"</strong> at the bottom-right corner.  
-			In the floating menu, click&nbsp;
-			<img class="inline-icon" src="/web/img/helpinstall/uploadFileIcon.png" alt="SideQuest ‘Upload File’ arrow icon">
-			(<strong>"Upload file to this folder"</strong>).
-			<img class="instruction-screenshot" src="/web/img/helpinstall/sidequestFileManagerAppFolder.png" alt="SideQuest File Manager ready for file upload">
-		</li>
-
-		<li>
-			Select your <code class="larger">parameters.csv</code> file containing your experiment configuration.
-			<img class="instruction-screenshot" src="/web/img/helpinstall/sidequestLoadParameters.png" alt="Dialog showing parameters.csv selected for upload">
-		</li>
-	</ol>
-</details>
-
-<!-- ────────────────────────────────────────────────────────────── -->
-<details>
-	<summary>Step&nbsp;4. Running the App</summary>
-
-	<ol>
-		<li>
-			Disconnect your headset from the computer and put it on.
-			<img class="instruction-screenshot smaller-max-height" src="/web/img/helpinstall/hmdWear.png" alt="User wearing Quest headset ready to run app">
-		</li>
-
-		<li>
-			Inside the headset, open the <strong>App Library</strong> by clicking the icon&nbsp;
-			<img class="inline-icon" src="/web/img/helpinstall/hmdAppLibraryIcon.png" alt="App Library bookshelf icon">
-			in the universal menu. (If the universal menu is hidden, click the Meta&nbsp;
-			<img class="inline-icon" src="/web/img/helpinstall/metaIcon.png" alt="Meta logo icon">
-			or Oculus&nbsp;
-			<img class="inline-icon" src="/web/img/helpinstall/oculusIcon.png" alt="Oculus logo icon">
-			icons to open it.)
-			<img class="instruction-screenshot" src="/web/img/helpinstall/hmdAppLibrary.png" alt="App Library main screen inside headset">
-		</li>
-
-		<li>
-			Locate the <strong>dropdown</strong> at the top-right of the App Library (labelled “All” or another filter).  
-			If it’s not visible, click the <strong>Search</strong> bar at the top to reveal it.
-			<img class="instruction-screenshot" src="/web/img/helpinstall/hmdAppLibrarySearchBar.png" alt="Search bar showing app-filter dropdown">
-		</li>
-
-		<li>
-			In the dropdown, select <strong>"Unknown Sources"</strong>.<br>
-			<em>If “Unknown Sources” is missing, ensure Developer Mode is enabled and search online for updated instructions as these settings often change.</em>
-			<img class="instruction-screenshot largest-max-height" src="/web/img/helpinstall/hmdAppLibraryUnknownSources.png" alt="Unknown Sources list with MovementVR available">
-		</li>
-
-		<li>
-			Find the <strong>MovementVR</strong> app and click it to run.<br>
-			<em>Tip: switch from controllers to hand-tracking before starting the app; switching inside the app can sometimes be glitchy.</em>
-			<img class="instruction-screenshot" src="/web/img/helpinstall/hmdAppLibraryMovementVR.png" alt="MovementVR app tile inside Unknown Sources">
-		</li>
-	</ol>
-</details>
-
-<!-- ────────────────────────────────────────────────────────────── -->
-<details>
-	<summary>Step&nbsp;5. Export the Recorded Data</summary>
-
-	<p>Congratulations on running your first MovementVR experiment! The steps below explain how to export the data recorded by the app.</p>
-
-	<ol>
-		<li>Reconnect the headset to the computer and open&nbsp;<strong>SideQuest</strong>.</li>
-
-		<li>
-			In SideQuest, open the <strong>File Manager</strong>&nbsp;
-			(<img class="inline-icon" src="/web/img/helpinstall/manageFilesIcon.png" alt="SideQuest ‘Manage Files’ icon"> in the top navigation bar) and navigate to&nbsp;
-			<code class="larger">Android/data/com.MovementVR.MovementVR/files</code>.
-		</li>
-
-		<li>
-			You should see your <strong>data folder(s)</strong> with names formatted as&nbsp;
-			<code class="larger">data_YYYY_MM_DD_HH_mm_ss</code>.  
-			Click the save icon&nbsp;
-			<img class="inline-icon" src="/web/img/helpinstall/saveIcon.png" alt="SideQuest ‘Save’ floppy-disk icon">
-			to the right of a folder to export it.
-			<img class="instruction-screenshot" src="/web/img/helpinstall/sidequestExport.png" alt="SideQuest export folder dialog">
-		</li>
-
-		<li>
-			Click <strong>Select location</strong>&nbsp;
-			<img class="inline-icon" src="/web/img/helpinstall/exportSelectLocationBtn.png" alt="Select destination folder icon">
-			to choose where to save your data, then click <strong>Save to PC</strong>&nbsp;
-			<img class="inline-icon" src="/web/img/helpinstall/exportSaveToPcBtn.png" alt="Save to PC arrow icon">
-			<img class="instruction-screenshot larger-max-height" src="/web/img/helpinstall/sidequestExportPopup.png" alt="SideQuest export progress popup">
-		</li>
-	</ol>
-
-	<p><strong>Next</strong>: proceed to the <strong>Analyzer</strong> tab on the MovementVR website to learn how to process your data.</p>
-</details>
-
-		</div>
-
+		<div class="section-header" id="helpInstall">Installing the VR App</div>
+		<section class="section-content justify" data-content="helpInstall" data-content-sel="helpInstall">  
+		</section>  
 		
 		<!-------------- Analyzer -------------->
-		<div class="section-header">Analyzer</div>
-		<div class="section-content">
-			<p>Use the <strong>MovementVR Analyzer</strong> to convert and examine data collected in the VR app.</p>
-
-			<div class="section-subpanel-header">a) Export & Conversion</div>
-			<ul class="section-panel list-shortitems">
-				<li>Connect the headset to a PC and extract the <code>.bin</code> data files from internal memory.</li>
-				<li>Upload the <code>.bin</code> files to the Analyzer interface.</li>
-				<li>Click "Export" to convert them into standard <code>.csv</code> files.</li>
-			</ul>
-
-			<div class="section-subpanel-header">b) CSV Structure</div>
-			<ul class="section-panel list-shortitems">
-				<li><strong>Columns:</strong> Time, hand positions (per joint), object positions, trial phase markers, success/failure, etc.</li>
-				<li><strong>Rows:</strong> Each row represents a frame (i.e., one time point during the task).</li>
-			</ul>
-
-			<div class="section-subpanel-header">c) MATLAB Analysis</div>
-			<ul class="section-panel list-shortitems">
-				<li><strong>Download MATLAB package:</strong> Zip file with scripts and example data provided on the Analyzer page.</li>
-				<li><strong>Pipeline:</strong> Load converted CSV &rarr; Extract trial boundaries &rarr; Compute metrics like success rate and trajectory deviations.</li>
-				<li><strong>Example scripts:</strong> Illustrative code provided for trial-by-trial plotting, computing adaptation curves, and visualizing hand trajectories.</li>
-			</ul>
-		</div>
-		
-		
+		<div class="section-header" id="helpAnalyzer">Processing the data </div>
+		<section class="section-content justify" data-content="helpAnalyzer" data-content-sel="helpAnalyzer">  
+		</section>   
 
 	</div>
 </div>
+	 
 </body>
 </html>
-
-
-
-
-
-<!--1) general overview
-
-2) motor task (task description)
-
- (take from paper MovementVR Software Implementation for the next sections)
-3) builder
-include links to guides within builder: main builder guide, static builder, trial builder, parameter catalog, input source selection, csv file import 
-
-4) vr app - how to download, install, save builder csv to internal folder, execute...
-
-5) analyzer
-a) export/converter
-b) col and rows in csv explanation
-b) matlab zipped folder for download -> steps till trial-by-trial trajectoris + illustgrative code for how to.....succss ratge + motor adaptation -->
-
+ 

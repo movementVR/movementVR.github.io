@@ -17,6 +17,7 @@ function builderGetSetInputSource(mode, key, source, paramSourceVar = builderSes
             return paramSourceVar[keyString];  
         } else {
             builderSession.parametersSource[keyString] = source;   
+			checkInternalAdjustments(keyString,source);
         }
         
     } else {
@@ -58,6 +59,40 @@ function builderGetSetInputSource(mode, key, source, paramSourceVar = builderSes
 
         return { keyString: name, keyInput: elem };
     }
+	
+	
+	function checkInternalAdjustments(key,value){
+		const keyInputs = [
+			'gainScript,leftHandGainX', 'gainScript,leftHandGainY', 'gainScript,leftHandGainZ',
+			'gainScript,rightHandGainX', 'gainScript,rightHandGainY', 'gainScript,rightHandGainZ'
+		];
+
+		const keyTargets = [
+			'gainScript,paradigmBaseline',
+			'gainScript,paradigmGradual',
+			'gainScript,paradigmFullPerturbation',
+			'gainScript,paradigmWashout'
+		];
+		
+		if (keyInputs.includes(key)) {
+			if (value !== "staticBuilder") {
+				keyTargets.forEach(targetKey => {
+					
+            		builderGetSetInputSource('set', targetKey,"internalGain");  
+				});
+			} else {
+				// Check if ALL keyInputs are currently "staticBuilder"
+				const allStatic = keyInputs.every(inputKey => builderGetSetInputSource('get', inputKey) === "staticBuilder"); 
+				if (allStatic) {
+					keyTargets.forEach(targetKey => { 
+						builderGetSetInputSource('set', targetKey,"staticBuilder"); 
+					});
+				}
+			}
+		}	
+	
+		
+	}
 }
  
 
@@ -145,10 +180,13 @@ async function builderSelectInputSource(staticBuilderWindow,groupName,parameterN
                         // reverts to backup selection if "cancel" or "x' was pressed without ever having saved 
                         builderSession.parametersSource = structuredClone(builderParametersBackupSource); 
                     } else {
-                        // removes temporary "u" in front of unselected param
+                        // Keeps new source for Selected param + resets source for Unselected param
                         unselectedParameters.forEach(key => { 
                             builderGetSetInputSource('set', key,builderGetSetInputSource('get', key,'',builderParametersBackupSource)); 
-                        });   
+                        }); 
+					/*	console.log(selectedParameters);
+						console.log(unselectedParameters);
+						console.log(builderSession);*/
                     }
                     
                     // Updates Static Builder inputs values and opacity
@@ -230,10 +268,16 @@ function setInputsOpacity(targetBuilderWindow, enabledFlag = false){
                 trialBuilder: "Trial Builder interface",
                 csvFile: "imported .csv File"
             };    
+			const interfaceMsg={
+                internalGain: "Parameter disabled: you set at least one of the gain parameters to vary across trials, overriding this"
+            }; 
             
-            const titleString = `Parameter is currently set using ${
-                    interfaceNames[inputSource] || inputSource
-                    }. Change using ⚙.`;
+            let titleString = interfaceMsg[inputSource];
+			if (!titleString) {
+				 titleString =`Parameter is currently set using ${
+				interfaceNames[inputSource] || inputSource
+				}. Change using ⚙.`;
+			}
 
             input.title = titleString;
             if (label){

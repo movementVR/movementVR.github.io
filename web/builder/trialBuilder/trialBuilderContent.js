@@ -30,7 +30,6 @@ function newTrialBlockType(trialBuilderWindow, dropdownElement, newOptionValue, 
 		// // 2) New Right Panel for new option // // 
 		const rightPanelTemplate = container.querySelector('.trialbuilderPanel.inputs-panel.template'); 
         const clonedPanel = rightPanelTemplate.cloneNode(true); // clones the right panel template  
-      //  const clonedPanel = cloneWithListeners(rightPanelTemplate);  // clones the right panel template  
         
 		clonedPanel.classList.remove('template');   // removes template class
 		clonedPanel.id = `trialbuilder-right-panel-${newOptionValue}`; // changes the ID to reflect trial type option

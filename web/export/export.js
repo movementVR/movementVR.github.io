@@ -11,7 +11,7 @@ function processdata(inputarray){
  	
 
 
-const upload = async (event) => {
+const exportTabUploadBin = async (event) => {
   
     // Convert the FileList into an array and iterate
     let files = Array.from(event.target.files).map(file => {
