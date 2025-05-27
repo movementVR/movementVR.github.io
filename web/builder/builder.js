@@ -62,7 +62,7 @@ async function builderInitialization(){
 	createBuilderGrid(".builderBottomRowContainer", builderConfig.footerButtons)
 	
 	////// Creates bottom row (download, upload, instructions...)
-	//createFooterActionButtons(parentcontainer);
+	createFooterActionButtons(parentcontainer);
 	
 	//// Hidden Copy of All Forms ////    
 	createHiddenFormsCopy(parentcontainer);
@@ -128,43 +128,7 @@ async function builderInitialization(){
 		subparentContainerLine2.appendChild(builderSessionManagementContainer); 
 		
 		subparentContainer.appendChild(subparentContainerLine1);
-		subparentContainer.appendChild(subparentContainerLine2);
-		
-		
-		//subparentContainerLine1.className = "builderMainPanelCol"; 
-		
-			////Col 1 Container 
-		/*const subparentContainerLine1 = document.createElement("div");
-		subparentContainerLine1.id = "builderMainPanelRow1";      
-		subparentContainerLine1.className = "builderMainPanelRow";      
-		subparentContainer.appendChild(subparentContainerLine1);
-		
-		
-		const subparentContainerLine1R = document.createElement("div"); 
-		subparentContainerLine1R.className = "builderMainPanelCol";      
-		
-		const subparentContainerLine1A = document.createElement("div"); 
-		subparentContainerLine1A.className = "builderMainPanelRow";      
-		subparentContainerLine1R.appendChild(subparentContainerLine1A);
-		const subparentContainerLine1B = document.createElement("div"); 
-		subparentContainerLine1B.className = "builderMainPanelRow";      
-		subparentContainerLine1R.appendChild(subparentContainerLine1B);
-		
-		////Col 2 Container 
-		const subparentContainerLine2 = document.createElement("div");
-		subparentContainerLine2.id = "builderMainPanelRow2";      
-		subparentContainerLine1.className = "builderMainPanelRow";        
-		subparentContainer.appendChild(subparentContainerLine2);		
-		             
-		subparentContainerLine1.appendChild(containerMainGrid);  
-		subparentContainerLine2.appendChild(builderFooterButtonsContainer); 
-		subparentContainerLine1A.appendChild(containerQuickLinks);
-		subparentContainerLine1B.appendChild(builderSessionManagementContainer); 
-		
-		
-		subparentContainerLine1.appendChild(subparentContainerLine1R);
-		
-		parentcontainer.appendChild(builderFooterButtonsContainer); */
+		subparentContainer.appendChild(subparentContainerLine2); 
 		
 	}
 	
@@ -310,14 +274,11 @@ async function builderInitialization(){
 	
 	
 	////// Creates bottom row (download, upload, instructions...) ////
-	function createFooterActionButtons(parentcontainer){
-		
-		  
-		
+	function createFooterActionButtons(parentcontainer){ 
 		
 		//// DOWNLOAD  /  SAVE/LOAD SESSION  / IMPORT PARAMETERS
 		//// Download Button     
-		const trialDownloadButton = parentcontainer.getElementById("mainBuilderDownloadButton");
+		const trialDownloadButton = parentcontainer.querySelector("#mainBuilderDownloadButton");
 		trialDownloadButton.addEventListener('click', builderIOParametersToFile); 
 
 
@@ -336,14 +297,17 @@ async function builderInitialization(){
 		
 		
 		// label acting as visual upload button
-		const trialUploadButtonVisual = parentcontainer.getElementById("mainBuilderUploadButton");
-		trialUploadButtonVisual.htmlFor = 'csvFileInput'; // Match this with the file input ID  
-		trialUploadButtonVisual.appendChild(trialUploadButton);  
+		const trialUploadButtonVisual = parentcontainer.querySelector("#mainBuilderUploadButton"); 
+		trialUploadButtonVisual.appendChild(trialUploadButton);   
+		trialUploadButtonVisual.addEventListener('click', () => {
+			trialUploadButton.click(); // Programmatically trigger file input
+		});
+
 
 
 
 		//// Save/Load session	  
-		const openSessionConfigButton = parentcontainer.getElementById("mainBuilderSaveLoadButton");
+		const openSessionConfigButton = parentcontainer.querySelector("#mainBuilderSaveLoadButton");
 		openSessionConfigButton.addEventListener('click', () => {	
 			 // opens session configuration popup  
 			const configurationInput = {
@@ -360,7 +324,7 @@ async function builderInitialization(){
 
 
 		//// Instruction Button  
-		const mainBuilderHelpButton = parentcontainer.getElementById("mainBuilderHelpButton");
+		const mainBuilderHelpButton = parentcontainer.querySelector("#mainBuilderHelpButton");
 		mainBuilderHelpButton.addEventListener('click', () => { 	 
 			const guidePopupFrame = document.getElementById('guideBuilder'); 
 			guidePopupFrame.contentWindow.openModal(); 	  
@@ -368,14 +332,14 @@ async function builderInitialization(){
 
 
 		//// Parameter Catalog  
-		const parameterCatalogButton = parentcontainer.getElementById("parameterCatalogBuilderButton");  
+		const parameterCatalogButton = parentcontainer.querySelector("#parameterCatalogBuilderButton");  
 		parameterCatalogButton.addEventListener('click', () => {  
 			openBuilderParameterCatalog(builderPaths); 
 		});
  
 		
 		//// Parameter File Template via Catalog (hidden here)  
-		const parameterTemplateButton = parentcontainer.getElementById("parameterTemplateBuilderButton");     	 
+		const parameterTemplateButton = parentcontainer.querySelector("#parameterTemplateBuilderButton");     	 
 		parameterTemplateButton.addEventListener('click', () => {  
 			openBuilderParameterCatalog(builderPaths,true); 
 		});
