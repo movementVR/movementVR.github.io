@@ -15,12 +15,15 @@ function defPagePopupWindow(url = ''){
 
 
 /* -----------------MAIN PAGES SETUP ---------------- */
-async function setupPage() { 
-	console.log('Running');
+async function setupPage() {  
 	await setupDataContent();
 	setupOnThisPageBox(); 
     setupDataLinks(); 
 	setupImageCarousel(); 
+	
+	setupSearch();
+	 
+
 
 	
 	
@@ -274,6 +277,12 @@ async function setupPage() {
 		});
 		
 		
+	
+	 
+
+	} 
+	
+	
 		
 		// // // --------- helper ------- // // //
 		/* highlights + auto-expand current section */
@@ -297,6 +306,17 @@ async function setupPage() {
 				while ((li = li.parentElement.closest('li'))) {
 					li.classList.add('active');           // all ancestors (auto-expand)
 				}
+				
+				/* ──  keep the active item visible ─────────────────────────── */
+				const scroller = nav.querySelector(':scope > ul');   // ← the element that now scrolls
+				if (scroller && scroller.scrollHeight > scroller.clientHeight) {
+					link.scrollIntoView({
+						block: 'nearest',
+						inline: 'nearest',
+						behavior: 'smooth'   // remove if you prefer an instant jump
+					});
+				} 
+				
 			};
 
 			/* 3 – scroll-based spy   */
@@ -313,7 +333,7 @@ async function setupPage() {
 				// i.e., when the element (likely the header) is in the range defined by:
 				// // y position = between [-(FROM TOP)]% and [100+(FROM BOTTOM)]% from the top of the viewport
 				//{ rootMargin: '-40% 0px -55% 0px' } // means active when 40% to (100-55)% = 40% to 45% from top
-				{ rootMargin: '0% 0px -80% 0px' } // tune as needed
+				{ rootMargin: '20% 0px -55% 0px' } // tune as needed
 			);
 			targets.forEach(t => observer.observe(t));
 
@@ -338,12 +358,196 @@ async function setupPage() {
 		
 		
 		
-	 
+	
 
-	} 
+
+
+	/* ---------- SEACRH ------ */
+
+	function setupSearchModalLike(){
+		
+		const contentContainerID = 'mainhelppage-content';
+		const expandableSelector = 'details';
+
+		const contentContainer = document.getElementById(contentContainerID);	
+		const expandableElements = document.querySelectorAll(expandableSelector);
+
+		const originalContent = contentContainer.innerHTML;
+
+		
+		document.getElementById('help-search').addEventListener('input', function() {
+			console.log('aaa');
+			searchInPage(this.value, originalContent, contentContainerID, expandableSelector);
+		});
+
+		
+	}
+	
+	
+	
+	
+	/* ---------- SEARCH ---------- */
+function setupSearch () {
+
+	/* config */
+	const contentContainerID  = 'mainhelppage-content';
+	const expandableSelector  = 'details';        // sections that may be collapsed
+
+	/* elements & state */
+	const contentContainer = document.getElementById(contentContainerID);
+	const originalContent  = contentContainer.innerHTML;      // pristine markup
+
+	const searchInput = document.getElementById('help-search');
+	const prevBtn     = document.getElementById('search-prev');
+	const nextBtn     = document.getElementById('search-next');
+
+	let highlights    = [];   // NodeList → Array of <span class="highlight">
+	let currIndex     = -1;   // index of the “current” hit
+
+	/* ---------- listeners ---------- */
+	searchInput.addEventListener('input', () => runSearch(searchInput.value.trim()));
+	prevBtn    .addEventListener('click', () => jump(-1));
+	nextBtn    .addEventListener('click', () => jump(+1));
+
+	/* ---------- core ---------- */
+	function runSearch (query) {
+		
+		const nav = document.querySelector('.mainpage-parent.help-page').querySelector('nav.on-this-page');
+		
+		/* 1 – reset if empty / invalid */
+		if (!query || query.includes('<') || query.includes('>')) {
+			resetContent();
+			 
+			initOnThisPageScrollSpy(nav);
+			return;
+		}
+
+		/* 2 – rebuild innerHTML with highlights */
+		const temp  = document.createElement('div');
+		temp.innerHTML = originalContent;
+
+		const walk  = document.createTreeWalker(temp, NodeFilter.SHOW_TEXT);
+		const regex = new RegExp(`(${query})`, 'gi');
+		let   node;
+
+		while (node = walk.nextNode()) {
+			node.nodeValue = node.nodeValue.replace(regex, '[[[HIGHLIGHT]]]$1[[[/HIGHLIGHT]]]');
+		}
+
+		contentContainer.innerHTML =
+			temp.innerHTML
+				.replaceAll('[[[HIGHLIGHT]]]',  '<span class="highlight">')
+				.replaceAll('[[[/HIGHLIGHT]]]', '</span>');
+ 
+		initOnThisPageScrollSpy(nav);
+		
+		/* 3 – unhide collapsed sections that contain hits */ 		
+		document.querySelectorAll(expandableSelector).forEach(section => { 
+			if (section.querySelector('.highlight')) { 
+				section.style.display = 'block';
+				section.open = true; 
+			}
+		  });
+		 
+
+		/* 4 – collect hits & jump to the first one */
+		highlights = Array.from(contentContainer.querySelectorAll('.highlight'));  
+		currIndex  = highlights.length ? 0 : -1; 
+		updateButtons();
+		 
+		 
+		if (currIndex !== -1) { 
+			scrollToCurrent();
+		}
+		 
+	}
+
+	function jump (direction) {
+		if (!highlights.length) return;
+		currIndex = (currIndex + direction + highlights.length) % highlights.length;
+		scrollToCurrent();
+	}
+
+	function scrollToCurrent () {
+		highlights.forEach(h => h.classList.remove('current'));
+		const el = highlights[currIndex];
+
+		/* make sure its parent section is visible */
+		const section = el.closest(expandableSelector);
+		if (section){
+				section.style.display = 'block';
+				section.open = true; 
+			
+		}   
+		el.classList.add('current');
+		
+		// must wait till next frame after opening details to find it 
+		setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'center' }), 0);
+
+	}
+
+	function resetContent () {
+		contentContainer.innerHTML = originalContent;
+		document.querySelectorAll(expandableSelector).forEach(sec => sec.style.display = 'none');
+		highlights = [];
+		currIndex  = -1;
+		updateButtons();
+	}
+
+	function updateButtons () {
+		const disabled = !highlights.length;
+		prevBtn.disabled = disabled;
+		nextBtn.disabled = disabled;
+	}
+}
+
+
+
+
+	
 	
 	// // end of function block // //
 	
 } 
+
+
+
+function searchInPage(query, originalContentArg, contentContainerID, expandableSelector){
+		//	CALL: 
+		//	document.getElementById('search-box').addEventListener('input', function() {
+		//		searchInPage(this.value, originalContent, contentContainerID, //expandableSelector);
+		//	});*/
+
+			  query = query.trim();
+			  if (!query || query.includes('<') || query.includes('>')){
+				  document.getElementById(contentContainerID).innerHTML = originalContentArg;
+				  document.querySelectorAll(expandableSelector).forEach(sec => sec.style.display = 'none');
+				  return;
+			  } 
+
+			  const temp = document.createElement('div');
+			  temp.innerHTML = originalContentArg;
+			  const walk = document.createTreeWalker(temp, NodeFilter.SHOW_TEXT, null, false);
+			  let node;
+			  const regex = new RegExp(`(${query})`, 'gi');
+			  while (node = walk.nextNode()) {
+				node.nodeValue = node.nodeValue.replace(regex, '[[[HIGHLIGHT]]]$1[[[/HIGHLIGHT]]]');
+			  }
+ 
+			 document.getElementById(contentContainerID).innerHTML = temp.innerHTML.replace(/\[\[\[HIGHLIGHT\]\]\]/g, '<span class="highlight">').replace(/\[\[\[\/HIGHLIGHT\]\]\]/g, '</span>'); 
+			  document.querySelectorAll(expandableSelector).forEach(section => { 
+				if (section.querySelector('.highlight')) {
+					section.style.display = 'block';
+					section.open = true; 
+				}
+			  });
+		}
+
+
+
+ 
+
+
+
 
 

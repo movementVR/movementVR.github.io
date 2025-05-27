@@ -1,5 +1,13 @@
 
 function guideSetup(){
+	
+	const contentContainerID = 'helpGuide-content';
+	const expandableSelector = '.section-content';
+	 	
+	const contentContainer = document.getElementById(contentContainerID);	
+	const expandableElements = document.querySelectorAll(expandableSelector);
+
+	const originalContent = contentContainer.innerHTML;
 
 	document.querySelector('.x-close').onclick = () => {
 		closeHelpWindow();
@@ -15,29 +23,14 @@ function guideSetup(){
 	};
 
 
-	const originalContent = document.getElementById('helpGuide-content').innerHTML;
 
 	document.getElementById('search-box').addEventListener('input', function() {
-	  const query = this.value.trim();
-	  if (!query || query.includes('<') || query.includes('>')) return resetContent();
-
-	  const temp = document.createElement('div');
-	  temp.innerHTML = originalContent;
-	  const walk = document.createTreeWalker(temp, NodeFilter.SHOW_TEXT, null, false);
-	  let node;
-	  const regex = new RegExp(`(${query})`, 'gi');
-	  while (node = walk.nextNode()) {
-		node.nodeValue = node.nodeValue.replace(regex, '[[[HIGHLIGHT]]]$1[[[/HIGHLIGHT]]]');
-	  }
-
-	  document.getElementById('helpGuide-content').innerHTML = temp.innerHTML.replace(/\[\[\[HIGHLIGHT\]\]\]/g, '<span class="highlight">').replace(/\[\[\[\/HIGHLIGHT\]\]\]/g, '</span>');
-
-	  document.querySelectorAll('.section-content').forEach(section => {
-		if (section.querySelector('.highlight')) section.style.display = 'block';
-	  });
+		searchInPage(this.value, originalContent, contentContainerID, expandableSelector);
 	});
 	
+	
 
+	 
 	document.querySelectorAll('a.help-modal-link[data-modalref^="#"]').forEach(link => {
 		link.addEventListener('click', event => {
 			event.preventDefault(); // prevent href="" from navigating
@@ -59,7 +52,7 @@ function guideSetup(){
 	function closeHelpWindow(){
 		document.getElementById('helpGuide-modal').style.display 	= 'none';
 		document.getElementById('search-box').value = '';
-		resetContent();
+		resetContent(originalContent, contentContainerID, expandableSelector);
 
 
 		//	window.frameElement.style.display = "none";
@@ -73,9 +66,9 @@ function guideSetup(){
 	}
 	
 
-	function resetContent() {
-	  document.getElementById('helpGuide-content').innerHTML = originalContent;
-	  document.querySelectorAll('.section-content').forEach(sec => sec.style.display = 'none');
+	function resetContent(originalContentArg, contentContainerID, expandableSelector) {
+	  contentContainer.innerHTML = originalContentArg;
+	  expandableElements.forEach(sec => sec.style.display = 'none');
 	}  
 
 	
@@ -87,6 +80,7 @@ function guideSetup(){
 
 
 function openModal(){
+			 
 	guideSetup();
 	
 	// Opens Window

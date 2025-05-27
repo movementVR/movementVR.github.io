@@ -156,7 +156,8 @@
 			"https://cdn.jsdelivr.net/npm/colresizable@1.6/colResizable-1.6.min.js"
 		],
 		"guideUtils": [ 
-			"/web/general/guide.js"
+			"/web/general/guide.js",
+			"/web/general/page.js"
 		]
 	},
 	"externalCss": { 

@@ -139,6 +139,11 @@ body {
 	padding-bottom: 0.5rem;
 }
 
+.help-page.mainpage-parent .mainpage-content .section-header:first-of-type {
+    /* specific styles for the first section header */
+	margin: 0.5rem 0 1rem;
+}
+
 .mainpage-parent .mainpage-content .section-content {
 	margin-bottom: 2rem;
 } 
@@ -580,15 +585,31 @@ code.larger.effect{
 }
 
 .on-this-page.help-page	 {	 /* the left sidebar */ 
-	position: sticky;
+	/*position: sticky;*/
+	position: static;
     top: 4rem;
     width: 260px;
     min-width: 200px;
-    max-height: calc(100vh - 5rem);
+ 
     overflow-y: auto;
     overflow-x: clip;
     padding: 0.5rem 0.5rem 0.8rem 1rem;
+	
+	display: flex;
+    flex-direction: column; 
+	 
 }
+
+
+/* scroll only the list */
+.on-this-page.help-page > ul{
+    flex: 1 1 auto;          /* fill the remaining space */
+    overflow-y: auto;
+    overflow-x: clip;        /* keep your original horizontal rule */
+    margin: 0;
+    padding: 0;
+}
+
 
 
 /* keep the article column flexible */
@@ -658,6 +679,74 @@ code.larger.effect{
 	margin:0.6rem 0rem 0.5rem 0rem;
 }
 
+/* ---------------------SEARCH --------------------*/
+ 
 
+/* wrapper so search + contents sit side-by-side, each at its natural width */
+.helpPage-searchandcontents{
+    display:flex;              /* put the search bar and the <nav> next to each other */
+    flex-direction: column;
+    align-items:flex-start;
+    gap:1rem;                  /* a little space between them */  
+	
+	
+    position: sticky;                 /* STICKY */
+    top: 4rem;                        /* position offset for sticky  */
+
+    /* keep it from growing past the viewport height                     */
+    max-height: calc(100vh - 4rem);   /* header offset included   */
+    overflow: hidden;                 /* child <ul> will do the scrolling*/
+}
+
+/* SEARCH BAR ----------------------------------------------------------- */
+.help-search-container{
+    display:inline-flex;       /* keep input + button on one line */
+    align-items:center;
+    background:var(--accent-darker-color);
+   /* background:white;*/
+    border:2px solid var(--accent-darker-color);
+    border-radius:25px;
+    box-shadow:0 2px 6px rgba(0,0,0,.05); 
+    width:fit-content;         /* or 'auto' – lets the bar shrink-to-fit its contents */ 
+}
+
+.help-search-input{
+    border:0;
+    outline:0;
+    background:white;
+    width:auto;                /* keeps input only as wide as the text it holds */
+    max-width:20ch;            /* optional safety cap so it can’t grow forever */
+    padding:8px 10px;
+    border-radius:25px;      
+}
+
+.help-search-button {
+	background: none;
+	border: 0;
+	cursor: pointer;
+	padding: 6px;
+	border-radius: 4px;
+	color: white; /* Default color */
+	transition: color 0.2s ease, background-color 0.2s ease, transform 0.1s ease; 
+}
+
+.help-search-button:hover,
+.help-search-button:focus {
+	/*color: #ddd;   
+	background-color: rgba(255, 255, 255, 0.1);*/
+	transform: scale(1.05);
+}
+
+.search-icon {
+	display: inline-block;
+	vertical-align: middle;
+} 
+/*.highlight { 
+	background-color: yellow; 
+ }*/
+
+.highlight          { background: #fcf18d; padding: 0 1px; }
+.highlight.current  { background: #ffc04d; outline: 1px solid #cc7a00; }
 
  
+

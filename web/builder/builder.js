@@ -324,10 +324,10 @@ async function builderInitialization(){
 
 
 		//// Instruction Button  
-		const mainBuilderHelpButton = parentcontainer.querySelector("#mainBuilderHelpButton");
+		const mainBuilderHelpButton = parentcontainer.querySelector("#mainBuilderHelpButton"); 
 		mainBuilderHelpButton.addEventListener('click', () => { 	 
 			const guidePopupFrame = document.getElementById('guideBuilder'); 
-			guidePopupFrame.contentWindow.openModal(); 	  
+			guidePopupFrame.contentWindow.openModal( ); 	  
 		});
 
 
