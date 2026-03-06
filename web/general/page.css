@@ -483,6 +483,57 @@ a.button {
 	font-weight: bolder;
 	font-size:large;
 } 
+
+
+
+/* ----------------------------------------------- */
+/* ------------------ Buttons  ------------------- */
+/* ----------------------------------------------- */
+
+a.button.generalButtonDark,
+a.button.generalButtonLight,
+.button.generalButtonDark,
+.button.generalButtonLight { 
+    display: inline-block; 
+    border-radius: 4px; 
+    margin-right: 20px;
+	
+	font-size: 16px;
+	font-weight: bold;
+	
+    cursor: pointer;	
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s; 
+}
+
+
+a.button.generalButtonDark,
+.button.generalButtonDark {  /* Dark Button w/ White Text */  	
+    background-color:var(--accent-color);
+    border:2px solid var(--accent-color); 
+    color:white;
+} 
+
+a.button.generalButtonLight,
+.button.generalButtonLight {  	 /* White Button w/ Dark Text */ 
+    background-color:white;
+	color: var(--accent-color);
+    border:2px solid var(--accent-color);
+}
+
+
+a.button.generalButtonDark:hover,
+.button.generalButtonDark:hover { 
+    border-color: var(--var-col-mediumcyan);
+    background-color: var(--var-col-mediumcyan); 
+}   
+ 
+a.button.generalButtonLight:hover,
+.button.generalButtonLight:hover {  
+    background-color: #f0ffff;
+    border-color: var(--var-col-mediumcyan);
+    color: var(--var-col-mediumcyan); 
+}
+ 
  
 /* ----------------------------------------------- */
 /* ----------- General - Layout Styles  ---------- */
